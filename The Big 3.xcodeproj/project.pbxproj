@@ -22,10 +22,6 @@
 		7CB871E627B33A89009D5539 /* The Big 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Big 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB871EC27B33A89009D5539 /* The Big 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Big 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB871EE27B33A89009D5539 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		7CB871F727B33A89009D5539 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
-		7CB871F927B33A89009D5539 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
-		7CB8720327B33A89009D5539 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
-		7CB8720527B33A89009D5539 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +47,6 @@
 			children = (
 				7CB871DE27B33A88009D5539 /* Shared */,
 				7CB871ED27B33A89009D5539 /* macOS */,
-				7CB871F627B33A89009D5539 /* Tests iOS */,
-				7CB8720227B33A89009D5539 /* Tests macOS */,
 				7CB871E727B33A89009D5539 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,24 +76,6 @@
 				7CB871EE27B33A89009D5539 /* macOS.entitlements */,
 			);
 			path = macOS;
-			sourceTree = "<group>";
-		};
-		7CB871F627B33A89009D5539 /* Tests iOS */ = {
-			isa = PBXGroup;
-			children = (
-				7CB871F727B33A89009D5539 /* Tests_iOS.swift */,
-				7CB871F927B33A89009D5539 /* Tests_iOSLaunchTests.swift */,
-			);
-			path = "Tests iOS";
-			sourceTree = "<group>";
-		};
-		7CB8720227B33A89009D5539 /* Tests macOS */ = {
-			isa = PBXGroup;
-			children = (
-				7CB8720327B33A89009D5539 /* Tests_macOS.swift */,
-				7CB8720527B33A89009D5539 /* Tests_macOSLaunchTests.swift */,
-			);
-			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
