@@ -21,7 +21,11 @@ final class Plan {
     
     let allowed: Int
     
-    private var goals = [Int: Goal]()
+    private var goals = [Int: Goal]() {
+        didSet {
+            publisher.send()
+        }
+    }
     
     let publisher = PassthroughSubject<Void, Never>()
     

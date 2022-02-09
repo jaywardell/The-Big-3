@@ -34,7 +34,7 @@ class PlanTests: XCTestCase {
         }
     }
     
-    func test_goal_at_does_not_send_to_publisher() throws {
+    func test_goal_at_does_not_send_from_publisher() throws {
         let sut = Plan(allowed: 1)
         let expected = exampleGoal
         
@@ -61,6 +61,15 @@ class PlanTests: XCTestCase {
         XCTAssertEqual(try sut.goal(at: 0)?.title, expected)
     }
     
+    func test_set_goal_at_sends_from_publisher() throws {
+        let sut = Plan(allowed: 1)
+
+        try expectChanges(on: sut, count: 1) {
+            try sut.set(exampleGoal, at: 0)
+        }
+    }
+    
+
     func test_set_goal_at_throws_if_a_goal_already_exists_at_the_index_passed_in() throws {
         let sut = Plan(allowed: 1)
         let expected = exampleGoal
@@ -107,6 +116,15 @@ class PlanTests: XCTestCase {
         try sut.removeGoal(at: 0)
         
         XCTAssertNil(try sut.goal(at:0))
+    }
+
+    func test_removeGoal_at_sends_from_publisher() throws {
+        let sut = Plan(allowed: 1)
+        try sut.set(exampleGoal, at: 0)
+
+        try expectChanges(on: sut, count: 1) {
+            try sut.removeGoal(at: 0)
+        }
     }
 
     func test_isEmpty_is_true_on_init() {
@@ -184,6 +202,16 @@ class PlanTests: XCTestCase {
         XCTAssertEqual(try sut.goal(at: 0)?.state, .deferred)
     }
     
+    func test_defer_goal_at_index_sends_from_publisher() throws {
+        let sut = Plan(allowed: 1)
+        try sut.set(exampleGoal, at: 0)
+
+        try expectChanges(on: sut, count: 1) {
+            try sut.deferGoal(at: 0)
+        }
+    }
+
+    
     func test_defer_goal_at_index_throws_if_goal_is_already_deferred() throws {
 
         let sut = Plan(allowed: 1)
@@ -230,6 +258,15 @@ class PlanTests: XCTestCase {
         try sut.completeGoal(at: 0)
 
         XCTAssertEqual(try sut.goal(at: 0)?.state, .completed)
+    }
+
+    func test_complete_goal_at_index_sends_from_publisher() throws {
+        let sut = Plan(allowed: 1)
+        try sut.set(exampleGoal, at: 0)
+
+        try expectChanges(on: sut, count: 1) {
+            try sut.completeGoal(at: 0)
+        }
     }
 
     func test_complete_goal_at_index_throws_if_goal_is_already_completed() throws {
