@@ -14,7 +14,9 @@ final class Plan {
     let allowed: Int
     private(set) var goals: [String?]
 
-    var isEmpty: Bool { true }
+    var isEmpty: Bool {
+        nil == goals.first { $0 != nil }
+    }
     
     enum Error: Swift.Error {
         case indexExceedsAllowed

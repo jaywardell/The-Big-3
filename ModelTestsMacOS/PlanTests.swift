@@ -97,6 +97,16 @@ class PlanTests: XCTestCase {
         XCTAssert(sut.isEmpty)
     }
     
+    func test_isEmpty_is_false_if_any_goals_are_set() throws {
+        let sut = Plan(allowed: 10)
+        
+        for i in 0...9 {
+            try sut.set(exampleGoal, at: i)
+            XCTAssertFalse(sut.isEmpty)
+            try sut.remove(at: i)
+        }
+    }
+
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
