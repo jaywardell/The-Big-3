@@ -11,6 +11,8 @@ import Foundation
 /// (or next day if we're in planning mode)
 final class Plan {
     
+    enum State: Equatable { case pending, completed, deferred }
+    
     let allowed: Int
     private(set) var goals: [String?]
 
@@ -39,6 +41,10 @@ final class Plan {
         guard index < allowed else { throw Error.indexExceedsAllowed }
 
         return goals[index]
+    }
+    
+    func stateForGoal(at index: Int) -> State {
+        return .pending
     }
     
     func set(_ goal: String, at index: Int) throws {

@@ -144,6 +144,14 @@ class PlanTests: XCTestCase {
         XCTAssertTrue(sut.isFull)
     }
     
+    func test_state_for_goal_at_index_is_pending_after_set() throws {
+        let sut = Plan(allowed: 1)
+        
+        try sut.set(exampleGoal, at: 0)
+        
+        XCTAssertEqual(sut.stateForGoal(at: 0), .pending)
+    }
+    
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
