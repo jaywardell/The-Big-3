@@ -41,6 +41,7 @@ final class Plan {
         case indexExceedsAllowed
         case goalExistsAtIndex
         case noGoalExistsAtIndex
+        case noGoalExistsAtPreviousIndex
         case goalIsAlreadyInPlan
         case goalIsAlreadyDeferred
         case goalIsAlreadyCompleted
@@ -60,6 +61,7 @@ final class Plan {
     func set(_ goal: String, at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil == goals[index] else { throw Error.goalExistsAtIndex }
+        guard index == 0 || nil != goals[index-1] else { throw Error.noGoalExistsAtPreviousIndex }
         guard !goals.values.contains(where: { $0.title == goal }) else { throw Error.goalIsAlreadyInPlan }
         goals[index] = Goal(title: goal, state: .pending)
     }

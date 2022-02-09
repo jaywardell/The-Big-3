@@ -81,6 +81,17 @@ class PlanTests: XCTestCase {
         }
     }
     
+    func test_set_goal_at_throws_if_there_are_blank_goals_before_the_index_passed_in() throws {
+        let sut = Plan(allowed: 2)
+        let expected = exampleGoal
+        
+//        try sut.set(expected, at: 0)
+
+        expect(.noGoalExistsAtPreviousIndex) {
+            try sut.set(expected, at: 1)
+        }
+    }
+
     func test_set_goal_at_throws_if_goal_already_exists_in_plan() throws {
         
         let sut = Plan(allowed: 2)
@@ -136,11 +147,8 @@ class PlanTests: XCTestCase {
     func test_isEmpty_is_false_if_any_goals_are_set() throws {
         let sut = Plan(allowed: 10)
         
-        for i in 0...9 {
-            try sut.set(exampleGoal, at: i)
-            XCTAssertFalse(sut.isEmpty)
-            try sut.removeGoal(at: i)
-        }
+        try sut.set(exampleGoal, at: 0)
+        XCTAssertFalse(sut.isEmpty)
     }
 
     func test_isFull_is_false_on_init() {
@@ -152,10 +160,9 @@ class PlanTests: XCTestCase {
     func test_isFull_is_false_if_any_goals_are_set() throws {
         let sut = Plan(allowed: 10)
         
-        for i in 0...9 {
-            try sut.set(exampleGoal, at: i)
+        for i in 0...8 {
+            try sut.set(String(i), at: i)
             XCTAssertFalse(sut.isFull)
-            try sut.removeGoal(at: i)
         }
     }
 
@@ -303,7 +310,7 @@ class PlanTests: XCTestCase {
             case expectedError:
                 break
             default:
-                XCTFail()
+                XCTFail("received error \(String(describing: error))")
             }
         }
     }
