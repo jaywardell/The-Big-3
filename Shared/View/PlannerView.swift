@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct PlannerView {
     
@@ -20,7 +21,9 @@ struct PlannerView {
         let add: (Planned, Int)->()
         let remove: (Int)->()
 
+        private var bag = Set<AnyCancellable>()
         init(allowed: Int,
+             publisher: AnyPublisher<Void, Never>?,
              plannedAt: @escaping (Int)->Planned?,
              add: @escaping (Planned, Int)->(),
              remove: @escaping (Int)->()) {
@@ -28,6 +31,11 @@ struct PlannerView {
             self.plannedAt = plannedAt
             self.add = add
             self.remove = remove
+            
+            publisher?.sink { [weak self] in
+                self?.objectWillChange.send()
+            }
+            .store(in: &bag)
         }
     }
     @ObservedObject var viewModel: ViewModel
@@ -110,6 +118,7 @@ fileprivate extension PlannerView.ViewModel {
     
     static let Example = PlannerView.ViewModel(
         allowed: 3,
+        publisher: nil,
         plannedAt: { _ in randomPlanned() },
         add: { print("add", $0, $1) },
         remove: { print("remove", $0)})
