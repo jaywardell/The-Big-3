@@ -22,6 +22,7 @@ final class Plan {
         self.allowed = allowed
     }
 
+    @discardableResult
     func goal(at index: Int) throws -> String? {
         guard index < allowed else { throw Error.indexExceedsAllowed }
 

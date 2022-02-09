@@ -34,9 +34,18 @@ class PlanTests: XCTestCase {
     func test_goal_at_throws_if_index_is_above_allowed() {
         let sut = Plan()
         
-        XCTAssertThrowsError(try sut.goal(at: Int.max)) {error in
-            switch error {
-            case Plan.Error.indexExceedsAllowed:
+        expect(.indexExceedsAllowed) {
+            try sut.goal(at: Int.max)
+        }
+    }
+    
+    // MARK: - Helpers
+    
+    private func expect(_ expectedError: Plan.Error, when callback: () throws -> (), file: StaticString = #filePath, line: UInt = #line) {
+
+        XCTAssertThrowsError(try callback()) { error in
+            switch error as? Plan.Error {
+            case expectedError:
                 break
             default:
                 XCTFail()
