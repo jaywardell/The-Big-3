@@ -48,29 +48,49 @@ extension PlannerView: View {
     
     @ViewBuilder private func planBlock(at index: Int) -> some View {
         if let planned = viewModel.plannedAt(index) {
-            Text(planned.title)
-                .font(.largeTitle)
+            HStack {
+                Text(planned.title)
+                    .font(.largeTitle)
+                    .shadow(radius: 15)
+
+                Button(action: { userTappedDeleteGoal(at: index) }) {
+                    Image(systemName: "minus.circle.fill")
+                        .font(.largeTitle).imageScale(.large)
+                }
+                .buttonStyle(.borderless)
+                .shadow(radius: 15)
+            }
+
         }
         else if index == selectedIndex {
             TextField("enter a goal for the day", text: $newPlannedTitle)
+                .foregroundColor(.primary)
+                .background(Color(nsColor: .textBackgroundColor))
                 .onSubmit {
                     userEnteredNewPlannedTitle(newPlannedTitle, at: index)
                     newPlannedTitle = ""
                     selectedIndex = nil
                 }
+                .padding()
         }
-        else {
+        else if index == 0 || viewModel.plannedAt(index-1) != nil {
             Button(action: { userTappedEmptyPlannedBlock(at: index) }) {
                 Image(systemName: "plus.circle.fill")
                     .font(.largeTitle).imageScale(.large)
             }
             .buttonStyle(.borderless)
+            .shadow(radius: 15)
+
+        }
+        else {
+            // to ensure spacing
+            HStack {}
         }
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            ForEach(1...viewModel.allowed, id: \.self) { index in
+            ForEach(0...viewModel.allowed-1, id: \.self) { index in
                 
                 planBlock(at: index)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -87,9 +107,15 @@ extension PlannerView: View {
 
         print(#function, index)
     }
+
+    private func userTappedDeleteGoal(at index: Int) {
+        viewModel.remove(index)
+    }
     
     private func userEnteredNewPlannedTitle(_ newPlannedTitle: String, at index: Int) {
         print(#function, index)
+        
+        viewModel.add(ViewModel.Planned(title: newPlannedTitle), index)
     }
 }
 
