@@ -66,27 +66,27 @@ class PlanTests: XCTestCase {
         }
     }
     
-    func test_remove_at_throws_if_index_is_not_allowed() {
+    func test_removeGoal_at_throws_if_index_is_not_allowed() {
         let sut = Plan()
         
         expect(.indexExceedsAllowed) {
-            try sut.remove(at: 0)
+            try sut.removeGoal(at: 0)
         }
     }
     
-    func test_remove_at_throws_if_no_goal_exists_at_index() {
+    func test_removeGoal_at_throws_if_no_goal_exists_at_index() {
         let sut = Plan(allowed: 1)
         
         expect(.noGoalExistsAtIndex) {
-            try sut.remove(at: 0)
+            try sut.removeGoal(at: 0)
         }
     }
 
-    func test_remove_at_removes_goal_at_index() throws {
+    func test_removeGoal_at_removes_goal_at_index() throws {
         let sut = Plan(allowed: 1)
         try sut.set(exampleGoal, at: 0)
         
-        try sut.remove(at: 0)
+        try sut.removeGoal(at: 0)
         
         XCTAssertNil(try sut.goal(at:0))
     }
@@ -103,7 +103,7 @@ class PlanTests: XCTestCase {
         for i in 0...9 {
             try sut.set(exampleGoal, at: i)
             XCTAssertFalse(sut.isEmpty)
-            try sut.remove(at: i)
+            try sut.removeGoal(at: i)
         }
     }
 
@@ -119,7 +119,7 @@ class PlanTests: XCTestCase {
         for i in 0...9 {
             try sut.set(exampleGoal, at: i)
             XCTAssertFalse(sut.isFull)
-            try sut.remove(at: i)
+            try sut.removeGoal(at: i)
         }
     }
 
@@ -131,7 +131,6 @@ class PlanTests: XCTestCase {
         }
         XCTAssertTrue(sut.isFull)
     }
-
     
     // MARK: - Helpers
     

@@ -46,7 +46,7 @@ final class Plan {
         goals[index] = goal
     }
 
-    func remove(at index: Int) throws {
+    func removeGoal(at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil != goals[index] else { throw Error.noGoalExistsAtIndex }
 
