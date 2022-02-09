@@ -66,6 +66,18 @@ class PlanTests: XCTestCase {
         }
     }
     
+    func test_set_goal_at_throws_if_goal_already_exists_in_plan() throws {
+        
+        let sut = Plan(allowed: 2)
+        let expected = exampleGoal
+        
+        try sut.set(expected, at: 0)
+
+        expect(.goalIsAlreadyInPlan) {
+            try sut.set(expected, at: 1)
+        }
+    }
+    
     func test_removeGoal_at_throws_if_index_is_not_allowed() {
         let sut = Plan()
         
@@ -127,7 +139,7 @@ class PlanTests: XCTestCase {
         let sut = Plan(allowed: 10)
         
         for i in 0...9 {
-            try sut.set(exampleGoal, at: i)
+            try sut.set(String(i), at: i)
         }
         XCTAssertTrue(sut.isFull)
     }

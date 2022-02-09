@@ -26,6 +26,7 @@ final class Plan {
         case indexExceedsAllowed
         case goalExistsAtIndex
         case noGoalExistsAtIndex
+        case goalIsAlreadyInPlan
     }
     
     init(allowed: Int = 0) {
@@ -43,6 +44,7 @@ final class Plan {
     func set(_ goal: String, at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil == goals[index] else { throw Error.goalExistsAtIndex }
+        guard !goals.contains(goal) else { throw Error.goalIsAlreadyInPlan }
         goals[index] = goal
     }
 
