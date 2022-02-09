@@ -138,12 +138,28 @@ class PlanTests: XCTestCase {
         XCTAssertTrue(sut.isFull)
     }
     
+    func test_state_for_goal_at_index_throws_if_index_is_not_allowed() {
+        let sut = Plan()
+        
+        expect(.indexExceedsAllowed) {
+            _ = try sut.stateForGoal(at: 0)
+        }
+    }
+    
+    func test_state_for_goal_at_index_throws_if_no_goal_at_index() {
+        let sut = Plan(allowed: 1)
+        
+        expect(.noGoalExistsAtIndex) {
+            _ = try sut.stateForGoal(at: 0)
+        }
+    }
+
     func test_state_for_goal_at_index_is_pending_after_set() throws {
         let sut = Plan(allowed: 1)
         
         try sut.set(exampleGoal, at: 0)
         
-        XCTAssertEqual(sut.stateForGoal(at: 0), .pending)
+        XCTAssertEqual(try sut.stateForGoal(at: 0), .pending)
     }
   
     func test_defer_goal_at_index_throws_if_index_is_not_allowed() {
@@ -169,7 +185,7 @@ class PlanTests: XCTestCase {
         try sut.set(exampleGoal, at: 0)
         try sut.deferGoal(at: 0)
 
-        XCTAssertEqual(sut.stateForGoal(at: 0), .deferred)
+        XCTAssertEqual(try sut.stateForGoal(at: 0), .deferred)
     }
     
     func test_defer_goal_at_index_throws_if_goal_is_already_deferred() throws {

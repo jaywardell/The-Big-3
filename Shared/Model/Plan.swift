@@ -45,8 +45,9 @@ final class Plan {
         return goals[index]?.0
     }
     
-    func stateForGoal(at index: Int) -> State {
-        guard let (_, state) = goals[index] else { fatalError() }
+    func stateForGoal(at index: Int) throws -> State {
+        guard index < allowed else { throw Error.indexExceedsAllowed }
+        guard let (_, state) = goals[index] else { throw Error.noGoalExistsAtIndex }
         return state
     }
     
@@ -68,6 +69,7 @@ final class Plan {
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard let (goal, state) = goals[index] else { throw Error.noGoalExistsAtIndex }
         guard state != .deferred else { throw Error.goalIsAlreadyDeferred }
+        guard state != .completed else { fatalError() }
         
         goals[index] = (goal, .deferred)
     }
