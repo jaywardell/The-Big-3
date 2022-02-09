@@ -6,8 +6,18 @@
 //
 
 import Foundation
+import Combine
 
 final class Planner: ObservableObject {
     
-    @Published var plan = Plan(allowed: 3)
+    private var bag = Set<AnyCancellable>()
+    
+    let plan = Plan(allowed: 3)
+    
+    init() {
+        plan.publisher.sink { [weak self] in
+            self?.objectWillChange.send()
+        }
+        .store(in: &bag)
+    }
 }
