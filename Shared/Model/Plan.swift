@@ -68,7 +68,7 @@ final class Plan {
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard let goal = goals[index] else { throw Error.noGoalExistsAtIndex }
         guard goal.state != .deferred else { throw Error.goalIsAlreadyDeferred }
-        guard goal.state != .completed else { fatalError() }
+        guard goal.state != .completed else { throw Error.goalIsAlreadyCompleted }
         
         goals[index] = Goal(title: goal.title, state: .deferred)
     }

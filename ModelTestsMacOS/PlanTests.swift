@@ -183,6 +183,17 @@ class PlanTests: XCTestCase {
         }
     }
 
+    func test_defer_goal_at_index_throws_if_goal_is_already_completed() throws {
+
+        let sut = Plan(allowed: 1)
+        try sut.set(exampleGoal, at: 0)
+        try sut.completeGoal(at: 0)
+
+        expect(.goalIsAlreadyCompleted) {
+            try sut.deferGoal(at: 0)
+        }
+    }
+
     func test_complete_goal_at_index_throws_if_index_is_not_allowed() {
         let sut = Plan()
 
