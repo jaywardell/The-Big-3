@@ -183,6 +183,55 @@ class PlanTests: XCTestCase {
         }
     }
 
+    func test_complete_goal_at_index_throws_if_index_is_not_allowed() {
+        let sut = Plan()
+
+        expect(.indexExceedsAllowed) {
+            try sut.completeGoal(at: 0)
+        }
+    }
+
+    func test_complete_goal_at_index_throws_if_no_goal_at_index() {
+        let sut = Plan(allowed: 1)
+
+        expect(.noGoalExistsAtIndex) {
+            try sut.completeGoal(at: 0)
+        }
+    }
+
+    func test_complete_goal_at_index_changes_result_of_state_for_goal_at_index_to_completed() throws {
+
+        let sut = Plan(allowed: 1)
+
+        try sut.set(exampleGoal, at: 0)
+        try sut.completeGoal(at: 0)
+
+        XCTAssertEqual(try sut.goal(at: 0)?.state, .completed)
+    }
+
+    func test_complete_goal_at_index_throws_if_goal_is_already_completed() throws {
+
+        let sut = Plan(allowed: 1)
+        try sut.set(exampleGoal, at: 0)
+        try sut.completeGoal(at: 0)
+
+        expect(.goalIsAlreadyCompleted) {
+            try sut.completeGoal(at: 0)
+        }
+    }
+
+    func test_complete_goal_at_index_changes_result_of_state_for_goal_at_index_to_completed_if_goal_was_already_deferred() throws {
+
+        let sut = Plan(allowed: 1)
+
+        try sut.set(exampleGoal, at: 0)
+        try sut.deferGoal(at: 0)
+
+        try sut.completeGoal(at: 0)
+
+        XCTAssertEqual(try sut.goal(at: 0)?.state, .completed)
+    }
+
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }

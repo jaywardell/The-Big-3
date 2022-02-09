@@ -35,7 +35,7 @@ final class Plan {
         case noGoalExistsAtIndex
         case goalIsAlreadyInPlan
         case goalIsAlreadyDeferred
-
+        case goalIsAlreadyCompleted
     }
     
     init(allowed: Int = 0) {
@@ -71,5 +71,13 @@ final class Plan {
         guard goal.state != .completed else { fatalError() }
         
         goals[index] = Goal(title: goal.title, state: .deferred)
+    }
+    
+    func completeGoal(at index: Int) throws {
+        guard index < allowed else { throw Error.indexExceedsAllowed }
+        guard let goal = goals[index] else { throw Error.noGoalExistsAtIndex }
+        guard goal.state != .completed else { throw Error.goalIsAlreadyCompleted }
+
+        goals[index] = Goal(title: goal.title, state: .completed)
     }
 }
