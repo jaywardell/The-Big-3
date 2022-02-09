@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 /// represents the User's plan for the current day
 /// (or next day if we're in planning mode)
@@ -19,7 +20,10 @@ final class Plan {
     }
     
     let allowed: Int
+    
     private var goals = [Int: Goal]()
+    
+    let publisher = PassthroughSubject<Void, Never>()
     
     var isEmpty: Bool {
         goals.isEmpty

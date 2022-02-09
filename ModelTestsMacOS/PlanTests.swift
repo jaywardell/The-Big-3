@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Combine
 
 @testable
 import The_Big_3
@@ -30,6 +31,17 @@ class PlanTests: XCTestCase {
         
         expect(.indexExceedsAllowed) {
             try sut.goal(at: Int.max)
+        }
+    }
+    
+    func test_goal_at_does_not_send_to_publisher() throws {
+        let sut = Plan(allowed: 1)
+        let expected = exampleGoal
+        
+        try sut.set(expected, at: 0)
+        
+        try expectNoChanges(on: sut) {
+            try sut.goal(at: 0)
         }
     }
     
@@ -259,4 +271,23 @@ class PlanTests: XCTestCase {
         }
     }
     
+    private func expectChanges(on sut: Plan, count expected: Int, when callback: () throws ->(), file: StaticString = #filePath, line: UInt = #line) rethrows {
+        
+        var callCount = 0
+        var bag = Set<AnyCancellable>()
+        sut.publisher.sink {
+            callCount += 1
+        }
+        .store(in: &bag)
+        
+        try callback()
+        
+        XCTAssertEqual(callCount, expected, file: file, line: line)
+
+    }
+
+    private func expectNoChanges(on sut: Plan, when callback: () throws ->(), file: StaticString = #filePath, line: UInt = #line) rethrows {
+        try expectChanges(on: sut, count: 0, when: callback)
+    }
+
 }
