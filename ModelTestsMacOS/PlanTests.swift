@@ -25,4 +25,10 @@ class PlanTests: XCTestCase {
         XCTAssertEqual(sut.allowed, expected)
     }
     
+    func test_goal_at_returns_nil_if_no_goal_is_set() {
+        let sut = Plan(allowed: 1)
+        
+        XCTAssertNil(sut.goal(at: 0))
+    }
+    
 }

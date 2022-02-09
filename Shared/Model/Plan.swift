@@ -19,4 +19,8 @@ final class Plan {
         self.allowed = allowed
     }
 
+    func goal(at: Int) -> String? {
+        nil
+    }
+    
 }
