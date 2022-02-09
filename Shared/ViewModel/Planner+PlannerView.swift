@@ -13,9 +13,35 @@ extension Planner {
         PlannerView.ViewModel(allowed: plan.allowed,
                               // TODO: can I achieve what I want by passing the plan's publisher and forgetting about Planner being an ObservableObject?
                               publisher: objectWillChange.eraseToAnyPublisher(),
-                              plannedAt: { _ in nil },
-                              add: { _, _ in },
-                              remove: {_ in })
+                              plannedAt: plannedGoal(at:) ,
+                              add: add(planned: at:),
+                              remove: removePlanned(at:))
+    }
+    
+    private func plannedGoal(at index: Int) -> PlannerView.ViewModel.Planned? {
+        (try? plan.goal(at: index)).map { PlannerView.ViewModel.Planned(title: $0.title) }
+    }
+    
+    private func add(planned: PlannerView.ViewModel.Planned, at index: Int) {
+        print(#function, planned, index)
+        
+        do {
+            try plan.set(planned.title, at: index)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    private func removePlanned(at index: Int) {
+        print(#function, index)
+
+        do {
+            try plan.removeGoal(at: index)
+        }
+        catch {
+            print(error)
+        }
     }
     
 }

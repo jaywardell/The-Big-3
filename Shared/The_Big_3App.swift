@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct The_Big_3App: App {
+    
+    let planner = Planner()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PlannerView(viewModel: planner.plannerViewModel())
         }
     }
 }
