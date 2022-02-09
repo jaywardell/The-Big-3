@@ -113,7 +113,25 @@ class PlanTests: XCTestCase {
         XCTAssertFalse(sut.isFull)
     }
 
-    
+    func test_isFull_is_false_if_any_goals_are_set() throws {
+        let sut = Plan(allowed: 10)
+        
+        for i in 0...9 {
+            try sut.set(exampleGoal, at: i)
+            XCTAssertFalse(sut.isFull)
+            try sut.remove(at: i)
+        }
+    }
+
+    func test_isFull_is_true_if_all_goals_are_set() throws {
+        let sut = Plan(allowed: 10)
+        
+        for i in 0...9 {
+            try sut.set(exampleGoal, at: i)
+        }
+        XCTAssertTrue(sut.isFull)
+    }
+
     
     // MARK: - Helpers
     

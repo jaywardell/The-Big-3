@@ -15,10 +15,12 @@ final class Plan {
     private(set) var goals: [String?]
 
     var isEmpty: Bool {
-        nil == goals.first { $0 != nil }
+        nil == goals.firstIndex { $0 != nil }
     }
     
-    var isFull: Bool { false }
+    var isFull: Bool {
+        nil == goals.firstIndex { $0 == nil }
+    }
     
     enum Error: Swift.Error {
         case indexExceedsAllowed
