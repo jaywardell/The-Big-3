@@ -10,5 +10,4 @@ import Foundation
 final class Planner: ObservableObject {
     
     @Published var plan = Plan(allowed: 3)
-    
 }
