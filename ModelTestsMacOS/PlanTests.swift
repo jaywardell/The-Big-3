@@ -11,12 +11,6 @@ import XCTest
 import The_Big_3
 
 class PlanTests: XCTestCase {
-
-    func test_goals_is_empty_on_init() {
-        let sut = Plan()
-        
-        XCTAssert(sut.goals.isEmpty)
-    }
     
     func test_allowed_is_take_from_init() {
         let expected = 12
@@ -151,7 +145,44 @@ class PlanTests: XCTestCase {
         
         XCTAssertEqual(sut.stateForGoal(at: 0), .pending)
     }
+  
+    func test_defer_goal_at_index_throws_if_index_is_not_allowed() {
+        let sut = Plan()
+        
+        expect(.indexExceedsAllowed) {
+            try sut.deferGoal(at: 0)
+        }
+    }
     
+    func test_defer_goal_at_index_throws_if_no_goal_at_index() {
+        let sut = Plan(allowed: 1)
+        
+        expect(.noGoalExistsAtIndex) {
+            try sut.deferGoal(at: 0)
+        }
+    }
+
+    func test_defer_goal_at_index_changes_result_of_state_for_goal_at_index_to_deferred() throws {
+
+        let sut = Plan(allowed: 1)
+
+        try sut.set(exampleGoal, at: 0)
+        try sut.deferGoal(at: 0)
+
+        XCTAssertEqual(sut.stateForGoal(at: 0), .deferred)
+    }
+    
+    func test_defer_goal_at_index_throws_if_goal_is_already_deferred() throws {
+
+        let sut = Plan(allowed: 1)
+        try sut.set(exampleGoal, at: 0)
+        try sut.deferGoal(at: 0)
+
+        expect(.goalIsAlreadyDeferred) {
+            try sut.deferGoal(at: 0)
+        }
+    }
+
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
