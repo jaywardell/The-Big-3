@@ -13,8 +13,13 @@ final class Plan {
     
     enum State: Equatable { case pending, completed, deferred }
     
+    struct Goal {
+        let title: String
+        let state: State
+    }
+    
     let allowed: Int
-    private var goals: [(String, State)?]
+    private var goals: [Goal?]
 
     var isEmpty: Bool {
         nil == goals.firstIndex { $0 != nil }
@@ -39,23 +44,17 @@ final class Plan {
     }
 
     @discardableResult
-    func goal(at index: Int) throws -> String? {
+    func goal(at index: Int) throws -> Goal? {
         guard index < allowed else { throw Error.indexExceedsAllowed }
 
-        return goals[index]?.0
+        return goals[index]
     }
-    
-    func stateForGoal(at index: Int) throws -> State {
-        guard index < allowed else { throw Error.indexExceedsAllowed }
-        guard let (_, state) = goals[index] else { throw Error.noGoalExistsAtIndex }
-        return state
-    }
-    
+        
     func set(_ goal: String, at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil == goals[index] else { throw Error.goalExistsAtIndex }
-        guard !goals.contains(where: { $0?.0 == goal }) else { throw Error.goalIsAlreadyInPlan }
-        goals[index] = (goal, .pending)
+        guard !goals.contains(where: { $0?.title == goal }) else { throw Error.goalIsAlreadyInPlan }
+        goals[index] = Goal(title: goal, state: .pending)
     }
 
     func removeGoal(at index: Int) throws {
@@ -67,10 +66,10 @@ final class Plan {
     
     func deferGoal(at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
-        guard let (goal, state) = goals[index] else { throw Error.noGoalExistsAtIndex }
-        guard state != .deferred else { throw Error.goalIsAlreadyDeferred }
-        guard state != .completed else { fatalError() }
+        guard let goal = goals[index] else { throw Error.noGoalExistsAtIndex }
+        guard goal.state != .deferred else { throw Error.goalIsAlreadyDeferred }
+        guard goal.state != .completed else { fatalError() }
         
-        goals[index] = (goal, .deferred)
+        goals[index] = Goal(title: goal.title, state: .deferred)
     }
 }
