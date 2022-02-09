@@ -18,4 +18,11 @@ class PlanTests: XCTestCase {
         XCTAssert(sut.goals.isEmpty)
     }
     
+    func test_allowed_is_take_from_init() {
+        let expected = 12
+        let sut = Plan(allowed: expected)
+        
+        XCTAssertEqual(sut.allowed, expected)
+    }
+    
 }
