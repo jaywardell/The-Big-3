@@ -1,0 +1,10 @@
+//
+//  Plan.swift
+//  The Big 3
+//
+//  Created by Joseph Wardell on 2/8/22.
+//
+
+import Foundation
+
+final class Plan {}
