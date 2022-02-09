@@ -91,6 +91,12 @@ class PlanTests: XCTestCase {
         XCTAssertNil(try sut.goal(at:0))
     }
 
+    func test_isEmpty_is_true_on_init() {
+        let sut = Plan(allowed: 1)
+        
+        XCTAssert(sut.isEmpty)
+    }
+    
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
