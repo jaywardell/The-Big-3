@@ -31,13 +31,6 @@
 			remoteGlobalIDString = 7CB871EB27B33A89009D5539;
 			remoteInfo = "The Big 3 (macOS)";
 		};
-		7CB8724527B33CF3009D5539 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7CB871DA27B33A88009D5539 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7CB871EB27B33A89009D5539;
-			remoteInfo = "The Big 3 (macOS)";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +44,6 @@
 		7CB8722927B33C36009D5539 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		7CB8723027B33C93009D5539 /* ModelTestsMacOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelTestsMacOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB8723927B33CB9009D5539 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
-		7CB8724127B33CF3009D5539 /* ModelViewTestsMacOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelViewTestsMacOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB8724A27B33D0E009D5539 /* PlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerTests.swift; sourceTree = "<group>"; };
 		7CB8724D27B33DFD009D5539 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,13 +70,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7CB8723E27B33CF3009D5539 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -94,7 +79,6 @@
 				7CB871DE27B33A88009D5539 /* Shared */,
 				7CB871ED27B33A89009D5539 /* macOS */,
 				7CB8723127B33C93009D5539 /* ModelTestsMacOS */,
-				7CB8724227B33CF3009D5539 /* ModelViewTestsMacOS */,
 				7CB871E727B33A89009D5539 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,7 +102,6 @@
 				7CB871E627B33A89009D5539 /* The Big 3.app */,
 				7CB871EC27B33A89009D5539 /* The Big 3.app */,
 				7CB8723027B33C93009D5539 /* ModelTestsMacOS.xctest */,
-				7CB8724127B33CF3009D5539 /* ModelViewTestsMacOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,13 +137,6 @@
 				7CB8724A27B33D0E009D5539 /* PlannerTests.swift */,
 			);
 			path = ModelTestsMacOS;
-			sourceTree = "<group>";
-		};
-		7CB8724227B33CF3009D5539 /* ModelViewTestsMacOS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ModelViewTestsMacOS;
 			sourceTree = "<group>";
 		};
 		7CB8724C27B33DEC009D5539 /* View */ = {
@@ -226,24 +202,6 @@
 			productReference = 7CB8723027B33C93009D5539 /* ModelTestsMacOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7CB8724027B33CF3009D5539 /* ModelViewTestsMacOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7CB8724727B33CF3009D5539 /* Build configuration list for PBXNativeTarget "ModelViewTestsMacOS" */;
-			buildPhases = (
-				7CB8723D27B33CF3009D5539 /* Sources */,
-				7CB8723E27B33CF3009D5539 /* Frameworks */,
-				7CB8723F27B33CF3009D5539 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7CB8724627B33CF3009D5539 /* PBXTargetDependency */,
-			);
-			name = ModelViewTestsMacOS;
-			productName = ModelViewTestsMacOS;
-			productReference = 7CB8724127B33CF3009D5539 /* ModelViewTestsMacOS.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -261,11 +219,6 @@
 						CreatedOnToolsVersion = 13.2.1;
 					};
 					7CB8722F27B33C93009D5539 = {
-						CreatedOnToolsVersion = 13.2.1;
-						LastSwiftMigration = 1320;
-						TestTargetID = 7CB871EB27B33A89009D5539;
-					};
-					7CB8724027B33CF3009D5539 = {
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1320;
 						TestTargetID = 7CB871EB27B33A89009D5539;
@@ -288,7 +241,6 @@
 				7CB871E527B33A89009D5539 /* The Big 3 (iOS) */,
 				7CB871EB27B33A89009D5539 /* The Big 3 (macOS) */,
 				7CB8722F27B33C93009D5539 /* ModelTestsMacOS */,
-				7CB8724027B33CF3009D5539 /* ModelViewTestsMacOS */,
 			);
 		};
 /* End PBXProject section */
@@ -311,13 +263,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7CB8722E27B33C93009D5539 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CB8723F27B33CF3009D5539 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -360,13 +305,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7CB8723D27B33CF3009D5539 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -374,11 +312,6 @@
 			isa = PBXTargetDependency;
 			target = 7CB871EB27B33A89009D5539 /* The Big 3 (macOS) */;
 			targetProxy = 7CB8723427B33C93009D5539 /* PBXContainerItemProxy */;
-		};
-		7CB8724627B33CF3009D5539 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7CB871EB27B33A89009D5539 /* The Big 3 (macOS) */;
-			targetProxy = 7CB8724527B33CF3009D5539 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -662,57 +595,6 @@
 			};
 			name = Release;
 		};
-		7CB8724827B33CF3009D5539 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HAJV4F6VL;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.oldjewel.ModelViewTestsMacOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Big 3.app/Contents/MacOS/The Big 3";
-			};
-			name = Debug;
-		};
-		7CB8724927B33CF3009D5539 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HAJV4F6VL;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.oldjewel.ModelViewTestsMacOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Big 3.app/Contents/MacOS/The Big 3";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -748,15 +630,6 @@
 			buildConfigurations = (
 				7CB8723727B33C93009D5539 /* Debug */,
 				7CB8723827B33C93009D5539 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7CB8724727B33CF3009D5539 /* Build configuration list for PBXNativeTarget "ModelViewTestsMacOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7CB8724827B33CF3009D5539 /* Debug */,
-				7CB8724927B33CF3009D5539 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

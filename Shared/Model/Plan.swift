@@ -7,4 +7,10 @@
 
 import Foundation
 
-final class Plan {}
+/// represents the User's plan for the current day
+/// (or next day if we're in planning mode)
+final class Plan {
+        
+    private(set) var goals: [String] = []
+    
+}
