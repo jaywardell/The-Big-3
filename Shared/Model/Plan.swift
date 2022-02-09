@@ -12,26 +12,29 @@ import Foundation
 final class Plan {
     
     let allowed: Int
-    private(set) var goals: [String] = []
+    private(set) var goals: [String?]
 
     enum Error: Swift.Error {
         case indexExceedsAllowed
+        case goalExistsAtIndex
     }
     
     init(allowed: Int = 0) {
         self.allowed = allowed
+        self.goals = Array(repeating: nil, count: allowed)
     }
 
     @discardableResult
     func goal(at index: Int) throws -> String? {
         guard index < allowed else { throw Error.indexExceedsAllowed }
 
-        return nil
+        return goals[index]
     }
     
     func set(_ goal: String, at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
-
+        guard nil == goals[index] else { throw Error.goalExistsAtIndex }
+        goals[index] = goal
     }
 
 }

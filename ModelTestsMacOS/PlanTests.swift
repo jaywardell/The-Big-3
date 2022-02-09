@@ -47,6 +47,25 @@ class PlanTests: XCTestCase {
         }
     }
     
+    func test_set_goal_at_sets_the_goal_at_the_index_to_the_goal_passed_in() throws {
+        let sut = Plan(allowed: 1)
+        let expected = exampleGoal
+        
+        try sut.set(expected, at: 0)
+        XCTAssertEqual(try sut.goal(at: 0), expected)
+    }
+    
+    func test_set_goal_at_throws_if_a_goal_already_exists_at_the_index_passed_in() throws {
+        let sut = Plan(allowed: 1)
+        let expected = exampleGoal
+        
+        try sut.set(expected, at: 0)
+
+        expect(.goalExistsAtIndex) {
+            try sut.set(expected, at: 0)
+        }
+    }
+    
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
