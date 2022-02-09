@@ -11,16 +11,21 @@ import Foundation
 /// (or next day if we're in planning mode)
 final class Plan {
     
-    
     let allowed: Int
     private(set) var goals: [String] = []
+
+    enum Error: Swift.Error {
+        case indexExceedsAllowed
+    }
     
     init(allowed: Int = 0) {
         self.allowed = allowed
     }
 
-    func goal(at: Int) -> String? {
-        nil
+    func goal(at index: Int) throws -> String? {
+        guard index < allowed else { throw Error.indexExceedsAllowed }
+
+        return nil
     }
     
 }

@@ -25,10 +25,23 @@ class PlanTests: XCTestCase {
         XCTAssertEqual(sut.allowed, expected)
     }
     
-    func test_goal_at_returns_nil_if_no_goal_is_set() {
+    func test_goal_at_returns_nil_if_no_goal_is_set() throws {
         let sut = Plan(allowed: 1)
         
-        XCTAssertNil(sut.goal(at: 0))
+        XCTAssertNil(try sut.goal(at: 0))
+    }
+    
+    func test_goal_at_throws_if_index_is_above_allowed() {
+        let sut = Plan()
+        
+        XCTAssertThrowsError(try sut.goal(at: Int.max)) {error in
+            switch error {
+            case Plan.Error.indexExceedsAllowed:
+                break
+            default:
+                XCTFail()
+            }
+        }
     }
     
 }
