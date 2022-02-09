@@ -7,8 +7,21 @@
 
 import XCTest
 
+@testable
+import The_Big_3
+
 class PlannerTests: XCTestCase {
 
-    
+    func test_init_sets_plan_to_empty_plan() {
+        let sut = Planner()
+        
+        XCTAssert(sut.plan.isEmpty)
+    }
+
+    func test_init_sets_plan_to_empty_plan_with_3_allowed_goals() {
+        let sut = Planner()
+        
+        XCTAssertEqual(sut.plan.allowed, 3)
+    }
 
 }
