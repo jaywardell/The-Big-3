@@ -107,6 +107,14 @@ class PlanTests: XCTestCase {
         }
     }
 
+    func test_isFull_is_false_on_init() {
+        let sut = Plan(allowed: 1)
+        
+        XCTAssertFalse(sut.isFull)
+    }
+
+    
+    
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }

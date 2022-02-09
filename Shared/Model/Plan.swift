@@ -18,6 +18,8 @@ final class Plan {
         nil == goals.first { $0 != nil }
     }
     
+    var isFull: Bool { false }
+    
     enum Error: Swift.Error {
         case indexExceedsAllowed
         case goalExistsAtIndex
