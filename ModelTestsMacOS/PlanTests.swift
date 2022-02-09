@@ -12,7 +12,7 @@ import The_Big_3
 
 class PlanTests: XCTestCase {
     
-    func test_allowed_is_take_from_init() {
+    func test_allowed_is_taken_from_init() {
         let expected = 12
         let sut = Plan(allowed: expected)
         
