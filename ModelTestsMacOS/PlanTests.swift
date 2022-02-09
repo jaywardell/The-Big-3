@@ -39,7 +39,17 @@ class PlanTests: XCTestCase {
         }
     }
     
+    func test_set_goal_at_throws_if_index_is_above_allowed() {
+        let sut = Plan()
+        
+        expect(.indexExceedsAllowed) {
+            try sut.set(exampleGoal, at: Int.max)
+        }
+    }
+    
     // MARK: - Helpers
+    
+    private var exampleGoal: String { "a goal" }
     
     private func expect(_ expectedError: Plan.Error, when callback: () throws -> (), file: StaticString = #filePath, line: UInt = #line) {
 

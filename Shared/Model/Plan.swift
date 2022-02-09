@@ -29,4 +29,9 @@ final class Plan {
         return nil
     }
     
+    func set(_ goal: String, at index: Int) throws {
+        guard index < allowed else { throw Error.indexExceedsAllowed }
+
+    }
+
 }
