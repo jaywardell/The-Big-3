@@ -19,6 +19,8 @@
 		7CB8722B27B33C36009D5539 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722927B33C36009D5539 /* Plan.swift */; };
 		7CB8723A27B33CB9009D5539 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8723927B33CB9009D5539 /* PlanTests.swift */; };
 		7CB8724B27B33D0E009D5539 /* PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724A27B33D0E009D5539 /* PlannerTests.swift */; };
+		7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724D27B33DFD009D5539 /* PlannerView.swift */; };
+		7CB8724F27B33DFD009D5539 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724D27B33DFD009D5539 /* PlannerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,7 @@
 		7CB8723927B33CB9009D5539 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
 		7CB8724127B33CF3009D5539 /* ModelViewTestsMacOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModelViewTestsMacOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB8724A27B33D0E009D5539 /* PlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerTests.swift; sourceTree = "<group>"; };
+		7CB8724D27B33DFD009D5539 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 			children = (
 				7CB871DF27B33A88009D5539 /* The_Big_3App.swift */,
 				7CB871E027B33A88009D5539 /* ContentView.swift */,
+				7CB8724C27B33DEC009D5539 /* View */,
 				7CB8722727B33C11009D5539 /* ViewModel */,
 				7CB8722827B33C2E009D5539 /* Model */,
 				7CB871E127B33A89009D5539 /* Assets.xcassets */,
@@ -157,6 +161,14 @@
 				7CB8724A27B33D0E009D5539 /* PlannerTests.swift */,
 			);
 			path = ModelViewTestsMacOS;
+			sourceTree = "<group>";
+		};
+		7CB8724C27B33DEC009D5539 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7CB8724D27B33DFD009D5539 /* PlannerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CB8722A27B33C36009D5539 /* Plan.swift in Sources */,
+				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7CB8720927B33A89009D5539 /* ContentView.swift in Sources */,
 				7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */,
 				7CB8722527B33BF9009D5539 /* Planner.swift in Sources */,
@@ -331,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CB8722B27B33C36009D5539 /* Plan.swift in Sources */,
+				7CB8724F27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7CB8720A27B33A89009D5539 /* ContentView.swift in Sources */,
 				7CB8720827B33A89009D5539 /* The_Big_3App.swift in Sources */,
 				7CB8722627B33BF9009D5539 /* Planner.swift in Sources */,
