@@ -17,6 +17,7 @@ final class Plan {
     enum Error: Swift.Error {
         case indexExceedsAllowed
         case goalExistsAtIndex
+        case noGoalExistsAtIndex
     }
     
     init(allowed: Int = 0) {
@@ -37,4 +38,11 @@ final class Plan {
         goals[index] = goal
     }
 
+    func remove(at index: Int) throws {
+        guard index < allowed else { throw Error.indexExceedsAllowed }
+        guard nil != goals[index] else { throw Error.noGoalExistsAtIndex }
+
+        goals[index] = nil
+    }
+    
 }

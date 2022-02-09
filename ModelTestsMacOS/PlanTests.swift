@@ -66,6 +66,31 @@ class PlanTests: XCTestCase {
         }
     }
     
+    func test_remove_at_throws_if_index_is_not_allowed() {
+        let sut = Plan()
+        
+        expect(.indexExceedsAllowed) {
+            try sut.remove(at: 0)
+        }
+    }
+    
+    func test_remove_at_throws_if_no_goal_exists_at_index() {
+        let sut = Plan(allowed: 1)
+        
+        expect(.noGoalExistsAtIndex) {
+            try sut.remove(at: 0)
+        }
+    }
+
+    func test_remove_at_removes_goal_at_index() throws {
+        let sut = Plan(allowed: 1)
+        try sut.set(exampleGoal, at: 0)
+        
+        try sut.remove(at: 0)
+        
+        XCTAssertNil(try sut.goal(at:0))
+    }
+
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
