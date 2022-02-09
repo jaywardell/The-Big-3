@@ -19,14 +19,14 @@ final class Plan {
     }
     
     let allowed: Int
-    private var goals: [Goal?]
-
+    private var goals = [Int: Goal]()
+    
     var isEmpty: Bool {
-        nil == goals.firstIndex { $0 != nil }
+        goals.isEmpty
     }
     
     var isFull: Bool {
-        nil == goals.firstIndex { $0 == nil }
+        goals.count == allowed
     }
     
     enum Error: Swift.Error {
@@ -40,7 +40,6 @@ final class Plan {
     
     init(allowed: Int = 0) {
         self.allowed = allowed
-        self.goals = Array(repeating: nil, count: allowed)
     }
 
     @discardableResult
@@ -53,7 +52,7 @@ final class Plan {
     func set(_ goal: String, at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil == goals[index] else { throw Error.goalExistsAtIndex }
-        guard !goals.contains(where: { $0?.title == goal }) else { throw Error.goalIsAlreadyInPlan }
+        guard !goals.values.contains(where: { $0.title == goal }) else { throw Error.goalIsAlreadyInPlan }
         goals[index] = Goal(title: goal, state: .pending)
     }
 
