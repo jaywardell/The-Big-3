@@ -42,6 +42,12 @@ struct PlannerView {
     
     @State private var selectedIndex: Int?
     @State private var newPlannedTitle: String = ""
+    
+    let colors = [
+        Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34),
+        Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34),
+        Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34)
+    ]
 }
 
 extension PlannerView: View {
@@ -95,7 +101,7 @@ extension PlannerView: View {
                 planBlock(at: index)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(
-                        Rectangle().fill(Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34))
+                        Rectangle().fill(colors[index])
                     )
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
