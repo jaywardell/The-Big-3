@@ -8,16 +8,7 @@
 import Foundation
 import Combine
 
-final class Planner: ObservableObject {
-    
-    private var bag = Set<AnyCancellable>()
-    
+final class Planner {
+        
     let plan = Plan(allowed: 3)
-    
-    init() {
-        plan.publisher.sink { [weak self] in
-            self?.objectWillChange.send()
-        }
-        .store(in: &bag)
-    }
 }
