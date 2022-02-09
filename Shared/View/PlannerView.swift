@@ -43,6 +43,8 @@ struct PlannerView {
     @State private var selectedIndex: Int?
     @State private var newPlannedTitle: String = ""
     
+    @FocusState private var isFocused: Bool
+
     let colors = [
         Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34),
         Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34),
@@ -70,8 +72,10 @@ extension PlannerView: View {
         }
         else if index == selectedIndex {
             TextField("enter a goal for the day", text: $newPlannedTitle)
+                .focused($isFocused)
                 .foregroundColor(.primary)
                 .background(Color(nsColor: .textBackgroundColor))
+                .onAppear { isFocused = true }
                 .onSubmit {
                     userEnteredNewPlannedTitle(newPlannedTitle, at: index)
                     newPlannedTitle = ""
