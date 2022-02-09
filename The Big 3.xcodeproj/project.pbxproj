@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */; };
+		7C0A092527B3854000F2C688 /* Planner+PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */; };
+		7C0A092727B3857300F2C688 /* Planner+PlannerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
 		7CB8720827B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
 		7CB8720927B33A89009D5539 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871E027B33A88009D5539 /* ContentView.swift */; };
@@ -34,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerView.swift"; sourceTree = "<group>"; };
+		7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerViewTests.swift"; sourceTree = "<group>"; };
 		7CB871DF27B33A88009D5539 /* The_Big_3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3App.swift; sourceTree = "<group>"; };
 		7CB871E027B33A88009D5539 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CB871E127B33A89009D5539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 		7CB8722727B33C11009D5539 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -135,6 +141,7 @@
 			children = (
 				7CB8723927B33CB9009D5539 /* PlanTests.swift */,
 				7CB8724A27B33D0E009D5539 /* PlannerTests.swift */,
+				7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */,
 			);
 			path = ModelTestsMacOS;
 			sourceTree = "<group>";
@@ -276,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */,
 				7CB8722A27B33C36009D5539 /* Plan.swift in Sources */,
 				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7CB8720927B33A89009D5539 /* ContentView.swift in Sources */,
@@ -288,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0A092527B3854000F2C688 /* Planner+PlannerView.swift in Sources */,
 				7CB8722B27B33C36009D5539 /* Plan.swift in Sources */,
 				7CB8724F27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7CB8720A27B33A89009D5539 /* ContentView.swift in Sources */,
@@ -301,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CB8725027B34B6A009D5539 /* PlannerTests.swift in Sources */,
+				7C0A092727B3857300F2C688 /* Planner+PlannerViewTests.swift in Sources */,
 				7CB8723A27B33CB9009D5539 /* PlanTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
