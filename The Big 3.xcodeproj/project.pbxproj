@@ -18,9 +18,9 @@
 		7CB8722A27B33C36009D5539 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722927B33C36009D5539 /* Plan.swift */; };
 		7CB8722B27B33C36009D5539 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722927B33C36009D5539 /* Plan.swift */; };
 		7CB8723A27B33CB9009D5539 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8723927B33CB9009D5539 /* PlanTests.swift */; };
-		7CB8724B27B33D0E009D5539 /* PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724A27B33D0E009D5539 /* PlannerTests.swift */; };
 		7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724D27B33DFD009D5539 /* PlannerView.swift */; };
 		7CB8724F27B33DFD009D5539 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724D27B33DFD009D5539 /* PlannerView.swift */; };
+		7CB8725027B34B6A009D5539 /* PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724A27B33D0E009D5539 /* PlannerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,7 +134,6 @@
 		7CB8722727B33C11009D5539 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7CB8722427B33BF9009D5539 /* Planner.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -142,6 +141,7 @@
 		7CB8722827B33C2E009D5539 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CB8722427B33BF9009D5539 /* Planner.swift */,
 				7CB8722927B33C36009D5539 /* Plan.swift */,
 			);
 			path = Model;
@@ -151,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				7CB8723927B33CB9009D5539 /* PlanTests.swift */,
+				7CB8724A27B33D0E009D5539 /* PlannerTests.swift */,
 			);
 			path = ModelTestsMacOS;
 			sourceTree = "<group>";
@@ -158,7 +159,6 @@
 		7CB8724227B33CF3009D5539 /* ModelViewTestsMacOS */ = {
 			isa = PBXGroup;
 			children = (
-				7CB8724A27B33D0E009D5539 /* PlannerTests.swift */,
 			);
 			path = ModelViewTestsMacOS;
 			sourceTree = "<group>";
@@ -355,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB8725027B34B6A009D5539 /* PlannerTests.swift in Sources */,
 				7CB8723A27B33CB9009D5539 /* PlanTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,7 +364,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CB8724B27B33D0E009D5539 /* PlannerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
