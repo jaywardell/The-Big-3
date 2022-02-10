@@ -12,10 +12,13 @@ extension Planner {
     func plannerViewModel() -> PlannerView.ViewModel {
         PlannerView.ViewModel(allowed: plan.allowed,
                               publisher: plan.publisher.eraseToAnyPublisher(),
-                              plannedAt: plannedGoal(at:) ,
+                              plannedAt: plannedGoal(at:),
+                              isFull: isFull,
                               add: add(planned: at:),
                               remove: removePlanned(at:))
     }
+    
+    private func isFull() -> Bool { plan.isFull }
     
     private func plannedGoal(at index: Int) -> PlannerView.ViewModel.Planned? {
         (try? plan.goal(at: index)).map { PlannerView.ViewModel.Planned(title: $0.title) }

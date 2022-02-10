@@ -18,6 +18,7 @@ struct PlannerView {
         let allowed: Int
 
         let plannedAt: (Int)->Planned?
+        let isFull: ()->Bool
         let add: (Planned, Int)->()
         let remove: (Int)->()
 
@@ -25,10 +26,13 @@ struct PlannerView {
         init(allowed: Int,
              publisher: AnyPublisher<Void, Never>?,
              plannedAt: @escaping (Int)->Planned?,
+             isFull: @escaping ()->Bool,
              add: @escaping (Planned, Int)->(),
              remove: @escaping (Int)->()) {
+            
             self.allowed = allowed
             self.plannedAt = plannedAt
+            self.isFull = isFull
             self.add = add
             self.remove = remove
             
@@ -82,8 +86,7 @@ extension PlannerView: View {
         else if index == selectedIndex {
             TextField("enter a goal for the day", text: $newPlannedTitle)
                 .focused($isFocused)
-                .foregroundColor(.primary)
-                .background(Color(nsColor: .textBackgroundColor))
+                .font(.largeTitle)
                 .onAppear { isFocused = true }
                 .onSubmit {
                     userEnteredNewPlannedTitle(newPlannedTitle, at: index)
@@ -117,9 +120,23 @@ extension PlannerView: View {
                         Rectangle().fill(colors[index])
                     )
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            if viewModel.isFull() {
+                Button(action: start) {
+                    Text("Start")
+                        .font(.system(size: 1000, weight: .light, design: .serif))
+                        .bold()
+                        .minimumScaleFactor(0.01)
+                        .padding()
+                        .padding()
+                }
+                .buttonStyle(.borderless)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
         }
     }
+    
+    private func start() { print(#function) }
     
     private func userTappedEmptyPlannedBlock(at index: Int) {
         selectedIndex = index
@@ -128,13 +145,16 @@ extension PlannerView: View {
     }
 
     private func userTappedDeleteGoal(at index: Int) {
+        withAnimation {
         viewModel.remove(index)
+        }
     }
     
     private func userEnteredNewPlannedTitle(_ newPlannedTitle: String, at index: Int) {
         print(#function, index)
-        
+        withAnimation {
         viewModel.add(ViewModel.Planned(title: newPlannedTitle), index)
+        }
     }
 }
 
@@ -165,6 +185,7 @@ fileprivate extension PlannerView.ViewModel {
         allowed: 3,
         publisher: nil,
         plannedAt: { _ in randomPlanned() },
+        isFull: { false },
         add: { print("add", $0, $1) },
         remove: { print("remove", $0)})
 }
