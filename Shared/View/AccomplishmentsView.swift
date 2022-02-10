@@ -58,15 +58,77 @@ struct AccomplishmentsView {
 
 extension AccomplishmentsView: View {
     
+    private func textOpacty(for state: AccomplishmentsView.ViewModel.ToDo.State) -> CGFloat {
+        switch state {
+            
+        case .ready:
+            return 21/34
+        case .finished:
+            return 1
+        case .notToday:
+            return 13/34
+        }
+    }
+    
     @ViewBuilder private func planBlock(at index: Int) -> some View {
         
         let accomplishment = viewModel.todoAt(index)
         
-        Text(accomplishment.title)
-            .font(.system(size: 1000, weight: .light, design: .serif))
-            .minimumScaleFactor(0.01)
-            .shadow(radius: 15)
+        HStack {
+            
+            VStack(alignment: .leading) {
+                Spacer()
+                switch accomplishment.state {
+                case .notToday:
+                    Image(systemName: "calendar.badge.clock")
+                    Text("postponed")
+                case .ready:
+                    Button(action: { viewModel.finish(index) }) {
+                        VStack(alignment: .leading) {
+                       Image(systemName: "circle")
+                        Text("done")
+                        }
+                    }
+                    .buttonStyle(.borderless)
+                case .finished:
+                    Image(systemName: "checkmark.circle")
+                    Text("finished")
+               }
+            }
+            .font(.largeTitle)
+            .imageScale(.large)
+            .padding()
 
+            Spacer()
+            
+            Text(accomplishment.title)
+                .font(.system(size: 1000, weight: .light, design: .serif))
+                .minimumScaleFactor(0.01)
+                .shadow(radius: accomplishment.state == .finished ? 15 : 0)
+                .opacity(textOpacty(for: accomplishment.state) )
+            
+            Spacer()
+            
+            VStack(alignment: .leading) {
+            Button(action: { viewModel.postpone(index) }) {
+                Text("Not Today")
+//                Image(systemName: "tortoise")
+//                    .padding()
+            }
+            .buttonStyle(.borderless)
+            }
+            .font(.largeTitle)
+            .imageScale(.large)
+            .opacity(accomplishment.state == .ready ? 1 : 0)
+            .padding()
+        }
+
+    }
+    
+    @ViewBuilder private func background(at index: Int) -> some View {
+        
+        let accomplishment = viewModel.todoAt(index)
+        Rectangle().fill(accomplishment.state == .finished ? colors[index] : .clear)
     }
     
     var body: some View {
@@ -75,9 +137,7 @@ extension AccomplishmentsView: View {
                 
                 planBlock(at: index)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(
-                        Rectangle().fill(colors[index])
-                    )
+                    .background(background(at: index))
             }
         }
     }
