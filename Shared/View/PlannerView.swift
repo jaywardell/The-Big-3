@@ -127,10 +127,9 @@ extension PlannerView: View {
             if viewModel.isFull() {
                 Button(action: viewModel.start) {
                     Text("Start")
-                        .font(.system(size: 1000, weight: .light, design: .serif))
+                        .font(.system(size: 1000, weight: .bold, design: .rounded))
                         .bold()
                         .minimumScaleFactor(0.01)
-                        .padding()
                         .padding()
                 }
                 .buttonStyle(.borderless)
