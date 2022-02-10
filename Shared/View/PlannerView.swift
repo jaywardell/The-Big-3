@@ -57,18 +57,27 @@ extension PlannerView: View {
     @ViewBuilder private func planBlock(at index: Int) -> some View {
         if let planned = viewModel.plannedAt(index) {
             HStack {
+                
+                Spacer()
+                
                 Text(planned.title)
-                    .font(.largeTitle)
+                    .font(.system(size: 1000, weight: .light, design: .serif))
+                    .minimumScaleFactor(0.01)
                     .shadow(radius: 15)
 
-                Button(action: { userTappedDeleteGoal(at: index) }) {
-                    Image(systemName: "minus.circle.fill")
-                        .font(.largeTitle).imageScale(.large)
+                Spacer()
+                
+                VStack {
+                    Spacer()
+                    Button(action: { userTappedDeleteGoal(at: index) }) {
+                        Image(systemName: "minus.circle.fill")
+                            .font(.largeTitle).imageScale(.large)
+                    }
+                    .buttonStyle(.borderless)
+                    .shadow(radius: 15)
                 }
-                .buttonStyle(.borderless)
-                .shadow(radius: 15)
             }
-
+            .padding()
         }
         else if index == selectedIndex {
             TextField("enter a goal for the day", text: $newPlannedTitle)
