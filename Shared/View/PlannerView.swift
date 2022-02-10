@@ -21,6 +21,7 @@ struct PlannerView {
         let isFull: ()->Bool
         let add: (Planned, Int)->()
         let remove: (Int)->()
+        let start: ()->()
 
         private var bag = Set<AnyCancellable>()
         init(allowed: Int,
@@ -28,13 +29,15 @@ struct PlannerView {
              plannedAt: @escaping (Int)->Planned?,
              isFull: @escaping ()->Bool,
              add: @escaping (Planned, Int)->(),
-             remove: @escaping (Int)->()) {
+             remove: @escaping (Int)->(),
+             start: @escaping ()->()) {
             
             self.allowed = allowed
             self.plannedAt = plannedAt
             self.isFull = isFull
             self.add = add
             self.remove = remove
+            self.start = start
             
             publisher?.sink { [weak self] in
                 self?.objectWillChange.send()
@@ -122,7 +125,7 @@ extension PlannerView: View {
             }
             
             if viewModel.isFull() {
-                Button(action: start) {
+                Button(action: viewModel.start) {
                     Text("Start")
                         .font(.system(size: 1000, weight: .light, design: .serif))
                         .bold()
@@ -135,9 +138,7 @@ extension PlannerView: View {
             }
         }
     }
-    
-    private func start() { print(#function) }
-    
+        
     private func userTappedEmptyPlannedBlock(at index: Int) {
         selectedIndex = index
 
@@ -187,7 +188,8 @@ fileprivate extension PlannerView.ViewModel {
         plannedAt: { _ in randomPlanned() },
         isFull: { false },
         add: { print("add", $0, $1) },
-        remove: { print("remove", $0)})
+        remove: { print("remove", $0)},
+        start: {})
 }
 
 struct PlannerView_Previews: PreviewProvider {

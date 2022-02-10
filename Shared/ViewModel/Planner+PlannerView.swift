@@ -15,7 +15,8 @@ extension Planner {
                               plannedAt: plannedGoal(at:),
                               isFull: isFull,
                               add: add(planned: at:),
-                              remove: removePlanned(at:))
+                              remove: removePlanned(at:),
+                              start: start)
     }
     
     private func isFull() -> Bool { plan.isFull }
@@ -44,6 +45,10 @@ extension Planner {
         catch {
             print(error)
         }
+    }
+    
+    private func start() {
+        print(#function)
     }
     
 }
