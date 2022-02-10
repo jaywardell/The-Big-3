@@ -10,11 +10,17 @@ import SwiftUI
 @main
 struct The_Big_3App: App {
     
-    let planner = Planner()
+    @StateObject var planner = Planner()
     
     var body: some Scene {
         WindowGroup {
-            PlannerView(viewModel: planner.plannerViewModel())
+            switch planner.state {
+            case .planning:
+                PlannerView(viewModel: planner.plannerViewModel())
+            case .doing:
+                Circle()
+            }
+            
         }
     }
 }

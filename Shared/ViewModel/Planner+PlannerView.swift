@@ -16,7 +16,7 @@ extension Planner {
                               isFull: isFull,
                               add: add(planned: at:),
                               remove: removePlanned(at:),
-                              start: start)
+                              start: startPlan)
     }
     
     private func isFull() -> Bool { plan.isFull }
@@ -47,8 +47,8 @@ extension Planner {
         }
     }
     
-    private func start() {
-        print(#function)
+    private func startPlan() {
+        state = .doing
     }
     
 }

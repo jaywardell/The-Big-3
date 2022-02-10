@@ -8,7 +8,11 @@
 import Foundation
 import Combine
 
-final class Planner {
+final class Planner: ObservableObject {
         
+    enum State { case planning, doing }
+    
+    @Published var state: State = .planning
+    
     let plan = Plan(allowed: 3)
 }
