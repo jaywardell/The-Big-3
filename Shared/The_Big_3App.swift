@@ -18,7 +18,7 @@ struct The_Big_3App: App {
             case .planning:
                 PlannerView(viewModel: planner.plannerViewModel())
             case .doing:
-                Circle()
+                AccomplishmentsView(viewModel: planner.accomplishmentsViewModel())
             }
             
         }
