@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct The_Big_3App: App {
     
-    @StateObject var planner = Planner()
+    @StateObject var planner = Planner(plan: .example)
     
     var body: some Scene {
         WindowGroup {

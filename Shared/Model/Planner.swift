@@ -16,7 +16,27 @@ final class Planner: ObservableObject {
     
     let plan: Plan
     
-    init(_ plan: Plan = Plan(allowed: 3)) {
+    init(plan: Plan = Plan(allowed: 3)) {
         self.plan = plan
+        self.state = plan.isFull ? .doing : .planning
     }
 }
+
+
+#if DEBUG
+// MARK: -
+
+
+extension Plan {
+    
+    static let example: Plan = {
+        let out = Plan(allowed: 3)
+        
+        try! out.set("Do the dishes", at: 0)
+        try! out.set("Wash the sink", at: 1)
+        try! out.set("Pet the cat", at: 2)
+        
+        return out
+    }()
+}
+#endif
