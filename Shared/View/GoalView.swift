@@ -97,7 +97,7 @@ struct GoalView: View {
                         .opacity(textOpacty(for: .notToday))
 
                 case .ready:
-                    Button(action: finish) {
+                    Button(action: { withAnimation{finish()}}) {
                             ZStack {
                                 Image(systemName: "checkmark.circle")
                                     .resizable()
@@ -145,12 +145,14 @@ struct GoalView: View {
                     .shadow(radius: todo.state == .finished ? geometry.size.height * 3/34 : 0)
                     .opacity(textOpacty(for: todo.state) )
                     .padding(.vertical)
-                
+                    .padding(.trailing, geometry.size.height * 3/34)
+
                 Spacer()
                 
+                if todo.state == .ready {
                 ZStack {
                     VStack(alignment: .leading) {
-                        Button(action: postpone) {
+                        Button(action: { withAnimation{postpone()}}) {
                             Image(systemName: "arrow.uturn.right.circle")
                                 .resizable()
                                 .imageScale(.large)
@@ -161,10 +163,9 @@ struct GoalView: View {
                     .opacity(todo.state == .ready ? 1 : 0)
                     .frame(width: geometry.size.height * 8/34, height: geometry.size.height * 8/34)
                 }
-                .padding(.leading, geometry.size.height * 3/34)
                 .padding(.trailing, geometry.size.height * 5/34)
                 .offset(x: geometry.size.width * (showingPostponeButton ? 0 : 8/34) + postponeButtonTranslation, y: 0)
-
+                }
             }
             .background(background(size: geometry.size))
             .contentShape(Rectangle())

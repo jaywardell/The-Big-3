@@ -20,7 +20,7 @@ struct The_Big_3App: App {
             case .doing:
                 AccomplishmentsView(viewModel: planner.accomplishmentsViewModel())
             }
-            
+//            .preferredColorScheme(.dark)
         }
     }
 }
