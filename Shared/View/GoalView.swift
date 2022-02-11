@@ -78,10 +78,22 @@ struct GoalView: View {
         case .finished:
             return 1
         case .notToday:
-            return 13/34
+            return 21/34
         }
     }
     
+    private func textColor(for state: ToDo.State) -> Color {
+        switch state {
+            
+        case .ready:
+            return backgroundColor
+        case .finished:
+            return .white
+        case .notToday:
+            return .primary
+        }
+    }
+
     @ViewBuilder private func background(size: CGSize) -> some View {
         
         let todo = todo
@@ -151,8 +163,8 @@ struct GoalView: View {
                 
                 Text(todo.title)
                     .font(.system(size: 1000, weight: .light, design: .serif))
-                    .foregroundColor(todo.state == .ready ? backgroundColor : .white)
-                  .minimumScaleFactor(0.01)
+                    .foregroundColor(textColor(for: todo.state))
+                    .minimumScaleFactor(0.01)
                     .shadow(radius: todo.state == .finished ? geometry.size.height * 3/34 : 0)
                     .opacity(textOpacty(for: todo.state) )
                     .padding(.vertical, geometry.size.height * 3/34)
