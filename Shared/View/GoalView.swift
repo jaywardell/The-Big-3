@@ -21,6 +21,8 @@ struct GoalView: View {
     let postpone: ()->()
     let finish: ()->()
     
+    @State private var showingCheckbox = false
+    
     private func textOpacty(for state: ToDo.State) -> CGFloat {
         switch state {
             
@@ -68,13 +70,15 @@ struct GoalView: View {
             }
             .frame(width: size.height * 13/34, height: size.height * 13/34)
             
-            Text("(postponed)")
-                .lineLimit(1)
-                .font(.system(size: size.height * 5/34, weight: .bold, design: .rounded))
-                .minimumScaleFactor(0.01)
-                .opacity(todo.state == .notToday ? 1 : 0)
-                .padding(.bottom, size.height * 5/34)
-                .opacity(textOpacty(for: todo.state) )
+            Spacer()
+            
+//            Text("(postponed)")
+//                .lineLimit(1)
+//                .font(.system(size: size.height * 5/34, weight: .bold, design: .rounded))
+//                .minimumScaleFactor(0.01)
+//                .opacity(todo.state == .notToday ? 1 : 0)
+//                .padding(.bottom, size.height * 5/34)
+//                .opacity(textOpacty(for: todo.state) )
         }
         .font(.largeTitle)
         .imageScale(.large)
@@ -86,7 +90,9 @@ struct GoalView: View {
                 checkbox(size: geometry.size)
                     .shadow(radius: todo.state == .finished ? geometry.size.height * 3/34 : 0)
                     .padding(.top, geometry.size.height * 8/34)
-                    .padding(.leading, geometry.size.height * 1/34)
+                    .padding(.leading, geometry.size.height * 3/34)
+                    .padding(.trailing, geometry.size.height * 3/34)
+                    .offset(x: geometry.size.width * ((showingCheckbox || todo.state != .ready) ? 0 : -13/34), y: 0)
                 
                 Text(todo.title)
                     .font(.system(size: 1000, weight: .light, design: .serif))
@@ -114,6 +120,13 @@ struct GoalView: View {
                 .padding(.trailing, geometry.size.height * 5/34)
             }
             .background(background(size: geometry.size))
+            .onTapGesture {
+                if todo.state == .ready {
+                    withAnimation(.spring(response: 21/34.0, dampingFraction: 13/34.0, blendDuration: 21/34.0)) {
+                        showingCheckbox.toggle()
+                    }
+                }
+            }
         }
     }
 }
