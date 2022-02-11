@@ -116,6 +116,7 @@ struct GoalView: View {
                 case .finished:
                     Image(systemName: "checkmark.circle")
                         .resizable()
+                        .foregroundColor(.white)
                }
             }
             .frame(width: size.height * 13/34, height: size.height * 13/34)
@@ -150,7 +151,7 @@ struct GoalView: View {
                 
                 Text(todo.title)
                     .font(.system(size: 1000, weight: .light, design: .serif))
-                    .foregroundColor(todo.state == .ready ? backgroundColor : .primary)
+                    .foregroundColor(todo.state == .ready ? backgroundColor : .white)
                   .minimumScaleFactor(0.01)
                     .shadow(radius: todo.state == .finished ? geometry.size.height * 3/34 : 0)
                     .opacity(textOpacty(for: todo.state) )
