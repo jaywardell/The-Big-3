@@ -164,17 +164,25 @@ struct GoalView: View {
                 if todo.state == .ready {
                 ZStack {
                     VStack(alignment: .leading) {
+                        Text("not today")
+                            .font(.system(size: 1000))
+                            .minimumScaleFactor(0.01)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
                         Button(action: { withAnimation{postpone()}}) {
-                            Image(systemName: "arrow.uturn.right.circle")
+                            Image(systemName: "arrow.turn.down.right")
                                 .resizable()
                                 .imageScale(.large)
+                                .aspectRatio(1, contentMode: .fill)
                        }
                         .buttonStyle(.borderless)
-                        .foregroundColor(backgroundColor)
+                        
 //                        .opacity(textOpacty(for: .notToday))
                     }
+                    .foregroundColor(backgroundColor)
                     .opacity(todo.state == .ready ? 1 : 0)
-                    .frame(width: geometry.size.height * 8/34, height: geometry.size.height * 8/34)
+                    .frame(width: geometry.size.height * 8/34,
+                           height: geometry.size.height * 8/34)
                 }
                 .padding(.trailing, geometry.size.height * 5/34)
                 .offset(x: geometry.size.width * (showingPostponeButton ? 0 : 8/34) + postponeButtonTranslation, y: 0)
