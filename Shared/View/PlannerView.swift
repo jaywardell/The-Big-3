@@ -130,20 +130,28 @@ extension PlannerView: View {
                     )
             }
             
-            if viewModel.isFull() {
-                Button(action: viewModel.start) {
-                    Text("Start")
-                        .font(.system(size: 1000, weight: .bold, design: .rounded))
-                        .bold()
-                        .minimumScaleFactor(0.01)
-                        .padding()
+            if UIDevice.current.userInterfaceIdiom != .phone {
+                if viewModel.isFull() {
+                    Button(action: viewModel.start) {
+                        Text("Start")
+                            .font(.system(size: 1000, weight: .bold, design: .default))
+                            .bold()
+                            .minimumScaleFactor(0.01)
+                            .padding()
+                    }
+                    .buttonStyle(.borderless)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .accentColor(.primary)
                 }
-                .buttonStyle(.borderless)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .accentColor(.primary)
             }
         }
         .navigationTitle("The Big 3")
+        .toolbar {
+            Button(action: viewModel.start) {
+                Text("Start")
+            }
+            .disabled(!viewModel.isFull())
+        }
     }
         
     private func userTappedEmptyPlannedBlock(at index: Int) {
