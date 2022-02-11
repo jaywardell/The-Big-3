@@ -23,17 +23,27 @@ struct GoalView: View {
     
     @State private var showingCheckbox = false
     @State private var checkboxTranslation: CGFloat = 0
-    
+    @State private var showingPostponeButton = false
+    @State private var postponeButtonTranslation: CGFloat = 0
+
     private let springAnimation = Animation.spring(response: 21/34.0, dampingFraction: 13/34.0, blendDuration: 21/34.0)
 
     var dragControls: some Gesture {
         DragGesture()
             .onChanged { value in
                 if value.translation.width > 0 {
-                checkboxTranslation = min(200, value.translation.width)
+                    checkboxTranslation = min(200, value.translation.width)
                 }
                 else {
                     checkboxTranslation = 0
+                }
+                
+                if value.translation.width < 0 {
+                    postponeButtonTranslation = max(-200, value.translation.width)
+                    print(postponeButtonTranslation)
+                }
+                else {
+                    postponeButtonTranslation = 0
                 }
             }
             .onEnded { value in
@@ -45,6 +55,15 @@ struct GoalView: View {
                         showingCheckbox = false
                     }
                     checkboxTranslation = 0
+                    
+                    if value.translation.width < -200 {
+                        showingPostponeButton = true
+                    }
+                    else if value.translation.width > 0 {
+                        showingPostponeButton = false
+                    }
+                    postponeButtonTranslation = 0
+
                 }
             }
     }
@@ -144,13 +163,18 @@ struct GoalView: View {
                 }
                 .padding(.leading, geometry.size.height * 3/34)
                 .padding(.trailing, geometry.size.height * 5/34)
+                .offset(x: geometry.size.width * (showingPostponeButton ? 0 : 8/34) + postponeButtonTranslation, y: 0)
+
             }
             .background(background(size: geometry.size))
             .contentShape(Rectangle())
             .onTapGesture {
                 if todo.state == .ready {
                     withAnimation(springAnimation) {
-                        showingCheckbox.toggle()
+                        if !showingPostponeButton {
+                            showingCheckbox.toggle()
+                        }
+                        showingPostponeButton = false
                     }
                 }
             }
