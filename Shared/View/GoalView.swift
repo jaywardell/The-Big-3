@@ -95,6 +95,7 @@ struct GoalView: View {
                     .opacity(textOpacty(for: todo.state) )
                     .padding(.vertical)
                 
+                Spacer()
                 
                 ZStack {
                     VStack(alignment: .leading) {
