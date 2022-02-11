@@ -17,6 +17,7 @@ struct GoalView: View {
     }
     
     let todo: ToDo
+    let backgroundColor: Color
     let postpone: ()->()
     let finish: ()->()
     
@@ -32,7 +33,12 @@ struct GoalView: View {
         }
     }
     
-    
+    @ViewBuilder private var background: some View {
+        
+        let todo = todo
+        Rectangle().fill(todo.state == .finished ? backgroundColor : .clear)
+    }
+
     
     var body: some View {
         HStack {
@@ -76,5 +82,6 @@ struct GoalView: View {
             .opacity(todo.state == .ready ? 1 : 0)
             .padding()
         }
+        .background(background)
     }
 }

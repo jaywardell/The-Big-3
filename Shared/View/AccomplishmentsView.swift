@@ -53,21 +53,17 @@ struct AccomplishmentsView {
 
 extension AccomplishmentsView: View {
             
-    @ViewBuilder private func background(at index: Int) -> some View {
-        
-        let accomplishment = viewModel.todoAt(index)
-        Rectangle().fill(accomplishment.state == .finished ? colors[index] : .clear)
-    }
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 5) {
             ForEach(0...viewModel.count-1, id: \.self) { index in
                 
-                GoalView(todo: viewModel.todoAt(index), postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
+                GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(background(at: index))
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .padding(.vertical)
     }
 }
 
