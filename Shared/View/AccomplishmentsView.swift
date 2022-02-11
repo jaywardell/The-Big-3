@@ -48,9 +48,9 @@ struct AccomplishmentsView {
     @ObservedObject var viewModel: ViewModel
 
     let colors = [
-        Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34),
-        Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34),
-        Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34)
+        Color(hue: 1/2, saturation:21/34, brightness: 26/34),
+        Color(hue: 5/8, saturation:21/34, brightness: 26/34),
+        Color(hue: 3/4, saturation:21/34, brightness: 26/34)
     ]
 
 }
@@ -163,7 +163,9 @@ fileprivate extension AccomplishmentsView.ViewModel {
         "live",
         "laugh"
         ]
-        return ToDo(title: titles.randomElement()!, state: .allCases.randomElement()!)
+        return ToDo(title: titles.randomElement()!, state: .finished)
+
+//        return ToDo(title: titles.randomElement()!, state: .allCases.randomElement()!)
     }
     
     static let Example = AccomplishmentsView.ViewModel(count: 3, publisher: nil, todoAt: { _ in randomToD() }, finish: { _ in }, postpone: { _ in }, done: {})
