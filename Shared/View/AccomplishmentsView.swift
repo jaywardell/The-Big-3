@@ -64,6 +64,7 @@ extension AccomplishmentsView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .padding(.vertical)
+        .navigationTitle("Today")
     }
 }
 

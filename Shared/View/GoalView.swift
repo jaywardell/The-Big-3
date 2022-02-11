@@ -104,7 +104,8 @@ struct GoalView: View {
                             ZStack {
                                 Image(systemName: "checkmark.circle")
                                     .resizable()
-                                    .opacity(3/34)
+                                    .foregroundColor(backgroundColor)
+                                    .opacity(8/34)
                                 Image(systemName: "circle")
                                     .resizable()
                                     .foregroundColor(backgroundColor)
@@ -144,7 +145,8 @@ struct GoalView: View {
                 
                 Text(todo.title)
                     .font(.system(size: 1000, weight: .light, design: .serif))
-                    .minimumScaleFactor(0.01)
+                    .foregroundColor(todo.state == .ready ? backgroundColor : .primary)
+                  .minimumScaleFactor(0.01)
                     .shadow(radius: todo.state == .finished ? geometry.size.height * 3/34 : 0)
                     .opacity(textOpacty(for: todo.state) )
                     .padding(.vertical, geometry.size.height * 3/34)
@@ -161,7 +163,8 @@ struct GoalView: View {
                                 .imageScale(.large)
                        }
                         .buttonStyle(.borderless)
-                        .opacity(textOpacty(for: .notToday))
+                        .foregroundColor(backgroundColor)
+//                        .opacity(textOpacty(for: .notToday))
                     }
                     .opacity(todo.state == .ready ? 1 : 0)
                     .frame(width: geometry.size.height * 8/34, height: geometry.size.height * 8/34)

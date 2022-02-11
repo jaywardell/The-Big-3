@@ -140,8 +140,10 @@ extension PlannerView: View {
                 }
                 .buttonStyle(.borderless)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .accentColor(.primary)
             }
         }
+        .navigationTitle("The Big 3")
     }
         
     private func userTappedEmptyPlannedBlock(at index: Int) {
