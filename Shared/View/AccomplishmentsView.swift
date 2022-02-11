@@ -43,8 +43,8 @@ struct AccomplishmentsView {
 
     let colors = [
         Color(hue: 5/8, saturation:26/34, brightness: 26/34),
-        Color(hue: 1/2, saturation:26/34, brightness: 26/34),
-        Color(hue: 3/4, saturation:26/34, brightness: 26/34)
+        Color(hue: 11/16, saturation:26/34, brightness: 26/34),
+        Color(hue: 9/16, saturation:26/34, brightness: 26/34),
     ]
 
 }
@@ -96,7 +96,7 @@ fileprivate extension AccomplishmentsView.ViewModel {
         ]
 //        return ToDo(title: titles.randomElement()!, state: .finished)
 
-        return GoalView.ToDo(title: titles.randomElement()!, state: .allCases.randomElement()!)
+        return GoalView.ToDo(title: titles.randomElement()!, state: .finished)
     }
     
     static let Example = AccomplishmentsView.ViewModel(count: 3, publisher: nil, todoAt: { _ in randomToD() }, finish: { _ in }, postpone: { _ in }, done: {})
