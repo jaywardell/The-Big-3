@@ -74,7 +74,7 @@ struct GoalView: View {
         switch state {
             
         case .ready:
-            return 21/34
+            return 1
         case .finished:
             return 1
         case .notToday:
@@ -105,10 +105,11 @@ struct GoalView: View {
                                 Image(systemName: "checkmark.circle")
                                     .resizable()
                                     .foregroundColor(backgroundColor)
-                                    .opacity(8/34)
+                                    .opacity(showingCheckbox ? 8/34 : 3/34)
                                 Image(systemName: "circle")
                                     .resizable()
                                     .foregroundColor(backgroundColor)
+                                    .opacity(showingCheckbox ? 1 : 0)
                             }
                     }
                     .buttonStyle(.borderless)
@@ -133,6 +134,10 @@ struct GoalView: View {
         .imageScale(.large)
     }
     
+    private var checkboxOffsetScalar: CGFloat {
+        21/55
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             HStack {
@@ -141,7 +146,7 @@ struct GoalView: View {
                     .padding(.top, geometry.size.height * 8/34)
                     .padding(.leading, geometry.size.height * 3/34)
                     .padding(.trailing, geometry.size.height * 3/34)
-                    .offset(x: geometry.size.width * ((showingCheckbox || todo.state != .ready) ? 0 : -13/34) + checkboxTranslation, y: 0)
+                    .offset(x: geometry.size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
                 
                 Text(todo.title)
                     .font(.system(size: 1000, weight: .light, design: .serif))
@@ -151,6 +156,7 @@ struct GoalView: View {
                     .opacity(textOpacty(for: todo.state) )
                     .padding(.vertical, geometry.size.height * 3/34)
                     .padding(.trailing, geometry.size.height * 3/34)
+                    .offset(x: geometry.size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
 
                 Spacer()
                 
