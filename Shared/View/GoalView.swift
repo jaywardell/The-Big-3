@@ -85,7 +85,7 @@ struct GoalView: View {
     @ViewBuilder private func background(size: CGSize) -> some View {
         
         let todo = todo
-        let colors = [ backgroundColor, backgroundColor.opacity(13/34)  ]
+        let colors = [ backgroundColor, backgroundColor.opacity(colorScheme == .dark ? 13/34 : 21/34)  ]
         RadialGradient(colors: colorScheme == .dark ? colors : colors.reversed(), center: .center, startRadius: size.width * 1/55, endRadius: size.width)
             .opacity(todo.state == .finished ? 1 : 0)
     }
