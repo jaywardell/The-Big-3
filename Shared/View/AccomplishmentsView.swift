@@ -55,11 +55,19 @@ extension AccomplishmentsView: View {
             
     
     var body: some View {
-        VStack(spacing: 5) {
+        VStack(spacing: 0) {
             ForEach(0...viewModel.count-1, id: \.self) { index in
                 
-                GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                VStack(spacing: 0) {
+                    GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+                    if index < viewModel.count-1{
+                        Divider()
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
