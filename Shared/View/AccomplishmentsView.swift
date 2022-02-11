@@ -14,7 +14,7 @@ struct AccomplishmentsView {
         struct ToDo {
             let title: String
             
-            enum State { case ready, finished, notToday }
+            enum State: CaseIterable { case ready, finished, notToday }
             let state: State
         }
         
@@ -162,7 +162,7 @@ fileprivate extension AccomplishmentsView.ViewModel {
         "live",
         "laugh"
         ]
-        return ToDo(title: titles.randomElement()!, state: .ready)
+        return ToDo(title: titles.randomElement()!, state: .allCases.randomElement()!)
     }
     
     static let Example = AccomplishmentsView.ViewModel(count: 3, publisher: nil, todoAt: { _ in randomToD() }, finish: { _ in }, postpone: { _ in }, done: {})
@@ -172,6 +172,7 @@ fileprivate extension AccomplishmentsView.ViewModel {
 struct AccomplishmentsView_Previews: PreviewProvider {
     static var previews: some View {
         AccomplishmentsView(viewModel: .Example)
+            .previewLayout(.fixed(width: 300, height: 300))
     }
 }
 #endif
