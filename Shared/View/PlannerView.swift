@@ -87,7 +87,8 @@ extension PlannerView: View {
                             .font(.largeTitle).imageScale(.large)
                     }
                     .buttonStyle(.borderless)
-                    .shadow(radius: 15)
+                    .accentColor(.primary)
+                   .shadow(radius: 15)
                 }
             }
             .padding()
@@ -110,6 +111,7 @@ extension PlannerView: View {
                     .font(.largeTitle).imageScale(.large)
             }
             .buttonStyle(.borderless)
+            .accentColor(.primary)
             .shadow(radius: 15)
 
         }
