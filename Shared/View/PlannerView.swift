@@ -51,6 +51,9 @@ struct PlannerView {
     @State private var newPlannedTitle: String = ""
     
     @FocusState private var isFocused: Bool
+    
+    @Environment(\.colorScheme) var colorScheme
+
 
     let colors = [
         Color(hue: 1/2, saturation:21/34, brightness: 26/34),
@@ -132,14 +135,19 @@ extension PlannerView: View {
         .buttonStyle(.borderless)
     }
     
+    @ViewBuilder private func background(at index: Int) -> some View {
+        
+        let colors = [ colors[index], colors[index].opacity(13/34)  ]
+        RadialGradient(colors: colorScheme == .dark ? colors : colors.reversed(), center: .center, startRadius: 0, endRadius: 1000)
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             ForEach(0...viewModel.allowed-1, id: \.self) { index in
                 
                 planBlock(at: index)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(
-                        Rectangle().fill(colors[index])
+                    .background(background(at: index)
                     )
             }
             
