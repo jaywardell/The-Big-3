@@ -119,6 +119,17 @@ extension PlannerView: View {
         }
     }
     
+    private var startButton: some View {
+        Button(action: viewModel.start) {
+            Text("Start")
+                .font(.largeTitle)
+                .bold()
+                .minimumScaleFactor(0.01)
+                .padding()
+        }
+        .buttonStyle(.borderless)
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             ForEach(0...viewModel.allowed-1, id: \.self) { index in
@@ -130,20 +141,14 @@ extension PlannerView: View {
                     )
             }
             
-            if UIDevice.current.userInterfaceIdiom != .phone {
-                if viewModel.isFull() {
-                    Button(action: viewModel.start) {
-                        Text("Start")
-                            .font(.system(size: 1000, weight: .bold, design: .default))
-                            .bold()
-                            .minimumScaleFactor(0.01)
-                            .padding()
-                    }
-                    .buttonStyle(.borderless)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .accentColor(.primary)
+#if os(macOS)
+#else
+            if viewModel.isFull() {
+                if UIDevice.current.userInterfaceIdiom != .phone {
+                    startButton
                 }
             }
+#endif
         }
         .navigationTitle("The Big 3")
         .toolbar {
