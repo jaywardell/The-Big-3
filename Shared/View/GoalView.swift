@@ -86,6 +86,9 @@ struct GoalView: View {
     }
 }
 
+// MARK: -
+
+#if DEBUG
 struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
         GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
@@ -93,3 +96,4 @@ struct MyPreviewProvider_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 200, height: 100))
     }
 }
+#endif
