@@ -26,6 +26,8 @@ struct GoalView: View {
     @State private var showingPostponeButton = false
     @State private var postponeButtonTranslation: CGFloat = 0
 
+    @Environment(\.colorScheme) var colorScheme
+    
     private let springAnimation = Animation.spring(response: 21/34.0, dampingFraction: 13/34.0, blendDuration: 21/34.0)
 
     var dragControls: some Gesture {
@@ -83,7 +85,8 @@ struct GoalView: View {
     @ViewBuilder private func background(size: CGSize) -> some View {
         
         let todo = todo
-        RadialGradient(colors: [ backgroundColor, backgroundColor.opacity(13/34)  ], center: .center, startRadius: size.width * 1/55, endRadius: size.width)
+        let colors = [ backgroundColor, backgroundColor.opacity(13/34)  ]
+        RadialGradient(colors: colorScheme == .dark ? colors : colors.reversed(), center: .center, startRadius: size.width * 1/55, endRadius: size.width)
             .opacity(todo.state == .finished ? 1 : 0)
     }
 
@@ -144,7 +147,7 @@ struct GoalView: View {
                     .minimumScaleFactor(0.01)
                     .shadow(radius: todo.state == .finished ? geometry.size.height * 3/34 : 0)
                     .opacity(textOpacty(for: todo.state) )
-                    .padding(.vertical)
+                    .padding(.vertical, geometry.size.height * 3/34)
                     .padding(.trailing, geometry.size.height * 3/34)
 
                 Spacer()
