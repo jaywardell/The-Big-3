@@ -22,7 +22,33 @@ struct GoalView: View {
     let finish: ()->()
     
     @State private var showingCheckbox = false
+    @State private var checkboxTranslation: CGFloat = 0
     
+    private let springAnimation = Animation.spring(response: 21/34.0, dampingFraction: 13/34.0, blendDuration: 21/34.0)
+
+    var dragControls: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                if value.translation.width > 0 {
+                checkboxTranslation = min(200, value.translation.width)
+                }
+                else {
+                    checkboxTranslation = 0
+                }
+            }
+            .onEnded { value in
+                withAnimation(springAnimation) {
+                    if value.translation.width > 200 {
+                        showingCheckbox = true
+                    }
+                    else if value.translation.width < 0 {
+                        showingCheckbox = false
+                    }
+                    checkboxTranslation = 0
+                }
+            }
+    }
+
     private func textOpacty(for state: ToDo.State) -> CGFloat {
         switch state {
             
@@ -92,7 +118,7 @@ struct GoalView: View {
                     .padding(.top, geometry.size.height * 8/34)
                     .padding(.leading, geometry.size.height * 3/34)
                     .padding(.trailing, geometry.size.height * 3/34)
-                    .offset(x: geometry.size.width * ((showingCheckbox || todo.state != .ready) ? 0 : -13/34), y: 0)
+                    .offset(x: geometry.size.width * ((showingCheckbox || todo.state != .ready) ? 0 : -13/34) + checkboxTranslation, y: 0)
                 
                 Text(todo.title)
                     .font(.system(size: 1000, weight: .light, design: .serif))
@@ -120,15 +146,18 @@ struct GoalView: View {
                 .padding(.trailing, geometry.size.height * 5/34)
             }
             .background(background(size: geometry.size))
+            .contentShape(Rectangle())
             .onTapGesture {
                 if todo.state == .ready {
-                    withAnimation(.spring(response: 21/34.0, dampingFraction: 13/34.0, blendDuration: 21/34.0)) {
+                    withAnimation(springAnimation) {
                         showingCheckbox.toggle()
                     }
                 }
             }
+            .gesture(dragControls)
         }
     }
+    
 }
 
 // MARK: -
