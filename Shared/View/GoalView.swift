@@ -41,46 +41,74 @@ struct GoalView: View {
 
     
     var body: some View {
-        HStack {
-            Group {
-                switch todo.state {
-                case .notToday:
-                    Image(systemName: "circle")
-                        .hidden()
-                case .ready:
-                    Button(action: finish) {
-                        VStack(alignment: .leading) {
-                            Image(systemName: "circle")
+        GeometryReader { geometry in
+            HStack {
+                Group {
+                    switch todo.state {
+                    case .notToday:
+                        Image(systemName: "circle")
+                            .resizable()
+                            .hidden()
+                    case .ready:
+                        Button(action: finish) {
+                                ZStack {
+                                    Image(systemName: "checkmark.circle")
+                                        .resizable()
+                                        .opacity(3/34)
+                                    Image(systemName: "circle")
+                                        .resizable()
+                                        .foregroundColor(backgroundColor)
+                                }
                         }
-                    }
-                    .buttonStyle(.borderless)
-                case .finished:
-                    Image(systemName: "checkmark.circle")
+                        .buttonStyle(.borderless)
+                    case .finished:
+                        Image(systemName: "checkmark.circle")
+                            .resizable()
+                   }
                 }
-            }
-            .font(.largeTitle)
-            .imageScale(.large)
-            .padding(.leading)
-            
-            Text(todo.title)
-                .font(.system(size: 1000, weight: .light, design: .serif))
-                .minimumScaleFactor(0.01)
+                .frame(width: geometry.size.height * 13/34, height: geometry.size.height * 13/34)
+                .font(.largeTitle)
+                .imageScale(.large)
                 .shadow(radius: todo.state == .finished ? 15 : 0)
-                .opacity(textOpacty(for: todo.state) )
-                .padding(.vertical)
-            
-            Spacer()
-            
-            VStack(alignment: .leading) {
-                Button(action: postpone) {
-                    Text("Not Today")
+                .padding(.leading)
+                
+                Text(todo.title)
+                    .font(.system(size: 1000, weight: .light, design: .serif))
+                    .minimumScaleFactor(0.01)
+                    .shadow(radius: todo.state == .finished ? 15 : 0)
+                    .opacity(textOpacty(for: todo.state) )
+                    .padding(.vertical)
+                
+                Spacer()
+                
+                ZStack {
+                    VStack(alignment: .leading) {
+                        Button(action: postpone) {
+                            Text("postpone")
+                                .lineLimit(1)
+                                .font(.system(size: 1000, weight: .bold, design: .rounded))
+                                .minimumScaleFactor(0.01)
+                       }
+                        .buttonStyle(.borderless)
+                        .foregroundColor(backgroundColor)
+                    }
+                    .opacity(todo.state == .ready ? 1 : 0)
+                    .frame(height: geometry.size.height * 13/34)
+                    
+                    VStack {
+                        Spacer()
+                        Text("(not today)")
+                            .lineLimit(1)
+                            .font(.system(size: geometry.size.height * 5/34, weight: .bold, design: .rounded))
+                            .minimumScaleFactor(0.01)
+                            .opacity(todo.state == .notToday ? 1 : 0)
+                            .padding(.bottom, geometry.size.height * 5/34)
+                            .opacity(textOpacty(for: todo.state) )
+                   }
                 }
-                .buttonStyle(.borderless)
+                .padding(.leading, geometry.size.width * 5/34)
+                .padding(.trailing, geometry.size.width * 3/34)
             }
-            .font(.largeTitle)
-            .imageScale(.large)
-            .opacity(todo.state == .ready ? 1 : 0)
-            .padding()
         }
         .background(background)
     }
@@ -93,7 +121,15 @@ struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
         GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
                  backgroundColor: .orange, postpone: {}, finish: {})
-            .previewLayout(.fixed(width: 200, height: 100))
+            .previewLayout(.fixed(width: 300, height: 100))
+
+        GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .ready),
+                 backgroundColor: .orange, postpone: {}, finish: {})
+            .previewLayout(.fixed(width: 300, height: 100))
+
+        GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .notToday),
+                 backgroundColor: .orange, postpone: {}, finish: {})
+            .previewLayout(.fixed(width: 300, height: 100))
     }
 }
 #endif
