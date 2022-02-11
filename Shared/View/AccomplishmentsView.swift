@@ -12,16 +12,9 @@ import Combine
 struct AccomplishmentsView {
     
     final class ViewModel: ObservableObject {
-        struct ToDo {
-            let title: String
-            
-            enum State: CaseIterable { case ready, finished, notToday }
-            let state: State
-        }
-        
         let count: Int
         
-        let todoAt: (Int)->ToDo
+        let todoAt: (Int)->GoalView.ToDo
         let finish: (Int)->()
         let postpone: (Int)->()
         let done: ()->()
@@ -29,7 +22,7 @@ struct AccomplishmentsView {
         private var bag = Set<AnyCancellable>()
         init(count: Int,
              publisher: AnyPublisher<Void, Never>?,
-             todoAt: @escaping (Int)->ToDo,
+             todoAt: @escaping (Int)->GoalView.ToDo,
              finish: @escaping (Int)->(),
              postpone: @escaping (Int)->(),
              done: @escaping ()->()) {
@@ -56,75 +49,6 @@ struct AccomplishmentsView {
 
 }
 
-extension AccomplishmentsView {
-    
-    struct PlanBlock: View {
-        
-        let todo: ViewModel.ToDo
-        let postpone: ()->()
-        let finish: ()->()
-        
-        private func textOpacty(for state: AccomplishmentsView.ViewModel.ToDo.State) -> CGFloat {
-            switch state {
-                
-            case .ready:
-                return 21/34
-            case .finished:
-                return 1
-            case .notToday:
-                return 13/34
-            }
-        }
-
-        
-        
-        var body: some View {
-            HStack {
-                    Group {
-                        switch todo.state {
-                        case .notToday:
-                            Image(systemName: "circle")
-                                .hidden()
-                        case .ready:
-                            Button(action: finish) {
-                                VStack(alignment: .leading) {
-                               Image(systemName: "circle")
-                                }
-                            }
-                            .buttonStyle(.borderless)
-                        case .finished:
-                            Image(systemName: "checkmark.circle")
-                       }
-                    }
-                .font(.largeTitle)
-                .imageScale(.large)
-                .padding(.leading)
-                
-                Text(todo.title)
-                    .font(.system(size: 1000, weight: .light, design: .serif))
-                    .minimumScaleFactor(0.01)
-                    .shadow(radius: todo.state == .finished ? 15 : 0)
-                    .opacity(textOpacty(for: todo.state) )
-                    .padding(.vertical)
-                
-                Spacer()
-                
-                VStack(alignment: .leading) {
-                    Button(action: postpone) {
-                        Text("Not Today")
-                    }
-                    .buttonStyle(.borderless)
-                }
-                .font(.largeTitle)
-                .imageScale(.large)
-                .opacity(todo.state == .ready ? 1 : 0)
-                .padding()
-            }
-        }
-    }
-
-}
-
 // MARK: - AccomplishmentsView: View
 
 extension AccomplishmentsView: View {
@@ -139,7 +63,7 @@ extension AccomplishmentsView: View {
         VStack(spacing: 0) {
             ForEach(0...viewModel.count-1, id: \.self) { index in
                 
-                PlanBlock(todo: viewModel.todoAt(index), postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
+                GoalView(todo: viewModel.todoAt(index), postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(background(at: index))
             }
@@ -153,9 +77,9 @@ extension AccomplishmentsView: View {
 
 fileprivate extension AccomplishmentsView.ViewModel {
     
-    static var ExamplePlan: [AccomplishmentsView.ViewModel.ToDo] = []
+    static var ExamplePlan: [GoalView.ToDo] = []
     
-    static func randomToD() -> ToDo {
+    static func randomToD() -> GoalView.ToDo {
             
         let titles = [
         "eat",
@@ -168,7 +92,7 @@ fileprivate extension AccomplishmentsView.ViewModel {
         ]
 //        return ToDo(title: titles.randomElement()!, state: .finished)
 
-        return ToDo(title: titles.randomElement()!, state: .allCases.randomElement()!)
+        return GoalView.ToDo(title: titles.randomElement()!, state: .allCases.randomElement()!)
     }
     
     static let Example = AccomplishmentsView.ViewModel(count: 3, publisher: nil, todoAt: { _ in randomToD() }, finish: { _ in }, postpone: { _ in }, done: {})

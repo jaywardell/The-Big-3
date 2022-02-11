@@ -18,7 +18,7 @@ extension Planner {
                                       done: done)
     }
     
-    private func accomplishmentState(for state: Plan.State) -> AccomplishmentsView.ViewModel.ToDo.State {
+    private func accomplishmentState(for state: Plan.State) -> GoalView.ToDo.State {
         switch state {
         case .pending:
             return .ready
@@ -29,9 +29,9 @@ extension Planner {
         }
     }
     
-    private func todo(at index: Int) -> AccomplishmentsView.ViewModel.ToDo {
+    private func todo(at index: Int) -> GoalView.ToDo {
         let goal = try! plan.goal(at: index)!
-        return AccomplishmentsView.ViewModel.ToDo(title: goal.title, state: accomplishmentState(for: goal.state))
+        return GoalView.ToDo(title: goal.title, state: accomplishmentState(for: goal.state))
     }
     
     private func finishTodo(at index: Int) {
