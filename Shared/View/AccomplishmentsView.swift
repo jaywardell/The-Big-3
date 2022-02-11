@@ -48,9 +48,9 @@ struct AccomplishmentsView {
     @ObservedObject var viewModel: ViewModel
 
     let colors = [
-        Color(hue: 1/2, saturation:21/34, brightness: 26/34),
-        Color(hue: 5/8, saturation:21/34, brightness: 26/34),
-        Color(hue: 3/4, saturation:21/34, brightness: 26/34)
+        Color(hue: 5/8, saturation:26/34, brightness: 26/34),
+        Color(hue: 1/2, saturation:26/34, brightness: 26/34),
+        Color(hue: 3/4, saturation:26/34, brightness: 26/34)
     ]
 
 }
@@ -77,46 +77,40 @@ extension AccomplishmentsView: View {
         
         HStack {
             
-            VStack(alignment: .leading) {
-                Spacer()
-                switch accomplishment.state {
-                case .notToday:
-                    Image(systemName: "calendar.badge.clock")
-                    Text("postponed")
-                case .ready:
-                    Button(action: { viewModel.finish(index) }) {
-                        VStack(alignment: .leading) {
-                       Image(systemName: "circle")
-                        Text("done")
+                Group {
+                    switch accomplishment.state {
+                    case .notToday:
+                        Image(systemName: "circle")
+                            .hidden()
+                    case .ready:
+                        Button(action: { viewModel.finish(index) }) {
+                            VStack(alignment: .leading) {
+                           Image(systemName: "circle")
+                            }
                         }
-                    }
-                    .buttonStyle(.borderless)
-                case .finished:
-                    Image(systemName: "checkmark.circle")
-                    Text("finished")
-               }
-            }
+                        .buttonStyle(.borderless)
+                    case .finished:
+                        Image(systemName: "checkmark.circle")
+                   }
+                }
             .font(.largeTitle)
             .imageScale(.large)
-            .padding()
-
-            Spacer()
+            .padding(.leading)
             
             Text(accomplishment.title)
                 .font(.system(size: 1000, weight: .light, design: .serif))
                 .minimumScaleFactor(0.01)
                 .shadow(radius: accomplishment.state == .finished ? 15 : 0)
                 .opacity(textOpacty(for: accomplishment.state) )
+                .padding(.vertical)
             
             Spacer()
             
             VStack(alignment: .leading) {
-            Button(action: { viewModel.postpone(index) }) {
-                Text("Not Today")
-//                Image(systemName: "tortoise")
-//                    .padding()
-            }
-            .buttonStyle(.borderless)
+                Button(action: { viewModel.postpone(index) }) {
+                    Text("Not Today")
+                }
+                .buttonStyle(.borderless)
             }
             .font(.largeTitle)
             .imageScale(.large)
@@ -163,9 +157,9 @@ fileprivate extension AccomplishmentsView.ViewModel {
         "live",
         "laugh"
         ]
-        return ToDo(title: titles.randomElement()!, state: .finished)
+//        return ToDo(title: titles.randomElement()!, state: .finished)
 
-//        return ToDo(title: titles.randomElement()!, state: .allCases.randomElement()!)
+        return ToDo(title: titles.randomElement()!, state: .allCases.randomElement()!)
     }
     
     static let Example = AccomplishmentsView.ViewModel(count: 3, publisher: nil, todoAt: { _ in randomToD() }, finish: { _ in }, postpone: { _ in }, done: {})
