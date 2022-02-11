@@ -85,3 +85,11 @@ struct GoalView: View {
         .background(background)
     }
 }
+
+struct MyPreviewProvider_Previews: PreviewProvider {
+    static var previews: some View {
+        GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
+                 backgroundColor: .orange, postpone: {}, finish: {})
+            .previewLayout(.fixed(width: 200, height: 100))
+    }
+}
