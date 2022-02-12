@@ -30,18 +30,20 @@ struct GoalView: View {
     
     private let springAnimation = Animation.spring(response: 21/34.0, dampingFraction: 13/34.0, blendDuration: 21/34.0)
 
+    private var dragThreshold: CGFloat { 200 }
+    
     var dragControls: some Gesture {
         DragGesture()
             .onChanged { value in
                 if value.translation.width > 0 {
-                    checkboxTranslation = min(200, value.translation.width)
+                    checkboxTranslation = min(dragThreshold, value.translation.width)
                 }
                 else {
                     checkboxTranslation = 0
                 }
                 
                 if value.translation.width < 0 {
-                    postponeButtonTranslation = max(-200, value.translation.width)
+                    postponeButtonTranslation = max(-dragThreshold, value.translation.width)
                     print(postponeButtonTranslation)
                 }
                 else {
@@ -50,7 +52,7 @@ struct GoalView: View {
             }
             .onEnded { value in
                 withAnimation(springAnimation) {
-                    if value.translation.width > 200 {
+                    if value.translation.width > dragThreshold {
                         showingCheckbox = true
                     }
                     else if value.translation.width < 0 {
@@ -58,7 +60,7 @@ struct GoalView: View {
                     }
                     checkboxTranslation = 0
                     
-                    if value.translation.width < -200 {
+                    if value.translation.width < -dragThreshold {
                         showingPostponeButton = true
                     }
                     else if value.translation.width > 0 {
@@ -121,7 +123,7 @@ struct GoalView: View {
                                 Image(systemName: "circle")
                                     .resizable()
                                     .foregroundColor(backgroundColor)
-                                    .opacity(showingCheckbox ? 1 : 0)
+                                    .opacity(showingCheckbox ? 1 : checkboxTranslation/dragThreshold)
                             }
                     }
                     .buttonStyle(.borderless)
@@ -134,14 +136,6 @@ struct GoalView: View {
             .frame(width: size.height * 13/34, height: size.height * 13/34)
             
             Spacer()
-            
-//            Text("(postponed)")
-//                .lineLimit(1)
-//                .font(.system(size: size.height * 5/34, weight: .bold, design: .rounded))
-//                .minimumScaleFactor(0.01)
-//                .opacity(todo.state == .notToday ? 1 : 0)
-//                .padding(.bottom, size.height * 5/34)
-//                .opacity(textOpacty(for: todo.state) )
         }
         .font(.largeTitle)
         .imageScale(.large)
@@ -184,8 +178,6 @@ struct GoalView: View {
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                        }
                         .buttonStyle(.borderless)
-                        
-//                        .opacity(textOpacty(for: .notToday))
                     }
                     .foregroundColor(backgroundColor)
                     .opacity(todo.state == .ready ? 1 : 0)
