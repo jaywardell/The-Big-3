@@ -37,6 +37,10 @@ final class Plan {
         goals.count == allowed
     }
     
+    var isComplete: Bool {
+        false
+    }
+    
     enum Error: Swift.Error {
         case indexExceedsAllowed
         case goalExistsAtIndex

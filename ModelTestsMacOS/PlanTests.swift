@@ -299,6 +299,12 @@ class PlanTests: XCTestCase {
         XCTAssertEqual(try sut.goal(at: 0)?.state, .completed)
     }
 
+    func test_isComplete_returns_false_on_init() {
+        let sut = Plan(allowed: 1)
+        
+        XCTAssertFalse(sut.isComplete)
+    }
+    
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
