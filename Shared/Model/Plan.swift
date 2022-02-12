@@ -38,7 +38,8 @@ final class Plan {
     }
     
     var isComplete: Bool {
-        false
+        let pending = goals.values.filter { $0.state == .pending }
+        return isFull && pending.count == 0
     }
     
     enum Error: Swift.Error {

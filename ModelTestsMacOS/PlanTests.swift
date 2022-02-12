@@ -305,10 +305,60 @@ class PlanTests: XCTestCase {
         XCTAssertFalse(sut.isComplete)
     }
     
+    func test_isComplete_returns_false_if_some_goals_are_pending() throws {
+        let sut = Plan(allowed: 2)
+        
+        try sut.set(exampleGoal, at: 0)
+        XCTAssertFalse(sut.isComplete)
+        
+        try sut.set(exampleGoal2, at: 1)
+        XCTAssertFalse(sut.isComplete)
+        
+        try sut.completeGoal(at: 0)
+        XCTAssertFalse(sut.isComplete)
+    }
+    
+    func test_isComplete_returns_true_if_all_goals_are_completed() throws {
+        let sut = Plan(allowed: 2)
+        
+        try sut.set(exampleGoal, at: 0)
+        try sut.set(exampleGoal2, at: 1)
+        
+        try sut.completeGoal(at: 0)
+        try sut.completeGoal(at: 1)
+        
+        XCTAssert(sut.isComplete)
+    }
+    
+    func test_isComplete_returns_true_if_all_goals_are_deferred() throws {
+        let sut = Plan(allowed: 2)
+        
+        try sut.set(exampleGoal, at: 0)
+        try sut.set(exampleGoal2, at: 1)
+        
+        try sut.deferGoal(at: 0)
+        try sut.deferGoal(at: 1)
+        
+        XCTAssert(sut.isComplete)
+    }
+
+    func test_isComplete_returns_true_if_some_goals_are_completed_and_others_are_deferred_as_long_as_none_are_pending() throws {
+        let sut = Plan(allowed: 2)
+        
+        try sut.set(exampleGoal, at: 0)
+        try sut.set(exampleGoal2, at: 1)
+        
+        try sut.completeGoal(at: 0)
+        try sut.deferGoal(at: 1)
+        
+        XCTAssert(sut.isComplete)
+    }
+
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
-    
+    private var exampleGoal2: String { "another goal" }
+
     private func expect(_ expectedError: Plan.Error, when callback: () throws -> (), file: StaticString = #filePath, line: UInt = #line) {
 
         XCTAssertThrowsError(try callback()) { error in
