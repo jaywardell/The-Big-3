@@ -176,16 +176,12 @@ struct GoalView: View {
                 if todo.state == .ready {
                 ZStack {
                     VStack(alignment: .leading) {
-                        Text("not today")
-                            .font(.system(size: 1000))
-                            .minimumScaleFactor(0.01)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                         Button(action: { withAnimation{postpone()}}) {
-                            Image(systemName: "arrow.turn.down.right")
-                                .resizable()
-                                .imageScale(.large)
-                                .aspectRatio(1, contentMode: .fill)
+                            Text("not today")
+                                .font(.system(size: 1000))
+                                .minimumScaleFactor(0.01)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
                        }
                         .buttonStyle(.borderless)
                         
