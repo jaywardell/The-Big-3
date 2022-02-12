@@ -13,6 +13,7 @@ extension Planner {
         AccomplishmentsView.ViewModel(count: plan.allowed,
                                       publisher: plan.publisher.eraseToAnyPublisher(),
                                       todoAt: todo(at:),
+                                      userIsFinished: userIsFinished,
                                       finish: finishTodo(at:),
                                       postpone: postponeTodo(at:),
                                       done: done)
@@ -34,6 +35,10 @@ extension Planner {
         return GoalView.ToDo(title: goal.title, state: accomplishmentState(for: goal.state))
     }
     
+    private func userIsFinished() -> Bool {
+        return plan.isComplete
+    }
+
     private func finishTodo(at index: Int) {
         try! plan.completeGoal(at: index)
     }

@@ -15,6 +15,7 @@ struct AccomplishmentsView {
         let count: Int
         
         let todoAt: (Int)->GoalView.ToDo
+        let userIsFinished: ()->Bool
         let finish: (Int)->()
         let postpone: (Int)->()
         let done: ()->()
@@ -23,12 +24,14 @@ struct AccomplishmentsView {
         init(count: Int,
              publisher: AnyPublisher<Void, Never>?,
              todoAt: @escaping (Int)->GoalView.ToDo,
+             userIsFinished: @escaping ()->Bool,
              finish: @escaping (Int)->(),
              postpone: @escaping (Int)->(),
              done: @escaping ()->()) {
             
             self.count = count
             self.todoAt = todoAt
+            self.userIsFinished = userIsFinished
             self.finish = finish
             self.postpone = postpone
             self.done = done
@@ -70,9 +73,38 @@ extension AccomplishmentsView: View {
 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+#if os(macOS)
+#else
+            if viewModel.userIsFinished() {
+                if UIDevice.current.userInterfaceIdiom != .phone {
+                    doneButton
+                }
+            }
+#endif
         }
         .navigationTitle("Today")
+        .toolbar {
+            if viewModel.userIsFinished() {
+                Button(action: viewModel.done) {
+                    Text("Done")
+                }
+            }
+        }
     }
+    
+    private var doneButton: some View {
+        Button(action: viewModel.done) {
+            Text("Done")
+                .font(.largeTitle)
+                .bold()
+                .minimumScaleFactor(0.01)
+                .padding()
+        }
+        .buttonStyle(.borderless)
+    }
+    
+
 }
 
 // MARK: -
@@ -99,7 +131,7 @@ fileprivate extension AccomplishmentsView.ViewModel {
         return GoalView.ToDo(title: titles.randomElement()!, state: .finished)
     }
     
-    static let Example = AccomplishmentsView.ViewModel(count: 3, publisher: nil, todoAt: { _ in randomToD() }, finish: { _ in }, postpone: { _ in }, done: {})
+    static let Example = AccomplishmentsView.ViewModel(count: 3, publisher: nil, todoAt: { _ in randomToD() }, userIsFinished: { false }, finish: { _ in }, postpone: { _ in }, done: {})
 }
 
 
