@@ -103,8 +103,6 @@ extension AccomplishmentsView: View {
         }
         .buttonStyle(.borderless)
     }
-    
-
 }
 
 // MARK: -
