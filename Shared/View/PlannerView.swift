@@ -57,12 +57,6 @@ struct PlannerView {
         Color(hue: 5/8, saturation:21/34, brightness: 26/34),
         Color(hue: 3/4, saturation:21/34, brightness: 26/34)
     ]
-
-//    let colors = [
-//        Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34),
-//        Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34),
-//        Color(hue: CGFloat.random(in: 0...1), saturation:CGFloat.random(in: 0...1), brightness: 26/34)
-//    ]
 }
 
 extension PlannerView: View {
