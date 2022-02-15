@@ -59,6 +59,8 @@ struct PlannerView {
     ]
 }
 
+// MARK: - PlannerView: View
+
 extension PlannerView: View {
     
     @ViewBuilder private func planBlock(at index: Int) -> some View {
