@@ -31,10 +31,7 @@ struct TitledWithToolbar<Content: View, ToolbarContent: View>: View {
         content()
             .navigationTitle(title)
             .toolbar {
-                Button(action: nextButtonAction) {
-                    Text(nextButtonTitle)
-                }
-                
+                toolbarContent()
             }
 #else
         
