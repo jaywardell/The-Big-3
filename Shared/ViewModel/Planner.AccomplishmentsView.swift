@@ -48,6 +48,6 @@ extension Planner {
     }
     
     private func done() {
-        print(#function)
+        state = .planning
     }
  }
