@@ -10,16 +10,18 @@ import Combine
 
 /// represents the User's plan for the current day
 /// (or next day if we're in planning mode)
-final class Plan {
+final class Plan: Identifiable {
     
+    let id = UUID()
+
+    let allowed: Int
+
     struct Goal: Equatable {
         let title: String
 
         enum State: Equatable { case pending, completed, deferred }
         let state: State
     }
-    
-    let allowed: Int
     
     private var goals = [Int: Goal]() {
         didSet {
@@ -127,5 +129,6 @@ extension Plan: Codable {
     enum CodingKeys: String, CodingKey {
         case allowed
         case goals
+        case id
     }
 }
