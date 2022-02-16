@@ -19,7 +19,7 @@ extension Planner {
                                       done: done)
     }
     
-    private func accomplishmentState(for state: Plan.State) -> GoalView.ToDo.State {
+    private func accomplishmentState(for state: Plan.Goal.State) -> GoalView.ToDo.State {
         switch state {
         case .pending:
             return .ready

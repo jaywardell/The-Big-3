@@ -12,10 +12,10 @@ import Combine
 /// (or next day if we're in planning mode)
 final class Plan {
     
-    enum State: Equatable { case pending, completed, deferred }
-    
     struct Goal: Equatable {
         let title: String
+
+        enum State: Equatable { case pending, completed, deferred }
         let state: State
     }
     
