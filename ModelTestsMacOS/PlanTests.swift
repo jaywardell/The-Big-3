@@ -354,6 +354,14 @@ class PlanTests: XCTestCase {
         XCTAssert(sut.isComplete)
     }
 
+    func test_remanant_throws_if_not_complete() throws {
+        let sut = Plan(allowed: 1)
+
+        expect(.notComplete) {
+            _ = try sut.remnant()
+        }
+    }
+    
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }

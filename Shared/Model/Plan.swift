@@ -50,6 +50,7 @@ final class Plan {
         case goalIsAlreadyInPlan
         case goalIsAlreadyDeferred
         case goalIsAlreadyCompleted
+        case notComplete
     }
     
     init(allowed: Int = 0) {
@@ -93,5 +94,9 @@ final class Plan {
         guard goal.state != .completed else { throw Error.goalIsAlreadyCompleted }
 
         goals[index] = Goal(title: goal.title, state: .completed)
+    }
+    
+    func remnant() throws -> Plan {
+        throw Error.notComplete
     }
 }
