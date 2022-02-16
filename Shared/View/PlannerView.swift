@@ -94,7 +94,7 @@ extension PlannerView: View {
             .padding()
         }
         else if index == selectedIndex {
-            TextField("enter a goal for the day", text: $newPlannedTitle)
+            TextField("enter a goal…", text: $newPlannedTitle)
                 .focused($isFocused)
                 .font(.system(size: 100, weight: .light, design: .serif))
                 .minimumScaleFactor(0.1)
@@ -110,7 +110,9 @@ extension PlannerView: View {
         else if index == 0 || viewModel.plannedAt(index-1) != nil {
             Button(action: { userTappedEmptyPlannedBlock(at: index) }) {
                 Image(systemName: "plus.circle.fill")
-                    .font(.largeTitle).imageScale(.large)
+                    .font(.system(size: 100, weight: .light, design: .serif))
+                    .minimumScaleFactor(0.1)
+                    .imageScale(.large)
             }
             .buttonStyle(.borderless)
             .accentColor(.white)
