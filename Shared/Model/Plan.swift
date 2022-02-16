@@ -29,19 +29,6 @@ final class Plan {
     
     let publisher = PassthroughSubject<Void, Never>()
     
-    var isEmpty: Bool {
-        goals.isEmpty
-    }
-    
-    var isFull: Bool {
-        goals.count == allowed
-    }
-    
-    var isComplete: Bool {
-        let pending = goals.values.filter { $0.state == .pending }
-        return isFull && pending.count == 0
-    }
-    
     enum Error: Swift.Error {
         case indexExceedsAllowed
         case goalExistsAtIndex
@@ -56,6 +43,25 @@ final class Plan {
     init(allowed: Int = 0) {
         self.allowed = allowed
     }
+}
+
+// MARK: -
+
+extension Plan {
+    var isEmpty: Bool {
+        goals.isEmpty
+    }
+    
+    var isFull: Bool {
+        goals.count == allowed
+    }
+    
+    var isComplete: Bool {
+        let pending = goals.values.filter { $0.state == .pending }
+        return isFull && pending.count == 0
+    }
+    
+    
 
     @discardableResult
     func goal(at index: Int) throws -> Goal? {
