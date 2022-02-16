@@ -155,7 +155,7 @@ extension PlannerView: View {
 
     private func userTappedDeleteGoal(at index: Int) {
         withAnimation {
-        viewModel.remove(index)
+            viewModel.remove(index)
         }
     }
     
