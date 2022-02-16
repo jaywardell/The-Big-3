@@ -71,6 +71,7 @@ extension PlannerView: View {
                 
                 Text(planned.title)
                     .font(.system(size: 1000, weight: .light, design: .serif))
+                    .foregroundColor(.white)
                     .minimumScaleFactor(0.01)
                     .shadow(radius: 15)
 
@@ -83,7 +84,7 @@ extension PlannerView: View {
                             .font(.largeTitle).imageScale(.large)
                     }
                     .buttonStyle(.borderless)
-                    .accentColor(.primary)
+                    .accentColor(.white)
                    .shadow(radius: 15)
                 }
             }
@@ -93,6 +94,7 @@ extension PlannerView: View {
             TextField("enter a goal for the day", text: $newPlannedTitle)
                 .focused($isFocused)
                 .font(.largeTitle)
+                .foregroundColor(.white)
                 .onAppear { isFocused = true }
                 .onSubmit {
                     userEnteredNewPlannedTitle(newPlannedTitle, at: index)
@@ -107,7 +109,7 @@ extension PlannerView: View {
                     .font(.largeTitle).imageScale(.large)
             }
             .buttonStyle(.borderless)
-            .accentColor(.primary)
+            .accentColor(.white)
             .shadow(radius: 15)
 
         }
