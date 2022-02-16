@@ -50,6 +50,8 @@ struct PlannerView {
     @State private var selectedIndex: Int?
     @State private var newPlannedTitle: String = ""
     
+    @State private var tappedDeleteButtonIndex: Int?
+    
     @FocusState private var isFocused: Bool
 
     let colors = [
@@ -57,6 +59,9 @@ struct PlannerView {
         Color(hue: 5/8, saturation:21/34, brightness: 26/34),
         Color(hue: 3/4, saturation:21/34, brightness: 26/34)
     ]
+    
+    private let springAnimation = Animation.spring(response: 21/34.0, dampingFraction: 13/34.0, blendDuration: 21/34.0)
+
 }
 
 // MARK: - PlannerView: View
@@ -80,11 +85,12 @@ extension PlannerView: View {
                 VStack {
                     Spacer()
                     Button(action: { userTappedDeleteGoal(at: index) }) {
-                        Image(systemName: "minus.circle.fill")
+                        Image(systemName: tappedDeleteButtonIndex == index ? "xmark.circle.fill" : "minus.circle.fill")
                             .font(.largeTitle).imageScale(.large)
                     }
                     .buttonStyle(.borderless)
                     .accentColor(.white)
+                    .rotationEffect(.degrees(tappedDeleteButtonIndex == index ?  90 : 0))
                    .shadow(radius: 15)
                 }
             }
@@ -154,8 +160,15 @@ extension PlannerView: View {
     }
 
     private func userTappedDeleteGoal(at index: Int) {
-        withAnimation {
-            viewModel.remove(index)
+        withAnimation(springAnimation) {
+            if let tappedDeleteButtonIndex = tappedDeleteButtonIndex,
+               tappedDeleteButtonIndex == index {
+                viewModel.remove(tappedDeleteButtonIndex)
+                self.tappedDeleteButtonIndex = nil
+            }
+            else {
+                tappedDeleteButtonIndex = index
+            }
         }
     }
     
@@ -165,6 +178,7 @@ extension PlannerView: View {
             viewModel.add(ViewModel.Planned(title: newPlannedTitle), index)
         }
     }
+    
 }
 
 // MARK: -
