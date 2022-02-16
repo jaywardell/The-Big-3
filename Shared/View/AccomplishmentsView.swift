@@ -82,17 +82,6 @@ extension AccomplishmentsView: View {
             .opacity(viewModel.userIsFinished() ? 1 : 0)
         }
     }
-    
-    private var doneButton: some View {
-        Button(action: viewModel.done) {
-            Text("Done")
-                .font(.largeTitle)
-                .bold()
-                .minimumScaleFactor(0.01)
-                .padding()
-        }
-        .buttonStyle(.borderless)
-    }
 }
 
 // MARK: -

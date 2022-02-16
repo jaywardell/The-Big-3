@@ -118,18 +118,7 @@ extension PlannerView: View {
             HStack {}
         }
     }
-    
-    private var startButton: some View {
-        Button(action: viewModel.start) {
-            Text("Start")
-                .font(.largeTitle)
-                .bold()
-                .minimumScaleFactor(0.01)
-                .padding()
-        }
-        .buttonStyle(.borderless)
-    }
-    
+        
     @ViewBuilder private func background(at index: Int) -> some View {
         
         let colors = [ colors[index], colors[index].opacity(13/34)  ]
