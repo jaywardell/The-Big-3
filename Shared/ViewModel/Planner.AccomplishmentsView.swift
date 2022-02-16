@@ -48,6 +48,7 @@ extension Planner {
     }
     
     private func done() {
+        plan = try! plan.remnant()
         state = .planning
     }
  }

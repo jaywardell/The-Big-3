@@ -395,6 +395,30 @@ class PlanTests: XCTestCase {
         XCTAssertEqual(.pending, try remnant.goal(at: 1)?.state)
     }
 
+    func test_remnant_stress_test() throws {
+        var sut = Plan(allowed: 4)
+        
+        for _ in 0..<100 {
+            for i in 0..<sut.allowed {
+                let existing = try sut.goal(at: i)
+                if nil == existing {
+                    try sut.set(String(i), at: i)
+                }
+            }
+            
+            for i in 0..<sut.allowed {
+                if Bool.random() {
+                    try sut.completeGoal(at: i)
+                }
+                else {
+                    try sut.deferGoal(at: i)
+                }
+            }
+            
+            sut = try sut.remnant()
+        }
+    }
+    
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
