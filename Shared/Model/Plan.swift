@@ -117,3 +117,15 @@ extension Plan {
         return out
     }
 }
+
+// MARK: - Plan: Codable
+
+extension Plan.Goal.State: Codable {}
+extension Plan.Goal: Codable {}
+extension Plan: Codable {
+  
+    enum CodingKeys: String, CodingKey {
+        case allowed
+        case goals
+    }
+}
