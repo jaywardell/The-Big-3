@@ -58,38 +58,45 @@ extension AccomplishmentsView: View {
             
     
     var body: some View {
-        VStack(spacing: 0) {
-            ForEach(0...viewModel.count-1, id: \.self) { index in
-                
-                VStack(spacing: 0) {
-                    GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-                    if index < viewModel.count-1{
-                        Divider()
+        TitledWithToolbar("The Big 3") {
+            VStack(spacing: 0) {
+                ForEach(0...viewModel.count-1, id: \.self) { index in
+                    
+                    VStack(spacing: 0) {
+                        GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        
+                        if index < viewModel.count-1{
+                            Divider()
+                        }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-
+                
+                //#if os(macOS)
+                //#else
+                //            if viewModel.userIsFinished() {
+                //                if UIDevice.current.userInterfaceIdiom != .phone {
+                //                    doneButton
+                //                }
+                //            }
+                //#endif
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-#if os(macOS)
-#else
-            if viewModel.userIsFinished() {
-                if UIDevice.current.userInterfaceIdiom != .phone {
-                    doneButton
-                }
+            //        .navigationTitle("Today")
+            //        .toolbar {
+            //            if viewModel.userIsFinished() {
+            //                Button(action: viewModel.done) {
+            //                    Text("Done")
+            //                }
+            //            }
+            //        }
+        } toolbar: {
+            Button(action: viewModel.done) {
+                Text("Done")
             }
-#endif
-        }
-        .navigationTitle("Today")
-        .toolbar {
-            if viewModel.userIsFinished() {
-                Button(action: viewModel.done) {
-                    Text("Done")
-                }
-            }
+            .opacity(viewModel.userIsFinished() ? 1 : 0)
         }
     }
     

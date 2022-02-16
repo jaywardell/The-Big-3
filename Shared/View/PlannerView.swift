@@ -135,6 +135,9 @@ extension PlannerView: View {
     }
 
     var body: some View {
+        TitledWithToolbar("What are the Big 3?") {
+            
+        
         VStack(spacing: 0) {
             ForEach(0...viewModel.allowed-1, id: \.self) { index in
                 
@@ -144,21 +147,27 @@ extension PlannerView: View {
                     )
             }
             
-#if os(macOS)
-#else
-            if viewModel.isFull() {
-                if UIDevice.current.userInterfaceIdiom != .phone {
-                    startButton
-                }
-            }
-#endif
+//#if os(macOS)
+//#else
+//            if viewModel.isFull() {
+//                if UIDevice.current.userInterfaceIdiom != .phone {
+//                    startButton
+//                }
+//            }
+//#endif
         }
-        .navigationTitle("The Big 3")
-        .toolbar {
+//        .navigationTitle("The Big 3")
+//        .toolbar {
+//            Button(action: viewModel.start) {
+//                Text("Start")
+//            }
+//            .disabled(!viewModel.isFull())
+//        }
+        } toolbar: {
             Button(action: viewModel.start) {
                 Text("Start")
             }
-            .disabled(!viewModel.isFull())
+            .opacity(viewModel.isFull() ? 1 : 0)
         }
     }
         
