@@ -71,8 +71,8 @@ extension PlannerView: View {
                 
                 Text(planned.title)
                     .font(.system(size: 1000, weight: .light, design: .serif))
-                    .foregroundColor(.white)
                     .minimumScaleFactor(0.01)
+                    .foregroundColor(.white)
                     .shadow(radius: 15)
 
                 Spacer()
@@ -93,7 +93,8 @@ extension PlannerView: View {
         else if index == selectedIndex {
             TextField("enter a goal for the day", text: $newPlannedTitle)
                 .focused($isFocused)
-                .font(.largeTitle)
+                .font(.system(size: 100, weight: .light, design: .serif))
+                .minimumScaleFactor(0.1)
                 .foregroundColor(.white)
                 .onAppear { isFocused = true }
                 .onSubmit {
