@@ -162,7 +162,7 @@ extension PlannerView: View {
     private func userEnteredNewPlannedTitle(_ newPlannedTitle: String, at index: Int) {
         print(#function, index)
         withAnimation {
-        viewModel.add(ViewModel.Planned(title: newPlannedTitle), index)
+            viewModel.add(ViewModel.Planned(title: newPlannedTitle), index)
         }
     }
 }
