@@ -74,24 +74,7 @@ extension AccomplishmentsView: View {
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                
-                //#if os(macOS)
-                //#else
-                //            if viewModel.userIsFinished() {
-                //                if UIDevice.current.userInterfaceIdiom != .phone {
-                //                    doneButton
-                //                }
-                //            }
-                //#endif
             }
-            //        .navigationTitle("Today")
-            //        .toolbar {
-            //            if viewModel.userIsFinished() {
-            //                Button(action: viewModel.done) {
-            //                    Text("Done")
-            //                }
-            //            }
-            //        }
         } toolbar: {
             Button(action: viewModel.done) {
                 Text("Done")
