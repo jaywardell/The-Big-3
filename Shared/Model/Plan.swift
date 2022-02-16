@@ -14,7 +14,7 @@ final class Plan {
     
     enum State: Equatable { case pending, completed, deferred }
     
-    struct Goal {
+    struct Goal: Equatable {
         let title: String
         let state: State
     }
@@ -67,7 +67,6 @@ final class Plan {
     func set(_ goal: String, at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil == goals[index] else { throw Error.goalExistsAtIndex }
-        guard index == 0 || nil != goals[index-1] else { throw Error.noGoalExistsAtPreviousIndex }
         guard !goals.values.contains(where: { $0.title == goal }) else { throw Error.goalIsAlreadyInPlan }
         goals[index] = Goal(title: goal, state: .pending)
     }
@@ -99,6 +98,16 @@ final class Plan {
     func remnant() throws -> Plan {
         guard isComplete else { throw Error.notComplete }
         
-        return Plan(allowed: allowed)
+        let out = Plan(allowed: allowed)
+        
+        for i in 0..<allowed {
+            if let goal = try goal(at: i) {
+                if goal.state == .deferred {
+                    try out.set(goal.title, at: i)
+                }
+            }
+        }
+        
+        return out
     }
 }

@@ -81,17 +81,6 @@ class PlanTests: XCTestCase {
         }
     }
     
-    func test_set_goal_at_throws_if_there_are_blank_goals_before_the_index_passed_in() throws {
-        let sut = Plan(allowed: 2)
-        let expected = exampleGoal
-        
-//        try sut.set(expected, at: 0)
-
-        expect(.noGoalExistsAtPreviousIndex) {
-            try sut.set(expected, at: 1)
-        }
-    }
-
     func test_set_goal_at_throws_if_goal_already_exists_in_plan() throws {
         
         let sut = Plan(allowed: 2)
@@ -362,7 +351,7 @@ class PlanTests: XCTestCase {
         }
     }
     
-    func test_returns_empty_plan_if_all_goals_complete() throws {
+    func test_remanant_returns_empty_plan_if_all_goals_are_complete() throws {
         let sut = Plan(allowed: 1)
         
         try sut.set(exampleGoal, at: 0)
@@ -375,6 +364,37 @@ class PlanTests: XCTestCase {
         XCTAssertNil(try remnant.goal(at:0))
     }
     
+    func test_remanant_returns_nonempty_plan_if_any_goals_are_deferred() throws {
+        let sut = Plan(allowed: 1)
+        
+        try sut.set(exampleGoal, at: 0)
+        
+        try sut.deferGoal(at: 0)
+
+        let remnant = try sut.remnant()
+        
+        XCTAssertEqual(remnant.allowed, sut.allowed)
+        XCTAssertEqual(try sut.goal(at: 0)?.title, try remnant.goal(at: 0)?.title)
+        XCTAssertEqual(.pending, try remnant.goal(at: 0)?.state)
+    }
+
+    func test_remanant_against_complex_example() throws {
+        let sut = Plan(allowed: 2)
+        
+        try sut.set(exampleGoal, at: 0)
+        try sut.set(exampleGoal2, at: 1)
+
+        try sut.completeGoal(at: 0)
+        try sut.deferGoal(at: 1)
+
+        let remnant = try sut.remnant()
+        
+        XCTAssertEqual(remnant.allowed, sut.allowed)
+        XCTAssertNil(try remnant.goal(at:0))
+        XCTAssertEqual(try sut.goal(at: 1)?.title, try remnant.goal(at: 1)?.title)
+        XCTAssertEqual(.pending, try remnant.goal(at: 1)?.state)
+    }
+
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
