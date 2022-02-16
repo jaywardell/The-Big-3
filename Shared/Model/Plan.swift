@@ -97,6 +97,8 @@ final class Plan {
     }
     
     func remnant() throws -> Plan {
-        throw Error.notComplete
+        guard isComplete else { throw Error.notComplete }
+        
+        return Plan(allowed: allowed)
     }
 }

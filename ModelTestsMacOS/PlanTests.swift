@@ -362,6 +362,19 @@ class PlanTests: XCTestCase {
         }
     }
     
+    func test_returns_empty_plan_if_all_goals_complete() throws {
+        let sut = Plan(allowed: 1)
+        
+        try sut.set(exampleGoal, at: 0)
+        
+        try sut.completeGoal(at: 0)
+
+        let remnant = try sut.remnant()
+        
+        XCTAssertEqual(remnant.allowed, sut.allowed)
+        XCTAssertNil(try remnant.goal(at:0))
+    }
+    
     // MARK: - Helpers
     
     private var exampleGoal: String { "a goal" }
