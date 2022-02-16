@@ -28,8 +28,6 @@ struct GoalView: View {
 
     @Environment(\.colorScheme) var colorScheme
     
-    private let springAnimation = Animation.spring(response: 21/34.0, dampingFraction: 13/34.0, blendDuration: 21/34.0)
-
     private var dragThreshold: CGFloat { 200 }
     
     var dragControls: some Gesture {
@@ -51,7 +49,7 @@ struct GoalView: View {
                 }
             }
             .onEnded { value in
-                withAnimation(springAnimation) {
+                withAnimation(.Big3Spring) {
                     if value.translation.width > dragThreshold {
                         showingCheckbox = true
                     }
@@ -114,7 +112,7 @@ struct GoalView: View {
                         .opacity(textOpacty(for: .notToday))
 
                 case .ready:
-                    Button(action: { withAnimation{finish()}}) {
+                    Button(action: { withAnimation(.Big3Spring) {finish()}}) {
                             ZStack {
                                 Image(systemName: "checkmark.circle")
                                     .resizable()
@@ -171,7 +169,7 @@ struct GoalView: View {
                 ZStack {
                     VStack(alignment: .leading) {
 
-                        Button(action: { withAnimation{postpone()}}) {
+                        Button(action: { withAnimation(.Big3Spring) {postpone()}}) {
                             Text("not today")
                                 .font(.system(size: 1000))
                                 .minimumScaleFactor(0.01)
@@ -192,7 +190,7 @@ struct GoalView: View {
             .contentShape(Rectangle())
             .onTapGesture {
                 if todo.state == .ready {
-                    withAnimation(springAnimation) {
+                    withAnimation(.Big3Spring) {
                         if !showingPostponeButton {
                             showingCheckbox.toggle()
                         }

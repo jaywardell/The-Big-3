@@ -59,9 +59,6 @@ struct PlannerView {
         Color(hue: 5/8, saturation:21/34, brightness: 26/34),
         Color(hue: 3/4, saturation:21/34, brightness: 26/34)
     ]
-    
-    private let springAnimation = Animation.spring(response: 21/34.0, dampingFraction: 13/34.0, blendDuration: 21/34.0)
-
 }
 
 // MARK: - PlannerView: View
@@ -160,7 +157,7 @@ extension PlannerView: View {
     }
 
     private func userTappedDeleteGoal(at index: Int) {
-        withAnimation(springAnimation) {
+        withAnimation(.Big3Spring) {
             if let tappedDeleteButtonIndex = tappedDeleteButtonIndex,
                tappedDeleteButtonIndex == index {
                 viewModel.remove(tappedDeleteButtonIndex)
@@ -174,7 +171,7 @@ extension PlannerView: View {
     
     private func userEnteredNewPlannedTitle(_ newPlannedTitle: String, at index: Int) {
         print(#function, index)
-        withAnimation {
+        withAnimation(.Big3Spring) {
             viewModel.add(ViewModel.Planned(title: newPlannedTitle), index)
         }
     }
