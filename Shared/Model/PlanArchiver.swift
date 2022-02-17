@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class PlanArchiver {
+struct PlanArchiver {
     
     func loadPlan(allowed: Int) -> Plan {
         var out = UserDefaults.standard.latestPlan
