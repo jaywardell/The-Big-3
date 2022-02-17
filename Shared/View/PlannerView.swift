@@ -133,16 +133,11 @@ extension PlannerView: View {
 
     var body: some View {
         TitledWithToolbar("What are the Big 3?") {
-            
-            
-            VStack(spacing: 0) {
-                ForEach(0...viewModel.allowed-1, id: \.self) { index in
-                    
-                    planBlock(at: index)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(background(at: index)
-                        )
-                }
+            CountedRows(rows: viewModel.allowed) { index in
+                planBlock(at: index)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(background(at: index)
+                    )
             }
         } toolbar: {
             Button(action: viewModel.start) {
