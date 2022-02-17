@@ -9,10 +9,13 @@ import Foundation
 import Combine
 
 final class AppModel {
+    // NOTE: callbacks use unowned self because this class should live the life of the app,
+    // so a call to a subscription when self is nil is a bug and should be caught immediately
     
     let planner: Planner
     let archiver: PlanArchiver
     
+    // NOTE: not using a Set because we want to subscribe to one Plan's publisher at a time
     private var plannerChanged: AnyCancellable?
     private var planChanged: AnyCancellable?
 
