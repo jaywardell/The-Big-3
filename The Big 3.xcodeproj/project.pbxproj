@@ -14,6 +14,8 @@
 		7C0A092727B3857300F2C688 /* Planner+PlannerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */; };
 		7C4707BC27B614D70080B419 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7C4707BD27B614D70080B419 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
+		7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A627BE714400DF0F8D /* AppModel.swift */; };
+		7C4EC7A827BE714400DF0F8D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A627BE714400DF0F8D /* AppModel.swift */; };
 		7C66162A27BD350A000AC97A /* TitledWithNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162927BD350A000AC97A /* TitledWithNextButton.swift */; };
 		7C66162B27BD350A000AC97A /* TitledWithNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162927BD350A000AC97A /* TitledWithNextButton.swift */; };
 		7C66162F27BD4F24000AC97A /* Animation+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162E27BD4F24000AC97A /* Animation+Constants.swift */; };
@@ -56,6 +58,7 @@
 		7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerView.swift"; sourceTree = "<group>"; };
 		7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerViewTests.swift"; sourceTree = "<group>"; };
 		7C4707BB27B614D70080B419 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
+		7C4EC7A627BE714400DF0F8D /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		7C66162927BD350A000AC97A /* TitledWithNextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitledWithNextButton.swift; sourceTree = "<group>"; };
 		7C66162E27BD4F24000AC97A /* Animation+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Constants.swift"; sourceTree = "<group>"; };
 		7C66163127BDC340000AC97A /* PlanArchiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanArchiver.swift; sourceTree = "<group>"; };
@@ -175,6 +178,7 @@
 				7CB8722427B33BF9009D5539 /* Planner.swift */,
 				7CB8722927B33C36009D5539 /* Plan.swift */,
 				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
+				7C4EC7A627BE714400DF0F8D /* AppModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,6 +341,7 @@
 				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */,
 				7CB8720927B33A89009D5539 /* ContentView.swift in Sources */,
+				7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */,
 				7C66162A27BD350A000AC97A /* TitledWithNextButton.swift in Sources */,
 				7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */,
 				7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */,
@@ -357,6 +362,7 @@
 				7CB8724F27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7C66163327BDC340000AC97A /* PlanArchiver.swift in Sources */,
 				7CB8720A27B33A89009D5539 /* ContentView.swift in Sources */,
+				7C4EC7A827BE714400DF0F8D /* AppModel.swift in Sources */,
 				7C66162B27BD350A000AC97A /* TitledWithNextButton.swift in Sources */,
 				7CB8720827B33A89009D5539 /* The_Big_3App.swift in Sources */,
 				7C0032D127B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */,

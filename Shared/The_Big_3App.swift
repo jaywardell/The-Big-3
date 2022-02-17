@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct The_Big_3App: App {
-    
-    @StateObject var planner = Planner()
+        
+    let model = AppModel()
     
     var body: some Scene {
         WindowGroup {
-            ContentView(planner: planner)
+            ContentView(planner: model.planner)
                 .accentColor(Color(hue: 5/8, saturation:21/34, brightness: 26/34))
         }
     }
