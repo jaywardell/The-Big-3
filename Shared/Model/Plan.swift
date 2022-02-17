@@ -12,7 +12,7 @@ import Combine
 /// (or next day if we're in planning mode)
 final class Plan: Identifiable {
     
-    let id = UUID()
+    let id: UUID
 
     let allowed: Int
 
@@ -44,6 +44,7 @@ final class Plan: Identifiable {
     
     init(allowed: Int = 0) {
         self.allowed = allowed
+        self.id = UUID()
     }
 }
 
