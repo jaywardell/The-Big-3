@@ -13,20 +13,26 @@ final class AppModel {
     let planner: Planner
     let archiver: PlanArchiver
     
-    private var bag = Set<AnyCancellable>()
-    
+    private var plannerChanged: AnyCancellable?
+    private var planChanged: AnyCancellable?
+
     init() {
         self.archiver = PlanArchiver()
         let loadedPlan = self.archiver.loadPlan(allowed: 3)
         self.planner = Planner(plan: loadedPlan)
         
-        planner.objectWillChange.sink { [unowned self] _ in
+        plannerChanged = planner.objectWillChange.sink { [unowned self] _ in
             planWasUpdated()
         }
-        .store(in: &bag)
+        
+        planWasUpdated()
     }
     
     private func planWasUpdated() {
-        self.archiver.archive(planner.plan)
+        let plan = planner.plan
+        self.archiver.archive(plan)
+        planChanged = plan.publisher.sink { [unowned self] in
+            planWasUpdated()
+        }
     }
 }
