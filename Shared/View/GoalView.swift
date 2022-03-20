@@ -42,7 +42,6 @@ struct GoalView: View {
                 
                 if value.translation.width < 0 {
                     postponeButtonTranslation = max(-dragThreshold, value.translation.width)
-                    print(postponeButtonTranslation)
                 }
                 else {
                     postponeButtonTranslation = 0
