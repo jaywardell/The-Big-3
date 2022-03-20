@@ -14,8 +14,20 @@ struct The_Big_3App: App {
     
     var body: some Scene {
         WindowGroup {
-            TheBig3View(planner: model.planner)
-                .accentColor(Color(hue: 5/8, saturation:21/34, brightness: 26/34))
+            TabView {
+                TheBig3View(planner: model.planner)
+                    .tabItem {
+                        Label("The Big 3", systemImage: "3.circle")
+                    }
+
+                LogView()
+                    .tabItem {
+                        Label("Completed", systemImage: "list.bullet")
+                    }
+
+            }
+            .accentColor(Color(hue: 5/8, saturation:21/34, brightness: 26/34))
+            .tabViewStyle(.automatic)
         }
     }
 }

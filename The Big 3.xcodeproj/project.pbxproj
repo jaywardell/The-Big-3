@@ -43,6 +43,8 @@
 		7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724D27B33DFD009D5539 /* PlannerView.swift */; };
 		7CB8724F27B33DFD009D5539 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724D27B33DFD009D5539 /* PlannerView.swift */; };
 		7CB8725027B34B6A009D5539 /* PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724A27B33D0E009D5539 /* PlannerTests.swift */; };
+		7CD547B627E6DC760009F9DD /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD547B527E6DC760009F9DD /* LogView.swift */; };
+		7CD547B727E6DC760009F9DD /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD547B527E6DC760009F9DD /* LogView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,7 @@
 		7CB8723927B33CB9009D5539 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
 		7CB8724A27B33D0E009D5539 /* PlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerTests.swift; sourceTree = "<group>"; };
 		7CB8724D27B33DFD009D5539 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
+		7CD547B527E6DC760009F9DD /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				7CB871E027B33A88009D5539 /* TheBig3View.swift */,
+				7CD547B527E6DC760009F9DD /* LogView.swift */,
 				7C66162C27BD36D5000AC97A /* Layouts */,
 				7CB8724D27B33DFD009D5539 /* PlannerView.swift */,
 				7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */,
@@ -343,6 +347,7 @@
 				7C66162F27BD4F24000AC97A /* Animation+Constants.swift in Sources */,
 				7CB8722A27B33C36009D5539 /* Plan.swift in Sources */,
 				7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */,
+				7CD547B627E6DC760009F9DD /* LogView.swift in Sources */,
 				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */,
 				7CB8720927B33A89009D5539 /* TheBig3View.swift in Sources */,
@@ -365,6 +370,7 @@
 				7C66163027BD4F24000AC97A /* Animation+Constants.swift in Sources */,
 				7CB8722B27B33C36009D5539 /* Plan.swift in Sources */,
 				7C4EC7AB27BE7C7300DF0F8D /* CountedRows.swift in Sources */,
+				7CD547B727E6DC760009F9DD /* LogView.swift in Sources */,
 				7CB8724F27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7C66163327BDC340000AC97A /* PlanArchiver.swift in Sources */,
 				7CB8720A27B33A89009D5539 /* TheBig3View.swift in Sources */,
