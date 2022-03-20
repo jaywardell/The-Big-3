@@ -68,9 +68,7 @@ extension PlannerView: View {
     @ViewBuilder private func planBlock(at index: Int) -> some View {
         if let planned = viewModel.plannedAt(index) {
             HStack {
-                
-                Spacer()
-                
+                                
                 Text(planned.title)
                     .font(.system(size: 1000, weight: .light, design: .serif))
                     .minimumScaleFactor(0.01)
@@ -108,16 +106,19 @@ extension PlannerView: View {
                 .padding()
         }
         else if index == 0 || viewModel.plannedAt(index-1) != nil {
-            Button(action: { userTappedEmptyPlannedBlock(at: index) }) {
-                Image(systemName: "plus.circle.fill")
-                    .font(.system(size: 100, weight: .light, design: .serif))
-                    .minimumScaleFactor(0.1)
-                    .imageScale(.large)
-            }
-            .buttonStyle(.borderless)
-            .accentColor(.white)
-            .shadow(radius: 15)
+            HStack {
+                Button(action: { userTappedEmptyPlannedBlock(at: index) }) {
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 100, weight: .light, design: .serif))
+                        .minimumScaleFactor(0.1)
+                        .imageScale(.large)
+                }
+                .buttonStyle(.borderless)
+                .accentColor(.white)
+                .shadow(radius: 15)
 
+                Spacer()
+            }
         }
         else {
             // to ensure spacing
