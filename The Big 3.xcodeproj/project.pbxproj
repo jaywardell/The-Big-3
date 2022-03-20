@@ -8,54 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */; };
-		7C0032D127B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */; };
 		7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */; };
-		7C0A092527B3854000F2C688 /* Planner+PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */; };
 		7C0A092727B3857300F2C688 /* Planner+PlannerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */; };
 		7C4707BC27B614D70080B419 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
-		7C4707BD27B614D70080B419 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A627BE714400DF0F8D /* AppModel.swift */; };
-		7C4EC7A827BE714400DF0F8D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A627BE714400DF0F8D /* AppModel.swift */; };
 		7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
-		7C4EC7AB27BE7C7300DF0F8D /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
 		7C66162A27BD350A000AC97A /* TitledWithNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162927BD350A000AC97A /* TitledWithNextButton.swift */; };
-		7C66162B27BD350A000AC97A /* TitledWithNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162927BD350A000AC97A /* TitledWithNextButton.swift */; };
 		7C66162F27BD4F24000AC97A /* Animation+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162E27BD4F24000AC97A /* Animation+Constants.swift */; };
-		7C66163027BD4F24000AC97A /* Animation+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162E27BD4F24000AC97A /* Animation+Constants.swift */; };
 		7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163127BDC340000AC97A /* PlanArchiver.swift */; };
-		7C66163327BDC340000AC97A /* PlanArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163127BDC340000AC97A /* PlanArchiver.swift */; };
 		7C66163527BDC350000AC97A /* PlanArchiverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163427BDC350000AC97A /* PlanArchiverTest.swift */; };
 		7C66163727BDC8CD000AC97A /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */; };
-		7C66163827BDC8CD000AC97A /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */; };
 		7C89F52527B4CDCD0033B8ED /* AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */; };
-		7C89F52627B4CDCD0033B8ED /* AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
-		7CB8720827B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
 		7CB8720927B33A89009D5539 /* TheBig3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871E027B33A88009D5539 /* TheBig3View.swift */; };
-		7CB8720A27B33A89009D5539 /* TheBig3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871E027B33A88009D5539 /* TheBig3View.swift */; };
 		7CB8720B27B33A89009D5539 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB871E127B33A89009D5539 /* Assets.xcassets */; };
-		7CB8720C27B33A89009D5539 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB871E127B33A89009D5539 /* Assets.xcassets */; };
 		7CB8722527B33BF9009D5539 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722427B33BF9009D5539 /* Planner.swift */; };
-		7CB8722627B33BF9009D5539 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722427B33BF9009D5539 /* Planner.swift */; };
 		7CB8722A27B33C36009D5539 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722927B33C36009D5539 /* Plan.swift */; };
-		7CB8722B27B33C36009D5539 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722927B33C36009D5539 /* Plan.swift */; };
 		7CB8723A27B33CB9009D5539 /* PlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8723927B33CB9009D5539 /* PlanTests.swift */; };
 		7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724D27B33DFD009D5539 /* PlannerView.swift */; };
-		7CB8724F27B33DFD009D5539 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724D27B33DFD009D5539 /* PlannerView.swift */; };
 		7CB8725027B34B6A009D5539 /* PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724A27B33D0E009D5539 /* PlannerTests.swift */; };
 		7CD547B627E6DC760009F9DD /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD547B527E6DC760009F9DD /* LogView.swift */; };
-		7CD547B727E6DC760009F9DD /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD547B527E6DC760009F9DD /* LogView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7CB8723427B33C93009D5539 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7CB871DA27B33A88009D5539 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7CB871EB27B33A89009D5539;
-			remoteInfo = "The Big 3 (macOS)";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.AccomplishmentsView.swift; sourceTree = "<group>"; };
@@ -74,7 +47,6 @@
 		7CB871E027B33A88009D5539 /* TheBig3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBig3View.swift; sourceTree = "<group>"; };
 		7CB871E127B33A89009D5539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CB871E627B33A89009D5539 /* The Big 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Big 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CB871EC27B33A89009D5539 /* The Big 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Big 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB871EE27B33A89009D5539 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		7CB8722427B33BF9009D5539 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
 		7CB8722927B33C36009D5539 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
@@ -87,13 +59,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		7CB871E327B33A89009D5539 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CB871E927B33A89009D5539 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -155,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				7CB871E627B33A89009D5539 /* The Big 3.app */,
-				7CB871EC27B33A89009D5539 /* The Big 3.app */,
 				7CB8723027B33C93009D5539 /* ModelTestsMacOS.xctest */,
 			);
 			name = Products;
@@ -233,23 +197,6 @@
 			productReference = 7CB871E627B33A89009D5539 /* The Big 3.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7CB871EB27B33A89009D5539 /* The Big 3 (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7CB8721227B33A89009D5539 /* Build configuration list for PBXNativeTarget "The Big 3 (macOS)" */;
-			buildPhases = (
-				7CB871E827B33A89009D5539 /* Sources */,
-				7CB871E927B33A89009D5539 /* Frameworks */,
-				7CB871EA27B33A89009D5539 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "The Big 3 (macOS)";
-			productName = "The Big 3 (macOS)";
-			productReference = 7CB871EC27B33A89009D5539 /* The Big 3.app */;
-			productType = "com.apple.product-type.application";
-		};
 		7CB8722F27B33C93009D5539 /* ModelTestsMacOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CB8723627B33C93009D5539 /* Build configuration list for PBXNativeTarget "ModelTestsMacOS" */;
@@ -261,7 +208,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7CB8723527B33C93009D5539 /* PBXTargetDependency */,
 			);
 			name = ModelTestsMacOS;
 			productName = ModelTestsMacOS;
@@ -279,9 +225,6 @@
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					7CB871E527B33A89009D5539 = {
-						CreatedOnToolsVersion = 13.2.1;
-					};
-					7CB871EB27B33A89009D5539 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 					7CB8722F27B33C93009D5539 = {
@@ -305,7 +248,6 @@
 			projectRoot = "";
 			targets = (
 				7CB871E527B33A89009D5539 /* The Big 3 (iOS) */,
-				7CB871EB27B33A89009D5539 /* The Big 3 (macOS) */,
 				7CB8722F27B33C93009D5539 /* ModelTestsMacOS */,
 			);
 		};
@@ -317,14 +259,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CB8720B27B33A89009D5539 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7CB871EA27B33A89009D5539 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7CB8720C27B33A89009D5539 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,29 +295,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7CB871E827B33A89009D5539 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7C0A092527B3854000F2C688 /* Planner+PlannerView.swift in Sources */,
-				7C66163827BDC8CD000AC97A /* UserDefaults+Codable.swift in Sources */,
-				7C66163027BD4F24000AC97A /* Animation+Constants.swift in Sources */,
-				7CB8722B27B33C36009D5539 /* Plan.swift in Sources */,
-				7C4EC7AB27BE7C7300DF0F8D /* CountedRows.swift in Sources */,
-				7CD547B727E6DC760009F9DD /* LogView.swift in Sources */,
-				7CB8724F27B33DFD009D5539 /* PlannerView.swift in Sources */,
-				7C66163327BDC340000AC97A /* PlanArchiver.swift in Sources */,
-				7CB8720A27B33A89009D5539 /* TheBig3View.swift in Sources */,
-				7C4EC7A827BE714400DF0F8D /* AppModel.swift in Sources */,
-				7C66162B27BD350A000AC97A /* TitledWithNextButton.swift in Sources */,
-				7CB8720827B33A89009D5539 /* The_Big_3App.swift in Sources */,
-				7C0032D127B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */,
-				7CB8722627B33BF9009D5539 /* Planner.swift in Sources */,
-				7C4707BD27B614D70080B419 /* GoalView.swift in Sources */,
-				7C89F52627B4CDCD0033B8ED /* AccomplishmentsView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7CB8722C27B33C93009D5539 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -396,14 +307,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7CB8723527B33C93009D5539 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7CB871EB27B33A89009D5539 /* The Big 3 (macOS) */;
-			targetProxy = 7CB8723427B33C93009D5539 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7CB8720D27B33A89009D5539 /* Debug */ = {
@@ -578,62 +481,6 @@
 			};
 			name = Release;
 		};
-		7CB8721327B33A89009D5539 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HAJV4F6VL;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3";
-				PRODUCT_NAME = "The Big 3";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		7CB8721427B33A89009D5539 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HAJV4F6VL;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3";
-				PRODUCT_NAME = "The Big 3";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		7CB8723727B33C93009D5539 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -702,15 +549,6 @@
 			buildConfigurations = (
 				7CB8721027B33A89009D5539 /* Debug */,
 				7CB8721127B33A89009D5539 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7CB8721227B33A89009D5539 /* Build configuration list for PBXNativeTarget "The Big 3 (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7CB8721327B33A89009D5539 /* Debug */,
-				7CB8721427B33A89009D5539 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
