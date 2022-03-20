@@ -14,7 +14,7 @@ struct The_Big_3App: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(planner: model.planner)
+            TheBig3View(planner: model.planner)
                 .accentColor(Color(hue: 5/8, saturation:21/34, brightness: 26/34))
         }
     }

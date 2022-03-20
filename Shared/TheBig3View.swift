@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct ContentView: View {
+struct TheBig3View: View {
     
     @ObservedObject var planner: Planner
     
