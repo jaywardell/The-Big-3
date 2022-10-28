@@ -55,9 +55,9 @@ struct PlannerView {
     @FocusState private var isFocused: Bool
 
     let colors = [
-        Color.mint,
-        Color.mint.opacity(31/34),
-        Color.mint.opacity(29/34),
+        Color.accentColor,
+        Color.accentColor.opacity(31/34),
+        Color.accentColor.opacity(29/34),
     ]
 }
 
@@ -101,7 +101,6 @@ extension PlannerView: View {
                     .focused($isFocused)
                     .font(.largeTitle)
                     .minimumScaleFactor(0.1)
-                    .foregroundColor(.white)
                     .onAppear { isFocused = true }
                     .onSubmit {
                         userEnteredNewPlannedTitle(newPlannedTitle, at: index)
@@ -127,8 +126,6 @@ extension PlannerView: View {
                             .imageScale(.large)
                     }
                     .buttonStyle(.borderless)
-                    .accentColor(.white)
-                    .shadow(radius: 15)
 
                 }
             }
@@ -142,8 +139,11 @@ extension PlannerView: View {
         
     @ViewBuilder private func background(at index: Int) -> some View {
         
-        let colors = [ colors[index], colors[index].opacity(13/34)  ]
-        RadialGradient(colors: colors, center: .center, startRadius: 0, endRadius: 1000)
+        if nil != viewModel.plannedAt(index)  {
+            
+            let colors = [ colors[index], colors[index].opacity(13/34)  ]
+            RadialGradient(colors: colors, center: .center, startRadius: 0, endRadius: 1000)
+        }
     }
 
     var body: some View {
