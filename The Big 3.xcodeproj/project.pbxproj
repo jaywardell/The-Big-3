@@ -54,6 +54,7 @@
 		7CB8723927B33CB9009D5539 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
 		7CB8724A27B33D0E009D5539 /* PlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerTests.swift; sourceTree = "<group>"; };
 		7CB8724D27B33DFD009D5539 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
+		7CB8C5BD27F091DE00D60FA0 /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		7CD547B527E6DC760009F9DD /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +96,7 @@
 		7CB871D927B33A88009D5539 = {
 			isa = PBXGroup;
 			children = (
+				7CB8C5BD27F091DE00D60FA0 /* todo.md */,
 				7CB871DE27B33A88009D5539 /* Shared */,
 				7CB871ED27B33A89009D5539 /* macOS */,
 				7CB8723127B33C93009D5539 /* ModelTestsMacOS */,
