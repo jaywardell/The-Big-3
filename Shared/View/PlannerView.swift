@@ -69,11 +69,15 @@ extension PlannerView: View {
         if let planned = viewModel.plannedAt(index) {
             HStack {
                                 
-                Text(planned.title)
-                    .font(.largeTitle)
-                    .minimumScaleFactor(0.01)
-                    .foregroundColor(.white)
-                    .shadow(radius: 15)
+                VStack {
+                    Text(planned.title)
+                        .font(.largeTitle)
+                        .minimumScaleFactor(0.01)
+                        .foregroundColor(.white)
+                        .shadow(radius: 15)
+                    
+                    Spacer()
+                }
 
                 Spacer()
                 
@@ -92,33 +96,41 @@ extension PlannerView: View {
             .padding()
         }
         else if index == selectedIndex {
-            TextField("enter a goal…", text: $newPlannedTitle)
-                .focused($isFocused)
-                .font(.largeTitle)
-                .minimumScaleFactor(0.1)
-                .foregroundColor(.white)
-                .onAppear { isFocused = true }
-                .onSubmit {
-                    userEnteredNewPlannedTitle(newPlannedTitle, at: index)
-                    newPlannedTitle = ""
-                    selectedIndex = nil
-                }
-                .padding()
+            VStack {
+                TextField("enter a goal…", text: $newPlannedTitle)
+                    .focused($isFocused)
+                    .font(.largeTitle)
+                    .minimumScaleFactor(0.1)
+                    .foregroundColor(.white)
+                    .onAppear { isFocused = true }
+                    .onSubmit {
+                        userEnteredNewPlannedTitle(newPlannedTitle, at: index)
+                        newPlannedTitle = ""
+                        selectedIndex = nil
+                    }
+                
+                Spacer()
+            }
+            .padding()
         }
         else if index == 0 || viewModel.plannedAt(index-1) != nil {
             HStack {
                 Spacer()
 
-                Button(action: { userTappedEmptyPlannedBlock(at: index) }) {
-                    Image(systemName: "plus.circle.fill")
-                        .font(.largeTitle)
-                        .minimumScaleFactor(0.1)
-                        .imageScale(.large)
-                }
-                .buttonStyle(.borderless)
-                .accentColor(.white)
-                .shadow(radius: 15)
+                VStack {
+                    Spacer()
 
+                    Button(action: { userTappedEmptyPlannedBlock(at: index) }) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.largeTitle)
+                            .minimumScaleFactor(0.1)
+                            .imageScale(.large)
+                    }
+                    .buttonStyle(.borderless)
+                    .accentColor(.white)
+                    .shadow(radius: 15)
+
+                }
             }
             .padding()
         }
