@@ -55,9 +55,9 @@ struct PlannerView {
     @FocusState private var isFocused: Bool
 
     let colors = [
-        Color(hue: 1/2, saturation:21/34, brightness: 26/34),
-        Color(hue: 5/8, saturation:21/34, brightness: 26/34),
-        Color(hue: 3/4, saturation:21/34, brightness: 26/34)
+        Color.mint,
+        Color.mint.opacity(31/34),
+        Color.mint.opacity(29/34),
     ]
 }
 
