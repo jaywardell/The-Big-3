@@ -45,9 +45,9 @@ struct AccomplishmentsView {
     @ObservedObject var viewModel: ViewModel
 
     let colors = [
-        Color.mint,
-        Color.mint.opacity(31/34),
-        Color.mint.opacity(29/34),
+        Color.accentColor,
+        Color.accentColor.opacity(31/34),
+        Color.accentColor.opacity(29/34),
     ]
 
 }
