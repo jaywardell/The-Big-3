@@ -70,7 +70,7 @@ extension PlannerView: View {
             HStack {
                                 
                 Text(planned.title)
-                    .font(.system(size: 1000, weight: .light, design: .serif))
+                    .font(.largeTitle)
                     .minimumScaleFactor(0.01)
                     .foregroundColor(.white)
                     .shadow(radius: 15)
@@ -94,7 +94,7 @@ extension PlannerView: View {
         else if index == selectedIndex {
             TextField("enter a goal…", text: $newPlannedTitle)
                 .focused($isFocused)
-                .font(.system(size: 100, weight: .light, design: .serif))
+                .font(.largeTitle)
                 .minimumScaleFactor(0.1)
                 .foregroundColor(.white)
                 .onAppear { isFocused = true }
@@ -107,9 +107,11 @@ extension PlannerView: View {
         }
         else if index == 0 || viewModel.plannedAt(index-1) != nil {
             HStack {
+                Spacer()
+
                 Button(action: { userTappedEmptyPlannedBlock(at: index) }) {
                     Image(systemName: "plus.circle.fill")
-                        .font(.system(size: 100, weight: .light, design: .serif))
+                        .font(.largeTitle)
                         .minimumScaleFactor(0.1)
                         .imageScale(.large)
                 }
@@ -117,8 +119,8 @@ extension PlannerView: View {
                 .accentColor(.white)
                 .shadow(radius: 15)
 
-                Spacer()
             }
+            .padding()
         }
         else {
             // to ensure spacing
@@ -136,6 +138,7 @@ extension PlannerView: View {
         TitledWithToolbar("What are the Big 3?") {
             CountedRows(rows: viewModel.allowed) { index in
                 planBlock(at: index)
+                    .padding()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(background(at: index)
                     )
