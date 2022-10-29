@@ -147,19 +147,29 @@ extension PlannerView: View {
     }
 
     var body: some View {
-        TitledWithToolbar("What are the Big 3?") {
-            CountedRows(rows: viewModel.allowed) { index in
-                planBlock(at: index)
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(background(at: index)
-                    )
+        
+        NavigationView {
+            VStack {
+                CountedRows(rows: viewModel.allowed) { index in
+                    planBlock(at: index)
+                        .padding()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(background(at: index)
+                        )
+                }
+                
+                HStack {
+                    Spacer()
+                    Button(action: viewModel.start) {
+                        Text("Start")
+                    }
+                    .font(.largeTitle)
+                    .buttonStyle(.borderedProminent)
+                    .opacity(viewModel.isFull() ? 1 : 0)
+                }
+                .padding()
             }
-        } toolbar: {
-            Button(action: viewModel.start) {
-                Text("Start")
-            }
-            .opacity(viewModel.isFull() ? 1 : 0)
+            .navigationTitle("What are the Big 3?")
         }
     }
         
