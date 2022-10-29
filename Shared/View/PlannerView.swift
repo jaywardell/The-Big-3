@@ -158,16 +158,13 @@ extension PlannerView: View {
                         )
                 }
                 
-                HStack {
-                    Spacer()
-                    Button(action: viewModel.start) {
-                        Text("Start")
-                    }
-                    .font(.largeTitle)
-                    .buttonStyle(.borderedProminent)
-                    .opacity(viewModel.isFull() ? 1 : 0)
+                Button(action: viewModel.start) {
+                    Text("Start")
                 }
+                .font(.largeTitle)
+                .buttonStyle(.borderedProminent)
                 .padding()
+                .opacity(viewModel.isFull() ? 1 : 0)
             }
             .navigationTitle("What are the Big 3?")
         }

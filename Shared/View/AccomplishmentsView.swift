@@ -66,16 +66,14 @@ extension AccomplishmentsView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                HStack {
                     
-                    Button(action: viewModel.done) {
-                        Text("Plan the Next Big 3")
-                    }
-                    .font(.largeTitle)
-                    .buttonStyle(.borderedProminent)
-                    .opacity(viewModel.userIsFinished() ? 1 : 0)
+                Button(action: viewModel.done) {
+                    Text("Plan the Next Big 3")
                 }
+                .font(.largeTitle)
+                .buttonStyle(.borderedProminent)
                 .padding()
+                .opacity(viewModel.userIsFinished() ? 1 : 0)
             }
             .navigationTitle("The Big 3")
         }
