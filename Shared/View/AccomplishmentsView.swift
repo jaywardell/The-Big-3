@@ -58,17 +58,26 @@ extension AccomplishmentsView: View {
             
     
     var body: some View {
-        TitledWithToolbar("The Big 3") {
-            CountedRows(rows: viewModel.count) { index in
-                GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+        NavigationView {
+            VStack {
+                CountedRows(rows: viewModel.count) { index in
+                    GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+                HStack {
+                    
+                    Button(action: viewModel.done) {
+                        Text("Plan the Next Big 3")
+                    }
+                    .font(.largeTitle)
+                    .buttonStyle(.borderedProminent)
+                    .opacity(viewModel.userIsFinished() ? 1 : 0)
+                }
+                .padding()
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } toolbar: {
-            Button(action: viewModel.done) {
-                Text("Done")
-            }
-            .opacity(viewModel.userIsFinished() ? 1 : 0)
+            .navigationTitle("The Big 3")
         }
     }
 }
