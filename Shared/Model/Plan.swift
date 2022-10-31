@@ -41,6 +41,8 @@ final class Plan: Identifiable {
         case goalIsAlreadyCompleted
         case notComplete
     }
+
+    static var GoalWasCompleted: Notification.Name { Notification.Name(rawValue: #function) }
     
     init(allowed: Int = 0) {
         self.allowed = allowed
@@ -102,6 +104,8 @@ extension Plan {
         guard goal.state != .completed else { throw Error.goalIsAlreadyCompleted }
 
         goals[index] = Goal(title: goal.title, state: .completed)
+        
+        NotificationCenter.default.post(name: Self.GoalWasCompleted, object: self)
     }
     
     func remnant() throws -> Plan {
