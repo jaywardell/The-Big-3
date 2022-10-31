@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CompletionLogger {
+struct CompletionLog {
     
     enum Error: Swift.Error {
         case Unknown

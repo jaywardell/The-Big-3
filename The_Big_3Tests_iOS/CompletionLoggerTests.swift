@@ -13,12 +13,12 @@ import The_Big_3
 final class CompletionLoggerTests: XCTestCase {
     
     func test_log_throws_if_goal_not_completed() {
-        let sut = CompletionLogger()
+        let sut = CompletionLog()
         
         let unfinished = Plan.Goal(title: "unfinished", state: .pending)
         
         XCTAssertThrowsError(try sut.log(unfinished)) { error in
-            XCTAssertEqual(error as? CompletionLogger.Error, .GoalIsNotCompleted)
+            XCTAssertEqual(error as? CompletionLog.Error, .GoalIsNotCompleted)
         }
     }
     
