@@ -24,4 +24,8 @@ extension XCTestCase {
         XCTAssertEqual(callCount, expected, file: file, line: line)
     }
     
+    func expectNoChanges<Type>(for publisher: AnyPublisher<Type, Never>, when callback: () throws ->(), file: StaticString = #filePath, line: UInt = #line) rethrows {
+        try expectChanges(for: publisher, count: 0, when: callback)
+    }
+
 }

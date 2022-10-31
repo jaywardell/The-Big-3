@@ -444,7 +444,7 @@ class PlanTests: XCTestCase {
 
     
     private func expectNoChanges(on sut: Plan, when callback: () throws ->(), file: StaticString = #filePath, line: UInt = #line) rethrows {
-        try expectChanges(on: sut, count: 0, when: callback)
+        try expectNoChanges(for: sut.publisher.eraseToAnyPublisher(), when: callback)
     }
 
 }
