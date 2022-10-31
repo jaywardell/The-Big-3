@@ -274,10 +274,6 @@ class PlanTests: XCTestCase {
         try expectChanges(for: token, count: 1) {
             try sut.completeGoal(at: 0)
         }
-        
-//        try expectChanges(on: sut, count: 1) {
-//            try sut.completeGoal(at: 0)
-//        }
     }
     
     func test_complete_goal_at_index_throws_if_goal_is_already_completed() throws {
