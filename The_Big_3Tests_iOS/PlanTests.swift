@@ -441,20 +441,6 @@ class PlanTests: XCTestCase {
         try expectChanges(for: sut.publisher.eraseToAnyPublisher(), count: expected, when: callback)
     }
 
-    private func expectChanges(for publisher: AnyPublisher<Void, Never>, count expected: Int, when callback: () throws ->(), file: StaticString = #filePath, line: UInt = #line) rethrows {
-        
-        var callCount = 0
-        var bag = Set<AnyCancellable>()
-        publisher.sink {
-            callCount += 1
-        }
-        .store(in: &bag)
-        
-        try callback()
-        
-        XCTAssertEqual(callCount, expected, file: file, line: line)
-
-    }
 
     
     private func expectNoChanges(on sut: Plan, when callback: () throws ->(), file: StaticString = #filePath, line: UInt = #line) rethrows {
