@@ -9,13 +9,15 @@ import Foundation
 
 struct CompletionLog {
     
+    private(set) var dates: [DateComponents] = []
+    
     enum Error: Swift.Error {
         case Unknown
         case GoalIsNotCompleted
     }
     
     func log(_ goal: Plan.Goal) throws {
-        throw Error.GoalIsNotCompleted
+        guard goal.state == .completed else { throw Error.GoalIsNotCompleted }
     }
     
 }
