@@ -9,6 +9,7 @@ import Foundation
 
 protocol CompletionLogArchive {
     func load() -> [Date: String]
+    func record(_ string: String, at date: Date)
 }
 
 struct CompletionLog {
@@ -36,6 +37,8 @@ struct CompletionLog {
         dates.sort()
         
         goalsLogged[date] = goal.title
+        
+        archive.record(goal.title, at: date)
     }
     
     func titleForGoal(completedAt date: Date) -> String? {

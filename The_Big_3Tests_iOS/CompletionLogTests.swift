@@ -81,6 +81,16 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertNoThrow(try sut.log(finishedGoal))
     }
     
+    func test_log_calls_archive_record() throws {
+        let spy = CompletionLogArchiveSpy()
+        var sut = makeSUT(archive: spy)
+        
+        try sut.log(finishedGoal)
+        
+        XCTAssertEqual(spy.recordCount, 1)
+        
+    }
+    
     // MARK: - dates
     
     func test_dates_isEmpty_on_init() {
@@ -172,7 +182,8 @@ final class CompletionLogTests: XCTestCase {
         let exampleData: [Date:String]
         
         private(set) var loadCount = 0
-        
+        private(set) var recordCount = 0
+
         init(exampleDate: [Date:String] = [:]) {
             self.exampleData = exampleDate
         }
@@ -180,6 +191,10 @@ final class CompletionLogTests: XCTestCase {
         func load() -> [Date: String] {
             loadCount += 1
             return exampleData
+        }
+        
+        func record(_ string: String, at date: Date) {
+            recordCount += 1
         }
     }
 }
