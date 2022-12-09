@@ -131,8 +131,9 @@ final class CompletionLogTests: XCTestCase {
         
         private(set) var loadCount = 0
         
-        func load() {
+        func load() -> [Date: String] {
             loadCount += 1
+            return [:]
         }
     }
 }
