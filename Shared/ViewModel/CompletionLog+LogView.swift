@@ -10,7 +10,7 @@ import Foundation
 extension CompletionLog {
     
     func historyViewModel() -> LogView.ViewModel {
-        .init(days: days) { day in
+        .init(days: days, publisher: logChanged.eraseToAnyPublisher() ) { day in
             timesForGoals(completedOn: day).compactMap {
                 guard let goal = titleForGoal(completedAt: $0) else { return nil }
                 return LogEntryRow.ViewModel(time: $0, goal: goal)

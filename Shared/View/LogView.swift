@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LogView: View {
     
@@ -13,9 +14,18 @@ struct LogView: View {
         @Published var days: [Date]
         let goalsForDay: (Date)->[LogEntryRow.ViewModel]
         
-        init(days: [Date], goalsForDay: @escaping (Date)->[LogEntryRow.ViewModel]) {
+        private var subscriptions = Set<AnyCancellable>()
+        init(days: [Date],
+             publisher: AnyPublisher<[Date], Never>?,
+             goalsForDay: @escaping (Date)->[LogEntryRow.ViewModel]
+        ) {
             self.days = days
             self.goalsForDay = goalsForDay
+            
+            publisher?.sink { [weak self] _ in
+                self?.objectWillChange.send()
+            }
+            .store(in: &subscriptions)
         }
     }
     
@@ -40,7 +50,9 @@ struct LogView: View {
 
 struct LogView_Previews: PreviewProvider {
     static var previews: some View {
-        LogView(viewModel: .init(days: [Date(), Date().addingTimeInterval(24*3600)], goalsForDay: {
+        LogView(viewModel: .init(days: [Date(), Date().addingTimeInterval(24*3600)],
+                                 publisher: PassthroughSubject<[Date], Never>().eraseToAnyPublisher(),
+                                 goalsForDay: {
             [
                 LogEntryRow.ViewModel(time: $0, goal: "something awesome")
             ]
