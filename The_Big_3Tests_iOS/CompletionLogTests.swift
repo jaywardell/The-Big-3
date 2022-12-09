@@ -13,13 +13,13 @@ import The_Big_3
 final class CompletionLogTests: XCTestCase {
     
     func test_dates_isEmpty_on_init() {
-        var sut = CompletionLog()
+        var sut = makeSUT()
         
         XCTAssertEqual(sut.dates, [])
     }
     
     func test_log_throws_if_goal_is_pending() {
-        var sut = CompletionLog()
+        var sut = makeSUT()
         
         let unfinished = Plan.Goal(title: "unfinished", state: .pending)
         
@@ -29,7 +29,7 @@ final class CompletionLogTests: XCTestCase {
     }
 
     func test_log_throws_if_goal_is_deferred() {
-        var sut = CompletionLog()
+        var sut = makeSUT()
         
         let unfinished = Plan.Goal(title: "unfinished", state: .deferred)
         
@@ -39,7 +39,7 @@ final class CompletionLogTests: XCTestCase {
     }
 
     func test_log_does_not_throw_if_goal_is_completed() throws {
-        var sut = CompletionLog()
+        var sut = makeSUT()
         
         let finished = Plan.Goal(title: "finished", state: .completed)
         
@@ -47,12 +47,18 @@ final class CompletionLogTests: XCTestCase {
     }
     
     func test_dates_is_updated_by_log() throws {
-        var sut = CompletionLog()
+        var sut = makeSUT()
         let finished = Plan.Goal(title: "finished", state: .completed)
         let date = Date()
 
         try sut.log(finished, date: date)
         
         XCTAssert(sut.dates.contains(date))
+    }
+    
+    // METHOD: - Helpers
+    
+    private func makeSUT() -> CompletionLog {
+        CompletionLog()
     }
 }
