@@ -21,6 +21,8 @@ struct CompletionLog {
         guard goal.state == .completed else { throw Error.GoalIsNotCompleted }
         
         dates.append(date)
+        dates.sort()
+        
         goalsLogged[date] = goal.title
     }
     

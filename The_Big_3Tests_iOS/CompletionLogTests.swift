@@ -70,6 +70,28 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(sut.titleForGoal(completedAt: date), toLog.title)
     }
     
+    func test_dates_and_titleForGoal_sorting() throws {
+        var sut = makeSUT()
+        
+        let goal1 = Plan.Goal(title: "1", state: .completed)
+        let goal2 = Plan.Goal(title: "2", state: .completed)
+        let goal3 = Plan.Goal(title: "3", state: .completed)
+        
+        let date1 = Date()
+        let date2 = Date().addingTimeInterval(1)
+        let date3 = Date().addingTimeInterval(2)
+
+        // log them intentionally out of order
+        try sut.log(goal1, date: date1)
+        try sut.log(goal3, date: date3)
+        try sut.log(goal2, date: date2)
+        
+        XCTAssertEqual(sut.dates, [date1, date2, date3])
+        XCTAssertEqual(sut.titleForGoal(completedAt: date1), goal1.title)
+        XCTAssertEqual(sut.titleForGoal(completedAt: date2), goal2.title)
+        XCTAssertEqual(sut.titleForGoal(completedAt: date3), goal3.title)
+    }
+    
     // METHOD: - Helpers
     
     private func makeSUT() -> CompletionLog {
