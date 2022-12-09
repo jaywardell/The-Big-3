@@ -69,9 +69,6 @@ final class CompletionLogTests: XCTestCase {
         try sut.log(goal2, date: date2)
         
         XCTAssertEqual(sut.dates, [date1, date2, date3])
-//        XCTAssertEqual(sut.titleForGoal(completedAt: date1), goal1.title)
-//        XCTAssertEqual(sut.titleForGoal(completedAt: date2), goal2.title)
-//        XCTAssertEqual(sut.titleForGoal(completedAt: date3), goal3.title)
     }
 
     // MARK: - titleForGoal
