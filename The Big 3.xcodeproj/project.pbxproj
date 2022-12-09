@@ -62,7 +62,6 @@
 		7CB871E027B33A88009D5539 /* TheBig3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBig3View.swift; sourceTree = "<group>"; };
 		7CB871E127B33A89009D5539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CB871E627B33A89009D5539 /* The Big 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Big 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CB871EE27B33A89009D5539 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		7CB8722427B33BF9009D5539 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
 		7CB8722927B33C36009D5539 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		7CB8723927B33CB9009D5539 /* PlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTests.swift; sourceTree = "<group>"; };
@@ -114,7 +113,6 @@
 			children = (
 				7CB8C5BD27F091DE00D60FA0 /* todo.md */,
 				7CB871DE27B33A88009D5539 /* Shared */,
-				7CB871ED27B33A89009D5539 /* macOS */,
 				7CDE2730290F50EA00186BFD /* The_Big_3Tests_iOS */,
 				7CB871E727B33A89009D5539 /* Products */,
 			);
@@ -141,14 +139,6 @@
 				7CDE272F290F50EA00186BFD /* The_Big_3Tests_iOS.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7CB871ED27B33A89009D5539 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				7CB871EE27B33A89009D5539 /* macOS.entitlements */,
-			);
-			path = macOS;
 			sourceTree = "<group>";
 		};
 		7CB8722727B33C11009D5539 /* ViewModel */ = {
