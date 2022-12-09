@@ -17,7 +17,7 @@ struct LogEntryRow: View {
     let viewModel: ViewModel
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             Text(viewModel.goal)
                 .font(.body)
             Spacer()
@@ -30,6 +30,9 @@ struct LogEntryRow: View {
 
 struct LogEntryRow_Previews: PreviewProvider {
     static var previews: some View {
-        LogEntryRow(viewModel: .init(time: Date(), goal: "Brush Teeth"))
+        List {
+            LogEntryRow(viewModel: .init(time: Date(), goal: "Brush Teeth"))
+            LogEntryRow(viewModel: .init(time: Date(), goal: "figure out if I really believe that the universe is continually expanding or whethere it's just an illusion caused by some other property of space-time that causes a red shift at extreme distance"))
+        }
     }
 }
