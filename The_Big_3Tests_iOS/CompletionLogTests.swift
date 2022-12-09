@@ -33,6 +33,23 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(sut.titleForGoal(completedAt: expectedDate), expectedTitle)
     }
 
+    func test_init_ensures_dates_are_sorted() throws {
+        let date1 = Date().addingTimeInterval(1)
+        let date2 = Date().addingTimeInterval(2)
+        let date3 = Date().addingTimeInterval(3)
+        let date4 = Date().addingTimeInterval(4)
+        let expectedOrder = [date1, date2, date3, date4]
+        let archive = CompletionLogArchiveSpy(exampleDate: [
+            date1: "example1",
+            date2: "example2",
+            date3: "example1",
+            date4: "example2"
+        ])
+        let sut = makeSUT(archive: archive)
+
+        XCTAssertEqual(sut.dates, expectedOrder)
+    }
+
     func test_init_calls_loadDDates_from_archive() {
         let archive = CompletionLogArchiveSpy()
         _ = makeSUT(archive: archive)
