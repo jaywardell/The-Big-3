@@ -32,6 +32,7 @@ final class Plan: Identifiable {
     let publisher = PassthroughSubject<Void, Never>()
     
     enum Error: Swift.Error {
+        case invalidTitle
         case indexExceedsAllowed
         case goalExistsAtIndex
         case noGoalExistsAtIndex
@@ -76,7 +77,8 @@ extension Plan {
     }
         
     func set(_ goal: String, at index: Int) throws {
-        let goal = goal.trimmingCharacters(in: .whitespacesAndNewlines)
+        let goal = goal //.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !goal.isEmpty else { throw Error.invalidTitle }
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil == goals[index] else { throw Error.goalExistsAtIndex }
         guard !goals.values.contains(where: { $0.title == goal }) else { throw Error.goalIsAlreadyInPlan }
