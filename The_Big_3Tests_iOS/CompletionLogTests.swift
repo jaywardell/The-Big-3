@@ -20,37 +20,31 @@ final class CompletionLogTests: XCTestCase {
     
     func test_log_throws_if_goal_is_pending() {
         var sut = makeSUT()
-        
-        let unfinished = Plan.Goal(title: "unfinished", state: .pending)
-        
-        XCTAssertThrowsError(try sut.log(unfinished)) { error in
+                
+        XCTAssertThrowsError(try sut.log(pendingGoal)) { error in
             XCTAssertEqual(error as? CompletionLog.Error, .GoalIsNotCompleted)
         }
     }
 
     func test_log_throws_if_goal_is_deferred() {
         var sut = makeSUT()
-        
-        let unfinished = Plan.Goal(title: "unfinished", state: .deferred)
-        
-        XCTAssertThrowsError(try sut.log(unfinished)) { error in
+                
+        XCTAssertThrowsError(try sut.log(deferredGoal)) { error in
             XCTAssertEqual(error as? CompletionLog.Error, .GoalIsNotCompleted)
         }
     }
 
     func test_log_does_not_throw_if_goal_is_completed() throws {
         var sut = makeSUT()
-        
-        let finished = Plan.Goal(title: "finished", state: .completed)
-        
-        XCTAssertNoThrow(try sut.log(finished))
+                
+        XCTAssertNoThrow(try sut.log(finishedGoal))
     }
     
     // MARK: - dates
     
     func test_dates_is_updated_by_log() throws {
         var sut = makeSUT()
-        let finished = Plan.Goal(title: "finished", state: .completed)
+        let finished = finishedGoal
         let date = Date()
 
         try sut.log(finished, date: date)
@@ -68,7 +62,7 @@ final class CompletionLogTests: XCTestCase {
     
     func test_titleForGoal_return_title_of_goal_logged_for_fate_it_was_logged() throws {
         var sut = makeSUT()
-        let toLog = Plan.Goal(title: "finished", state: .completed)
+        let toLog = finishedGoal
         let date = Date()
         
         try sut.log(toLog, date: date)
@@ -81,4 +75,8 @@ final class CompletionLogTests: XCTestCase {
     private func makeSUT() -> CompletionLog {
         CompletionLog()
     }
+    
+    private var pendingGoal: Plan.Goal { Plan.Goal(title: "unfinished", state: .pending) }
+    private var deferredGoal: Plan.Goal { Plan.Goal(title: "unfinished", state: .deferred) }
+    private var finishedGoal: Plan.Goal { Plan.Goal(title: "finished", state: .completed) }
 }
