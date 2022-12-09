@@ -10,6 +10,7 @@ import Foundation
 struct CompletionLog {
     
     private(set) var dates: [Date] = []
+    private var goalsLogged = [Date:String]()
     
     enum Error: Swift.Error {
         case Unknown
@@ -20,10 +21,11 @@ struct CompletionLog {
         guard goal.state == .completed else { throw Error.GoalIsNotCompleted }
         
         dates.append(date)
+        goalsLogged[date] = goal.title
     }
     
     func titleForGoal(completedAt date: Date) -> String? {
-        nil
+        goalsLogged[date]
     }
     
 }
