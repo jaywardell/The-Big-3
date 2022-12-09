@@ -13,7 +13,7 @@ import The_Big_3
 final class CompletionLogTests: XCTestCase {
     
     func test_dates_isEmpty_on_init() {
-        var sut = makeSUT()
+        let sut = makeSUT()
         
         XCTAssertEqual(sut.dates, [])
     }
