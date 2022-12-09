@@ -77,7 +77,7 @@ extension Plan {
     }
         
     func set(_ goal: String, at index: Int) throws {
-        let goal = goal //.trimmingCharacters(in: .whitespacesAndNewlines)
+        let goal = goal.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !goal.isEmpty else { throw Error.invalidTitle }
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil == goals[index] else { throw Error.goalExistsAtIndex }

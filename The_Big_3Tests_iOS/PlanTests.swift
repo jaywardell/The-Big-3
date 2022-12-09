@@ -100,9 +100,17 @@ class PlanTests: XCTestCase {
         expect(.invalidTitle) {
             try sut.set("", at: 1)
         }
-
     }
     
+    func test_set_foal_at_throws_if_title_is_all_whitespace() throws {
+        
+        let sut = Plan(allowed: 1)
+        
+        expect(.invalidTitle) {
+            try sut.set("    ", at: 1)
+        }
+    }
+
     func test_removeGoal_at_throws_if_index_is_not_allowed() {
         let sut = Plan()
         
