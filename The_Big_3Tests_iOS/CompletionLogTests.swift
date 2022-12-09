@@ -173,6 +173,25 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(sut.days, found)
     }
     
+    func test_log_sends_new_days_to_publisher_even_if_day_is_already_logged_for_another_goal() throws {
+        var sut = makeSUT()
+        try sut.log(finishedGoal2)
+        
+        var found = [Date]()
+
+        let expectation = XCTestExpectation(description: "log publishes changes")
+        sut.logChanged.sink {
+            found = $0
+            expectation.fulfill()
+        }
+        .store(in: &cancellables)
+        try sut.log(finishedGoal)
+        
+        wait(for: [expectation], timeout: 1)
+        
+        XCTAssertEqual(sut.days, found)
+    }
+
     // MARK: - days
     
     func test_days_is_impty_on_init() {
