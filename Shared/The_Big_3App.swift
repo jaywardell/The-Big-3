@@ -21,7 +21,7 @@ struct The_Big_3App: App {
                     }
                     .accentColor(Color(hue: 5/8, saturation:21/34, brightness: 26/34))
 
-                LogView()
+                LogView(viewModel: model.logger.historyViewModel())
                     .tabItem {
                         Label("History", systemImage: "list.bullet")
                     }

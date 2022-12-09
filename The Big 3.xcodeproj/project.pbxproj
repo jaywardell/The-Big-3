@@ -32,6 +32,7 @@
 		7CDE273B290F512E00186BFD /* PlanArchiverTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163427BDC350000AC97A /* PlanArchiverTest.swift */; };
 		7CDE273D290F526300186BFD /* XCTestCase+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE273C290F526300186BFD /* XCTestCase+Combine.swift */; };
 		7CE7FF552943D9AC00B177E2 /* LogEntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE7FF542943D9AC00B177E2 /* LogEntryRow.swift */; };
+		7CE7FF572943E4F500B177E2 /* CompletionLog+LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		7CDE272F290F50EA00186BFD /* The_Big_3Tests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = The_Big_3Tests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDE273C290F526300186BFD /* XCTestCase+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Combine.swift"; sourceTree = "<group>"; };
 		7CE7FF542943D9AC00B177E2 /* LogEntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryRow.swift; sourceTree = "<group>"; };
+		7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletionLog+LogView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */,
 				7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */,
+				7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			files = (
 				7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */,
 				7C66163727BDC8CD000AC97A /* UserDefaults+Codable.swift in Sources */,
+				7CE7FF572943E4F500B177E2 /* CompletionLog+LogView.swift in Sources */,
 				7C66162F27BD4F24000AC97A /* Animation+Constants.swift in Sources */,
 				7CB8722A27B33C36009D5539 /* Plan.swift in Sources */,
 				7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */,

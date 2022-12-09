@@ -76,3 +76,22 @@ struct CompletionLog {
         self.days = allDays.sorted()
     }
 }
+
+
+// MARK: -
+
+struct MockCompletionLogArchive: CompletionLogArchive {
+    
+    let exampleData: [Date:String]
+    
+    init(exampleDate: [Date:String]) {
+        self.exampleData = exampleDate
+    }
+    
+    func load() -> [Date: String] {
+        return exampleData
+    }
+    
+    func record(_ string: String, at date: Date) {}
+}
+

@@ -14,6 +14,7 @@ final class AppModel {
     
     let planner: Planner
     let archiver: PlanArchiver
+    let logger: CompletionLog
     
     // NOTE: not using a Set because we want to subscribe to one Plan's publisher at a time
     private var plannerChanged: AnyCancellable?
@@ -23,6 +24,14 @@ final class AppModel {
         self.archiver = PlanArchiver()
         let loadedPlan = self.archiver.loadPlan(allowed: 3)
         self.planner = Planner(plan: loadedPlan)
+        
+        let archiver = MockCompletionLogArchive(exampleDate: [
+            Date(): "get up",
+            Date().addingTimeInterval(2*3600): "get out of bed",
+            Date().addingTimeInterval(3*3600): "drag a comb across my head",
+            Date().addingTimeInterval(24*3600): "go outside and have a smoke"
+        ])
+        self.logger = CompletionLog(archive: archiver)
         
         plannerChanged = planner.objectWillChange.sink { [unowned self] _ in
             planWasUpdated()

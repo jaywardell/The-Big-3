@@ -9,15 +9,19 @@ import SwiftUI
 
 struct LogEntryRow: View {
     
-    let time: Date
-    let goal: String
+    struct ViewModel: Hashable {
+        let time: Date
+        let goal: String
+    }
+
+    let viewModel: ViewModel
     
     var body: some View {
         HStack {
-            Text(goal)
+            Text(viewModel.goal)
                 .font(.body)
             Spacer()
-            Text(time, style: .time)
+            Text(viewModel.time, style: .time)
                 .font(.callout)
                 .foregroundColor(Color(uiColor: .secondaryLabel))
         }
@@ -26,6 +30,6 @@ struct LogEntryRow: View {
 
 struct LogEntryRow_Previews: PreviewProvider {
     static var previews: some View {
-        LogEntryRow(time: Date(), goal: "Brush Teeth")
+        LogEntryRow(viewModel: .init(time: Date(), goal: "Brush Teeth"))
     }
 }
