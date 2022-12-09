@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Combine
 
 @testable
 import The_Big_3
@@ -134,6 +135,25 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(spy.lastRecordedDate, expected)
     }
 
+    var cancellables = Set<AnyCancellable>()
+
+    func test_log_triggers_publisher() throws {
+        var sut = makeSUT()
+        
+        let expectation = XCTestExpectation(description: "log publishes changes")
+       var subscriptionTriggered = false
+        sut.publisher.sink {_ in
+            subscriptionTriggered = true
+            expectation.fulfill()
+        }
+        .store(in: &cancellables)
+        try sut.log(finishedGoal)
+        
+        wait(for: [expectation], timeout: 1)
+        
+        XCTAssert(subscriptionTriggered)
+    }
+    
     // MARK: - days
     
     func test_days_is_impty_on_init() {

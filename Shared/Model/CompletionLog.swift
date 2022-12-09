@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol CompletionLogArchive {
     func load() -> [Date: String]
@@ -17,6 +18,8 @@ protocol CompletionLogArchive {
 struct CompletionLog {
     
     private(set) var archive: CompletionLogArchive
+    
+    let publisher = PassthroughSubject<[Date], Never>()
     
     private(set) var days: [Date] = []
     private(set) var dates: [Date] = []
@@ -65,6 +68,8 @@ struct CompletionLog {
         goalsLogged[date] = goal.title
         
         archive.record(goal.title, at: date)
+        
+        publisher.send(days)
     }
     
     private mutating func loadArchive() {
