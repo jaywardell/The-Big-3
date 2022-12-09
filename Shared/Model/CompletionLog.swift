@@ -15,6 +15,8 @@ protocol CompletionLogArchive {
 struct CompletionLog {
     
     private(set) var archive: CompletionLogArchive
+    
+    // TODO: next - break dates up into Days and dates(on day: Date) -> [Date]
     private(set) var dates: [Date] = []
     private var goalsLogged = [Date:String]()
     
