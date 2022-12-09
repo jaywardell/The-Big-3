@@ -172,8 +172,6 @@ extension PlannerView: View {
         
     private func userTappedEmptyPlannedBlock(at index: Int) {
         selectedIndex = index
-
-        print(#function, index)
     }
 
     private func userTappedDeleteGoal(at index: Int) {
@@ -190,7 +188,6 @@ extension PlannerView: View {
     }
     
     private func userEnteredNewPlannedTitle(_ newPlannedTitle: String, at index: Int) {
-        print(#function, index)
         withAnimation(.Big3Spring) {
             viewModel.add(ViewModel.Planned(title: newPlannedTitle), index)
         }

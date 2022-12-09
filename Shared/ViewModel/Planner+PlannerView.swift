@@ -26,8 +26,6 @@ extension Planner {
     }
     
     private func add(planned: PlannerView.ViewModel.Planned, at index: Int) {
-        print(#function, planned, index)
-        
         do {
             try plan.set(planned.title, at: index)
         }
@@ -37,8 +35,6 @@ extension Planner {
     }
     
     private func removePlanned(at index: Int) {
-        print(#function, index)
-
         do {
             try plan.removeGoal(at: index)
         }
