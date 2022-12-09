@@ -11,13 +11,7 @@ import XCTest
 import The_Big_3
 
 final class CompletionLogTests: XCTestCase {
-    
-    func test_dates_isEmpty_on_init() {
-        let sut = makeSUT()
         
-        XCTAssertEqual(sut.dates, [])
-    }
-    
     func test_log_throws_if_goal_is_pending() {
         var sut = makeSUT()
                 
@@ -42,6 +36,12 @@ final class CompletionLogTests: XCTestCase {
     
     // MARK: - dates
     
+    func test_dates_isEmpty_on_init() {
+        let sut = makeSUT()
+        
+        XCTAssertEqual(sut.dates, [])
+    }
+
     func test_dates_is_updated_by_log() throws {
         var sut = makeSUT()
         let finished = finishedGoal
@@ -52,6 +52,28 @@ final class CompletionLogTests: XCTestCase {
         XCTAssert(sut.dates.contains(date))
     }
     
+    func test_dates_returns_goals_sorted_by_date_regardless_of_order_goals_were_logged() throws {
+        var sut = makeSUT()
+        
+        let goal1 = Plan.Goal(title: "1", state: .completed)
+        let goal2 = Plan.Goal(title: "2", state: .completed)
+        let goal3 = Plan.Goal(title: "3", state: .completed)
+        
+        let date1 = Date()
+        let date2 = Date().addingTimeInterval(1)
+        let date3 = Date().addingTimeInterval(2)
+
+        // log them intentionally out of order
+        try sut.log(goal1, date: date1)
+        try sut.log(goal3, date: date3)
+        try sut.log(goal2, date: date2)
+        
+        XCTAssertEqual(sut.dates, [date1, date2, date3])
+//        XCTAssertEqual(sut.titleForGoal(completedAt: date1), goal1.title)
+//        XCTAssertEqual(sut.titleForGoal(completedAt: date2), goal2.title)
+//        XCTAssertEqual(sut.titleForGoal(completedAt: date3), goal3.title)
+    }
+
     // MARK: - titleForGoal
     
     func test_titleForGoal_returns_nil_if_no_matching_goal_has_been_logged() {
@@ -70,7 +92,7 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(sut.titleForGoal(completedAt: date), toLog.title)
     }
     
-    func test_dates_and_titleForGoal_sorting() throws {
+    func test_titleForGoal_properly_returns_goal_for_date_regardless_of_order_logged() throws {
         var sut = makeSUT()
         
         let goal1 = Plan.Goal(title: "1", state: .completed)
@@ -86,7 +108,6 @@ final class CompletionLogTests: XCTestCase {
         try sut.log(goal3, date: date3)
         try sut.log(goal2, date: date2)
         
-        XCTAssertEqual(sut.dates, [date1, date2, date3])
         XCTAssertEqual(sut.titleForGoal(completedAt: date1), goal1.title)
         XCTAssertEqual(sut.titleForGoal(completedAt: date2), goal2.title)
         XCTAssertEqual(sut.titleForGoal(completedAt: date3), goal3.title)
