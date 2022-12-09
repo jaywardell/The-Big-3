@@ -140,19 +140,10 @@ final class CompletionLogTests: XCTestCase {
     func test_log_triggers_publisher() throws {
         var sut = makeSUT()
 
-        var subscriptionTriggered = false
 
-        let expectation = XCTestExpectation(description: "log publishes changes")
-        sut.logChanged.sink { _ in
-            subscriptionTriggered = true
-            expectation.fulfill()
+        try expectChanges(for: sut.logChanged.eraseToAnyPublisher(), count: 1) {
+            try sut.log(finishedGoal)
         }
-        .store(in: &cancellables)
-        try sut.log(finishedGoal)
-        
-        wait(for: [expectation], timeout: 1)
-        
-        XCTAssert(subscriptionTriggered)
     }
     
     func test_log_sends_new_days_to_publisher() throws {
