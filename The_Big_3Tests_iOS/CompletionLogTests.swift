@@ -88,9 +88,31 @@ final class CompletionLogTests: XCTestCase {
         try sut.log(finishedGoal)
         
         XCTAssertEqual(spy.recordCount, 1)
-        
     }
     
+    func test_log_passes_proper_title_to_record() throws {
+        let spy = CompletionLogArchiveSpy()
+        var sut = makeSUT(archive: spy)
+        
+        let toadd = finishedGoal
+        let expected = toadd.title
+        
+        try sut.log(finishedGoal)
+        
+        XCTAssertEqual(spy.lastRecordedTitle, expected)
+    }
+
+    func test_log_passes_proper_date_to_record() throws {
+        let spy = CompletionLogArchiveSpy()
+        var sut = makeSUT(archive: spy)
+        
+        let expected = Date().addingTimeInterval(5)
+        
+        try sut.log(finishedGoal, date: expected)
+        
+        XCTAssertEqual(spy.lastRecordedDate, expected)
+    }
+
     // MARK: - dates
     
     func test_dates_isEmpty_on_init() {
@@ -182,6 +204,8 @@ final class CompletionLogTests: XCTestCase {
         let exampleData: [Date:String]
         
         private(set) var loadCount = 0
+        private(set) var lastRecordedTitle: String?
+        private(set) var lastRecordedDate: Date?
         private(set) var recordCount = 0
 
         init(exampleDate: [Date:String] = [:]) {
@@ -195,6 +219,8 @@ final class CompletionLogTests: XCTestCase {
         
         func record(_ string: String, at date: Date) {
             recordCount += 1
+            lastRecordedDate = date
+            lastRecordedTitle = string
         }
     }
 }
