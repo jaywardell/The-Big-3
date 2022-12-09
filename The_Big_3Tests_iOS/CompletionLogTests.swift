@@ -57,6 +57,8 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(archive.loadCount, 1)
     }
     
+    // MARK: - log
+    
     func test_log_throws_if_goal_is_pending() {
         var sut = makeSUT()
         
@@ -155,7 +157,7 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(sut.titleForGoal(completedAt: date3), goal3.title)
     }
     
-    // METHOD: - Helpers
+    // MARK: - Helpers
     
     private func makeSUT(archive: CompletionLogArchive? = nil) -> CompletionLog {
         CompletionLog(archive: archive ?? CompletionLogArchiveSpy())
