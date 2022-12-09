@@ -113,6 +113,14 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(spy.lastRecordedDate, expected)
     }
 
+    // MARK: - days
+    
+    func test_days_is_impty_on_init() {
+        let sut = makeSUT()
+        
+        XCTAssert(sut.days.isEmpty)
+    }
+    
     // MARK: - dates
     
     func test_dates_isEmpty_on_init() {
