@@ -11,26 +11,33 @@ import XCTest
 import The_Big_3
 
 final class CompletionLogTests: XCTestCase {
+    
+    func test_init_calls_loadDDates_from_archive() {
+        let archive = CompletionLogArchiveSpy()
+        _ = makeSUT(archive: archive)
         
+        XCTAssertEqual(archive.loadDatesCount, 1)
+    }
+    
     func test_log_throws_if_goal_is_pending() {
         var sut = makeSUT()
-                
+        
         XCTAssertThrowsError(try sut.log(pendingGoal)) { error in
             XCTAssertEqual(error as? CompletionLog.Error, .GoalIsNotCompleted)
         }
     }
-
+    
     func test_log_throws_if_goal_is_deferred() {
         var sut = makeSUT()
-                
+        
         XCTAssertThrowsError(try sut.log(deferredGoal)) { error in
             XCTAssertEqual(error as? CompletionLog.Error, .GoalIsNotCompleted)
         }
     }
-
+    
     func test_log_does_not_throw_if_goal_is_completed() throws {
         var sut = makeSUT()
-                
+        
         XCTAssertNoThrow(try sut.log(finishedGoal))
     }
     
@@ -41,12 +48,12 @@ final class CompletionLogTests: XCTestCase {
         
         XCTAssertEqual(sut.dates, [])
     }
-
+    
     func test_dates_is_updated_by_log() throws {
         var sut = makeSUT()
         let finished = finishedGoal
         let date = Date()
-
+        
         try sut.log(finished, date: date)
         
         XCTAssert(sut.dates.contains(date))
@@ -62,7 +69,7 @@ final class CompletionLogTests: XCTestCase {
         let date1 = Date()
         let date2 = Date().addingTimeInterval(1)
         let date3 = Date().addingTimeInterval(2)
-
+        
         // log them intentionally out of order
         try sut.log(goal1, date: date1)
         try sut.log(goal3, date: date3)
@@ -70,7 +77,7 @@ final class CompletionLogTests: XCTestCase {
         
         XCTAssertEqual(sut.dates, [date1, date2, date3])
     }
-
+    
     // MARK: - titleForGoal
     
     func test_titleForGoal_returns_nil_if_no_matching_goal_has_been_logged() {
@@ -99,7 +106,7 @@ final class CompletionLogTests: XCTestCase {
         let date1 = Date()
         let date2 = Date().addingTimeInterval(1)
         let date3 = Date().addingTimeInterval(2)
-
+        
         // log them intentionally out of order
         try sut.log(goal1, date: date1)
         try sut.log(goal3, date: date3)
@@ -112,11 +119,21 @@ final class CompletionLogTests: XCTestCase {
     
     // METHOD: - Helpers
     
-    private func makeSUT() -> CompletionLog {
-        CompletionLog()
+    private func makeSUT(archive: CompletionLogArchive? = nil) -> CompletionLog {
+        CompletionLog(archive: archive ?? CompletionLogArchiveSpy())
     }
     
     private var pendingGoal: Plan.Goal { Plan.Goal(title: "unfinished", state: .pending) }
     private var deferredGoal: Plan.Goal { Plan.Goal(title: "unfinished", state: .deferred) }
     private var finishedGoal: Plan.Goal { Plan.Goal(title: "finished", state: .completed) }
+    
+    final class CompletionLogArchiveSpy: CompletionLogArchive {
+        
+        private(set) var loadDatesCount = 0
+        
+        func loadDates() {
+            loadDatesCount += 1
+        }
+    }
 }
+

@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol CompletionLogArchive {}
+protocol CompletionLogArchive {
+    func loadDates()
+}
 
 struct CompletionLog {
     
@@ -22,6 +24,8 @@ struct CompletionLog {
     
     init(archive: CompletionLogArchive) {
         self.archive = archive
+        
+        archive.loadDates()
     }
     
     mutating func log(_ goal: Plan.Goal, date: Date = Date()) throws {
