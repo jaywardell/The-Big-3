@@ -139,10 +139,11 @@ final class CompletionLogTests: XCTestCase {
 
     func test_log_triggers_publisher() throws {
         var sut = makeSUT()
-        
+
+        var subscriptionTriggered = false
+
         let expectation = XCTestExpectation(description: "log publishes changes")
-       var subscriptionTriggered = false
-        sut.logChanged.sink {_ in
+        sut.logChanged.sink { _ in
             subscriptionTriggered = true
             expectation.fulfill()
         }
@@ -152,6 +153,24 @@ final class CompletionLogTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
         
         XCTAssert(subscriptionTriggered)
+    }
+    
+    func test_log_sends_new_days_to_publisher() throws {
+        var sut = makeSUT()
+
+        var found = [Date]()
+
+        let expectation = XCTestExpectation(description: "log publishes changes")
+        sut.logChanged.sink {
+            found = $0
+            expectation.fulfill()
+        }
+        .store(in: &cancellables)
+        try sut.log(finishedGoal)
+        
+        wait(for: [expectation], timeout: 1)
+        
+        XCTAssertEqual(sut.days, found)
     }
     
     // MARK: - days
