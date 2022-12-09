@@ -16,7 +16,7 @@ final class CompletionLogTests: XCTestCase {
         let archive = CompletionLogArchiveSpy()
         _ = makeSUT(archive: archive)
         
-        XCTAssertEqual(archive.loadDatesCount, 1)
+        XCTAssertEqual(archive.loadCount, 1)
     }
     
     func test_log_throws_if_goal_is_pending() {
@@ -129,10 +129,10 @@ final class CompletionLogTests: XCTestCase {
     
     final class CompletionLogArchiveSpy: CompletionLogArchive {
         
-        private(set) var loadDatesCount = 0
+        private(set) var loadCount = 0
         
-        func loadDates() {
-            loadDatesCount += 1
+        func load() {
+            loadCount += 1
         }
     }
 }
