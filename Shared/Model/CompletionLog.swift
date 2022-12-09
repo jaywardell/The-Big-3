@@ -59,7 +59,13 @@ struct CompletionLog {
     /// - Parameter date: a date that represents the day we're looking for
     /// - Returns: an array of Date objects between the beginning and ending of the day for the date passed in
     func timesForGoals(completedOn date: Date) -> [Date] {
-        []
+//        []
+        let start = Calendar.current.startOfDay(for: date)
+        let end = Calendar.current.startOfDay(for: date.addingTimeInterval(24*3600))
+        
+        return dates.filter {
+            $0 >= start && $0 < end
+        }
     }
     
     func titleForGoal(completedAt date: Date) -> String? {
