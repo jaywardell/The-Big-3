@@ -142,7 +142,7 @@ final class CompletionLogTests: XCTestCase {
         
         let expectation = XCTestExpectation(description: "log publishes changes")
        var subscriptionTriggered = false
-        sut.publisher.sink {_ in
+        sut.logChanged.sink {_ in
             subscriptionTriggered = true
             expectation.fulfill()
         }

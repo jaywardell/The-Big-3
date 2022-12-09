@@ -19,7 +19,7 @@ struct CompletionLog {
     
     private(set) var archive: CompletionLogArchive
     
-    let publisher = PassthroughSubject<[Date], Never>()
+    let logChanged = PassthroughSubject<[Date], Never>()
     
     private(set) var days: [Date] = []
     private(set) var dates: [Date] = []
@@ -69,7 +69,7 @@ struct CompletionLog {
         
         archive.record(goal.title, at: date)
         
-        publisher.send(days)
+        logChanged.send(days)
     }
     
     private mutating func loadArchive() {
