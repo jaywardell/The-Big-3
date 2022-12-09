@@ -22,6 +22,17 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(Set(sut.dates), Set(archive.exampleData.keys))
     }
     
+    func test_init_takes_goal_titles_from_archive() throws {
+        let expectedDate = Date()
+        let expectedTitle = "goal"
+        let archive = CompletionLogArchiveSpy(exampleDate: [
+            expectedDate: expectedTitle,
+        ])
+        let sut = makeSUT(archive: archive)
+
+        XCTAssertEqual(sut.titleForGoal(completedAt: expectedDate), expectedTitle)
+    }
+
     func test_init_calls_loadDDates_from_archive() {
         let archive = CompletionLogArchiveSpy()
         _ = makeSUT(archive: archive)
