@@ -30,7 +30,7 @@ extension Planner {
             try plan.set(planned.title, at: index)
         }
         catch {
-            print(error)
+            print("Error adding goal with title \(planned.title) at index \(index): \(error)")
         }
     }
     
@@ -39,7 +39,7 @@ extension Planner {
             try plan.removeGoal(at: index)
         }
         catch {
-            print(error)
+            print("Error removing goal at index \(index)")
         }
     }
     
