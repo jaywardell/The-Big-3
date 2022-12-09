@@ -1,5 +1,5 @@
 //
-//  CompletionLoggerTests.swift
+//  CompletionLogTests.swift
 //  The_Big_3Tests_iOS
 //
 //  Created by Joseph Wardell on 10/31/22.
@@ -10,7 +10,7 @@ import XCTest
 @testable
 import The_Big_3
 
-final class CompletionLoggerTests: XCTestCase {
+final class CompletionLogTests: XCTestCase {
     
     func test_dates_isEmpty_on_init() {
         let sut = CompletionLog()
@@ -41,7 +41,7 @@ final class CompletionLoggerTests: XCTestCase {
     func test_log_does_not_throw_if_goal_is_completed() throws {
         let sut = CompletionLog()
         
-        let finished = Plan.Goal(title: "finisjed", state: .completed)
+        let finished = Plan.Goal(title: "finished", state: .completed)
         
         XCTAssertNoThrow(try sut.log(finished))
     }
