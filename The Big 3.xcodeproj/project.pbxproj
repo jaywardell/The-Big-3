@@ -115,7 +115,6 @@
 				7CB8C5BD27F091DE00D60FA0 /* todo.md */,
 				7CB871DE27B33A88009D5539 /* Shared */,
 				7CB871ED27B33A89009D5539 /* macOS */,
-				7CB8723127B33C93009D5539 /* ModelTestsMacOS */,
 				7CDE2730290F50EA00186BFD /* The_Big_3Tests_iOS */,
 				7CB871E727B33A89009D5539 /* Products */,
 			);
@@ -128,9 +127,9 @@
 				7CB8724C27B33DEC009D5539 /* View */,
 				7CB8722727B33C11009D5539 /* ViewModel */,
 				7CB8722827B33C2E009D5539 /* Model */,
-				7CB871E127B33A89009D5539 /* Assets.xcassets */,
-				7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */,
+				7CE7FF512943747E00B177E2 /* UIKit Additions */,
 				7C66162D27BD4F13000AC97A /* SwiftUI Additions */,
+				7CB871E127B33A89009D5539 /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -173,13 +172,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		7CB8723127B33C93009D5539 /* ModelTestsMacOS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ModelTestsMacOS;
-			sourceTree = "<group>";
-		};
 		7CB8724C27B33DEC009D5539 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +204,14 @@
 				7CDE273C290F526300186BFD /* XCTestCase+Combine.swift */,
 			);
 			path = "XCTest Additions";
+			sourceTree = "<group>";
+		};
+		7CE7FF512943747E00B177E2 /* UIKit Additions */ = {
+			isa = PBXGroup;
+			children = (
+				7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */,
+			);
+			path = "UIKit Additions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
