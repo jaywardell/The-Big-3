@@ -121,6 +121,17 @@ final class CompletionLogTests: XCTestCase {
         XCTAssert(sut.days.isEmpty)
     }
     
+    func test_days_is_updated_by_log() throws {
+        var sut = makeSUT()
+        let finished = finishedGoal
+        let date = Date()
+        let expected = Calendar.current.startOfDay(for: date)
+        
+        try sut.log(finished, date: date)
+        
+        XCTAssert(sut.days.contains(expected))
+    }
+
     // MARK: - dates
     
     func test_dates_isEmpty_on_init() {

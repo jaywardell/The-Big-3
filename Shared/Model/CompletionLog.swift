@@ -39,6 +39,8 @@ struct CompletionLog {
         dates.append(date)
         dates.sort()
         
+        days.append(Calendar.current.startOfDay(for: date))
+        
         goalsLogged[date] = goal.title
         
         archive.record(goal.title, at: date)
