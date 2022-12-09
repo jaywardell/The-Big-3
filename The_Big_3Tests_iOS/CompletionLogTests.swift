@@ -289,6 +289,20 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(sut.timesForGoals(completedOn: Date()), expected)
     }
 
+    // edge case
+    func test_timesForGoals_returns_start_of_day_if_its_logged_and_passed_in() throws {
+        
+        let date = Calendar.current.startOfDay(for: Date())
+        let archive = CompletionLogArchiveSpy(exampleDate: [
+            date: "example1"
+        ])
+        let sut = makeSUT(archive: archive)
+
+        let expected = [date]
+        
+        XCTAssertEqual(sut.timesForGoals(completedOn: date), expected)
+    }
+
     // MARK: - Helpers
     
     private func makeSUT(archive: CompletionLogArchive? = nil) -> CompletionLog {
