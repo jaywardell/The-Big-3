@@ -12,6 +12,16 @@ import The_Big_3
 
 final class CompletionLogTests: XCTestCase {
     
+    func test_init_takes_dates_from_archive() throws {
+        let archive = CompletionLogArchiveSpy(exampleDate: [
+            Date().addingTimeInterval(1): "example1",
+            Date().addingTimeInterval(2): "example2"
+        ])
+        let sut = makeSUT(archive: archive)
+
+        XCTAssertEqual(Set(sut.dates), Set(archive.exampleData.keys))
+    }
+    
     func test_init_calls_loadDDates_from_archive() {
         let archive = CompletionLogArchiveSpy()
         _ = makeSUT(archive: archive)
@@ -129,11 +139,17 @@ final class CompletionLogTests: XCTestCase {
     
     final class CompletionLogArchiveSpy: CompletionLogArchive {
         
+        let exampleData: [Date:String]
+        
         private(set) var loadCount = 0
+        
+        init(exampleDate: [Date:String] = [:]) {
+            self.exampleData = exampleDate
+        }
         
         func load() -> [Date: String] {
             loadCount += 1
-            return [:]
+            return exampleData
         }
     }
 }

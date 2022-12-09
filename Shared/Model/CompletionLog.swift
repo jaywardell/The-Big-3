@@ -25,7 +25,7 @@ struct CompletionLog {
     init(archive: CompletionLogArchive) {
         self.archive = archive
         
-        _ = archive.load()
+        self.dates = Array(archive.load().keys)
     }
     
     mutating func log(_ goal: Plan.Goal, date: Date = Date()) throws {
