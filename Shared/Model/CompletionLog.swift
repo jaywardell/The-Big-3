@@ -39,7 +39,9 @@ struct CompletionLog {
         dates.append(date)
         dates.sort()
         
-        days.append(Calendar.current.startOfDay(for: date))
+        var newDays = Set(days)
+        newDays.insert(Calendar.current.startOfDay(for: date))
+        days = newDays.sorted()
         
         goalsLogged[date] = goal.title
         

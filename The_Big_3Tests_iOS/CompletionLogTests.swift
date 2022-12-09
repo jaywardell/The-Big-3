@@ -123,13 +123,24 @@ final class CompletionLogTests: XCTestCase {
     
     func test_days_is_updated_by_log() throws {
         var sut = makeSUT()
-        let finished = finishedGoal
         let date = Date()
         let expected = Calendar.current.startOfDay(for: date)
         
-        try sut.log(finished, date: date)
+        try sut.log(finishedGoal, date: date)
         
         XCTAssert(sut.days.contains(expected))
+    }
+
+    func test_days_is_not_updated_if_another_goal_was_recorded_on_the_same_day() throws {
+        var sut = makeSUT()
+        let date1 = Date()
+        let date2 = Date().addingTimeInterval(1)
+        let expected = [Calendar.current.startOfDay(for: date1)]
+
+        try sut.log(finishedGoal, date: date1)
+        try sut.log(finishedGoal2, date: date2)
+        
+        XCTAssertEqual(sut.days, expected)
     }
 
     // MARK: - dates
@@ -217,7 +228,8 @@ final class CompletionLogTests: XCTestCase {
     private var pendingGoal: Plan.Goal { Plan.Goal(title: "unfinished", state: .pending) }
     private var deferredGoal: Plan.Goal { Plan.Goal(title: "unfinished", state: .deferred) }
     private var finishedGoal: Plan.Goal { Plan.Goal(title: "finished", state: .completed) }
-    
+    private var finishedGoal2: Plan.Goal { Plan.Goal(title: "finished 2", state: .completed) }
+
     final class CompletionLogArchiveSpy: CompletionLogArchive {
         
         let exampleData: [Date:String]
