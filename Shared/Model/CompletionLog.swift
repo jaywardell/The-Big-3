@@ -28,7 +28,7 @@ struct CompletionLog {
     
     init(archive: CompletionLogArchive) {
 
-        self.archive = archive  
+        self.archive = archive
         loadArchive()
     }
     
@@ -53,6 +53,10 @@ struct CompletionLog {
         goalsLogged[date] = goal.title
         
         archive.record(goal.title, at: date)
+    }
+    
+    func timesForGoals(completedOn date: Date) -> [Date] {
+        []
     }
     
     func titleForGoal(completedAt date: Date) -> String? {

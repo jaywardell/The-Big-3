@@ -255,6 +255,14 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(sut.titleForGoal(completedAt: date3), goal3.title)
     }
     
+    // MARK: - timesForGoals
+    
+    func test_timesForGoals_returns_empty_if_no_goals_logged() {
+        let sut = makeSUT()
+        
+        XCTAssert(sut.timesForGoals(completedOn: Date()).isEmpty)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(archive: CompletionLogArchive? = nil) -> CompletionLog {
