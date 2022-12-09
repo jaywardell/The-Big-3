@@ -182,8 +182,8 @@
 				7CB8724A27B33D0E009D5539 /* PlannerTests.swift */,
 				7C66163427BDC350000AC97A /* PlanArchiverTest.swift */,
 				7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */,
-				7CDE273E290F52DF00186BFD /* XCTest Additions */,
 				7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */,
+				7CDE273E290F52DF00186BFD /* XCTest Additions */,
 			);
 			path = The_Big_3Tests_iOS;
 			sourceTree = "<group>";

@@ -7,14 +7,21 @@
 
 import Foundation
 
+protocol CompletionLogArchive {}
+
 struct CompletionLog {
     
+    private(set) var archive: CompletionLogArchive
     private(set) var dates: [Date] = []
     private var goalsLogged = [Date:String]()
     
     enum Error: Swift.Error {
         case Unknown
         case GoalIsNotCompleted
+    }
+    
+    init(archive: CompletionLogArchive) {
+        self.archive = archive
     }
     
     mutating func log(_ goal: Plan.Goal, date: Date = Date()) throws {
