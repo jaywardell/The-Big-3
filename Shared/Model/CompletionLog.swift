@@ -27,10 +27,18 @@ struct CompletionLog {
     }
     
     init(archive: CompletionLogArchive) {
-        self.archive = archive
+
+        self.archive = archive  
+        loadArchive()
+    }
+    
+    private mutating func loadArchive() {
+        let archived = archive.load()
+        self.goalsLogged = archived
+        self.dates = archived.keys.sorted()
         
-        self.goalsLogged = archive.load()
-        self.dates = Array(goalsLogged.keys).sorted()
+        let allDays = Set(archived.keys.map { Calendar.current.startOfDay(for: $0) })
+        self.days = allDays.sorted()
     }
     
     mutating func log(_ goal: Plan.Goal, date: Date = Date()) throws {

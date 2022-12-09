@@ -22,6 +22,27 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(Set(sut.dates), Set(archive.exampleData.keys))
     }
     
+    func test_init_takes_days_from_archive() throws {
+        let date1 = Date()
+        let date2 = Date().addingTimeInterval(25*3660)
+        let date3 = Date().addingTimeInterval(25*3660 + 1)
+        let archive = CompletionLogArchiveSpy(exampleDate: [
+            date1: "example1",
+            date2: "example2",
+            date3: "example3"
+        ])
+        let sut = makeSUT(archive: archive)
+
+        let expected = [
+            Calendar.current.startOfDay(for: date1),
+            Calendar.current.startOfDay(for: date2)
+            // date3 is on the same day as date2,
+            // so it shouldn't show up
+        ]
+
+        XCTAssertEqual(sut.days, expected)
+    }
+    
     func test_init_takes_goal_titles_from_archive() throws {
         let expectedDate = Date()
         let expectedTitle = "goal"
@@ -146,7 +167,7 @@ final class CompletionLogTests: XCTestCase {
     func test_days_is_updated_if_recorded_on_a_new_day() throws {
         var sut = makeSUT()
         let date1 = Date()
-        let date2 = Date().addingTimeInterval(24*36600)
+        let date2 = Date().addingTimeInterval(25*(3600))
         let expected = [
             Calendar.current.startOfDay(for: date1),
             Calendar.current.startOfDay(for: date2)
