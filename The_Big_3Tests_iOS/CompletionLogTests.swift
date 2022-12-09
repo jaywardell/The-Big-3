@@ -56,6 +56,12 @@ final class CompletionLogTests: XCTestCase {
         XCTAssert(sut.dates.contains(date))
     }
     
+    func test_titleForGoal_returns_nil_if_no_matching_goal_has_been_logged() {
+        let sut = makeSUT()
+        
+        XCTAssertNil(sut.titleForGoal(completedAt: Date()))
+    }
+    
     // METHOD: - Helpers
     
     private func makeSUT() -> CompletionLog {

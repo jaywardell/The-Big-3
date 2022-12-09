@@ -22,4 +22,8 @@ struct CompletionLog {
         dates.append(date)
     }
     
+    func titleForGoal(completedAt date: Date) -> String? {
+        nil
+    }
+    
 }
