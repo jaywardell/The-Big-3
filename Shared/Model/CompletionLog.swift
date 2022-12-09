@@ -15,7 +15,7 @@ protocol CompletionLogArchive {
 
 // MARK: -
 
-struct CompletionLog {
+final class CompletionLog {
     
     private(set) var archive: CompletionLogArchive
     
@@ -56,7 +56,7 @@ struct CompletionLog {
     
     // MARK: -
     
-    mutating func log(_ goal: Plan.Goal, date: Date = Date()) throws {
+    func log(_ goal: Plan.Goal, date: Date = Date()) throws {
         guard goal.state == .completed else { throw Error.GoalIsNotCompleted }
         
         dates.append(date)
@@ -72,7 +72,7 @@ struct CompletionLog {
         logChanged.send(days)
     }
     
-    private mutating func loadArchive() {
+    private func loadArchive() {
         let archived = archive.load()
         self.goalsLogged = archived
         self.dates = archived.keys.sorted()
