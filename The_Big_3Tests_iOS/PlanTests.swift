@@ -294,6 +294,21 @@ class PlanTests: XCTestCase {
         }
     }
     
+    func test_complete_goal_at_index_sends_notification_with_goal_in_userInfo() throws {
+        let sut = Plan(allowed: 1)
+        let expected = exampleGoal
+        try sut.set(expected, at: 0)
+
+        var subscriptions = Set<AnyCancellable>()
+        NotificationCenter.default.publisher(for: Plan.GoalWasCompleted).sink { notification in
+            XCTAssertEqual(notification.userInfo?[Plan.GoalKey] as? String, expected)
+        }
+        .store(in: &subscriptions)
+
+        try sut.completeGoal(at: 0)
+    }
+
+    
     func test_complete_goal_at_index_throws_if_goal_is_already_completed() throws {
 
         let sut = Plan(allowed: 1)

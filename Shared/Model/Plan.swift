@@ -101,6 +101,8 @@ extension Plan {
         goals[index] = Goal(title: goal.title, state: .deferred)
     }
     
+    static var GoalKey: String { #function }
+    
     func completeGoal(at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard let goal = goals[index] else { throw Error.noGoalExistsAtIndex }
@@ -108,7 +110,7 @@ extension Plan {
 
         goals[index] = Goal(title: goal.title, state: .completed)
         
-        NotificationCenter.default.post(name: Self.GoalWasCompleted, object: self)
+        NotificationCenter.default.post(name: Self.GoalWasCompleted, object: self, userInfo: [Self.GoalKey: goal.title])
     }
     
     func remnant() throws -> Plan {
