@@ -76,6 +76,7 @@ extension Plan {
     }
         
     func set(_ goal: String, at index: Int) throws {
+        let goal = goal.trimmingCharacters(in: .whitespacesAndNewlines)
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil == goals[index] else { throw Error.goalExistsAtIndex }
         guard !goals.values.contains(where: { $0.title == goal }) else { throw Error.goalIsAlreadyInPlan }

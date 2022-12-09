@@ -29,7 +29,7 @@ extension Planner {
         print(#function, planned, index)
         
         do {
-            try plan.set(planned.title.trimmingCharacters(in: .whitespacesAndNewlines), at: index)
+            try plan.set(planned.title, at: index)
         }
         catch {
             print(error)
