@@ -44,7 +44,8 @@ final class Plan: Identifiable {
     }
 
     static var GoalWasCompleted: Notification.Name { Notification.Name(rawValue: #function) }
-    
+    static var GoalKey: String { #function }
+
     init(allowed: Int = 0) {
         self.allowed = allowed
         self.id = UUID()
@@ -101,7 +102,6 @@ extension Plan {
         goals[index] = Goal(title: goal.title, state: .deferred)
     }
     
-    static var GoalKey: String { #function }
     
     func completeGoal(at index: Int) throws {
         guard index < allowed else { throw Error.indexExceedsAllowed }
