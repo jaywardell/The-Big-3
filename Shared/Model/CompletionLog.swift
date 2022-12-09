@@ -42,7 +42,6 @@ struct CompletionLog {
         var newDays = Set(days)
         newDays.insert(Calendar.current.startOfDay(for: date))
         days = newDays.sorted()
-        
         goalsLogged[date] = goal.title
         
         archive.record(goal.title, at: date)
