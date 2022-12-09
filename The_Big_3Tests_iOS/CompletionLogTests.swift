@@ -263,6 +263,17 @@ final class CompletionLogTests: XCTestCase {
         XCTAssert(sut.timesForGoals(completedOn: Date()).isEmpty)
     }
     
+    func test_timesForGoals_returns_empty_if_no_dates_on_the_day_passed_in() throws {
+        
+        let date = Date().addingTimeInterval(24*3600)
+        let archive = CompletionLogArchiveSpy(exampleDate: [
+            date: "example1"
+        ])
+        let sut = makeSUT(archive: archive)
+
+        XCTAssert(sut.timesForGoals(completedOn: Date()).isEmpty)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(archive: CompletionLogArchive? = nil) -> CompletionLog {
