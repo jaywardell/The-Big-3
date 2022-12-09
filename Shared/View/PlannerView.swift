@@ -23,7 +23,7 @@ struct PlannerView {
         let remove: (Int)->()
         let start: ()->()
 
-        private var bag = Set<AnyCancellable>()
+        private var subscriptions = Set<AnyCancellable>()
         init(allowed: Int,
              publisher: AnyPublisher<Void, Never>?,
              plannedAt: @escaping (Int)->Planned?,
@@ -42,7 +42,7 @@ struct PlannerView {
             publisher?.sink { [weak self] in
                 self?.objectWillChange.send()
             }
-            .store(in: &bag)
+            .store(in: &subscriptions)
         }
     }
     @ObservedObject var viewModel: ViewModel
