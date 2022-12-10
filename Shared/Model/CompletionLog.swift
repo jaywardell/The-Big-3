@@ -21,6 +21,11 @@ final class CompletionLog {
     
     let logChanged = PassthroughSubject<[Date], Never>()
     
+    // this approach uses a lot of data structures to do something fairly simple
+    // but the amount of data should never be that big
+    // (maybe in the thousands after years of use)
+    // so speed is more important than memory used
+    // which should alos be negligible
     private(set) var days: [Date] = []
     private(set) var dates: [Date] = []
     private var goalsLogged = [Date:String]()
