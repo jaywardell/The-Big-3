@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct ReminderPicker: View {
-    
-    
-    struct Reminder {
-        let title: String
-    }
-    
-    let userChose: (Reminder)->()
+        
+    let userChose: (EventKitReminder)->()
 
     @ObservedObject private var lister = EventKitReminderLister()
 
     @State private var selectedReminderID: String = ""
     @Environment(\.dismiss) var dismiss
 
+    private var selectedReminder: EventKitReminder? {
+        return lister.reminders.first {
+            $0.id == selectedReminderID
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -38,6 +39,9 @@ struct ReminderPicker: View {
                                 Spacer()
                             }
                             .contentShape(Rectangle())
+                            .onTapGesture(count: 2, perform: {
+                                choose(reminder)
+                            })
                             .onTapGesture {
                                 selectedReminderID = reminder.id
                             }
@@ -67,14 +71,15 @@ struct ReminderPicker: View {
 
     private var doneButton: some View {
         Button("Choose") {
-//            userChose(Reminder(title: <#T##String#>))
+            guard let reminder = selectedReminder else { return }
+            userChose(reminder)
             dismiss()
         }
         .buttonStyle(.borderedProminent)
         .disabled(selectedReminderID.isEmpty)
     }
 
-    private func choose(_ reminder: Reminder) {
+    private func choose(_ reminder: EventKitReminder) {
         dismiss()
         userChose(reminder)
     }
