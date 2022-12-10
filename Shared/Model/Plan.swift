@@ -18,9 +18,16 @@ final class Plan: Identifiable {
 
     struct Goal: Equatable {
         let title: String
+        let externalIdentifier: String?
 
         enum State: Equatable { case pending, completed, deferred }
         let state: State
+        
+        init(title: String, externalIdentifier: String? = nil, state: State) {
+            self.title = title
+            self.externalIdentifier = externalIdentifier
+            self.state = state
+        }
     }
     
     private var goals = [Int: Goal]() {
