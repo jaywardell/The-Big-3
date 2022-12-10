@@ -103,6 +103,41 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertNoThrow(try sut.log(finishedGoal))
     }
     
+    func test_log_updates_days() throws {
+        let sut = makeSUT()
+        
+        let date = Date()
+        let expected = [Calendar.current.startOfDay(for: date)]
+        
+        try sut.log(finishedGoal, date: date)
+        
+        XCTAssertEqual(sut.days, expected)
+    }
+    
+    func test_log_updates_timeForGoals() throws {
+        let sut = makeSUT()
+        
+        let date = Date()
+        let day = Calendar.current.startOfDay(for: date)
+        let expected = [date]
+        
+        try sut.log(finishedGoal, date: date)
+        
+        XCTAssertEqual(sut.timesForGoals(completedOn: day), expected)
+    }
+
+    func test_log_updates_titleForGoal() throws {
+        let sut = makeSUT()
+        
+        let date = Date()
+        let tolog = finishedGoal
+        let expected = tolog.title
+        
+        try sut.log(tolog, date: date)
+        
+        XCTAssertEqual(sut.titleForGoal(completedAt: date), expected)
+    }
+
     func test_log_calls_archive_record() throws {
         let spy = CompletionLogArchiveSpy()
         let sut = makeSUT(archive: spy)
@@ -135,8 +170,6 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(spy.lastRecordedDate, expected)
     }
 
-    var cancellables = Set<AnyCancellable>()
-
     func test_log_triggers_publisher() throws {
         let sut = makeSUT()
 
@@ -152,6 +185,7 @@ final class CompletionLogTests: XCTestCase {
         var found = [Date]()
 
         let expectation = XCTestExpectation(description: "log publishes changes")
+        var cancellables = Set<AnyCancellable>()
         sut.logChanged.sink {
             found = $0
             expectation.fulfill()
@@ -171,6 +205,7 @@ final class CompletionLogTests: XCTestCase {
         var found = [Date]()
 
         let expectation = XCTestExpectation(description: "log publishes changes")
+        var cancellables = Set<AnyCancellable>()
         sut.logChanged.sink {
             found = $0
             expectation.fulfill()

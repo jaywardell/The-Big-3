@@ -28,6 +28,7 @@ final class CompletionLog {
     // which should alos be negligible
     private(set) var days: [Date] = []
     private(set) var dates: [Date] = []
+    private var datesForDay = [Date: [Date]]()
     private var goalsLogged = [Date:String]()
     
     enum Error: Swift.Error {
@@ -47,9 +48,11 @@ final class CompletionLog {
     /// - Parameter date: a date that represents the day we're looking for
     /// - Returns: an array of Date objects between the beginning and ending of the day for the date passed in
     func timesForGoals(completedOn date: Date) -> [Date] {
+//        let day = Calendar.current.startOfDay(for: date)
+//        return datesForDay[day, default: []]
         let start = Calendar.current.startOfDay(for: date)
         let end = Calendar.current.startOfDay(for: date.addingTimeInterval(24*3600))
-        
+
         return dates.filter {
             $0 >= start && $0 < end
         }
