@@ -158,11 +158,11 @@
 		7CB8722827B33C2E009D5539 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C4EC7A627BE714400DF0F8D /* AppModel.swift */,
 				7CB8722427B33BF9009D5539 /* Planner.swift */,
 				7CB8722927B33C36009D5539 /* Plan.swift */,
 				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
 				7CA77F20290FFA4900DED944 /* CompletionLog.swift */,
-				7C4EC7A627BE714400DF0F8D /* AppModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
