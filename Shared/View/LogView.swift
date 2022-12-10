@@ -35,9 +35,15 @@ struct LogView: View {
         DateFormatter.localizedString(from: day, dateStyle: .full, timeStyle: .none)
     }
     
+    // we want to show the days in reverse-chronological order
+    // so that the most recent goal achievements are at the top
+    private var daysInOrder: [Date] {
+        viewModel.days().sorted { $0 > $1 }
+    }
+    
     var body: some View {
         List {
-            ForEach(viewModel.days(), id: \.self) { day in
+            ForEach(daysInOrder, id: \.self) { day in
                 Section(header: Text(string(for:day))) {
                     ForEach(viewModel.goalsForDay(day), id: \.self) {
                         LogEntryRow(viewModel: $0)
@@ -51,9 +57,15 @@ struct LogView: View {
 struct LogView_Previews: PreviewProvider {
     static var previews: some View {
         LogView(viewModel: .init(publisher: PassthroughSubject<[Date], Never>().eraseToAnyPublisher(),
-                                 days: { [Date(), Date().addingTimeInterval(24*3600)] },
+                                 days: {
+            [Date(),
+             Date().addingTimeInterval(24*3600),
+             Date().addingTimeInterval(2*24*3600)
+            ] },
                                  goalsForDay: {
             [
+                LogEntryRow.ViewModel(time: $0, goal: "something awesome"),
+                LogEntryRow.ViewModel(time: $0, goal: "something awesome"),
                 LogEntryRow.ViewModel(time: $0, goal: "something awesome")
             ]
         }))
