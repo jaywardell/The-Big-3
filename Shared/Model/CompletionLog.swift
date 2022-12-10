@@ -89,7 +89,9 @@ final class CompletionLog {
         
         try archive.record(goal.title, at: date)
         
-        logChanged.send(days)
+        DispatchQueue.main.async {
+            self.logChanged.send(self.days)
+        }
     }
     
     func loadArchive() async {
@@ -109,10 +111,11 @@ final class CompletionLog {
                 dates.append(date)
                 datesForDay[day] = dates
             }
-            
-            logChanged.send(days)
-
             await hasLoadedArchive.set()
+
+            DispatchQueue.main.async {
+                self.logChanged.send(self.days)
+            }
         }
         catch {
             print("Error loading log of completed goals: \(error)")
