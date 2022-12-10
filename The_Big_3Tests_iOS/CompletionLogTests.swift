@@ -13,15 +13,15 @@ import The_Big_3
 
 final class CompletionLogTests: XCTestCase {
     
-    func test_init_takes_dates_from_archive() throws {
-        let archive = CompletionLogArchiveSpy(exampleDate: [
-            Date().addingTimeInterval(1): "example1",
-            Date().addingTimeInterval(2): "example2"
-        ])
-        let sut = makeSUT(archive: archive)
-
-        XCTAssertEqual(Set(sut.dates), Set(archive.exampleData.keys))
-    }
+//    func test_init_takes_dates_from_archive() throws {
+//        let archive = CompletionLogArchiveSpy(exampleDate: [
+//            Date().addingTimeInterval(1): "example1",
+//            Date().addingTimeInterval(2): "example2"
+//        ])
+//        let sut = makeSUT(archive: archive)
+//
+//        XCTAssertEqual(Set(sut.dates), Set(archive.exampleData.keys))
+//    }
     
     func test_init_takes_days_from_archive() throws {
         let date1 = Date()
@@ -55,22 +55,22 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(sut.titleForGoal(completedAt: expectedDate), expectedTitle)
     }
 
-    func test_init_ensures_dates_are_sorted() throws {
-        let date1 = Date().addingTimeInterval(1)
-        let date2 = Date().addingTimeInterval(2)
-        let date3 = Date().addingTimeInterval(3)
-        let date4 = Date().addingTimeInterval(4)
-        let expectedOrder = [date1, date2, date3, date4]
-        let archive = CompletionLogArchiveSpy(exampleDate: [
-            date1: "example1",
-            date2: "example2",
-            date3: "example1",
-            date4: "example2"
-        ])
-        let sut = makeSUT(archive: archive)
-
-        XCTAssertEqual(sut.dates, expectedOrder)
-    }
+//    func test_init_ensures_dates_are_sorted() throws {
+//        let date1 = Date().addingTimeInterval(1)
+//        let date2 = Date().addingTimeInterval(2)
+//        let date3 = Date().addingTimeInterval(3)
+//        let date4 = Date().addingTimeInterval(4)
+//        let expectedOrder = [date1, date2, date3, date4]
+//        let archive = CompletionLogArchiveSpy(exampleDate: [
+//            date1: "example1",
+//            date2: "example2",
+//            date3: "example1",
+//            date4: "example2"
+//        ])
+//        let sut = makeSUT(archive: archive)
+//
+//        XCTAssertEqual(sut.dates, expectedOrder)
+//    }
 
     func test_init_calls_loadDDates_from_archive() {
         let archive = CompletionLogArchiveSpy()
@@ -265,40 +265,40 @@ final class CompletionLogTests: XCTestCase {
 
     // MARK: - dates
     
-    func test_dates_isEmpty_on_init() {
-        let sut = makeSUT()
-        
-        XCTAssertEqual(sut.dates, [])
-    }
+//    func test_dates_isEmpty_on_init() {
+//        let sut = makeSUT()
+//
+//        XCTAssertEqual(sut.dates, [])
+//    }
     
-    func test_dates_is_updated_by_log() throws {
-        let sut = makeSUT()
-        let finished = finishedGoal
-        let date = Date()
-        
-        try sut.log(finished, date: date)
-        
-        XCTAssert(sut.dates.contains(date))
-    }
+//    func test_dates_is_updated_by_log() throws {
+//        let sut = makeSUT()
+//        let finished = finishedGoal
+//        let date = Date()
+//
+//        try sut.log(finished, date: date)
+//
+//        XCTAssert(sut.dates.contains(date))
+//    }
     
-    func test_dates_returns_goals_sorted_by_date_regardless_of_order_goals_were_logged() throws {
-        let sut = makeSUT()
-        
-        let goal1 = Plan.Goal(title: "1", state: .completed)
-        let goal2 = Plan.Goal(title: "2", state: .completed)
-        let goal3 = Plan.Goal(title: "3", state: .completed)
-        
-        let date1 = Date()
-        let date2 = Date().addingTimeInterval(1)
-        let date3 = Date().addingTimeInterval(2)
-        
-        // log them intentionally out of order
-        try sut.log(goal1, date: date1)
-        try sut.log(goal3, date: date3)
-        try sut.log(goal2, date: date2)
-        
-        XCTAssertEqual(sut.dates, [date1, date2, date3])
-    }
+//    func test_dates_returns_goals_sorted_by_date_regardless_of_order_goals_were_logged() throws {
+//        let sut = makeSUT()
+//
+//        let goal1 = Plan.Goal(title: "1", state: .completed)
+//        let goal2 = Plan.Goal(title: "2", state: .completed)
+//        let goal3 = Plan.Goal(title: "3", state: .completed)
+//
+//        let date1 = Date()
+//        let date2 = Date().addingTimeInterval(1)
+//        let date3 = Date().addingTimeInterval(2)
+//
+//        // log them intentionally out of order
+//        try sut.log(goal1, date: date1)
+//        try sut.log(goal3, date: date3)
+//        try sut.log(goal2, date: date2)
+//
+//        XCTAssertEqual(sut.dates, [date1, date2, date3])
+//    }
     
     // MARK: - titleForGoal
     
@@ -369,6 +369,20 @@ final class CompletionLogTests: XCTestCase {
         let sut = makeSUT(archive: archive)
 
         let expected = [date1, date2]
+        
+        XCTAssertEqual(sut.timesForGoals(completedOn: Date()), expected)
+    }
+
+    func test_timesForGoals_returns_dates_in_order_regardless_of_when_they_were_logged() throws {
+        
+        let date1 = Date().addingTimeInterval(1)
+        let date2 = Date().addingTimeInterval(2)
+        let sut = makeSUT()
+
+        let expected = [date1, date2]
+        
+        try sut.log(finishedGoal2, date: date2)
+        try sut.log(finishedGoal, date: date1)
         
         XCTAssertEqual(sut.timesForGoals(completedOn: Date()), expected)
     }
