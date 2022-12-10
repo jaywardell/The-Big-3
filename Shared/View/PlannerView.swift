@@ -105,9 +105,7 @@ extension PlannerView: View {
                     .minimumScaleFactor(0.1)
                     .onAppear { isFocused = true }
                     .onSubmit {
-                        userEnteredNewPlannedTitle(newPlannedTitle, at: index)
-                        newPlannedTitle = ""
-                        selectedIndex = nil
+                        setTitleForSelectedField()
                     }
                 
                 Spacer()
@@ -139,6 +137,13 @@ extension PlannerView: View {
         }
     }
         
+    private func setTitleForSelectedField() {
+        guard let selectedIndex = selectedIndex else { return }
+        userEnteredNewPlannedTitle(newPlannedTitle, at: selectedIndex)
+        newPlannedTitle = ""
+        self.selectedIndex = nil
+    }
+    
     @ViewBuilder private func background(at index: Int) -> some View {
         
         if nil != viewModel.plannedAt(index)  {
@@ -182,7 +187,8 @@ extension PlannerView: View {
         }
         .sheet(isPresented: $showingReminderPicker) {
             ReminderPicker() {
-                print($0.title)
+                newPlannedTitle = $0.title
+                setTitleForSelectedField()
             }
         }
     }
