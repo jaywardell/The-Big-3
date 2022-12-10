@@ -26,6 +26,10 @@ actor JSONCompletionLogArchive: CompletionLogArchive {
     
     init(path: URL? = nil) {
         self.savePath = path ?? Self.defaultPathForArchive
+        
+        if TestingFlags.default.deleteLogOnFirstLaunch {
+            try? FileManager.default.removeItem(at: savePath)
+        }
     }
     
     private func readArchive() async throws -> [Date : String] {
