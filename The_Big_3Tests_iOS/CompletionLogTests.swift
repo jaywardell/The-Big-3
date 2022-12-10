@@ -13,6 +13,15 @@ import The_Big_3
 
 final class CompletionLogTests: XCTestCase {
         
+    func test_init_does_not_access_archive() {
+        let archive = CompletionLogArchiveSpy()
+        _ = makeSUT(archive: archive)
+        
+        XCTAssertEqual(archive.loadCount, 0)
+    }
+    
+    // MARK: - loadArchive
+    
     func test_loadArchive_takes_days_from_archive() async throws {
         let date1 = Date()
         let date2 = Date().addingTimeInterval(25*3660)
