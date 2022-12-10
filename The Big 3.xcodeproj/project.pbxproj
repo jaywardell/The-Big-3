@@ -10,6 +10,7 @@
 		7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */; };
 		7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */; };
 		7C0FA59D2944D61000E8C88E /* XCTest+AsynAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */; };
+		7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A12944F44300E8C88E /* TestingFlags.swift */; };
 		7C4707BC27B614D70080B419 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A627BE714400DF0F8D /* AppModel.swift */; };
 		7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
@@ -53,6 +54,7 @@
 		7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerView.swift"; sourceTree = "<group>"; };
 		7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerViewTests.swift"; sourceTree = "<group>"; };
 		7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+AsynAwait.swift"; sourceTree = "<group>"; };
+		7C0FA5A12944F44300E8C88E /* TestingFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingFlags.swift; sourceTree = "<group>"; };
 		7C4707BB27B614D70080B419 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		7C4EC7A627BE714400DF0F8D /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountedRows.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
 				7CA77F20290FFA4900DED944 /* CompletionLog.swift */,
 				7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */,
+				7C0FA5A12944F44300E8C88E /* TestingFlags.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */,
 				7CD547B627E6DC760009F9DD /* LogView.swift in Sources */,
 				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
+				7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */,
 				7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */,
 				7CB8720927B33A89009D5539 /* TheBig3View.swift in Sources */,
 				7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */,

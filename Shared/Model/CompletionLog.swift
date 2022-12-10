@@ -75,6 +75,10 @@ final class CompletionLog {
     func log(_ goal: Plan.Goal, date: Date = Date()) async throws {
         guard goal.state == .completed else { throw Error.GoalIsNotCompleted }
                 
+        let date = TestingFlags.default.offsetDateForLogEntries ?
+        date.addingTimeInterval(24*3600) :
+        date
+        
         // make sure that the archive has been loaded before trying to modify it
         await loadArchive()
         
