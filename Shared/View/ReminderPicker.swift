@@ -16,20 +16,22 @@ struct ReminderPicker: View {
     
     let userChose: (Reminder)->()
 
-    let lister = EventKitReminderLister()
+    @ObservedObject private var lister = EventKitReminderLister()
 
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationStack {
-            VStack {
+            ZStack {
                 if !lister.givenAccess {
                     Text("To import reminders, you must give persmission to do so.")
                 }
-                
-                Button("Sleep Well") {
-                    choose(Reminder(title: "Sleep Well"))
+                else {
+                    List {
+                        
+                    }
                 }
+                
             }
             .navigationTitle("Import a Reminder")
             .navigationBarTitleDisplayMode(.inline)

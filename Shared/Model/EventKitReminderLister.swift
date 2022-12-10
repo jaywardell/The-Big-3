@@ -21,7 +21,10 @@ final class EventKitReminderLister: ObservableObject {
                 print("Error accessing reminders: \(error)")
             }
             
-            self.givenAccess = receivedAccess
+            DispatchQueue.main.async {
+                self.givenAccess = receivedAccess
+            }
+            
         }
     }
     
