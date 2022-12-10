@@ -36,11 +36,13 @@ final class AppModel {
         userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted).sink { notification in
             guard let goalString = notification.userInfo?[Plan.GoalKey] as? String else { return }
             let goal = Plan.Goal(title: goalString, state: .completed)
-            do {
-                try self.logger.log(goal)
-            }
-            catch {
-                print("Error logging completion of goal \"\(goal)\": \(error)")
+            Task {
+                do {
+                    try await self.logger.log(goal)
+                }
+                catch {
+                    print("Error logging completion of goal \"\(goal)\": \(error)")
+                }
             }
         }
         

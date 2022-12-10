@@ -10,6 +10,20 @@ import Combine
 
 extension XCTestCase {
     
+    func expectChanges<Type>(for publisher: AnyPublisher<Type, Never>, count expected: Int, when callback: () async throws ->(), file: StaticString = #filePath, line: UInt = #line) async rethrows where Error == Error {
+        
+        var callCount = 0
+        var bag = Set<AnyCancellable>()
+        publisher.sink { _ in
+            callCount += 1
+        }
+        .store(in: &bag)
+        
+        try await callback()
+        
+        XCTAssertEqual(callCount, expected, file: file, line: line)
+    }
+
     func expectChanges<Type>(for publisher: AnyPublisher<Type, Never>, count expected: Int, when callback: () throws ->(), file: StaticString = #filePath, line: UInt = #line) rethrows where Error == Error {
         
         var callCount = 0

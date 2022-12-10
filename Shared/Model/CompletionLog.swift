@@ -57,7 +57,7 @@ final class CompletionLog {
     
     // MARK: -
     
-    func log(_ goal: Plan.Goal, date: Date = Date()) throws {
+    func log(_ goal: Plan.Goal, date: Date = Date()) async throws {
         guard goal.state == .completed else { throw Error.GoalIsNotCompleted }
                 
         let day = Calendar.current.startOfDay(for: date)
