@@ -84,13 +84,13 @@ extension Plan {
         return goals[index]
     }
         
-    func set(_ goal: String, at index: Int) throws {
+    func set(_ goal: String, identifier: String? = nil, at index: Int) throws {
         let goal = goal.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !goal.isEmpty else { throw Error.invalidTitle }
         guard index < allowed else { throw Error.indexExceedsAllowed }
         guard nil == goals[index] else { throw Error.goalExistsAtIndex }
         guard !goals.values.contains(where: { $0.title == goal }) else { throw Error.goalIsAlreadyInPlan }
-        goals[index] = Goal(title: goal, state: .pending)
+        goals[index] = Goal(title: goal, externalIdentifier: identifier, state: .pending)
     }
 
     func removeGoal(at index: Int) throws {
@@ -128,7 +128,7 @@ extension Plan {
         for i in 0..<allowed {
             if let goal = try goal(at: i) {
                 if goal.state == .deferred {
-                    try out.set(goal.title, at: i)
+                    try out.set(goal.title, identifier: goal.externalIdentifier, at: i)
                 }
             }
         }

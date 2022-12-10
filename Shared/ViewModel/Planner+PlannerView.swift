@@ -37,7 +37,7 @@ extension Planner {
     
     private func add(reminder: EventKitReminder, at index: Int) {
         do {
-            try plan.set(reminder.title, at: index)
+            try plan.set(reminder.title, identifier: reminder.id, at: index)
         }
         catch {
             print("Error adding reminder with title \(reminder.title) at index \(index): \(error)")
