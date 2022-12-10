@@ -28,7 +28,9 @@ struct ReminderPicker: View {
                 }
                 else {
                     List {
-                        
+                        ForEach(lister.reminders, id: \.self) { reminder in
+                            Text(reminder.title)
+                        }
                     }
                 }
                 
