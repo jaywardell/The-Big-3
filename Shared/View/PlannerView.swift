@@ -170,11 +170,12 @@ extension PlannerView: View {
             }
             .navigationTitle("What are the Big 3?")
             .toolbar {
+                // NOTE: this seems to cause an autolayout problem.
+                // It seems like any SwiftUI views I put here will cause the issue
+                // but this seems to appear appropriately...
                 ToolbarItemGroup(placement: .keyboard) {
                     Button(action: showRemindersPicker) {
-                        HStack {
-                            Text("Import from Reminders…")
-                        }
+                        Text("Import from Reminders…")
                     }
                 }
             }
