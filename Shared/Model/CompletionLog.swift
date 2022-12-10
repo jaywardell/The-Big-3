@@ -75,6 +75,9 @@ final class CompletionLog {
     func log(_ goal: Plan.Goal, date: Date = Date()) async throws {
         guard goal.state == .completed else { throw Error.GoalIsNotCompleted }
                 
+        // make sure that the archive has been loaded before trying to modify it
+        await loadArchive()
+        
         let day = Calendar.current.startOfDay(for: date)
 
         var newDays = Set(days)
