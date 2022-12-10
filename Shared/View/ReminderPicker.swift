@@ -9,22 +9,30 @@ import SwiftUI
 
 struct ReminderPicker: View {
     
+    
     struct Reminder {
         let title: String
     }
     
     let userChose: (Reminder)->()
-    
+
+    let lister = EventKitReminderLister()
+
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationStack {
             VStack {
+                if !lister.givenAccess {
+                    Text("To import reminders, you must give persmission to do so.")
+                }
+                
                 Button("Sleep Well") {
                     choose(Reminder(title: "Sleep Well"))
                 }
             }
-            .navigationTitle("Import from Reminders")
+            .navigationTitle("Import a Reminder")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     

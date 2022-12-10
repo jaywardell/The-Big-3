@@ -12,6 +12,7 @@
 		7C0FA59D2944D61000E8C88E /* XCTest+AsynAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */; };
 		7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A12944F44300E8C88E /* TestingFlags.swift */; };
 		7C0FA5A42944FF5A00E8C88E /* ReminderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A32944FF5A00E8C88E /* ReminderPicker.swift */; };
+		7C0FA5A6294507E700E8C88E /* EventKitReminderLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */; };
 		7C4707BC27B614D70080B419 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A627BE714400DF0F8D /* AppModel.swift */; };
 		7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
@@ -57,6 +58,7 @@
 		7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+AsynAwait.swift"; sourceTree = "<group>"; };
 		7C0FA5A12944F44300E8C88E /* TestingFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingFlags.swift; sourceTree = "<group>"; };
 		7C0FA5A32944FF5A00E8C88E /* ReminderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderPicker.swift; sourceTree = "<group>"; };
+		7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitReminderLister.swift; sourceTree = "<group>"; };
 		7C4707BB27B614D70080B419 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		7C4EC7A627BE714400DF0F8D /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountedRows.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				7CA77F20290FFA4900DED944 /* CompletionLog.swift */,
 				7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */,
 				7C0FA5A12944F44300E8C88E /* TestingFlags.swift */,
+				7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */,
 				7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */,
 				7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */,
+				7C0FA5A6294507E700E8C88E /* EventKitReminderLister.swift in Sources */,
 				7CB8722527B33BF9009D5539 /* Planner.swift in Sources */,
 				7C4707BC27B614D70080B419 /* GoalView.swift in Sources */,
 				7CE7FF552943D9AC00B177E2 /* LogEntryRow.swift in Sources */,
@@ -498,6 +502,7 @@
 				DEVELOPMENT_TEAM = 7HAJV4F6VL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Let you choose reminders that you've created in your Reminders app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -528,6 +533,7 @@
 				DEVELOPMENT_TEAM = 7HAJV4F6VL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Let you choose reminders that you've created in your Reminders app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
