@@ -48,6 +48,27 @@ final class JSONCompletionLogArchiveTests: XCTestCase {
         XCTAssertEqual(archived, expected)
     }
     
+    func test_stress_test() throws {
+
+        let writer = JSONCompletionLogArchive(path: test_specific_archiveURL())
+
+        var expected = [Date:String]()
+        
+        try (0...1000).forEach { _ in
+            let dateOffset = TimeInterval.random(in: -1_000_000...1_000_000)
+            let date = Date().addingTimeInterval(dateOffset)
+            let string = "\(date)"
+            expected[date] = string
+            
+            try writer.record(string, at: date)
+        }
+        
+        let sut = JSONCompletionLogArchive(path: test_specific_archiveURL())
+        
+        let archived = try sut.load()
+        
+        XCTAssertEqual(archived, expected)
+    }
     
     // MARK: - Helpers
     
