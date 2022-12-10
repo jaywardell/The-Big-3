@@ -35,7 +35,7 @@ final class EventKitReminderLister: ObservableObject {
     }
     
     private func getIncompleteReminders() {
-        let predicate: NSPredicate? = store.predicateForReminders(in: nil)
+        let predicate: NSPredicate? = store.predicateForIncompleteReminders(withDueDateStarting: nil, ending: nil, calendars: nil)
         if let aPredicate = predicate {
             store.fetchReminders(matching: aPredicate, completion: {(_ reminders: [Any]?) -> Void in
                 guard let reminders = reminders as? [EKReminder] else { return }
