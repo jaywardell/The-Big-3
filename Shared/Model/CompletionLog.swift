@@ -15,6 +15,7 @@ protocol CompletionLogArchive {
 
 // MARK: -
 
+
 final class CompletionLog {
     
     private(set) var archive: CompletionLogArchive
@@ -34,6 +35,21 @@ final class CompletionLog {
         case Unknown
         case GoalIsNotCompleted
     }
+    
+    actor Flag {
+        
+        init(_ initialValue: Bool) {
+            self.isSet = initialValue
+        }
+        
+        var isSet: Bool
+        
+        func set() { self.isSet = true }
+    }
+
+    private var hasLoadedArchive = Flag(false)
+    
+    // MARK: -
     
     init(archive: CompletionLogArchive) {
 
@@ -77,6 +93,8 @@ final class CompletionLog {
     }
     
     func loadArchive() async {
+        guard await !hasLoadedArchive.isSet else { return }
+        
         do {
             let archived = try archive.load()
             self.goalsLogged = archived
@@ -93,6 +111,8 @@ final class CompletionLog {
             }
             
             logChanged.send(days)
+
+            await hasLoadedArchive.set()
         }
         catch {
             print("Error loading log of completed goals: \(error)")
