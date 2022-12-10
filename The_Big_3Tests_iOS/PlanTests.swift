@@ -93,7 +93,7 @@ class PlanTests: XCTestCase {
         }
     }
     
-    func test_set_foal_at_throws_if_title_is_empty_string() throws {
+    func test_set_goal_at_throws_if_title_is_empty_string() throws {
         
         let sut = Plan(allowed: 1)
         
@@ -102,7 +102,7 @@ class PlanTests: XCTestCase {
         }
     }
     
-    func test_set_foal_at_throws_if_title_is_all_whitespace() throws {
+    func test_set_goal_at_throws_if_title_is_all_whitespace() throws {
         
         let sut = Plan(allowed: 1)
         
