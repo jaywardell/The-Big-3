@@ -23,20 +23,20 @@ final class Planner: ObservableObject {
 }
 
 
-#if DEBUG
-// MARK: -
-
-
-extension Plan {
-    
-    static let example: Plan = {
-        let out = Plan(allowed: 3)
-        
-        try! out.set("Do the dishes", at: 0)
-        try! out.set("Wash the sink", at: 1)
-        try! out.set("Pet the cat", at: 2)
-        
-        return out
-    }()
-}
-#endif
+//#if DEBUG
+//// MARK: -
+//
+//
+//extension Plan {
+//    
+////    static let example: Plan = {
+////        let out = Plan(allowed: 3)
+////
+////        try! out.set("Do the dishes", at: 0)
+////        try! out.set("Wash the sink", at: 1)
+////        try! out.set("Pet the cat", at: 2)
+////
+////        return out
+////    }()
+//}
+//#endif
