@@ -388,23 +388,5 @@ final class CompletionLogTests: XCTestCase {
             lastRecordedTitle = string
         }
     }
-    
-    func expect<E: Error>(_ expectedError: E, when callback: () async throws -> (), file: StaticString = #filePath, line: UInt = #line) async where E: Equatable {
-        do {
-            _ = try await callback()
-            XCTFail("Expected to throw error while awaiting, but succeeded", file: file, line: line)
-        } catch {
-            XCTAssertEqual(error as? E, expectedError, "expected \(expectedError) but got \(error)", file: file, line: line)
-        }
-    }
-
-    func expectNoError(_ callback: () async throws -> (), file: StaticString = #filePath, line: UInt = #line) async {
-        do {
-            _ = try await callback()
-        } catch {
-            XCTFail("Expected to not throw an error, but thres \(error)", file: file, line: line)
-        }
-    }
-
 }
 
