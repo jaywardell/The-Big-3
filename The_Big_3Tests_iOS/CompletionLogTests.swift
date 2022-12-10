@@ -64,10 +64,6 @@ final class CompletionLogTests: XCTestCase {
         await expect(CompletionLog.Error.GoalIsNotCompleted) {
             try await sut.log(pendingGoal)
         }
-        
-//        XCTAssertThrowsError(try sut.log(pendingGoal)) { error in
-//            XCTAssertEqual(error as? CompletionLog.Error, .GoalIsNotCompleted)
-//        }
     }
     
     func test_log_throws_if_goal_is_deferred() async {
@@ -76,10 +72,6 @@ final class CompletionLogTests: XCTestCase {
         await expect(CompletionLog.Error.GoalIsNotCompleted) {
             try await sut.log(deferredGoal)
         }
-
-//        XCTAssertThrowsError(try sut.log(deferredGoal)) { error in
-//            XCTAssertEqual(error as? CompletionLog.Error, .GoalIsNotCompleted)
-//        }
     }
     
     func test_log_does_not_throw_if_goal_is_completed() async throws {
@@ -88,7 +80,6 @@ final class CompletionLogTests: XCTestCase {
         await expectNoError {
             try await sut.log(finishedGoal)
         }
-//        XCTAssertNoThrow(try sut.log(finishedGoal))
     }
     
     func test_log_updates_days() async throws {
