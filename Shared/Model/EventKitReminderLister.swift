@@ -40,7 +40,9 @@ final class EventKitReminderLister: ObservableObject {
             store.fetchReminders(matching: aPredicate, completion: {(_ reminders: [Any]?) -> Void in
                 guard let reminders = reminders as? [EKReminder] else { return }
                 
-                self.reminders = reminders.map { EventKitReminder(id: $0.calendarItemIdentifier, title: $0.title) }
+                DispatchQueue.main.async {
+                    self.reminders = reminders.map { EventKitReminder(id: $0.calendarItemIdentifier, title: $0.title) }
+                }
             })
         }
     }
