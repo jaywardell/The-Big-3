@@ -61,6 +61,14 @@ class PlanTests: XCTestCase {
         XCTAssertEqual(try sut.goal(at: 0)?.title, expected)
     }
     
+    func test_set_goal_at_sets_any_identifier_of_the_goal_at_the_index_to_the_goal_passed_in() throws {
+        let sut = Plan(allowed: 1)
+        let expected = UUID().uuidString
+        
+        try sut.set(exampleGoal, identifier: expected, at: 0)
+        XCTAssertEqual(try sut.goal(at: 0)?.externalIdentifier, expected)
+    }
+
     func test_set_goal_at_sends_from_publisher() throws {
         let sut = Plan(allowed: 1)
 
