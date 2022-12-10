@@ -42,14 +42,28 @@ struct LogView: View {
     }
     
     var body: some View {
-        List {
-            ForEach(daysInOrder, id: \.self) { day in
-                Section(header: Text(string(for:day))) {
-                    ForEach(viewModel.goalsForDay(day), id: \.self) {
-                        LogEntryRow(viewModel: $0)
+        NavigationStack {
+            ZStack {
+                List {
+                    ForEach(daysInOrder, id: \.self) { day in
+                        Section(header: Text(string(for:day))) {
+                            ForEach(viewModel.goalsForDay(day), id: \.self) {
+                                LogEntryRow(viewModel: $0)
+                            }
+                        }
                     }
                 }
+                .listStyle(.plain)
+                
+                if viewModel.days().isEmpty {
+                    VStack {
+                        Text("When you've completed some of your Big 3 goals, you'll see them here.")
+                        Spacer()
+                    }
+                    .padding()
+                }
             }
+            .navigationTitle("History")
         }
     }
 }
@@ -69,5 +83,11 @@ struct LogView_Previews: PreviewProvider {
                 LogEntryRow.ViewModel(time: $0, goal: "something awesome")
             ]
         }))
+        .previewDisplayName("full")
+
+        LogView(viewModel: .init(publisher: PassthroughSubject<[Date], Never>().eraseToAnyPublisher(),
+                                 days: { [] },
+                                 goalsForDay: { _ in [] }))
+        .previewDisplayName("empty")
     }
 }
