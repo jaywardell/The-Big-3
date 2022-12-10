@@ -18,7 +18,7 @@ struct ReminderPicker: View {
 
     @ObservedObject private var lister = EventKitReminderLister()
 
-    @State private var selectedReminderID: String?
+    @State private var selectedReminderID: String = ""
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -45,12 +45,35 @@ struct ReminderPicker: View {
                     }
                     .listStyle(.plain)
                 }
+
+                HStack {
+                    clearButton
+                    Spacer()
+                    doneButton
+                }
+                .padding()
             }
             .navigationTitle("Import a Reminder")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
     
+    private var clearButton: some View {
+        Button("Cancel") {
+            dismiss()
+        }
+    }
+
+
+    private var doneButton: some View {
+        Button("Choose") {
+//            userChose(Reminder(title: <#T##String#>))
+            dismiss()
+        }
+        .buttonStyle(.borderedProminent)
+        .disabled(selectedReminderID.isEmpty)
+    }
+
     private func choose(_ reminder: Reminder) {
         dismiss()
         userChose(reminder)
