@@ -17,6 +17,8 @@
 		7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163127BDC340000AC97A /* PlanArchiver.swift */; };
 		7C66163727BDC8CD000AC97A /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */; };
 		7C89F52527B4CDCD0033B8ED /* AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */; };
+		7CA22B702944A9AD007B404D /* JSONCompletionLogArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */; };
+		7CA22B722944AA27007B404D /* JSONCompletionLogArchiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA22B712944AA27007B404D /* JSONCompletionLogArchiveTests.swift */; };
 		7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F20290FFA4900DED944 /* CompletionLog.swift */; };
 		7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
@@ -58,6 +60,8 @@
 		7C66163427BDC350000AC97A /* PlanArchiverTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanArchiverTest.swift; sourceTree = "<group>"; };
 		7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Codable.swift"; sourceTree = "<group>"; };
 		7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentsView.swift; sourceTree = "<group>"; };
+		7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCompletionLogArchive.swift; sourceTree = "<group>"; };
+		7CA22B712944AA27007B404D /* JSONCompletionLogArchiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCompletionLogArchiveTests.swift; sourceTree = "<group>"; };
 		7CA77F20290FFA4900DED944 /* CompletionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLog.swift; sourceTree = "<group>"; };
 		7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLogTests.swift; sourceTree = "<group>"; };
 		7CB871DF27B33A88009D5539 /* The_Big_3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3App.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				7CB8722927B33C36009D5539 /* Plan.swift */,
 				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
 				7CA77F20290FFA4900DED944 /* CompletionLog.swift */,
+				7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 				7C66163427BDC350000AC97A /* PlanArchiverTest.swift */,
 				7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */,
 				7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */,
+				7CA22B712944AA27007B404D /* JSONCompletionLogArchiveTests.swift */,
 				7CDE273E290F52DF00186BFD /* XCTest Additions */,
 			);
 			path = The_Big_3Tests_iOS;
@@ -310,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */,
+				7CA22B702944A9AD007B404D /* JSONCompletionLogArchive.swift in Sources */,
 				7C66163727BDC8CD000AC97A /* UserDefaults+Codable.swift in Sources */,
 				7CE7FF572943E4F500B177E2 /* CompletionLog+LogView.swift in Sources */,
 				7C66162F27BD4F24000AC97A /* Animation+Constants.swift in Sources */,
@@ -335,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA22B722944AA27007B404D /* JSONCompletionLogArchiveTests.swift in Sources */,
 				7CDE273A290F512E00186BFD /* PlanTests.swift in Sources */,
 				7CDE273D290F526300186BFD /* XCTestCase+Combine.swift in Sources */,
 				7CDE2738290F512E00186BFD /* Planner+PlannerViewTests.swift in Sources */,

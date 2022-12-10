@@ -10,7 +10,7 @@ import Combine
 
 protocol CompletionLogArchive {
     func load() -> [Date: String]
-    func record(_ string: String, at date: Date)
+    func record(_ string: String, at date: Date) throws
 }
 
 // MARK: -
@@ -72,7 +72,7 @@ final class CompletionLog {
         dates.append(date)
         datesForDay[day] = dates.sorted()
         
-        archive.record(goal.title, at: date)
+        try archive.record(goal.title, at: date)
         
         logChanged.send(days)
     }
