@@ -161,6 +161,12 @@ final class CompletionLogTests: XCTestCase {
     func test_log_triggers_publisher() async throws {
         let sut = makeSUT()
 
+        // sut.log() will call loadArchive() if the archive hasn't been loaded yet.
+        // and loadArchive will trigger the publisher,
+        // but that's not what we're testing here,
+        // so call loadArchive() preemptively so it won't be called by log()
+        await sut.loadArchive()
+        
         try await expectChanges(for: sut.logChanged.eraseToAnyPublisher(), count: 1) {
             try await sut.log(finishedGoal)
         }

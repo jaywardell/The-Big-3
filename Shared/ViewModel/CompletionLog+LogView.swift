@@ -11,7 +11,7 @@ extension CompletionLog {
     
     func historyViewModel() -> LogView.ViewModel {
         
-        return .init(publisher: logChanged.eraseToAnyPublisher(),
+        return .init(publisher: logChanged.receive(on: RunLoop.main).eraseToAnyPublisher(),
               days: {
             Task {
                 await self.loadArchive()
