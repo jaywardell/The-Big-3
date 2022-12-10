@@ -48,14 +48,8 @@ final class CompletionLog {
     /// - Parameter date: a date that represents the day we're looking for
     /// - Returns: an array of Date objects between the beginning and ending of the day for the date passed in
     func timesForGoals(completedOn date: Date) -> [Date] {
-//        let day = Calendar.current.startOfDay(for: date)
-//        return datesForDay[day, default: []]
-        let start = Calendar.current.startOfDay(for: date)
-        let end = Calendar.current.startOfDay(for: date.addingTimeInterval(24*3600))
-
-        return dates.filter {
-            $0 >= start && $0 < end
-        }
+        let day = Calendar.current.startOfDay(for: date)
+        return datesForDay[day, default: []]
     }
     
     func titleForGoal(completedAt date: Date) -> String? {
@@ -70,10 +64,15 @@ final class CompletionLog {
         dates.append(date)
         dates.sort()
         
+        let day = Calendar.current.startOfDay(for: date)
         var newDays = Set(days)
-        newDays.insert(Calendar.current.startOfDay(for: date))
+        newDays.insert(day)
         days = newDays.sorted()
         goalsLogged[date] = goal.title
+        
+        var dates = datesForDay[day, default: []]
+        dates.append(date)
+        datesForDay[day] = dates
         
         archive.record(goal.title, at: date)
         
@@ -87,6 +86,13 @@ final class CompletionLog {
         
         let allDays = Set(archived.keys.map { Calendar.current.startOfDay(for: $0) })
         self.days = allDays.sorted()
+        
+        for date in dates {
+            let day = Calendar.current.startOfDay(for: date)
+            var dates = datesForDay[day, default: []]
+            dates.append(date)
+            datesForDay[day] = dates
+        }
     }
 }
 
