@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class JSONCompletionLogArchive: CompletionLogArchive {
+actor JSONCompletionLogArchive: CompletionLogArchive {
     
     struct Entry: Codable {
         let string: String
