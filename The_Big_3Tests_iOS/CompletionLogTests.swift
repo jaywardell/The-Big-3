@@ -13,7 +13,7 @@ import The_Big_3
 
 final class CompletionLogTests: XCTestCase {
         
-    func test_init_takes_days_from_archive() throws {
+    func test_loadArchive_takes_days_from_archive() async throws {
         let date1 = Date()
         let date2 = Date().addingTimeInterval(25*3660)
         let date3 = Date().addingTimeInterval(25*3660 + 1)
@@ -23,7 +23,8 @@ final class CompletionLogTests: XCTestCase {
             date3: "example3"
         ])
         let sut = makeSUT(archive: archive)
-
+        await sut.loadArchive()
+        
         let expected = [
             Calendar.current.startOfDay(for: date1),
             Calendar.current.startOfDay(for: date2)
@@ -34,20 +35,23 @@ final class CompletionLogTests: XCTestCase {
         XCTAssertEqual(sut.days, expected)
     }
     
-    func test_init_takes_goal_titles_from_archive() throws {
+    func test_loadArchive_takes_goal_titles_from_archive() async throws {
         let expectedDate = Date()
         let expectedTitle = "goal"
         let archive = CompletionLogArchiveSpy(exampleDate: [
             expectedDate: expectedTitle,
         ])
         let sut = makeSUT(archive: archive)
-
+        await sut.loadArchive()
+        
         XCTAssertEqual(sut.titleForGoal(completedAt: expectedDate), expectedTitle)
     }
 
-    func test_init_calls_loadDDates_from_archive() {
+    func test_loadArchive_calls_loadDDates_from_archive() async {
         let archive = CompletionLogArchiveSpy()
-        _ = makeSUT(archive: archive)
+        let sut = makeSUT(archive: archive)
+        
+        await sut.loadArchive()
         
         XCTAssertEqual(archive.loadCount, 1)
     }
@@ -304,7 +308,7 @@ final class CompletionLogTests: XCTestCase {
         XCTAssert(sut.timesForGoals(completedOn: Date()).isEmpty)
     }
     
-    func test_timesForGoals_returns_dates_matching_day_passed_in() throws {
+    func test_timesForGoals_returns_dates_matching_day_passed_in() async throws {
         
         let date1 = Date().addingTimeInterval(1)
         let date2 = Date().addingTimeInterval(2)
@@ -313,6 +317,7 @@ final class CompletionLogTests: XCTestCase {
             date2: "example2"
         ])
         let sut = makeSUT(archive: archive)
+        await sut.loadArchive()
 
         let expected = [date1, date2]
         
@@ -334,13 +339,14 @@ final class CompletionLogTests: XCTestCase {
     }
 
     // edge case
-    func test_timesForGoals_returns_start_of_day_if_its_logged_and_passed_in() throws {
+    func test_timesForGoals_returns_start_of_day_if_its_logged_and_passed_in() async throws {
         
         let date = Calendar.current.startOfDay(for: Date())
         let archive = CompletionLogArchiveSpy(exampleDate: [
             date: "example1"
         ])
         let sut = makeSUT(archive: archive)
+        await sut.loadArchive()
 
         let expected = [date]
         

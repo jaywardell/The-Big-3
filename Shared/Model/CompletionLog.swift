@@ -38,7 +38,6 @@ final class CompletionLog {
     init(archive: CompletionLogArchive) {
 
         self.archive = archive
-        loadArchive()
     }
     
     // MARK: -
@@ -77,7 +76,7 @@ final class CompletionLog {
         logChanged.send(days)
     }
     
-    private func loadArchive() {
+    func loadArchive() async {
         do {
             let archived = try archive.load()
             self.goalsLogged = archived
