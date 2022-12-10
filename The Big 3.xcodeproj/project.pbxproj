@@ -11,6 +11,7 @@
 		7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */; };
 		7C0FA59D2944D61000E8C88E /* XCTest+AsynAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */; };
 		7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A12944F44300E8C88E /* TestingFlags.swift */; };
+		7C0FA5A42944FF5A00E8C88E /* ReminderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A32944FF5A00E8C88E /* ReminderPicker.swift */; };
 		7C4707BC27B614D70080B419 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A627BE714400DF0F8D /* AppModel.swift */; };
 		7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
@@ -55,6 +56,7 @@
 		7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerViewTests.swift"; sourceTree = "<group>"; };
 		7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+AsynAwait.swift"; sourceTree = "<group>"; };
 		7C0FA5A12944F44300E8C88E /* TestingFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingFlags.swift; sourceTree = "<group>"; };
+		7C0FA5A32944FF5A00E8C88E /* ReminderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderPicker.swift; sourceTree = "<group>"; };
 		7C4707BB27B614D70080B419 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		7C4EC7A627BE714400DF0F8D /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountedRows.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				7C4707BB27B614D70080B419 /* GoalView.swift */,
 				7CD547B527E6DC760009F9DD /* LogView.swift */,
 				7CE7FF542943D9AC00B177E2 /* LogEntryRow.swift */,
+				7C0FA5A32944FF5A00E8C88E /* ReminderPicker.swift */,
 				7C66162C27BD36D5000AC97A /* Layouts */,
 			);
 			path = View;
@@ -332,6 +335,7 @@
 				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */,
 				7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */,
+				7C0FA5A42944FF5A00E8C88E /* ReminderPicker.swift in Sources */,
 				7CB8720927B33A89009D5539 /* TheBig3View.swift in Sources */,
 				7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */,
 				7C66162A27BD350A000AC97A /* TitledWithNextButton.swift in Sources */,

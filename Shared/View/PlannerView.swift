@@ -50,6 +50,8 @@ struct PlannerView {
     @State private var selectedIndex: Int?
     @State private var newPlannedTitle: String = ""
     
+    @State private var showingReminderPicker = false
+    
     @State private var tappedDeleteButtonIndex: Int?
     
     @FocusState private var isFocused: Bool
@@ -167,9 +169,27 @@ extension PlannerView: View {
                 .opacity(viewModel.isFull() ? 1 : 0)
             }
             .navigationTitle("What are the Big 3?")
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Button(action: showRemindersPicker) {
+                        HStack {
+                            Text("Import from Reminders…")
+                        }
+                    }
+                }
+            }
+        }
+        .sheet(isPresented: $showingReminderPicker) {
+            ReminderPicker() {
+                print($0.title)
+            }
         }
     }
         
+    private func showRemindersPicker() {
+        showingReminderPicker = true
+    }
+    
     private func userTappedEmptyPlannedBlock(at index: Int) {
         selectedIndex = index
     }
