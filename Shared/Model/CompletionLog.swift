@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 protocol CompletionLogArchive {
-    func load() throws -> [Date: String]
-    func record(_ string: String, at date: Date) throws
+    func load() async throws -> [Date: String]
+    func record(_ string: String, at date: Date) async throws
 }
 
 // MARK: -
@@ -87,7 +87,7 @@ final class CompletionLog {
         dates.append(date)
         datesForDay[day] = dates.sorted()
         
-        try archive.record(goal.title, at: date)
+        try await archive.record(goal.title, at: date)
         
         DispatchQueue.main.async {
             self.logChanged.send(self.days)
@@ -98,7 +98,7 @@ final class CompletionLog {
         guard await !hasLoadedArchive.isSet else { return }
         
         do {
-            let archived = try archive.load()
+            let archived = try await archive.load()
             self.goalsLogged = archived
             let dates = archived.keys.sorted()
             

@@ -25,47 +25,47 @@ final class JSONCompletionLogArchiveTests: XCTestCase {
     }
 
     
-    func test_load_returns_empty_array_if_no_file_to_load() throws {
+    func test_load_returns_empty_array_if_no_file_to_load() async throws {
         let sut = JSONCompletionLogArchive(path: test_specific_archiveURL())
         
-        let archived = try sut.load()
+        let archived = try await sut.load()
         
         XCTAssert(archived.isEmpty)
     }
     
-    func test_load_returns_one_record_if_one_record_was_recorded() throws {
+    func test_load_returns_one_record_if_one_record_was_recorded() async throws {
         let writer = JSONCompletionLogArchive(path: test_specific_archiveURL())
         
         let date = Date()
         let string = "1"
-        try writer.record(string, at: date)
+        try await writer.record(string, at: date)
         
         let sut = JSONCompletionLogArchive(path: test_specific_archiveURL())
         let expected = [date: string]
         
-        let archived = try sut.load()
+        let archived = try await sut.load()
         
         XCTAssertEqual(archived, expected)
     }
     
-    func test_stress_test() throws {
+    func test_stress_test() async throws {
 
         let writer = JSONCompletionLogArchive(path: test_specific_archiveURL())
 
         var expected = [Date:String]()
         
-        try (0...1000).forEach { _ in
+        for _ in 0...1000 {
             let dateOffset = TimeInterval.random(in: -1_000_000...1_000_000)
             let date = Date().addingTimeInterval(dateOffset)
             let string = "\(date)"
             expected[date] = string
             
-            try writer.record(string, at: date)
+            try await writer.record(string, at: date)
         }
         
         let sut = JSONCompletionLogArchive(path: test_specific_archiveURL())
         
-        let archived = try sut.load()
+        let archived = try await sut.load()
         
         XCTAssertEqual(archived, expected)
     }
