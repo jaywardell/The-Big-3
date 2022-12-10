@@ -20,6 +20,7 @@ struct PlannerView {
         let plannedAt: (Int)->Planned?
         let isFull: ()->Bool
         let add: (Planned, Int)->()
+        let importReminder: (EventKitReminder, Int)->()
         let remove: (Int)->()
         let start: ()->()
 
@@ -29,6 +30,7 @@ struct PlannerView {
              plannedAt: @escaping (Int)->Planned?,
              isFull: @escaping ()->Bool,
              add: @escaping (Planned, Int)->(),
+             importReminder: @escaping (EventKitReminder, Int)->(),
              remove: @escaping (Int)->(),
              start: @escaping ()->()) {
             
@@ -36,6 +38,7 @@ struct PlannerView {
             self.plannedAt = plannedAt
             self.isFull = isFull
             self.add = add
+            self.importReminder = importReminder
             self.remove = remove
             self.start = start
             
@@ -187,8 +190,10 @@ extension PlannerView: View {
         }
         .sheet(isPresented: $showingReminderPicker) {
             ReminderPicker() {
-                newPlannedTitle = $0.title
-                setTitleForSelectedField()
+//                newPlannedTitle = $0.title
+//                setTitleForSelectedField()
+                guard let index = selectedIndex else { return }
+                viewModel.importReminder($0, index)
             }
         }
     }
@@ -251,6 +256,7 @@ fileprivate extension PlannerView.ViewModel {
         plannedAt: { _ in randomPlanned() },
         isFull: { false },
         add: { print("add", $0, $1) },
+        importReminder: { print("import reminder", $0, $1) },
         remove: { print("remove", $0)},
         start: {})
 }

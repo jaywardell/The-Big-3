@@ -15,6 +15,7 @@ extension Planner {
                               plannedAt: plannedGoal(at:),
                               isFull: isFull,
                               add: add(planned: at:),
+                              importReminder: add(reminder:at:),
                               remove: removePlanned(at:),
                               start: startPlan)
     }
@@ -32,6 +33,10 @@ extension Planner {
         catch {
             print("Error adding goal with title \(planned.title) at index \(index): \(error)")
         }
+    }
+    
+    private func add(reminder: EventKitReminder, at index: Int) {
+        print(#function, reminder, index)
     }
     
     private func removePlanned(at index: Int) {
