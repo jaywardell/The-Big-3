@@ -27,7 +27,6 @@ final class CompletionLog {
     // so speed is more important than memory used
     // which should alos be negligible
     private(set) var days: [Date] = []
-//    private(set) var dates: [Date] = []
     private var datesForDay = [Date: [Date]]()
     private var goalsLogged = [Date:String]()
     
@@ -60,16 +59,15 @@ final class CompletionLog {
     
     func log(_ goal: Plan.Goal, date: Date = Date()) throws {
         guard goal.state == .completed else { throw Error.GoalIsNotCompleted }
-        
-//        dates.append(date)
-//        dates.sort()
-        
+                
         let day = Calendar.current.startOfDay(for: date)
+
         var newDays = Set(days)
         newDays.insert(day)
         days = newDays.sorted()
-        goalsLogged[date] = goal.title
         
+        goalsLogged[date] = goal.title
+
         var dates = datesForDay[day, default: []]
         dates.append(date)
         datesForDay[day] = dates.sorted()
