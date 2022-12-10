@@ -69,6 +69,13 @@ class PlanTests: XCTestCase {
         XCTAssertEqual(try sut.goal(at: 0)?.externalIdentifier, expected)
     }
 
+    func test_set_goal_at_sets_identifier_to_nil_if_no_identifier_given() throws {
+        let sut = Plan(allowed: 1)
+        
+        try sut.set(exampleGoal, at: 0)
+        XCTAssertNil(try sut.goal(at: 0)?.externalIdentifier)
+    }
+
     func test_set_goal_at_sends_from_publisher() throws {
         let sut = Plan(allowed: 1)
 
