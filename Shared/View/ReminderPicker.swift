@@ -18,22 +18,33 @@ struct ReminderPicker: View {
 
     @ObservedObject private var lister = EventKitReminderLister()
 
+    @State private var selectedReminderID: String?
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationStack {
-            ZStack {
+            VStack {
                 if !lister.givenAccess {
                     Text("To import reminders, you must give persmission to do so.")
                 }
                 else {
                     List {
                         ForEach(lister.reminders, id: \.self) { reminder in
-                            Text(reminder.title)
+                            
+                            HStack {
+                                Image(systemName: "checkmark")
+                                    .opacity(reminder.id == selectedReminderID ? 1 : 0)
+                                Text(reminder.title)
+                                Spacer()
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                selectedReminderID = reminder.id
+                            }
                         }
                     }
+                    .listStyle(.plain)
                 }
-                
             }
             .navigationTitle("Import a Reminder")
             .navigationBarTitleDisplayMode(.inline)
