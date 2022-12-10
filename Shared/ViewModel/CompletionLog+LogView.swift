@@ -10,7 +10,11 @@ import Foundation
 extension CompletionLog {
     
     func historyViewModel() -> LogView.ViewModel {
-        .init(publisher: logChanged.eraseToAnyPublisher(),
+        Task {
+            await loadArchive()
+        }
+        
+        return .init(publisher: logChanged.eraseToAnyPublisher(),
               days: {
             self.days } )
         { day in

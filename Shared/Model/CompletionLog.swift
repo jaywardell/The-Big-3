@@ -91,6 +91,8 @@ final class CompletionLog {
                 dates.append(date)
                 datesForDay[day] = dates
             }
+            
+            logChanged.send(days)
         }
         catch {
             print("Error loading log of completed goals: \(error)")
