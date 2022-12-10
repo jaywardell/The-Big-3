@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol CompletionLogArchive {
-    func load() -> [Date: String]
+    func load() throws -> [Date: String]
     func record(_ string: String, at date: Date) throws
 }
 
@@ -78,18 +78,23 @@ final class CompletionLog {
     }
     
     private func loadArchive() {
-        let archived = archive.load()
-        self.goalsLogged = archived
-        let dates = archived.keys.sorted()
-        
-        let allDays = Set(archived.keys.map { Calendar.current.startOfDay(for: $0) })
-        self.days = allDays.sorted()
-        
-        for date in dates {
-            let day = Calendar.current.startOfDay(for: date)
-            var dates = datesForDay[day, default: []]
-            dates.append(date)
-            datesForDay[day] = dates
+        do {
+            let archived = try archive.load()
+            self.goalsLogged = archived
+            let dates = archived.keys.sorted()
+            
+            let allDays = Set(archived.keys.map { Calendar.current.startOfDay(for: $0) })
+            self.days = allDays.sorted()
+            
+            for date in dates {
+                let day = Calendar.current.startOfDay(for: date)
+                var dates = datesForDay[day, default: []]
+                dates.append(date)
+                datesForDay[day] = dates
+            }
+        }
+        catch {
+            print("Error loading log of completed goals: \(error)")
         }
     }
 }

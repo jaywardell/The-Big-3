@@ -25,10 +25,10 @@ final class JSONCompletionLogArchiveTests: XCTestCase {
     }
 
     
-    func test_load_returns_empty_array_if_no_file_to_load() {
+    func test_load_returns_empty_array_if_no_file_to_load() throws {
         let sut = JSONCompletionLogArchive(path: test_specific_archiveURL())
         
-        let archived = sut.load()
+        let archived = try sut.load()
         
         XCTAssert(archived.isEmpty)
     }
@@ -43,7 +43,7 @@ final class JSONCompletionLogArchiveTests: XCTestCase {
         let sut = JSONCompletionLogArchive(path: test_specific_archiveURL())
         let expected = [date: string]
         
-        let archived = sut.load()
+        let archived = try sut.load()
         
         XCTAssertEqual(archived, expected)
     }

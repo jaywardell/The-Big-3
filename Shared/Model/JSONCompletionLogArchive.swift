@@ -28,12 +28,25 @@ final class JSONCompletionLogArchive: CompletionLogArchive {
         self.savePath = path ?? Self.defaultPathForArchive
     }
     
-    func load() -> [Date : String] {
-        [:]
+    private func readArchive() throws -> [Date : String] {
+        guard FileManager.default.fileExists(atPath: savePath.path) else { return [:] }
+        
+        let decoder = JSONDecoder()
+        let data = try Data(contentsOf: savePath)
+        return try decoder.decode([Date:String].self, from: data)
+    }
+    
+    func load() throws -> [Date : String] {
+        try readArchive()
     }
     
     func record(_ string: String, at date: Date) throws {
-                
+        var archive = try readArchive()
+        archive[date] = string
+        
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(archive)
+        try data.write(to: savePath)
     }
 
 }
