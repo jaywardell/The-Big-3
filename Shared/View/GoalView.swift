@@ -209,15 +209,15 @@ struct GoalView: View {
 struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
         GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
-                 backgroundColor: .orange, postpone: {}, finish: {})
+                 backgroundColor: .purple, postpone: {}, finish: {})
             .previewLayout(.fixed(width: 300, height: 100))
 
         GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .ready),
-                 backgroundColor: .orange, postpone: {}, finish: {})
+                 backgroundColor: .purple, postpone: {}, finish: {})
             .previewLayout(.fixed(width: 300, height: 100))
 
         GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .notToday),
-                 backgroundColor: .orange, postpone: {}, finish: {})
+                 backgroundColor: .purple, postpone: {}, finish: {})
             .previewLayout(.fixed(width: 300, height: 100))
     }
 }
