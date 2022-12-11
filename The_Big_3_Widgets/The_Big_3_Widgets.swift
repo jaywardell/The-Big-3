@@ -58,6 +58,7 @@ struct The_Big_3_Widgets: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: TheBig3TimelineProvider(model: model)) { entry in
 //            The_Big_3_WidgetsEntryView(entry: entry)
             TheBig3WidgetView(entry: entry)
+                .accentColor(ViewConstants.tint)
         }
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
         .configurationDisplayName("The Big 3")

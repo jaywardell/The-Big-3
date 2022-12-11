@@ -13,17 +13,15 @@ struct The_Big_3App: App {
     let model = AppModel()
     
     @State private var showHistory = false
-    
-    let tint = Color(hue: 5/8, saturation:21/34, brightness: 26/34)
-    
+        
     var body: some Scene {
         WindowGroup {
             TheBig3View(planner: model.planner)
-                .accentColor(tint)
+                .accentColor(ViewConstants.tint)
                 .environment(\.showHistory, { showHistory.toggle() })
                 .sheet(isPresented: $showHistory) {
                     LogView(viewModel: model.logger.historyViewModel())
-                        .accentColor(tint)
+                        .accentColor(ViewConstants.tint)
                 }
         }
     }
