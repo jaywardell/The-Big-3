@@ -165,18 +165,8 @@ extension PlannerView: View {
     var body: some View {
         
         VStack(spacing: 0) {
-                                
-                HStack(alignment: .bottom) {
-                    Text("Plan your Big 3")
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundColor(Color(uiColor: .systemBackground))
-                        .padding(.leading)
-                        .padding(.top)
-                    Spacer()
-                }
-                .padding(.bottom)
-                .background(LinearGradient(colors: [.accentColor.opacity(29/34), .accentColor], startPoint: .top, endPoint: .bottom), ignoresSafeAreaEdges: .top)
+  
+            Header(title: "Plan the next\nBig 3")
 
                 CountedRows(rows: viewModel.allowed) { index in
                     planBlock(at: index)
@@ -193,6 +183,7 @@ extension PlannerView: View {
                     Spacer()
                     Button(action: viewModel.start) {
                         Text("Start")
+                            .font(.system(.title, design: .default, weight: .light))
                     }
                     .font(.largeTitle)
                     .padding()

@@ -51,6 +51,7 @@
 		7CA682C82946546C00BD6D12 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C72946546C00BD6D12 /* ViewConstants.swift */; };
 		7CA682C9294654A500BD6D12 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C72946546C00BD6D12 /* ViewConstants.swift */; };
 		7CA682CB29465DD000BD6D12 /* PlanPromptWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CA29465DD000BD6D12 /* PlanPromptWidgetView.swift */; };
+		7CA682CE29466CA400BD6D12 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CC29466C5700BD6D12 /* Header.swift */; };
 		7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F20290FFA4900DED944 /* CompletionLog.swift */; };
 		7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
@@ -140,6 +141,7 @@
 		7CA682C529464E6C00BD6D12 /* Plan+WidgetExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+WidgetExamples.swift"; sourceTree = "<group>"; };
 		7CA682C72946546C00BD6D12 /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
 		7CA682CA29465DD000BD6D12 /* PlanPromptWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPromptWidgetView.swift; sourceTree = "<group>"; };
+		7CA682CC29466C5700BD6D12 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		7CA77F20290FFA4900DED944 /* CompletionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLog.swift; sourceTree = "<group>"; };
 		7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLogTests.swift; sourceTree = "<group>"; };
 		7CB871DF27B33A88009D5539 /* The_Big_3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3App.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				7CB871E027B33A88009D5539 /* TheBig3View.swift */,
 				7CB8724D27B33DFD009D5539 /* PlannerView.swift */,
 				7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */,
+				7CA682CC29466C5700BD6D12 /* Header.swift */,
 				7C4707BB27B614D70080B419 /* GoalView.swift */,
 				7CD547B527E6DC760009F9DD /* LogView.swift */,
 				7CE7FF542943D9AC00B177E2 /* LogEntryRow.swift */,
@@ -508,6 +511,7 @@
 				7CD547B627E6DC760009F9DD /* LogView.swift in Sources */,
 				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */,
+				7CA682CE29466CA400BD6D12 /* Header.swift in Sources */,
 				7CA682C2294645EB00BD6D12 /* Planner+GoalView.swift in Sources */,
 				7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */,
 				7C0FA5A42944FF5A00E8C88E /* ReminderPicker.swift in Sources */,

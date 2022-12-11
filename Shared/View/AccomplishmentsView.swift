@@ -60,19 +60,9 @@ extension AccomplishmentsView: View {
     
     
     var body: some View {
+        
         VStack(spacing: 0) {
-            HStack(alignment: .bottom) {
-                Text("The Big 3")
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(Color(uiColor: .systemBackground))
-                    .padding(.leading)
-                    .padding(.top)
-                Spacer()
-            }
-            .padding(.bottom)
-//            .background(Color.accentColor, ignoresSafeAreaEdges: .top)
-            .background(LinearGradient(colors: [.accentColor.opacity(29/34), .accentColor], startPoint: .top, endPoint: .bottom), ignoresSafeAreaEdges: .top)
+            Header(title: "The Big 3")
             
             CountedRows(rows: viewModel.count) { index in
                 GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) }, template: .regular)
@@ -88,7 +78,7 @@ extension AccomplishmentsView: View {
                 Button(action: viewModel.done) {
                     Text("Done")
                 }
-                .font(.largeTitle)
+                .font(.system(.title, design: .default, weight: .light))
                 .padding()
                 .opacity(viewModel.userIsFinished() ? 1 : 0)
             }
