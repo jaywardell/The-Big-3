@@ -1,6 +1,6 @@
 #  todo
 
-- [ ] logging to a history
-- [ ] big 3 background
-- [ ] importing from reminders
+- [x] logging to a history
+- [x] big 3 background
+- [x] importing from reminders
 
