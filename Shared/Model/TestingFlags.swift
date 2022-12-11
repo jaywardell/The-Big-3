@@ -13,7 +13,7 @@ struct TestingFlags {
 
     var deleteLogOnFirstLaunch: Bool {
 #if NEGATETODELETE // negate this to get the behavior
-#warning("Date offset for new entries is turned on. DO NOT COMMIT!!!!")
+#warning("Delete log on launch is turned on. DO NOT COMMIT!!!!")
         return true
 #else
         return false
