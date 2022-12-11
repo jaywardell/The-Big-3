@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ExternalGoalServiceBridge {
-    func checkUserAllowsAccess(_ completion: @escaping (Bool)->())
+    func allowsAccess() -> Bool
     func getReminder(for id: String) -> NSObject?
     func complete(_ object: NSObject)
 }
@@ -29,14 +29,11 @@ final class ExternalGoalServiceUpdater {
     
     private func goalWasCompleted(_ notification: Notification) {
         
-        bridge.checkUserAllowsAccess { [weak self] userAllowsAccess in
-            guard userAllowsAccess,
-                  let bridge = self?.bridge,
-                  let id = notification.userInfo?[Plan.GoalIDKey] as? String,
-                  let reminder = bridge.getReminder(for: id) else { return }
-            
-            bridge.complete(reminder)
-        }
+        guard bridge.allowsAccess(),
+              let id = notification.userInfo?[Plan.GoalIDKey] as? String,
+              let reminder = bridge.getReminder(for: id) else { return }
+        
+        bridge.complete(reminder)
     }
     
 }

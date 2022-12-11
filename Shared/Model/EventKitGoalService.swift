@@ -12,11 +12,12 @@ final class EventKitGoalService: ExternalGoalServiceBridge {
     
     let store = EKEventStore()
     
-    func checkUserAllowsAccess(_ completion: @escaping (Bool) -> ()) {
+    func allowsAccess() -> Bool {
         let access = EKEventStore.authorizationStatus(for: .reminder)
-        completion(access == .authorized)
+        return access == .authorized
+
     }
-    
+        
     func getReminder(for id: String) -> NSObject? {
         store.calendarItem(withIdentifier: id) as? EKReminder
     }
