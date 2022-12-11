@@ -183,15 +183,13 @@ extension PlannerView: View {
                 // but this seems to appear appropriately...
                 ToolbarItemGroup(placement: .keyboard) {
                     Button(action: showRemindersPicker) {
-                        Text("Import from Reminders…")
+                        Text("Add a Reminder…")
                     }
                 }
             }
         }
         .sheet(isPresented: $showingReminderPicker) {
             ReminderPicker() {
-//                newPlannedTitle = $0.title
-//                setTitleForSelectedField()
                 guard let index = selectedIndex else { return }
                 viewModel.importReminder($0, index)
             }

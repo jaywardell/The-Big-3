@@ -67,7 +67,7 @@ struct ReminderPicker: View {
                 }
                 .padding()
             }
-            .navigationTitle("Import a Reminder")
+            .navigationTitle("Pick a Reminder")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
