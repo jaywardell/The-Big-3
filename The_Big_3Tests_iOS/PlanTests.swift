@@ -309,6 +309,27 @@ class PlanTests: XCTestCase {
         }
     }
     
+    func test_complete_goal_sends_id_in_userInfo_of_notification_if_it_exists() throws {
+        let sut = Plan(allowed: 1)
+        let expected = UUID().uuidString
+        try sut.set(exampleGoal, identifier: expected, at: 0)
+
+        let token = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted).eraseToAnyPublisher()
+
+        let expectation = XCTestExpectation(description: "expect changes for publisher")
+        var bag = Set<AnyCancellable>()
+        token.sink { notification in
+            XCTAssertEqual(notification.userInfo?[Plan.GoalIDKey] as? String, expected)
+            expectation.fulfill()
+        }
+        .store(in: &bag)
+        
+        try sut.completeGoal(at: 0)
+
+        wait(for: [expectation], timeout: 1)
+
+    }
+    
     func test_complete_goal_at_index_sends_notification_with_goal_in_userInfo() throws {
         let sut = Plan(allowed: 1)
         let expected = exampleGoal

@@ -118,7 +118,11 @@ extension Plan {
 
         goals[index] = Goal(title: goal.title, state: .completed)
         
-        NotificationCenter.default.post(name: Self.GoalWasCompleted, object: self, userInfo: [Self.GoalKey: goal.title])
+        let info: [AnyHashable : Any] = [
+            Self.GoalKey: goal.title,
+            Self.GoalIDKey: goal.externalIdentifier as Any
+        ]
+        NotificationCenter.default.post(name: Self.GoalWasCompleted, object: self, userInfo: info )
     }
     
     func remnant() throws -> Plan {
