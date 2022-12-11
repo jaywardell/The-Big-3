@@ -44,6 +44,8 @@ struct AccomplishmentsView {
     }
     @ObservedObject var viewModel: ViewModel
 
+    @Environment(\.showHistory) var showHistory
+    
     let colors = [
         Color.accentColor,
         Color.accentColor.opacity(31/34),
@@ -77,13 +79,20 @@ extension AccomplishmentsView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
-            
-            Button(action: viewModel.done) {
-                Text("Done")
+            HStack {
+                Button(action: showHistory) {
+                    Image(systemName: "list.bullet")
+                }
+                Spacer()
+                Button(action: viewModel.done) {
+                    Text("Done")
+                }
+                .font(.largeTitle)
+                .padding()
+                .opacity(viewModel.userIsFinished() ? 1 : 0)
             }
-            .font(.largeTitle)
             .padding()
-            .opacity(viewModel.userIsFinished() ? 1 : 0)
+            .padding(.bottom)
         }
     }
 }

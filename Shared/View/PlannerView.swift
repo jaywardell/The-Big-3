@@ -57,6 +57,8 @@ struct PlannerView {
     
     @State private var tappedDeleteButtonIndex: Int?
     
+    @Environment(\.showHistory) var showHistory
+    
     @FocusState private var isFocused: Bool
 
     let colors = [
@@ -184,12 +186,19 @@ extension PlannerView: View {
                         )
                 }
                 
-                Button(action: viewModel.start) {
-                    Text("Start")
+                HStack {
+                    Button(action: showHistory) {
+                        Image(systemName: "list.bullet")
+                    }
+                    Spacer()
+                    Button(action: viewModel.start) {
+                        Text("Start")
+                    }
+                    .font(.largeTitle)
+                    .padding()
+                    .opacity(viewModel.isFull() ? 1 : 0)
                 }
-                .font(.largeTitle)
                 .padding()
-                .opacity(viewModel.isFull() ? 1 : 0)
             }
             .toolbar {
                 // NOTE: this seems to cause an autolayout problem.
@@ -212,7 +221,7 @@ extension PlannerView: View {
     private func showRemindersPicker() {
         showingReminderPicker = true
     }
-    
+        
     private func userTappedEmptyPlannedBlock(at index: Int) {
         selectedIndex = index
     }
