@@ -85,4 +85,8 @@ final class EventKitReminderLister: ObservableObject {
             self.calendarForReminders = calendarForReminders
         }
     }
+    
+    func reminders(for calendar: EventKitCalendar) -> [EventKitReminder] {
+        calendarForReminders[calendar, default: []]
+    }
 }
