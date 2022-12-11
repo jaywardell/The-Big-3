@@ -1,5 +1,5 @@
 //
-//  EventKitReminderUpdater.swift
+//  ExternalGoalServiceUpdater.swift
 //  The Big 3 (iOS)
 //
 //  Created by Joseph Wardell on 12/10/22.
@@ -8,19 +8,19 @@
 import Foundation
 import Combine
 
-protocol EventKitReminderBridge {
+protocol ExternalGoalServiceBridge {
     func checkUserAllowsAccess(_ completion: (Bool)->())
     func getReminder(for id: String) -> NSObject?
     func complete(_ object: NSObject)
 }
 
-final class EventKitReminderUpdater {
+final class ExternalGoalServiceUpdater {
     
-    let bridge: EventKitReminderBridge
+    let bridge: ExternalGoalServiceBridge
     
     var subscriptions = Set<AnyCancellable>()
     
-    init(bridge: EventKitReminderBridge) {
+    init(bridge: ExternalGoalServiceBridge) {
         self.bridge = bridge
         
         NotificationCenter.default.publisher(for: Plan.GoalWasCompleted).sink(receiveValue: goalWasCompleted)

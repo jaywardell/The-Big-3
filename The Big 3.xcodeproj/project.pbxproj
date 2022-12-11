@@ -13,8 +13,8 @@
 		7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A12944F44300E8C88E /* TestingFlags.swift */; };
 		7C0FA5A42944FF5A00E8C88E /* ReminderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A32944FF5A00E8C88E /* ReminderPicker.swift */; };
 		7C0FA5A6294507E700E8C88E /* EventKitReminderLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */; };
-		7C0FA5AC2945510D00E8C88E /* EventKitReminderUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5AB2945510D00E8C88E /* EventKitReminderUpdater.swift */; };
-		7C0FA5AE2945519000E8C88E /* EventKitReminderUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5AD2945519000E8C88E /* EventKitReminderUpdaterTests.swift */; };
+		7C0FA5AC2945510D00E8C88E /* ExternalGoalServiceUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */; };
+		7C0FA5AE2945519000E8C88E /* ExternalGoalServiceUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5AD2945519000E8C88E /* ExternalGoalServiceUpdaterTests.swift */; };
 		7C4707BC27B614D70080B419 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A627BE714400DF0F8D /* AppModel.swift */; };
 		7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
@@ -61,8 +61,8 @@
 		7C0FA5A12944F44300E8C88E /* TestingFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingFlags.swift; sourceTree = "<group>"; };
 		7C0FA5A32944FF5A00E8C88E /* ReminderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderPicker.swift; sourceTree = "<group>"; };
 		7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitReminderLister.swift; sourceTree = "<group>"; };
-		7C0FA5AB2945510D00E8C88E /* EventKitReminderUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitReminderUpdater.swift; sourceTree = "<group>"; };
-		7C0FA5AD2945519000E8C88E /* EventKitReminderUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitReminderUpdaterTests.swift; sourceTree = "<group>"; };
+		7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalGoalServiceUpdater.swift; sourceTree = "<group>"; };
+		7C0FA5AD2945519000E8C88E /* ExternalGoalServiceUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalGoalServiceUpdaterTests.swift; sourceTree = "<group>"; };
 		7C4707BB27B614D70080B419 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		7C4EC7A627BE714400DF0F8D /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountedRows.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */,
 				7C0FA5A12944F44300E8C88E /* TestingFlags.swift */,
 				7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */,
-				7C0FA5AB2945510D00E8C88E /* EventKitReminderUpdater.swift */,
+				7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,7 +212,7 @@
 				7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */,
 				7CA22B712944AA27007B404D /* JSONCompletionLogArchiveTests.swift */,
 				7CDE273E290F52DF00186BFD /* XCTest Additions */,
-				7C0FA5AD2945519000E8C88E /* EventKitReminderUpdaterTests.swift */,
+				7C0FA5AD2945519000E8C88E /* ExternalGoalServiceUpdaterTests.swift */,
 			);
 			path = The_Big_3Tests_iOS;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 				7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */,
 				7C0FA5A42944FF5A00E8C88E /* ReminderPicker.swift in Sources */,
 				7CB8720927B33A89009D5539 /* TheBig3View.swift in Sources */,
-				7C0FA5AC2945510D00E8C88E /* EventKitReminderUpdater.swift in Sources */,
+				7C0FA5AC2945510D00E8C88E /* ExternalGoalServiceUpdater.swift in Sources */,
 				7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */,
 				7C66162A27BD350A000AC97A /* TitledWithNextButton.swift in Sources */,
 				7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */,
@@ -372,7 +372,7 @@
 				7CDE273B290F512E00186BFD /* PlanArchiverTest.swift in Sources */,
 				7CDE2739290F512E00186BFD /* PlannerTests.swift in Sources */,
 				7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */,
-				7C0FA5AE2945519000E8C88E /* EventKitReminderUpdaterTests.swift in Sources */,
+				7C0FA5AE2945519000E8C88E /* ExternalGoalServiceUpdaterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  EventKitReminderUpdaterTests.swift
+//  ExternalGoalServiceUpdaterTests.swift
 //  The_Big_3Tests_iOS
 //
 //  Created by Joseph Wardell on 12/10/22.
@@ -10,11 +10,11 @@ import XCTest
 @testable
 import The_Big_3
 
-final class EventKitReminderUpdaterTests: XCTestCase {
+final class ExternalGoalServiceUpdaterTests: XCTestCase {
 
     func test_does_not_ask_bridge_for_reminder_if_user_access_denied() {
         let spy = EventKitReminderBridgeSpy(userCanAccess: false)
-        _ = EventKitReminderUpdater(bridge: spy)
+        _ = ExternalGoalServiceUpdater(bridge: spy)
         
         NotificationCenter.default.post(name: Plan.GoalWasCompleted, object: nil, userInfo: [Plan.GoalIDKey: ""])
         
@@ -24,7 +24,7 @@ final class EventKitReminderUpdaterTests: XCTestCase {
     
     func test_asks_bridge_for_reminder_when_receiving_notification() {
         let spy = EventKitReminderBridgeSpy()
-        _ = EventKitReminderUpdater(bridge: spy)
+        _ = ExternalGoalServiceUpdater(bridge: spy)
         
         NotificationCenter.default.post(name: Plan.GoalWasCompleted, object: nil, userInfo: [Plan.GoalIDKey: ""])
         
@@ -33,7 +33,7 @@ final class EventKitReminderUpdaterTests: XCTestCase {
     
     func test_passes_id_to_bridge_when_receiving_notification() {
         let spy = EventKitReminderBridgeSpy()
-        _ = EventKitReminderUpdater(bridge: spy)
+        _ = ExternalGoalServiceUpdater(bridge: spy)
         
         let expected = UUID().uuidString
         
@@ -44,7 +44,7 @@ final class EventKitReminderUpdaterTests: XCTestCase {
 
     func test_does_not_call_complete_when_no_id_in_notification() {
         let spy = EventKitReminderBridgeSpy()
-        _ = EventKitReminderUpdater(bridge: spy)
+        _ = ExternalGoalServiceUpdater(bridge: spy)
         
         NotificationCenter.default.post(name: Plan.GoalWasCompleted, object: nil)
         
@@ -53,7 +53,7 @@ final class EventKitReminderUpdaterTests: XCTestCase {
     
     func test_calls_complete_when_a_valid_id_is_in_notification() {
         let spy = EventKitReminderBridgeSpy()
-        _ = EventKitReminderUpdater(bridge: spy)
+        _ = ExternalGoalServiceUpdater(bridge: spy)
         
         NotificationCenter.default.post(name: Plan.GoalWasCompleted, object: nil, userInfo: [Plan.GoalIDKey: UUID().uuidString])
         
@@ -62,7 +62,7 @@ final class EventKitReminderUpdaterTests: XCTestCase {
 
     // MARK: - Helpers
     
-    final class EventKitReminderBridgeSpy: EventKitReminderBridge {
+    final class EventKitReminderBridgeSpy: ExternalGoalServiceBridge {
         
         let userCanAccess: Bool
         
