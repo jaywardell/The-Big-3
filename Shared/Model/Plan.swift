@@ -16,7 +16,7 @@ final class Plan: Identifiable {
 
     let allowed: Int
 
-    struct Goal: Equatable {
+    struct Goal: Equatable, Hashable {
         let title: String
         let externalIdentifier: String?
 
@@ -76,6 +76,13 @@ extension Plan {
         return isFull && pending.count == 0
     }
     
+    var currentGoals: [Goal?] {
+        var out = Array<Goal?>(repeating: nil, count: 3)
+        for (index, goal) in goals {
+            out[index] = goal
+        }
+        return out
+    }
     
 
     @discardableResult

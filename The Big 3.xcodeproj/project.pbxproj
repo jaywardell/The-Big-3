@@ -26,6 +26,27 @@
 		7C89F52527B4CDCD0033B8ED /* AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */; };
 		7CA22B702944A9AD007B404D /* JSONCompletionLogArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */; };
 		7CA22B722944AA27007B404D /* JSONCompletionLogArchiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA22B712944AA27007B404D /* JSONCompletionLogArchiveTests.swift */; };
+		7CA68298294633DD00BD6D12 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA68297294633DD00BD6D12 /* WidgetKit.framework */; };
+		7CA6829A294633DD00BD6D12 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA68299294633DD00BD6D12 /* SwiftUI.framework */; };
+		7CA6829D294633DD00BD6D12 /* The_Big_3_Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA6829C294633DD00BD6D12 /* The_Big_3_Widgets.swift */; };
+		7CA682A0294633DF00BD6D12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA6829F294633DF00BD6D12 /* Assets.xcassets */; };
+		7CA682A2294633DF00BD6D12 /* The_Big_3_Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7CA6829E294633DD00BD6D12 /* The_Big_3_Widgets.intentdefinition */; };
+		7CA682A3294633DF00BD6D12 /* The_Big_3_Widgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7CA6829E294633DD00BD6D12 /* The_Big_3_Widgets.intentdefinition */; };
+		7CA682A6294633DF00BD6D12 /* The_Big_3_WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7CA68295294633DD00BD6D12 /* The_Big_3_WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7CA682AC2946352A00BD6D12 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682AB2946352A00BD6D12 /* WidgetModel.swift */; };
+		7CA682AD2946358300BD6D12 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722427B33BF9009D5539 /* Planner.swift */; };
+		7CA682AE2946358A00BD6D12 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722927B33C36009D5539 /* Plan.swift */; };
+		7CA682AF2946359500BD6D12 /* PlanArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163127BDC340000AC97A /* PlanArchiver.swift */; };
+		7CA682B0294635BF00BD6D12 /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */; };
+		7CA682B42946372A00BD6D12 /* TheBig3TimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B32946372A00BD6D12 /* TheBig3TimelineProvider.swift */; };
+		7CA682B62946380600BD6D12 /* TheBig3WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */; };
+		7CA682B8294641E300BD6D12 /* WidgetPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */; };
+		7CA682BA2946429500BD6D12 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B92946429500BD6D12 /* AppConstants.swift */; };
+		7CA682BC2946430E00BD6D12 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B92946429500BD6D12 /* AppConstants.swift */; };
+		7CA682BD2946442B00BD6D12 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
+		7CA682BE2946456900BD6D12 /* Animation+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162E27BD4F24000AC97A /* Animation+Constants.swift */; };
+		7CA682C1294645D600BD6D12 /* Planner+GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */; };
+		7CA682C2294645EB00BD6D12 /* Planner+GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */; };
 		7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F20290FFA4900DED944 /* CompletionLog.swift */; };
 		7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
@@ -45,6 +66,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7CA682A4294633DF00BD6D12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CB871DA27B33A88009D5539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CA68294294633DD00BD6D12;
+			remoteInfo = The_Big_3_WidgetsExtension;
+		};
 		7CDE2733290F50EA00186BFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7CB871DA27B33A88009D5539 /* Project object */;
@@ -53,6 +81,20 @@
 			remoteInfo = "The Big 3 (iOS)";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7CA682A7294633DF00BD6D12 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7CA682A6294633DF00BD6D12 /* The_Big_3_WidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.AccomplishmentsView.swift; sourceTree = "<group>"; };
@@ -76,6 +118,19 @@
 		7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentsView.swift; sourceTree = "<group>"; };
 		7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCompletionLogArchive.swift; sourceTree = "<group>"; };
 		7CA22B712944AA27007B404D /* JSONCompletionLogArchiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCompletionLogArchiveTests.swift; sourceTree = "<group>"; };
+		7CA68295294633DD00BD6D12 /* The_Big_3_WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = The_Big_3_WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CA68297294633DD00BD6D12 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7CA68299294633DD00BD6D12 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7CA6829C294633DD00BD6D12 /* The_Big_3_Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3_Widgets.swift; sourceTree = "<group>"; };
+		7CA6829E294633DD00BD6D12 /* The_Big_3_Widgets.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = The_Big_3_Widgets.intentdefinition; sourceTree = "<group>"; };
+		7CA6829F294633DF00BD6D12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CA682A1294633DF00BD6D12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CA682AB2946352A00BD6D12 /* WidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
+		7CA682B32946372A00BD6D12 /* TheBig3TimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBig3TimelineProvider.swift; sourceTree = "<group>"; };
+		7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBig3WidgetView.swift; sourceTree = "<group>"; };
+		7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPlanView.swift; sourceTree = "<group>"; };
+		7CA682B92946429500BD6D12 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+GoalView.swift"; sourceTree = "<group>"; };
 		7CA77F20290FFA4900DED944 /* CompletionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLog.swift; sourceTree = "<group>"; };
 		7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLogTests.swift; sourceTree = "<group>"; };
 		7CB871DF27B33A88009D5539 /* The_Big_3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3App.swift; sourceTree = "<group>"; };
@@ -96,6 +151,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7CA68292294633DD00BD6D12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CA6829A294633DD00BD6D12 /* SwiftUI.framework in Frameworks */,
+				7CA68298294633DD00BD6D12 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CB871E327B33A89009D5539 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,12 +194,38 @@
 			path = "SwiftUI Additions";
 			sourceTree = "<group>";
 		};
+		7CA68296294633DD00BD6D12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CA68297294633DD00BD6D12 /* WidgetKit.framework */,
+				7CA68299294633DD00BD6D12 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CA6829B294633DD00BD6D12 /* The_Big_3_Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				7CA6829C294633DD00BD6D12 /* The_Big_3_Widgets.swift */,
+				7CA682B32946372A00BD6D12 /* TheBig3TimelineProvider.swift */,
+				7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */,
+				7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */,
+				7CA682AB2946352A00BD6D12 /* WidgetModel.swift */,
+				7CA6829E294633DD00BD6D12 /* The_Big_3_Widgets.intentdefinition */,
+				7CA6829F294633DF00BD6D12 /* Assets.xcassets */,
+				7CA682A1294633DF00BD6D12 /* Info.plist */,
+			);
+			path = The_Big_3_Widgets;
+			sourceTree = "<group>";
+		};
 		7CB871D927B33A88009D5539 = {
 			isa = PBXGroup;
 			children = (
 				7CB8C5BD27F091DE00D60FA0 /* todo.md */,
 				7CB871DE27B33A88009D5539 /* Shared */,
 				7CDE2730290F50EA00186BFD /* The_Big_3Tests_iOS */,
+				7CA6829B294633DD00BD6D12 /* The_Big_3_Widgets */,
+				7CA68296294633DD00BD6D12 /* Frameworks */,
 				7CB871E727B33A89009D5539 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -159,6 +249,7 @@
 			children = (
 				7CB871E627B33A89009D5539 /* The Big 3.app */,
 				7CDE272F290F50EA00186BFD /* The_Big_3Tests_iOS.xctest */,
+				7CA68295294633DD00BD6D12 /* The_Big_3_WidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,6 +259,7 @@
 			children = (
 				7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */,
 				7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */,
+				7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */,
 				7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */,
 			);
 			path = ViewModel;
@@ -177,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				7C4EC7A627BE714400DF0F8D /* AppModel.swift */,
+				7CA682B92946429500BD6D12 /* AppConstants.swift */,
 				7CB8722427B33BF9009D5539 /* Planner.swift */,
 				7CB8722927B33C36009D5539 /* Plan.swift */,
 				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
@@ -240,6 +333,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7CA68294294633DD00BD6D12 /* The_Big_3_WidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CA682AA294633DF00BD6D12 /* Build configuration list for PBXNativeTarget "The_Big_3_WidgetsExtension" */;
+			buildPhases = (
+				7CA68291294633DD00BD6D12 /* Sources */,
+				7CA68292294633DD00BD6D12 /* Frameworks */,
+				7CA68293294633DD00BD6D12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = The_Big_3_WidgetsExtension;
+			productName = The_Big_3_WidgetsExtension;
+			productReference = 7CA68295294633DD00BD6D12 /* The_Big_3_WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		7CB871E527B33A89009D5539 /* The Big 3 (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CB8720F27B33A89009D5539 /* Build configuration list for PBXNativeTarget "The Big 3 (iOS)" */;
@@ -247,10 +357,12 @@
 				7CB871E227B33A89009D5539 /* Sources */,
 				7CB871E327B33A89009D5539 /* Frameworks */,
 				7CB871E427B33A89009D5539 /* Resources */,
+				7CA682A7294633DF00BD6D12 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7CA682A5294633DF00BD6D12 /* PBXTargetDependency */,
 			);
 			name = "The Big 3 (iOS)";
 			productName = "The Big 3 (iOS)";
@@ -285,6 +397,9 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					7CA68294294633DD00BD6D12 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					7CB871E527B33A89009D5539 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -309,11 +424,20 @@
 			targets = (
 				7CB871E527B33A89009D5539 /* The Big 3 (iOS) */,
 				7CDE272E290F50EA00186BFD /* The_Big_3Tests_iOS */,
+				7CA68294294633DD00BD6D12 /* The_Big_3_WidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7CA68293294633DD00BD6D12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CA682A0294633DF00BD6D12 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CB871E427B33A89009D5539 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -332,6 +456,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7CA68291294633DD00BD6D12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CA682B42946372A00BD6D12 /* TheBig3TimelineProvider.swift in Sources */,
+				7CA682AD2946358300BD6D12 /* Planner.swift in Sources */,
+				7CA682B62946380600BD6D12 /* TheBig3WidgetView.swift in Sources */,
+				7CA682BA2946429500BD6D12 /* AppConstants.swift in Sources */,
+				7CA682AC2946352A00BD6D12 /* WidgetModel.swift in Sources */,
+				7CA682BE2946456900BD6D12 /* Animation+Constants.swift in Sources */,
+				7CA682B0294635BF00BD6D12 /* UserDefaults+Codable.swift in Sources */,
+				7CA6829D294633DD00BD6D12 /* The_Big_3_Widgets.swift in Sources */,
+				7CA682BD2946442B00BD6D12 /* GoalView.swift in Sources */,
+				7CA682A2294633DF00BD6D12 /* The_Big_3_Widgets.intentdefinition in Sources */,
+				7CA682C1294645D600BD6D12 /* Planner+GoalView.swift in Sources */,
+				7CA682AF2946359500BD6D12 /* PlanArchiver.swift in Sources */,
+				7CA682AE2946358A00BD6D12 /* Plan.swift in Sources */,
+				7CA682B8294641E300BD6D12 /* WidgetPlanView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CB871E227B33A89009D5539 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,6 +491,7 @@
 				7CD547B627E6DC760009F9DD /* LogView.swift in Sources */,
 				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */,
+				7CA682C2294645EB00BD6D12 /* Planner+GoalView.swift in Sources */,
 				7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */,
 				7C0FA5A42944FF5A00E8C88E /* ReminderPicker.swift in Sources */,
 				7CB8720927B33A89009D5539 /* TheBig3View.swift in Sources */,
@@ -355,12 +501,14 @@
 				7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */,
 				7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */,
 				7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */,
+				7CA682BC2946430E00BD6D12 /* AppConstants.swift in Sources */,
 				7C0FA5A6294507E700E8C88E /* EventKitReminderLister.swift in Sources */,
 				7CB8722527B33BF9009D5539 /* Planner.swift in Sources */,
 				7C0FA5B02945601100E8C88E /* EventKitGoalService.swift in Sources */,
 				7C4707BC27B614D70080B419 /* GoalView.swift in Sources */,
 				7CE7FF552943D9AC00B177E2 /* LogEntryRow.swift in Sources */,
 				7C89F52527B4CDCD0033B8ED /* AccomplishmentsView.swift in Sources */,
+				7CA682A3294633DF00BD6D12 /* The_Big_3_Widgets.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +531,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7CA682A5294633DF00BD6D12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CA68294294633DD00BD6D12 /* The_Big_3_WidgetsExtension */;
+			targetProxy = 7CA682A4294633DF00BD6D12 /* PBXContainerItemProxy */;
+		};
 		7CDE2734290F50EA00186BFD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7CB871E527B33A89009D5539 /* The Big 3 (iOS) */;
@@ -391,6 +544,67 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		7CA682A8294633DF00BD6D12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7HAJV4F6VL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = The_Big_3_Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = The_Big_3_Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3.The-Big-3-Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CA682A9294633DF00BD6D12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7HAJV4F6VL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = The_Big_3_Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = The_Big_3_Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3.The-Big-3-Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		7CB8720D27B33A89009D5539 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -507,6 +721,7 @@
 		7CB8721027B33A89009D5539 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -538,6 +753,7 @@
 		7CB8721127B33A89009D5539 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -613,6 +829,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7CA682AA294633DF00BD6D12 /* Build configuration list for PBXNativeTarget "The_Big_3_WidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CA682A8294633DF00BD6D12 /* Debug */,
+				7CA682A9294633DF00BD6D12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7CB871DD27B33A88009D5539 /* Build configuration list for PBXProject "The Big 3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

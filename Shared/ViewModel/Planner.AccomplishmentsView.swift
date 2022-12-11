@@ -19,22 +19,7 @@ extension Planner {
                                       done: done)
     }
     
-    private func accomplishmentState(for state: Plan.Goal.State) -> GoalView.ToDo.State {
-        switch state {
-        case .pending:
-            return .ready
-        case .completed:
-            return .finished
-        case .deferred:
-            return .notToday
-        }
-    }
-    
-    private func todo(at index: Int) -> GoalView.ToDo {
-        let goal = try! plan.goal(at: index)!
-        return GoalView.ToDo(title: goal.title, state: accomplishmentState(for: goal.state))
-    }
-    
+        
     private func userIsFinished() -> Bool {
         return plan.isComplete
     }
