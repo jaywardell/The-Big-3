@@ -162,8 +162,20 @@ extension PlannerView: View {
 
     var body: some View {
         
-        NavigationView {
-            VStack {
+        VStack(spacing: 0) {
+                                
+                HStack(alignment: .bottom) {
+                    Text("Plan your Big 3")
+                        .font(.largeTitle)
+                        .bold()
+                        .foregroundColor(Color(uiColor: .systemBackground))
+                        .padding(.leading)
+                        .padding(.top)
+                    Spacer()
+                }
+                .padding(.bottom)
+                .background(Color.accentColor, ignoresSafeAreaEdges: .top)
+                
                 CountedRows(rows: viewModel.allowed) { index in
                     planBlock(at: index)
                         .padding()
@@ -190,7 +202,6 @@ extension PlannerView: View {
                     }
                 }
             }
-        }
         .sheet(isPresented: $showingReminderPicker) {
             ReminderPicker() {
                 guard let index = selectedIndex else { return }
