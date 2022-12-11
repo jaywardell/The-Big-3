@@ -136,13 +136,15 @@ struct GoalView: View {
                         .foregroundColor(.white)
                }
             }
-            .frame(width: size.height * 13/34, height: size.height * 13/34)
+            .frame(width: size.height * checkmarkScaleFactor, height: size.height * checkmarkScaleFactor)
             
             Spacer()
         }
         .font(.largeTitle)
         .imageScale(.large)
     }
+    
+    private var checkmarkScaleFactor: CGFloat { template == .regular ? 13/34 : 21/34 }
     
     private var checkboxOffsetScalar: CGFloat {
         21/55
@@ -211,12 +213,7 @@ struct GoalView: View {
             checkbox(size: size)
                 .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
                 .padding(.top, size.height * 8/34)
-//                .padding(.leading, size.height * 3/34)
-//                .padding(.trailing, size.height * 3/34)
-//                .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
             Spacer()
-            
-
         }
         .background(background(size: size))
         .contentShape(Rectangle())
