@@ -158,9 +158,9 @@ struct GoalView: View {
                 .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
             
             Text(todo.title)
-                .font(.system(size: 1000, weight: .light, design: .serif))
+                .font(.system(size: size.height * 13/34, weight: .light, design: .serif))
                 .foregroundColor(textColor(for: todo.state))
-                .minimumScaleFactor(0.01)
+                .minimumScaleFactor(5/34)
                 .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
                 .opacity(textOpacty(for: todo.state) )
                 .padding(.vertical, size.height * 3/34)
