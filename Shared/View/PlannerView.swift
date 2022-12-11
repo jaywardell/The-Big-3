@@ -132,6 +132,10 @@ extension PlannerView: View {
 
                 }
             }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                userTappedEmptyPlannedBlock(at: index)
+            }
             .padding()
         }
         else {
@@ -172,7 +176,6 @@ extension PlannerView: View {
                     Text("Start")
                 }
                 .font(.largeTitle)
-                .buttonStyle(.borderedProminent)
                 .padding()
                 .opacity(viewModel.isFull() ? 1 : 0)
             }
