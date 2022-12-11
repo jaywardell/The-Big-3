@@ -15,6 +15,7 @@
 		7C0FA5A6294507E700E8C88E /* EventKitReminderLister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */; };
 		7C0FA5AC2945510D00E8C88E /* ExternalGoalServiceUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */; };
 		7C0FA5AE2945519000E8C88E /* ExternalGoalServiceUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5AD2945519000E8C88E /* ExternalGoalServiceUpdaterTests.swift */; };
+		7C0FA5B02945601100E8C88E /* EventKitGoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5AF2945601100E8C88E /* EventKitGoalService.swift */; };
 		7C4707BC27B614D70080B419 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A627BE714400DF0F8D /* AppModel.swift */; };
 		7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
@@ -63,6 +64,7 @@
 		7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitReminderLister.swift; sourceTree = "<group>"; };
 		7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalGoalServiceUpdater.swift; sourceTree = "<group>"; };
 		7C0FA5AD2945519000E8C88E /* ExternalGoalServiceUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalGoalServiceUpdaterTests.swift; sourceTree = "<group>"; };
+		7C0FA5AF2945601100E8C88E /* EventKitGoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitGoalService.swift; sourceTree = "<group>"; };
 		7C4707BB27B614D70080B419 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		7C4EC7A627BE714400DF0F8D /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountedRows.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				7C0FA5A12944F44300E8C88E /* TestingFlags.swift */,
 				7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */,
 				7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */,
+				7C0FA5AF2945601100E8C88E /* EventKitGoalService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */,
 				7C0FA5A6294507E700E8C88E /* EventKitReminderLister.swift in Sources */,
 				7CB8722527B33BF9009D5539 /* Planner.swift in Sources */,
+				7C0FA5B02945601100E8C88E /* EventKitGoalService.swift in Sources */,
 				7C4707BC27B614D70080B419 /* GoalView.swift in Sources */,
 				7CE7FF552943D9AC00B177E2 /* LogEntryRow.swift in Sources */,
 				7C89F52527B4CDCD0033B8ED /* AccomplishmentsView.swift in Sources */,
