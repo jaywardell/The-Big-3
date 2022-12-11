@@ -55,26 +55,35 @@ struct AccomplishmentsView {
 // MARK: - AccomplishmentsView: View
 
 extension AccomplishmentsView: View {
-            
+    
     
     var body: some View {
-        NavigationView {
-            VStack {
-                CountedRows(rows: viewModel.count) { index in
-                    GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-                    
-                Button(action: viewModel.done) {
-                    Text("Done")
-                }
-                .font(.largeTitle)
-                .padding()
-                .opacity(viewModel.userIsFinished() ? 1 : 0)
+        VStack(spacing: 0) {
+            HStack(alignment: .bottom) {
+                Text("The Big 3")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(Color(uiColor: .systemBackground))
+                    .padding(.leading)
+                    .padding(.top)
+                Spacer()
             }
-            .navigationTitle("The Big 3")
+            .padding(.bottom)
+            .background(Color.accentColor, ignoresSafeAreaEdges: .top)
+            
+            CountedRows(rows: viewModel.count) { index in
+                GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            
+            Button(action: viewModel.done) {
+                Text("Done")
+            }
+            .font(.largeTitle)
+            .padding()
+            .opacity(viewModel.userIsFinished() ? 1 : 0)
         }
     }
 }
