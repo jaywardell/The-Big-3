@@ -9,14 +9,18 @@ import Foundation
 
 struct PlanArchiver {
     
+    private var defaults: UserDefaults {
+        .standard
+    }
+    
     func loadPlan(allowed: Int) -> Plan {
-        var out = UserDefaults.standard.latestPlan
+        var out = defaults.latestPlan
         out = out?.allowed == allowed ? out : nil
         return out ?? Plan(allowed: allowed)
     }
     
     func archive(_ plan: Plan) {
-        UserDefaults.standard.latestPlan = plan
+        defaults.latestPlan = plan
     }
     
 }
