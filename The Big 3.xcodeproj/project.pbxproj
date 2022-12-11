@@ -182,10 +182,10 @@
 				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
 				7CA77F20290FFA4900DED944 /* CompletionLog.swift */,
 				7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */,
-				7C0FA5A12944F44300E8C88E /* TestingFlags.swift */,
 				7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */,
 				7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */,
 				7C0FA5AF2945601100E8C88E /* EventKitGoalService.swift */,
+				7C0FA5A12944F44300E8C88E /* TestingFlags.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
