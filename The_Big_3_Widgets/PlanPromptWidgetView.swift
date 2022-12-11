@@ -9,16 +9,41 @@ import SwiftUI
 import WidgetKit
 
 struct PlanPromptWidgetView: View {
+
+    @Environment(\.widgetFamily) var widgetFamily
+
+    
     var body: some View {
         VStack {
-            Text("Plan the Next")
-                .font(.system(.caption2, design: .default, weight: .ultraLight))
-            Text("Big")
-                .font(.system(.largeTitle, design: .default, weight: .ultraLight)) +
-            Text("3")
-                .font(.system(.largeTitle, design: .monospaced, weight: .black))
-                .bold()
-                .foregroundColor(.accentColor)
+            
+            if widgetFamily == .systemLarge {
+                Spacer()
+            }
+            
+            HStack {
+                VStack {
+                    Text("Plan the Next")
+                        .font(.system(.caption2, design: .default, weight: .ultraLight))
+                    Text("Big")
+                        .font(.system(.largeTitle, design: .default, weight: .ultraLight)) +
+                    Text("3")
+                        .font(.system(.largeTitle, design: .monospaced, weight: .black))
+                        .bold()
+                        .foregroundColor(.accentColor)
+                }
+                .padding()
+                .padding()
+                
+                if [.systemMedium, .systemExtraLarge].contains(widgetFamily) {
+                    Spacer()
+                }
+            }
+            
+            if [.systemMedium,
+                .systemLarge, .systemExtraLarge].contains(widgetFamily) {
+                Spacer()
+                Spacer()
+            }
         }
     }
 }
