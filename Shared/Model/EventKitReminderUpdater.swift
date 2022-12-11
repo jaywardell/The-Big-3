@@ -25,8 +25,9 @@ final class EventKitReminderUpdater {
             .store(in: &subscriptions)
     }
     
-    private func goalWasCompleted(_ unused: Any) {
-        bridge.getReminder(for: "")
+    private func goalWasCompleted(_ notification: Notification) {
+        guard let id = notification.userInfo?[Plan.GoalIDKey] as? String else { return }
+        bridge.getReminder(for: id)
     }
     
 }

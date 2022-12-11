@@ -52,6 +52,7 @@ final class Plan: Identifiable {
 
     static var GoalWasCompleted: Notification.Name { Notification.Name(rawValue: #function) }
     static var GoalKey: String { #function }
+    static var GoalIDKey: String { #function }
 
     init(allowed: Int = 0) {
         self.allowed = allowed
