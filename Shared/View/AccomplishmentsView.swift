@@ -68,10 +68,9 @@ extension AccomplishmentsView: View {
 
                     
                 Button(action: viewModel.done) {
-                    Text("Plan the Next Big 3")
+                    Text("Done")
                 }
                 .font(.largeTitle)
-                .buttonStyle(.borderedProminent)
                 .padding()
                 .opacity(viewModel.userIsFinished() ? 1 : 0)
             }
