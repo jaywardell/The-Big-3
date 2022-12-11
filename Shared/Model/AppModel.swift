@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import WidgetKit
 
 final class AppModel {
     // NOTE: callbacks use unowned self because this class should live the life of the app,
@@ -56,6 +57,9 @@ final class AppModel {
         self.archiver.archive(plan)
         planChanged = plan.publisher.sink { [unowned self] in
             planWasUpdated()
+            
+            WidgetCenter.shared.reloadAllTimelines()
         }
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
