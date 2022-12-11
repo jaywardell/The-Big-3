@@ -176,7 +176,7 @@ extension PlannerView: View {
                 .padding()
                 .opacity(viewModel.isFull() ? 1 : 0)
             }
-            .navigationTitle("What are the Big 3?")
+            .navigationTitle("Plan your Big 3")
             .toolbar {
                 // NOTE: this seems to cause an autolayout problem.
                 // It seems like any SwiftUI views I put here will cause the issue
