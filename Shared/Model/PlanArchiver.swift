@@ -10,7 +10,7 @@ import Foundation
 struct PlanArchiver {
     
     private var defaults: UserDefaults {
-        .standard
+        UserDefaults(suiteName: AppConstants.appGroup)!
     }
     
     func loadPlan(allowed: Int) -> Plan {

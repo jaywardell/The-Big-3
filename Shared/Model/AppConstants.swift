@@ -9,4 +9,6 @@ import Foundation
 
 enum AppConstants {
     static var allowedGoalsPerPlan: Int { 3 }
+    
+    static var appGroup: String { "group.com.oldjewel.TheBig3" }
 }
