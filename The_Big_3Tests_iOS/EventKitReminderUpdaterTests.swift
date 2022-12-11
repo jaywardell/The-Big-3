@@ -12,6 +12,16 @@ import The_Big_3
 
 final class EventKitReminderUpdaterTests: XCTestCase {
 
+    func test_does_not_ask_bridge_for_reminder_if_user_access_denied() {
+        let spy = EventKitReminderBridgeSpy(userCanAccess: false)
+        _ = EventKitReminderUpdater(bridge: spy)
+        
+        NotificationCenter.default.post(name: Plan.GoalWasCompleted, object: nil, userInfo: [Plan.GoalIDKey: ""])
+        
+        XCTAssertEqual(spy.getRemidnerCount, 0)
+
+    }
+    
     func test_asks_bridge_for_reminder_when_receiving_notification() {
         let spy = EventKitReminderBridgeSpy()
         _ = EventKitReminderUpdater(bridge: spy)
@@ -54,11 +64,21 @@ final class EventKitReminderUpdaterTests: XCTestCase {
     
     final class EventKitReminderBridgeSpy: EventKitReminderBridge {
         
+        let userCanAccess: Bool
+        
         private(set) var getRemidnerCount = 0
         private(set) var lastIDRequested: String?
 
         private(set) var completeCount = 0
         
+        init(userCanAccess: Bool = true) {
+            self.userCanAccess = userCanAccess
+        }
+        
+        func checkUserAllowsAccess(_ completion: (Bool)->()) {
+            completion(userCanAccess)
+        }
+
         func getReminder(for id: String) -> NSObject? {
             getRemidnerCount += 1
             lastIDRequested = id
