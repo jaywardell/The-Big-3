@@ -21,7 +21,14 @@ struct GoalView: View {
     let postpone: ()->()
     let finish: ()->()
     
-    enum Template { case small, regular }
+    enum Template {
+        // used for widget and other small views where there's no interaction expected
+        case small
+        case medium
+        
+        // used in the app as the main interface
+        case regular
+    }
     
     let template: Template
     
@@ -230,11 +237,43 @@ struct GoalView: View {
         .gesture(dragControls)
     }
 
+    private func mediumBody(size: CGSize) -> some View {
+        HStack {
+            checkbox(size: size)
+                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                .padding(.top, size.height * 8/34)
+                .padding(.leading, size.height * 8/34)
+            
+            Text(todo.title)
+                .font(.system(size: size.height * 13/34, weight: .light, design: .serif))
+                .foregroundColor(textColor(for: todo.state))
+                .minimumScaleFactor(5/34)
+                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+
+            Spacer()
+        }
+        .background(background(size: size))
+        .contentShape(Rectangle())
+        .onTapGesture {
+            if todo.state == .ready {
+                withAnimation(.Big3Spring) {
+                    if !showingPostponeButton {
+                        showingCheckbox.toggle()
+                    }
+                    showingPostponeButton = false
+                }
+            }
+        }
+        .gesture(dragControls)
+    }
+
     var body: some View {
         GeometryReader { geometry in
             switch template {
             case .regular:
                 bigBody(size: geometry.size)
+            case .medium:
+                mediumBody(size: geometry.size)
             case .small:
                 smallBody(size: geometry.size)
             }
@@ -259,6 +298,19 @@ struct MyPreviewProvider_Previews: PreviewProvider {
         }
         .previewLayout(.fixed(width: 300, height: 300))
         .previewDisplayName("Regular")
+
+        VStack {
+            GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .medium)
+
+            GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .medium)
+
+            GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .medium)
+        }
+        .previewLayout(.fixed(width: 300, height: 100))
+        .previewDisplayName("medium")
 
         VStack {
             GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
