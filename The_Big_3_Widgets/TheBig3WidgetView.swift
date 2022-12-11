@@ -16,15 +16,7 @@ struct TheBig3WidgetView: View {
             WidgetPlanView(planner: entry.planner)
         }
         else {
-            VStack {
-                Text("Plan the Next")
-                    .font(.footnote)
-                    .multilineTextAlignment(.center)
-                Text("Big 3")
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.accentColor)
-            }
+            PlanPromptWidgetView()
         }
     }
 }
