@@ -22,6 +22,22 @@ struct ReminderPicker: View {
         }
     }
     
+    private func row(for reminder: EventKitReminder) -> some View {
+        HStack {
+            Image(systemName: "checkmark")
+                .opacity(reminder.id == selectedReminderID ? 1 : 0)
+            Text(reminder.title)
+            Spacer()
+        }
+        .contentShape(Rectangle())
+        .onTapGesture(count: 2, perform: {
+            choose(reminder)
+        })
+        .onTapGesture {
+            selectedReminderID = reminder.id
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -30,20 +46,12 @@ struct ReminderPicker: View {
                 }
                 else {
                     List {
-                        ForEach(lister.reminders, id: \.self) { reminder in
-                            
-                            HStack {
-                                Image(systemName: "checkmark")
-                                    .opacity(reminder.id == selectedReminderID ? 1 : 0)
-                                Text(reminder.title)
-                                Spacer()
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture(count: 2, perform: {
-                                choose(reminder)
-                            })
-                            .onTapGesture {
-                                selectedReminderID = reminder.id
+                        ForEach(lister.calendars, id: \.self) { calendar in
+                            Section(calendar.name) {
+                                ForEach(lister.reminders(for: calendar), id: \.self) { reminder in
+
+                                    row(for: reminder)
+                                }
                             }
                         }
                     }
