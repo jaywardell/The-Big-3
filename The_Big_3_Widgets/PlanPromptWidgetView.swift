@@ -12,10 +12,11 @@ struct PlanPromptWidgetView: View {
     var body: some View {
         VStack {
             Text("Plan the Next")
-                .font(.footnote)
-                .multilineTextAlignment(.center)
-            Text("Big 3")
-                .font(.largeTitle)
+                .font(.system(.caption2, design: .default, weight: .ultraLight))
+            Text("Big")
+                .font(.system(.largeTitle, design: .default, weight: .ultraLight)) +
+            Text("3")
+                .font(.system(.largeTitle, design: .monospaced, weight: .black))
                 .bold()
                 .foregroundColor(.accentColor)
         }
