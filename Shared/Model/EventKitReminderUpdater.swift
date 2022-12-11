@@ -9,7 +9,8 @@ import Foundation
 import Combine
 
 protocol EventKitReminderBridge {
-    func getReminder(for id: String)
+    func getReminder(for id: String) -> NSObject?
+    func complete(_ object: NSObject)
 }
 
 final class EventKitReminderUpdater {
@@ -26,8 +27,10 @@ final class EventKitReminderUpdater {
     }
     
     private func goalWasCompleted(_ notification: Notification) {
-        guard let id = notification.userInfo?[Plan.GoalIDKey] as? String else { return }
-        bridge.getReminder(for: id)
+        guard let id = notification.userInfo?[Plan.GoalIDKey] as? String,
+        let reminder = bridge.getReminder(for: id) else { return }
+        
+        bridge.complete(reminder)
     }
     
 }

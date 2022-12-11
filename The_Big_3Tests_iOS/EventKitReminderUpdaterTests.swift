@@ -32,6 +32,24 @@ final class EventKitReminderUpdaterTests: XCTestCase {
         XCTAssertEqual(spy.lastIDRequested, expected)
     }
 
+    func test_does_not_call_complete_when_no_id_in_notification() {
+        let spy = EventKitReminderBridgeSpy()
+        _ = EventKitReminderUpdater(bridge: spy)
+        
+        NotificationCenter.default.post(name: Plan.GoalWasCompleted, object: nil)
+        
+        XCTAssertEqual(spy.completeCount, 0)
+    }
+    
+    func test_calls_complete_when_a_valid_id_is_in_notification() {
+        let spy = EventKitReminderBridgeSpy()
+        _ = EventKitReminderUpdater(bridge: spy)
+        
+        NotificationCenter.default.post(name: Plan.GoalWasCompleted, object: nil, userInfo: [Plan.GoalIDKey: UUID().uuidString])
+        
+        XCTAssertEqual(spy.completeCount, 1)
+    }
+
     // MARK: - Helpers
     
     final class EventKitReminderBridgeSpy: EventKitReminderBridge {
@@ -39,11 +57,17 @@ final class EventKitReminderUpdaterTests: XCTestCase {
         private(set) var getRemidnerCount = 0
         private(set) var lastIDRequested: String?
 
-        func getReminder(for id: String) {
+        private(set) var completeCount = 0
+        
+        func getReminder(for id: String) -> NSObject? {
             getRemidnerCount += 1
             lastIDRequested = id
+            
+            return NSString()
         }
         
-        
+        func complete(_ object: NSObject) {
+            completeCount += 1
+        }
     }
 }
