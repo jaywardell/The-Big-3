@@ -59,8 +59,9 @@ struct The_Big_3_Widgets: Widget {
 //            The_Big_3_WidgetsEntryView(entry: entry)
             TheBig3WidgetView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .supportedFamilies([.systemSmall, .systemMedium])
+        .configurationDisplayName("The Big 3")
+        .description("Track your progress on your Big 3")
     }
 }
 
