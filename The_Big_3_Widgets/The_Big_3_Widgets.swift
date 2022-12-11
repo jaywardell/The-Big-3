@@ -59,7 +59,7 @@ struct The_Big_3_Widgets: Widget {
 //            The_Big_3_WidgetsEntryView(entry: entry)
             TheBig3WidgetView(entry: entry)
         }
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
         .configurationDisplayName("The Big 3")
         .description("Track your progress on your Big 3")
     }
