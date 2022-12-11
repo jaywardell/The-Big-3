@@ -75,7 +75,7 @@ extension AccomplishmentsView: View {
             .background(LinearGradient(colors: [.accentColor.opacity(29/34), .accentColor], startPoint: .top, endPoint: .bottom), ignoresSafeAreaEdges: .top)
             
             CountedRows(rows: viewModel.count) { index in
-                GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
+                GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) }, template: .regular)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

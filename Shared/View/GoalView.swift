@@ -21,6 +21,10 @@ struct GoalView: View {
     let postpone: ()->()
     let finish: ()->()
     
+    enum Template { case small, regular }
+    
+    let template: Template
+    
     @State private var showingCheckbox = false
     @State private var checkboxTranslation: CGFloat = 0
     @State private var showingPostponeButton = false
@@ -113,14 +117,16 @@ struct GoalView: View {
                 case .ready:
                     Button(action: { withAnimation(.Big3Spring) {finish()}}) {
                             ZStack {
-                                Image(systemName: "checkmark.circle")
-                                    .resizable()
-                                    .foregroundColor(backgroundColor)
-                                    .opacity(showingCheckbox ? 8/34 : 3/34)
+                                if template == .regular {
+                                    Image(systemName: "checkmark.circle")
+                                        .resizable()
+                                        .foregroundColor(self.template == .regular ? backgroundColor : Color(uiColor: .label))
+                                        .opacity(self.template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
+                                }
                                 Image(systemName: "circle")
                                     .resizable()
                                     .foregroundColor(backgroundColor)
-                                    .opacity(showingCheckbox ? 1 : checkboxTranslation/dragThreshold)
+                                    .opacity(self.template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
                             }
                     }
                     .buttonStyle(.borderless)
@@ -142,65 +148,101 @@ struct GoalView: View {
         21/55
     }
     
+    private func bigBody(size: CGSize) -> some View {
+        HStack {
+            checkbox(size: size)
+                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                .padding(.top, size.height * 8/34)
+                .padding(.leading, size.height * 3/34)
+                .padding(.trailing, size.height * 3/34)
+                .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
+            
+            Text(todo.title)
+                .font(.system(size: 1000, weight: .light, design: .serif))
+                .foregroundColor(textColor(for: todo.state))
+                .minimumScaleFactor(0.01)
+                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                .opacity(textOpacty(for: todo.state) )
+                .padding(.vertical, size.height * 3/34)
+                .padding(.trailing, size.height * 3/34)
+                .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
+
+            Spacer()
+            
+            if todo.state == .ready {
+            ZStack {
+                VStack(alignment: .leading) {
+
+                    Button(action: { withAnimation(.Big3Spring) {postpone()}}) {
+                        Text("not today")
+                            .font(.system(size: 1000))
+                            .minimumScaleFactor(0.01)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                   }
+                    .buttonStyle(.borderless)
+                }
+                .foregroundColor(backgroundColor)
+                .opacity(todo.state == .ready ? 1 : 0)
+                .frame(width: size.height * 8/34,
+                       height: size.height * 8/34)
+            }
+            .padding(.trailing, size.height * 5/34)
+            .offset(x: size.width * (showingPostponeButton ? 0 : 8/34) + postponeButtonTranslation, y: 0)
+            }
+        }
+        .background(background(size: size))
+        .contentShape(Rectangle())
+        .onTapGesture {
+            if todo.state == .ready {
+                withAnimation(.Big3Spring) {
+                    if !showingPostponeButton {
+                        showingCheckbox.toggle()
+                    }
+                    showingPostponeButton = false
+                }
+            }
+        }
+        .gesture(dragControls)
+    }
+
+    private func smallBody(size: CGSize) -> some View {
+        HStack {
+            Spacer()
+            checkbox(size: size)
+                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                .padding(.top, size.height * 8/34)
+//                .padding(.leading, size.height * 3/34)
+//                .padding(.trailing, size.height * 3/34)
+//                .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
+            Spacer()
+            
+
+        }
+        .background(background(size: size))
+        .contentShape(Rectangle())
+        .onTapGesture {
+            if todo.state == .ready {
+                withAnimation(.Big3Spring) {
+                    if !showingPostponeButton {
+                        showingCheckbox.toggle()
+                    }
+                    showingPostponeButton = false
+                }
+            }
+        }
+        .gesture(dragControls)
+    }
+
     var body: some View {
         GeometryReader { geometry in
-            HStack {
-                checkbox(size: geometry.size)
-                    .shadow(radius: todo.state == .finished ? geometry.size.height * 3/34 : 0)
-                    .padding(.top, geometry.size.height * 8/34)
-                    .padding(.leading, geometry.size.height * 3/34)
-                    .padding(.trailing, geometry.size.height * 3/34)
-                    .offset(x: geometry.size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
-                
-                Text(todo.title)
-                    .font(.system(size: 1000, weight: .light, design: .serif))
-                    .foregroundColor(textColor(for: todo.state))
-                    .minimumScaleFactor(0.01)
-                    .shadow(radius: todo.state == .finished ? geometry.size.height * 3/34 : 0)
-                    .opacity(textOpacty(for: todo.state) )
-                    .padding(.vertical, geometry.size.height * 3/34)
-                    .padding(.trailing, geometry.size.height * 3/34)
-                    .offset(x: geometry.size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
-
-                Spacer()
-                
-                if todo.state == .ready {
-                ZStack {
-                    VStack(alignment: .leading) {
-
-                        Button(action: { withAnimation(.Big3Spring) {postpone()}}) {
-                            Text("not today")
-                                .font(.system(size: 1000))
-                                .minimumScaleFactor(0.01)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                       }
-                        .buttonStyle(.borderless)
-                    }
-                    .foregroundColor(backgroundColor)
-                    .opacity(todo.state == .ready ? 1 : 0)
-                    .frame(width: geometry.size.height * 8/34,
-                           height: geometry.size.height * 8/34)
-                }
-                .padding(.trailing, geometry.size.height * 5/34)
-                .offset(x: geometry.size.width * (showingPostponeButton ? 0 : 8/34) + postponeButtonTranslation, y: 0)
-                }
+            switch template {
+            case .regular:
+                bigBody(size: geometry.size)
+            case .small:
+                smallBody(size: geometry.size)
             }
-            .background(background(size: geometry.size))
-            .contentShape(Rectangle())
-            .onTapGesture {
-                if todo.state == .ready {
-                    withAnimation(.Big3Spring) {
-                        if !showingPostponeButton {
-                            showingCheckbox.toggle()
-                        }
-                        showingPostponeButton = false
-                    }
-                }
-            }
-            .gesture(dragControls)
         }
     }
-    
 }
 
 // MARK: -
@@ -210,15 +252,29 @@ struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
-                     backgroundColor: .purple, postpone: {}, finish: {})
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .regular)
 
             GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
-                     backgroundColor: .purple, postpone: {}, finish: {})
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .regular)
 
             GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
-                     backgroundColor: .purple, postpone: {}, finish: {})
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .regular)
         }
         .previewLayout(.fixed(width: 300, height: 300))
+        .previewDisplayName("Regular")
+
+        VStack {
+            GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .small)
+
+            GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .small)
+
+            GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .small)
+        }
+        .previewLayout(.fixed(width: 100, height: 100))
+        .previewDisplayName("Small")
     }
 }
 #endif
