@@ -47,6 +47,7 @@
 		7CA682BE2946456900BD6D12 /* Animation+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162E27BD4F24000AC97A /* Animation+Constants.swift */; };
 		7CA682C1294645D600BD6D12 /* Planner+GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */; };
 		7CA682C2294645EB00BD6D12 /* Planner+GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */; };
+		7CA682C629464E6C00BD6D12 /* Plan+WidgetExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C529464E6C00BD6D12 /* Plan+WidgetExamples.swift */; };
 		7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F20290FFA4900DED944 /* CompletionLog.swift */; };
 		7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
@@ -133,6 +134,7 @@
 		7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+GoalView.swift"; sourceTree = "<group>"; };
 		7CA682C3294648F700BD6D12 /* The Big 3 (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "The Big 3 (iOS).entitlements"; sourceTree = "<group>"; };
 		7CA682C42946491600BD6D12 /* The_Big_3_WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = The_Big_3_WidgetsExtension.entitlements; sourceTree = "<group>"; };
+		7CA682C529464E6C00BD6D12 /* Plan+WidgetExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+WidgetExamples.swift"; sourceTree = "<group>"; };
 		7CA77F20290FFA4900DED944 /* CompletionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLog.swift; sourceTree = "<group>"; };
 		7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLogTests.swift; sourceTree = "<group>"; };
 		7CB871DF27B33A88009D5539 /* The_Big_3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3App.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				7CA6829C294633DD00BD6D12 /* The_Big_3_Widgets.swift */,
 				7CA682B32946372A00BD6D12 /* TheBig3TimelineProvider.swift */,
+				7CA682C529464E6C00BD6D12 /* Plan+WidgetExamples.swift */,
 				7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */,
 				7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */,
 				7CA682AB2946352A00BD6D12 /* WidgetModel.swift */,
@@ -477,6 +480,7 @@
 				7CA682C1294645D600BD6D12 /* Planner+GoalView.swift in Sources */,
 				7CA682AF2946359500BD6D12 /* PlanArchiver.swift in Sources */,
 				7CA682AE2946358A00BD6D12 /* Plan.swift in Sources */,
+				7CA682C629464E6C00BD6D12 /* Plan+WidgetExamples.swift in Sources */,
 				7CA682B8294641E300BD6D12 /* WidgetPlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

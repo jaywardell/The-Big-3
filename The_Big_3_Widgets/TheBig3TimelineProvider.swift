@@ -17,15 +17,7 @@ final class TheBig3TimelineProvider: IntentTimelineProvider {
     }
     
     func placeholder(in context: Context) -> Entry {
-        let plan = Plan(allowed: 3)
-        try! plan.set("Eat", at: 0)
-        try! plan.set("Pray", at: 1)
-        try! plan.set("Love", at: 2)
-
-        try! plan.completeGoal(at: 0)
-        try! plan.deferGoal(at: 2)
-        
-        return Entry(planner: Planner(plan: plan), date: Date(), configuration: ConfigurationIntent())
+        return Entry(planner: Planner(plan: .widgetPlaceholderExample), date: Date(), configuration: ConfigurationIntent())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Entry) -> ()) {
