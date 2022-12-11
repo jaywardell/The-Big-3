@@ -13,12 +13,19 @@ struct EventKitReminder: Hashable {
     let title: String
 }
 
+struct EventKitCalendar: Hashable {
+    let id: String
+    let name: String
+}
+
 final class EventKitReminderLister: ObservableObject {
     
     let store = EKEventStore()
     
     @Published var givenAccess = false
     @Published var reminders = [EventKitReminder]()
+    @Published var calendars = [EventKitCalendar]()
+    @Published var calendarForReminders = [EventKitCalendar: [EventKitReminder]]()
     
     init() {
         // NOTE: this will cause a crash if there's no NSRemindersUsageDescription set in Info.plist
@@ -37,13 +44,45 @@ final class EventKitReminderLister: ObservableObject {
     private func getIncompleteReminders() {
         let predicate: NSPredicate? = store.predicateForIncompleteReminders(withDueDateStarting: nil, ending: nil, calendars: nil)
         if let aPredicate = predicate {
-            store.fetchReminders(matching: aPredicate, completion: {(_ reminders: [Any]?) -> Void in
-                guard let reminders = reminders as? [EKReminder] else { return }
-                
-                DispatchQueue.main.async {
-                    self.reminders = reminders.map { EventKitReminder(id: $0.calendarItemIdentifier, title: $0.title) }
-                }
-            })
+            store.fetchReminders(matching: aPredicate) { [weak self] reminders in
+                guard let reminders = reminders else { return }
+
+                self?.retrieved(reminders: reminders)
+            }
+        }
+    }
+    
+    private func retrieved(reminders retrieved: [EKReminder]) {
+        let noCalendar = EventKitCalendar(id: "", name: "")
+        
+        var reminders = [EventKitReminder]()
+        var calendars = [EventKitCalendar]()
+        var calendarForReminders = [EventKitCalendar: [EventKitReminder]]()
+        
+        for r in retrieved {
+            let reminder = EventKitReminder(id: r.calendarItemIdentifier, title: r.title)
+            reminders.append(reminder)
+            
+            let calendar: EventKitCalendar
+            if let c = r.calendar {
+                calendar = EventKitCalendar(id: c.calendarIdentifier, name: c.title)
+            }
+            else {
+                calendar = noCalendar
+            }
+            if !calendars.contains(calendar) {
+                calendars.append(calendar)
+            }
+            
+            var remindersForCalendar = calendarForReminders[calendar, default: []]
+            remindersForCalendar.append(reminder)
+            calendarForReminders[calendar] = remindersForCalendar
+        }
+        
+        DispatchQueue.main.async {
+            self.reminders = reminders
+            self.calendars = calendars
+            self.calendarForReminders = calendarForReminders
         }
     }
 }
