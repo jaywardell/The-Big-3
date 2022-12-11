@@ -26,6 +26,13 @@ final class EventKitGoalService: ExternalGoalServiceBridge {
         guard let reminder = object as? EKReminder else { return }
         
         reminder.completionDate = Date()
+        
+        do {
+            try store.save(reminder, commit: true)
+        }
+        catch {
+            print("error completing reminder \(reminder): \(error)")
+        }
     }
     
     

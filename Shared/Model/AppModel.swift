@@ -16,6 +16,8 @@ final class AppModel {
     let archiver: PlanArchiver
     var logger: CompletionLog
     
+    let eventKitReminderUpdater = ExternalGoalServiceUpdater(bridge: EventKitGoalService())
+    
     // NOTE: not using a Set because we want to subscribe to one Plan's publisher at a time
     private var plannerChanged: AnyCancellable?
     private var planChanged: AnyCancellable?
