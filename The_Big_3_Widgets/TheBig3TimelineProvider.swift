@@ -29,11 +29,8 @@ final class TheBig3TimelineProvider: IntentTimelineProvider {
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Entry) -> ()) {
-        
-//        let planner = model.planner
-        
-        let entry = Entry(planner: model.planner, date: Date(), configuration: configuration)
-        completion(entry)
+                
+        completion(placeholder(in: context))
     }
 
 
