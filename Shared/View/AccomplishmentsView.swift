@@ -71,7 +71,8 @@ extension AccomplishmentsView: View {
                 Spacer()
             }
             .padding(.bottom)
-            .background(Color.accentColor, ignoresSafeAreaEdges: .top)
+//            .background(Color.accentColor, ignoresSafeAreaEdges: .top)
+            .background(LinearGradient(colors: [.accentColor.opacity(29/34), .accentColor], startPoint: .top, endPoint: .bottom), ignoresSafeAreaEdges: .top)
             
             CountedRows(rows: viewModel.count) { index in
                 GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) })
