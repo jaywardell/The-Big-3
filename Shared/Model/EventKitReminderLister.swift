@@ -21,7 +21,7 @@ final class EventKitReminderLister: ObservableObject {
     @Published var reminders = [EventKitReminder]()
     
     init() {
-        // NOTE: this will cause a crash if there's no NSRemindersUsageDescription ket in Info.plist
+        // NOTE: this will cause a crash if there's no NSRemindersUsageDescription set in Info.plist
         store.requestAccess(to: .reminder) { receivedAccess, error in
             if let error = error {
                 print("Error accessing reminders: \(error)")
