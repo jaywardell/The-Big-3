@@ -26,7 +26,7 @@ final class AppModel {
     
     init() {
         self.archiver = PlanArchiver()
-        let loadedPlan = self.archiver.loadPlan(allowed: AppConstants.allowedGoalsPerPlan)
+        let loadedPlan = self.archiver.loadPlan(allowed: ModelConstants.allowedGoalsPerPlan)
         self.planner = Planner(plan: loadedPlan)
         
         let archiver = JSONCompletionLogArchive()
