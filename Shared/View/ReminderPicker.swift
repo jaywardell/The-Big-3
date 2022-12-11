@@ -51,8 +51,10 @@ struct ReminderPicker: View {
                                 ForEach(lister.reminders(for: calendar), id: \.self) { reminder in
 
                                     row(for: reminder)
+                                        .foregroundColor(Color(uiColor: .label))
                                 }
                             }
+                            .foregroundColor(calendar.color.map(Color.init(cgColor:)) ?? Color(uiColor: .label))
                         }
                     }
                     .listStyle(.plain)
