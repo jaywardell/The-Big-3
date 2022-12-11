@@ -26,7 +26,7 @@ struct WidgetPlanView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ForEach(0..<AppConstants.allowedGoalsPerPlan, id: \.self) { index in
+            ForEach(0..<ModelConstants.allowedGoalsPerPlan, id: \.self) { index in
                 let todo = planner.todo(at: index)
                 GoalView(todo: todo, backgroundColor: .accentColor, postpone: {}, finish: {}, template: template(for: widgetFamily))
             }
