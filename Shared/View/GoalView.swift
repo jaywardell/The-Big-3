@@ -208,17 +208,17 @@ struct GoalView: View {
 #if DEBUG
 struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
-        GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
-                 backgroundColor: .purple, postpone: {}, finish: {})
-            .previewLayout(.fixed(width: 300, height: 100))
+        VStack {
+            GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
+                     backgroundColor: .purple, postpone: {}, finish: {})
 
-        GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .ready),
-                 backgroundColor: .purple, postpone: {}, finish: {})
-            .previewLayout(.fixed(width: 300, height: 100))
+            GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
+                     backgroundColor: .purple, postpone: {}, finish: {})
 
-        GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .notToday),
-                 backgroundColor: .purple, postpone: {}, finish: {})
-            .previewLayout(.fixed(width: 300, height: 100))
+            GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
+                     backgroundColor: .purple, postpone: {}, finish: {})
+        }
+        .previewLayout(.fixed(width: 300, height: 300))
     }
 }
 #endif
