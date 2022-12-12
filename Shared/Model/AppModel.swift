@@ -39,7 +39,7 @@ final class AppModel {
         userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted).sink { notification in
             guard let goalString = notification.userInfo?[Plan.GoalKey] as? String else { return }
             let goal = Plan.Goal(title: goalString, state: .completed)
-            Task {
+            Task { [unowned self] in
                 do {
                     try await self.logger.log(goal)
                 }
@@ -54,7 +54,7 @@ final class AppModel {
     
     private func planWasUpdated() {
         let plan = planner.plan
-        self.archiver.archive(plan)
+        archiver.archive(plan)
         planChanged = plan.publisher.sink { [unowned self] in
             planWasUpdated()
             
