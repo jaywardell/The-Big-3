@@ -165,46 +165,46 @@ extension PlannerView: View {
     var body: some View {
         
         VStack(spacing: 0) {
-  
+            
             Header(title: "Plan the next\nBig 3")
-
-                CountedRows(rows: viewModel.allowed) { index in
-                    planBlock(at: index)
-                        .padding()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(background(at: index)
-                        )
-                }
-                
-                HStack {
-                    Button(action: showHistory) {
-                        Image(systemName: "list.bullet")
-                    }
-                    Spacer()
-                    Button(action: viewModel.start) {
-                        Text("Start")
-                            .font(.system(.title, design: .default, weight: .light))
-                    }
-                    .font(.largeTitle)
+            
+            CountedRows(rows: viewModel.allowed) { index in
+                planBlock(at: index)
                     .padding()
-                    .opacity(viewModel.isFull() ? 1 : 0)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(background(at: index)
+                    )
+            }
+            
+            HStack {
+                Button(action: showHistory) {
+                    Image(systemName: "list.bullet")
                 }
+                Spacer()
+                Button(action: viewModel.start) {
+                    Text("Start")
+                        .font(.system(.title, design: .default, weight: .light))
+                }
+                .font(.largeTitle)
                 .padding()
+                .opacity(viewModel.isFull() ? 1 : 0)
             }
-            .toolbar {
-                // NOTE: this seems to cause an autolayout problem.
-                // It seems like any SwiftUI views I put here will cause the issue
-                // but this seems to appear appropriately...
-                ToolbarItemGroup(placement: .keyboard) {
-                    Button(action: showRemindersPicker) {
-                        Text("Add a Reminder…")
-                    }
-                }
-            }
+            .padding()
+        }
         .sheet(isPresented: $showingReminderPicker) {
             ReminderPicker() {
                 guard let index = selectedIndex else { return }
                 viewModel.importReminder($0, index)
+            }
+        }
+        .toolbar {
+            // NOTE: this seems to cause an autolayout problem.
+            // It seems like any SwiftUI views I put here will cause the issue
+            // but this seems to appear appropriately...
+            ToolbarItemGroup(placement: .keyboard) {
+                Button(action: showRemindersPicker) {
+                    Text("Add a Reminder…")
+                }
             }
         }
     }
