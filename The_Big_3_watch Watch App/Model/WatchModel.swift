@@ -15,8 +15,10 @@ final class WatchModel: ObservableObject {
 
     @Published var planner: Planner
 
+    let archiver = PlanArchiver()
+    
     init() {
-        let plan = Plan(allowed: 3)
+        let plan = archiver.loadPlan(allowed: 3)
         self.planner = Planner(plan: plan)
         watchSynchronizer.receivedPlan
             .receive(on: RunLoop.main)
@@ -30,5 +32,7 @@ final class WatchModel: ObservableObject {
         print("Updated............\t\(Date())")
         print(plan)
         self.planner = Planner(plan: plan)
+        
+        archiver.archive(plan)
     }
 }
