@@ -16,17 +16,19 @@ final class WatchModel: ObservableObject {
     @Published var planner: Planner
 
     init() {
-        self.planner = Planner(plan: Plan(allowed: 3))
-        watchSynchronizer.objectWillChange
+        let plan = Plan(allowed: 3)
+        self.planner = Planner(plan: plan)
+        watchSynchronizer.receivedPlan
             .receive(on: RunLoop.main)
             .sink(receiveValue: takePlanFromSynchronizer)
             .store(in: &subscriptions)
     }
     
     
-    private func takePlanFromSynchronizer() {
-        guard let newPlan = watchSynchronizer.sentPlan else { return }
-        print(newPlan)
-        self.planner = Planner(plan: newPlan)
+    private func takePlanFromSynchronizer(_ plan: Plan) {
+        print(#function)
+        print("Updated............\t\(Date())")
+        print(plan)
+        self.planner = Planner(plan: plan)
     }
 }

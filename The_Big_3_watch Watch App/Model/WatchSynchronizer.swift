@@ -9,9 +9,11 @@ import Foundation
 import WatchConnectivity
 import Combine
 
-final class WatchSynchronizer: NSObject, ObservableObject {
+final class WatchSynchronizer: NSObject {
     
-    @Published var sentPlan: Plan?
+//    @Published var sentPlan: Plan?
+    
+    var receivedPlan = PassthroughSubject<Plan, Never>()
     
     private var session: WCSession { WCSession.default }
 
@@ -29,7 +31,21 @@ final class WatchSynchronizer: NSObject, ObservableObject {
     override init() {
         super.init()
         try! startConnection {}
+        
+        if let encoded = session.receivedApplicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data {
+            if let plan = try? JSONDecoder().decode(Plan.self, from: encoded) {
+                receivedPlan.send(plan)
+            }
+        }
+            
+        
     }
+    
+//    var lastPlan: Plan? {
+//        try! startConnection {}
+//        guard let encoded = session.receivedApplicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data else { return nil }
+//        return try? JSONDecoder().decode(Plan.self, from: encoded)
+//    }
 }
 
 
@@ -46,8 +62,9 @@ extension WatchSynchronizer: WCSessionDelegate {
         guard let encoded = applicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data,
               let plan = try? JSONDecoder().decode(Plan.self, from: encoded) else { return }
         
+        print("Received.................\t\(Date())")
         print(plan)
         
-        sentPlan = plan
+        receivedPlan.send(plan)
     }
 }
