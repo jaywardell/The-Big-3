@@ -13,10 +13,10 @@ struct TheBig3WatchView: View {
 
     var body: some View {
         if planner.state == .planning {
-            Text("There are some goals to see")
+            NoPlanView()
         }
         else {
-            NoPlanView()
+            Text("There are some goals to see")
         }
     }
 }
@@ -24,7 +24,9 @@ struct TheBig3WatchView: View {
 struct TheBig3WatchView_Previews: PreviewProvider {
     static var previews: some View {
         TheBig3WatchView(planner: Planner(plan: .example2))
+            .previewDisplayName("Plan is ready")
 
         TheBig3WatchView(planner: Planner(plan: .emptyExample))
+            .previewDisplayName("Empty Plan")
     }
 }
