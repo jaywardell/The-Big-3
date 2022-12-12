@@ -30,11 +30,13 @@ extension UserDefaults {
 
     fileprivate var latestPlan: Plan? {
         get {
-            codable(forKey: Self.Plan_Key)
+            synchronize()
+            return codable(forKey: Self.Plan_Key)
         }
 
         set {
             setCodable(newValue, forKey: Self.Plan_Key)
+            synchronize()
         }
     }
 }
