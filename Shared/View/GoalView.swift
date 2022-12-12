@@ -127,13 +127,13 @@ struct GoalView: View {
                                 if template == .regular {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
-                                        .foregroundColor(self.template == .regular ? backgroundColor : Color(uiColor: .label))
-                                        .opacity(self.template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
+                                        .foregroundColor(template == .regular ? backgroundColor : Color(uiColor: .label))
+                                        .opacity(template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
                                 }
                                 Image(systemName: "circle")
                                     .resizable()
                                     .foregroundColor(backgroundColor)
-                                    .opacity(self.template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
+                                    .opacity(template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
                             }
                     }
                     .buttonStyle(.borderless)
