@@ -231,6 +231,42 @@
 			path = The_Big_3_Widgets;
 			sourceTree = "<group>";
 		};
+		7CA682CF294771C900BD6D12 /* Logging Completions */ = {
+			isa = PBXGroup;
+			children = (
+				7CA77F20290FFA4900DED944 /* CompletionLog.swift */,
+				7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */,
+			);
+			path = "Logging Completions";
+			sourceTree = "<group>";
+		};
+		7CA682D02947720600BD6D12 /* Listing Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */,
+			);
+			path = "Listing Reminders";
+			sourceTree = "<group>";
+		};
+		7CA682D12947722900BD6D12 /* Updating Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				7C0FA5AF2945601100E8C88E /* EventKitGoalService.swift */,
+				7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */,
+			);
+			path = "Updating Reminders";
+			sourceTree = "<group>";
+		};
+		7CA682D22947726E00BD6D12 /* Planning */ = {
+			isa = PBXGroup;
+			children = (
+				7CB8722427B33BF9009D5539 /* Planner.swift */,
+				7CB8722927B33C36009D5539 /* Plan.swift */,
+				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
+			);
+			path = Planning;
+			sourceTree = "<group>";
+		};
 		7CB871D927B33A88009D5539 = {
 			isa = PBXGroup;
 			children = (
@@ -285,14 +321,10 @@
 			children = (
 				7C4EC7A627BE714400DF0F8D /* AppModel.swift */,
 				7CA682B92946429500BD6D12 /* ModelConstants.swift */,
-				7CB8722427B33BF9009D5539 /* Planner.swift */,
-				7CB8722927B33C36009D5539 /* Plan.swift */,
-				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
-				7CA77F20290FFA4900DED944 /* CompletionLog.swift */,
-				7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */,
-				7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */,
-				7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */,
-				7C0FA5AF2945601100E8C88E /* EventKitGoalService.swift */,
+				7CA682D22947726E00BD6D12 /* Planning */,
+				7CA682CF294771C900BD6D12 /* Logging Completions */,
+				7CA682D02947720600BD6D12 /* Listing Reminders */,
+				7CA682D12947722900BD6D12 /* Updating Reminders */,
 				7C0FA5A12944F44300E8C88E /* TestingFlags.swift */,
 			);
 			path = Model;
