@@ -52,6 +52,10 @@
 		7CA682CB29465DD000BD6D12 /* PlanPromptWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CA29465DD000BD6D12 /* PlanPromptWidgetView.swift */; };
 		7CA682CE29466CA400BD6D12 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CC29466C5700BD6D12 /* Header.swift */; };
 		7CA682D729477CA500BD6D12 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
+		7CA683172947913C00BD6D12 /* The_Big_3_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA683162947913C00BD6D12 /* The_Big_3_watchApp.swift */; };
+		7CA683192947913C00BD6D12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA683182947913C00BD6D12 /* ContentView.swift */; };
+		7CA6831B2947913E00BD6D12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA6831A2947913E00BD6D12 /* Assets.xcassets */; };
+		7CA6831E2947913E00BD6D12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA6831D2947913E00BD6D12 /* Preview Assets.xcassets */; };
 		7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F20290FFA4900DED944 /* CompletionLog.swift */; };
 		7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
@@ -142,6 +146,12 @@
 		7CA682C72946546C00BD6D12 /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
 		7CA682CA29465DD000BD6D12 /* PlanPromptWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPromptWidgetView.swift; sourceTree = "<group>"; };
 		7CA682CC29466C5700BD6D12 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		7CA683142947913C00BD6D12 /* The_Big_3_watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The_Big_3_watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CA683162947913C00BD6D12 /* The_Big_3_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3_watchApp.swift; sourceTree = "<group>"; };
+		7CA683182947913C00BD6D12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7CA6831A2947913E00BD6D12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CA6831D2947913E00BD6D12 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7CA683222947915700BD6D12 /* The_Big_3_watch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "The_Big_3_watch Watch App.entitlements"; sourceTree = "<group>"; };
 		7CA77F20290FFA4900DED944 /* CompletionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLog.swift; sourceTree = "<group>"; };
 		7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLogTests.swift; sourceTree = "<group>"; };
 		7CB871DF27B33A88009D5539 /* The_Big_3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3App.swift; sourceTree = "<group>"; };
@@ -168,6 +178,13 @@
 			files = (
 				7CA6829A294633DD00BD6D12 /* SwiftUI.framework in Frameworks */,
 				7CA68298294633DD00BD6D12 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CA683112947913C00BD6D12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +319,26 @@
 			path = History;
 			sourceTree = "<group>";
 		};
+		7CA683152947913C00BD6D12 /* The_Big_3_watch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				7CA683222947915700BD6D12 /* The_Big_3_watch Watch App.entitlements */,
+				7CA683162947913C00BD6D12 /* The_Big_3_watchApp.swift */,
+				7CA683182947913C00BD6D12 /* ContentView.swift */,
+				7CA6831A2947913E00BD6D12 /* Assets.xcassets */,
+				7CA6831C2947913E00BD6D12 /* Preview Content */,
+			);
+			path = "The_Big_3_watch Watch App";
+			sourceTree = "<group>";
+		};
+		7CA6831C2947913E00BD6D12 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7CA6831D2947913E00BD6D12 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		7CB871D927B33A88009D5539 = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +348,7 @@
 				7CB871DE27B33A88009D5539 /* App */,
 				7CDE2730290F50EA00186BFD /* The_Big_3Tests_iOS */,
 				7CA6829B294633DD00BD6D12 /* The_Big_3_Widgets */,
+				7CA683152947913C00BD6D12 /* The_Big_3_watch Watch App */,
 				7CA68296294633DD00BD6D12 /* Frameworks */,
 				7CB871E727B33A89009D5539 /* Products */,
 			);
@@ -336,6 +374,7 @@
 				7CB871E627B33A89009D5539 /* The Big 3.app */,
 				7CDE272F290F50EA00186BFD /* The_Big_3Tests_iOS.xctest */,
 				7CA68295294633DD00BD6D12 /* The_Big_3_WidgetsExtension.appex */,
+				7CA683142947913C00BD6D12 /* The_Big_3_watch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -431,6 +470,23 @@
 			productReference = 7CA68295294633DD00BD6D12 /* The_Big_3_WidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		7CA683132947913C00BD6D12 /* The_Big_3_watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CA683212947913E00BD6D12 /* Build configuration list for PBXNativeTarget "The_Big_3_watch Watch App" */;
+			buildPhases = (
+				7CA683102947913C00BD6D12 /* Sources */,
+				7CA683112947913C00BD6D12 /* Frameworks */,
+				7CA683122947913C00BD6D12 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "The_Big_3_watch Watch App";
+			productName = "The_Big_3_watch Watch App";
+			productReference = 7CA683142947913C00BD6D12 /* The_Big_3_watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		7CB871E527B33A89009D5539 /* The Big 3 (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CB8720F27B33A89009D5539 /* Build configuration list for PBXNativeTarget "The Big 3 (iOS)" */;
@@ -481,6 +537,9 @@
 					7CA68294294633DD00BD6D12 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
+					7CA683132947913C00BD6D12 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					7CB871E527B33A89009D5539 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -506,6 +565,7 @@
 				7CB871E527B33A89009D5539 /* The Big 3 (iOS) */,
 				7CDE272E290F50EA00186BFD /* The_Big_3Tests_iOS */,
 				7CA68294294633DD00BD6D12 /* The_Big_3_WidgetsExtension */,
+				7CA683132947913C00BD6D12 /* The_Big_3_watch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -516,6 +576,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA682A0294633DF00BD6D12 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CA683122947913C00BD6D12 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CA6831E2947913E00BD6D12 /* Preview Assets.xcassets in Resources */,
+				7CA6831B2947913E00BD6D12 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +627,15 @@
 				7CA682AE2946358A00BD6D12 /* Plan.swift in Sources */,
 				7CA682C629464E6C00BD6D12 /* Plan+WidgetExamples.swift in Sources */,
 				7CA682B8294641E300BD6D12 /* WidgetPlanView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CA683102947913C00BD6D12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CA683192947913C00BD6D12 /* ContentView.swift in Sources */,
+				7CA683172947913C00BD6D12 /* The_Big_3_watchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +768,71 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7CA6831F2947913E00BD6D12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "The_Big_3_watch Watch App/The_Big_3_watch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"The_Big_3_watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 7HAJV4F6VL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = The_Big_3_watch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.oldjewel.The-Big-3";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		7CA683202947913E00BD6D12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = "The_Big_3_watch Watch App/The_Big_3_watch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"The_Big_3_watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 7HAJV4F6VL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = The_Big_3_watch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.oldjewel.The-Big-3";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -924,6 +1067,15 @@
 			buildConfigurations = (
 				7CA682A8294633DF00BD6D12 /* Debug */,
 				7CA682A9294633DF00BD6D12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CA683212947913E00BD6D12 /* Build configuration list for PBXNativeTarget "The_Big_3_watch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CA6831F2947913E00BD6D12 /* Debug */,
+				7CA683202947913E00BD6D12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
