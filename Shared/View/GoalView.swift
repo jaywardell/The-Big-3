@@ -190,10 +190,11 @@ struct GoalView: View {
                    }
                     .buttonStyle(.borderless)
                 }
-                .foregroundColor(backgroundColor)
                 .opacity(todo.state == .ready ? 1 : 0)
                 .frame(width: size.height * 8/34,
                        height: size.height * 8/34)
+                .padding(.horizontal)
+                .background(Capsule().stroke( Color.accentColor))
             }
             .padding(.trailing, size.height * 5/34)
             .offset(x: size.width * (showingPostponeButton ? 0 : 8/34) + postponeButtonTranslation, y: 0)
