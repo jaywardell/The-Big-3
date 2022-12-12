@@ -220,20 +220,26 @@ struct GoalView: View {
 
                     Button(action: { withAnimation(.Big3Spring) {postpone()}}) {
                         Text("not today")
-                            .font(.body)
+                            .font(.caption)
                             .minimumScaleFactor(0.01)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .lineLimit(1)
+                            .frame(maxWidth: .infinity)
                    }
                     .buttonStyle(.borderless)
                 }
                 .opacity(todo.state == .ready ? 1 : 0)
-                .frame(width: size.height * 8/34,
+                #if os(iOS)
+                .frame(width: size.height * 13/34,
                        height: size.height * 8/34)
+                #else
+                .frame(width: size.width * 13/34,
+                       height: size.height * 13/34)
+                #endif
                 .padding(.horizontal)
                 .background(Capsule().stroke( Color.accentColor))
             }
             .padding(.trailing, size.height * 5/34)
-            .offset(x: size.width * (showingPostponeButton ? 0 : 8/34) + postponeButtonTranslation, y: 0)
+            .offset(x: deferredButtonOffset(for: size) + postponeButtonTranslation, y: 0)
             }
         }
         .background(background(size: size))
@@ -249,6 +255,14 @@ struct GoalView: View {
             }
         }
         .gesture(dragControls)
+    }
+
+    private func deferredButtonOffset(for size: CGSize) -> CGFloat {
+        #if os(iOS)
+        size.width * (showingPostponeButton ? 0 : 8/34)
+        #else
+        size.width * (showingPostponeButton ? 0 : 13/34)
+        #endif
     }
 
     private func smallBody(size: CGSize) -> some View {
