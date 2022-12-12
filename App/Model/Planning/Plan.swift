@@ -161,3 +161,14 @@ extension Plan: Codable {
         case id
     }
 }
+
+// MARK: - Plan: CustomStringConvertible
+
+extension Plan: CustomStringConvertible {
+    var description: String {
+        goals.keys.compactMap {
+            return goals[$0]?.title
+        }
+        .joined(separator: "\n")
+    }
+}

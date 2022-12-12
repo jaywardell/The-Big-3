@@ -66,6 +66,7 @@
 		7CA6832F2947924E00BD6D12 /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */; };
 		7CA6833129479A6900BD6D12 /* WatchSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA6833029479A6900BD6D12 /* WatchSender.swift */; };
 		7CA6833329479E0A00BD6D12 /* WatchSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA6833229479E0A00BD6D12 /* WatchSynchronizer.swift */; };
+		7CA683392947A63F00BD6D12 /* The_Big_3_watch Watch App.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7CA683142947913C00BD6D12 /* The_Big_3_watch Watch App.app */; };
 		7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F20290FFA4900DED944 /* CompletionLog.swift */; };
 		7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
@@ -118,6 +119,16 @@
 				7CA682A6294633DF00BD6D12 /* The_Big_3_WidgetsExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CA683382947A63100BD6D12 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				7CA683392947A63F00BD6D12 /* The_Big_3_watch Watch App.app in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -538,6 +549,7 @@
 				7CB871E327B33A89009D5539 /* Frameworks */,
 				7CB871E427B33A89009D5539 /* Resources */,
 				7CA682A7294633DF00BD6D12 /* Embed Foundation Extensions */,
+				7CA683382947A63100BD6D12 /* CopyFiles */,
 			);
 			buildRules = (
 			);
