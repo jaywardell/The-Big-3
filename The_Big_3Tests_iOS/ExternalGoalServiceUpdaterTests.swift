@@ -75,8 +75,8 @@ final class ExternalGoalServiceUpdaterTests: XCTestCase {
             self.userCanAccess = userCanAccess
         }
         
-        func checkUserAllowsAccess(_ completion: (Bool)->()) {
-            completion(userCanAccess)
+        func allowsAccess() -> Bool {
+            userCanAccess
         }
 
         func getReminder(for id: String) -> NSObject? {
