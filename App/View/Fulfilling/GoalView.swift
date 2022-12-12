@@ -100,7 +100,11 @@ struct GoalView: View {
         case .finished:
             return .white
         case .notToday:
+            #if os(iOS)
             return Color(uiColor: .secondaryLabel)
+            #else
+            return .yellow
+            #endif
         }
     }
 
@@ -112,6 +116,14 @@ struct GoalView: View {
             .opacity(todo.state == .finished ? 1 : 0)
     }
 
+    private func checkmarkColor() -> Color {
+        #if os(iOS)
+        template == .regular ? backgroundColor : Color(uiColor: .label)
+        #else
+        template == .regular ? backgroundColor : .red
+        #endif
+    }
+    
     private func checkbox(size: CGSize) -> some View {
         VStack {
             Group {
@@ -128,7 +140,7 @@ struct GoalView: View {
                                 if template == .regular {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
-                                        .foregroundColor(template == .regular ? backgroundColor : Color(uiColor: .label))
+                                        .foregroundColor(checkmarkColor())
                                         .opacity(template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
                                 }
                                 Image(systemName: "circle")

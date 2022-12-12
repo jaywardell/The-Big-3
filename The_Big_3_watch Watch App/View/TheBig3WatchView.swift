@@ -16,7 +16,7 @@ struct TheBig3WatchView: View {
             NoPlanView()
         }
         else {
-            Text("There are some goals to see")
+            WatchPlanView(planner: planner)
         }
     }
 }
