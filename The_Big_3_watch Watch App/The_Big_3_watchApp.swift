@@ -15,6 +15,7 @@ struct The_Big_3_watch_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
             TheBig3WatchView(planner: model.planner)
+                .accentColor(ViewConstants.tint)
         }
     }
 }

@@ -71,6 +71,7 @@
 		7CA683442947AC1400BD6D12 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7CA683452947AC2100BD6D12 /* Planner+GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */; };
 		7CA683462947AC5A00BD6D12 /* Animation+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162E27BD4F24000AC97A /* Animation+Constants.swift */; };
+		7CA683472947B14000BD6D12 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C72946546C00BD6D12 /* ViewConstants.swift */; };
 		7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F20290FFA4900DED944 /* CompletionLog.swift */; };
 		7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
@@ -702,6 +703,7 @@
 				7CA683192947913C00BD6D12 /* ContentView.swift in Sources */,
 				7CA6832B2947924200BD6D12 /* Plan.swift in Sources */,
 				7CA6832D2947924200BD6D12 /* PlanArchiver.swift in Sources */,
+				7CA683472947B14000BD6D12 /* ViewConstants.swift in Sources */,
 				7CA6833329479E0A00BD6D12 /* WatchSynchronizer.swift in Sources */,
 				7CA683172947913C00BD6D12 /* The_Big_3_watchApp.swift in Sources */,
 				7CA6832E2947924900BD6D12 /* ModelConstants.swift in Sources */,
