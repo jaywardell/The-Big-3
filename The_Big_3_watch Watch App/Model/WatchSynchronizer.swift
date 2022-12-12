@@ -46,6 +46,8 @@ extension WatchSynchronizer: WCSessionDelegate {
         guard let encoded = applicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data,
               let plan = try? JSONDecoder().decode(Plan.self, from: encoded) else { return }
         
+        print(plan)
+        
         sentPlan = plan
     }
 }

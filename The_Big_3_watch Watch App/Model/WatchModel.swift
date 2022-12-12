@@ -17,7 +17,9 @@ final class WatchModel: ObservableObject {
 
     init() {
         self.planner = Planner(plan: Plan(allowed: 3))
-        watchSynchronizer.objectWillChange.sink(receiveValue: takePlanFromSynchronizer)
+        watchSynchronizer.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: takePlanFromSynchronizer)
             .store(in: &subscriptions)
     }
     
