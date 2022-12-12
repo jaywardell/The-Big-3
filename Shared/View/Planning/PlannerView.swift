@@ -195,6 +195,7 @@ extension PlannerView: View {
                 .opacity(viewModel.isFull() ? 1 : 0)
             }
             .padding()
+            .ignoresSafeArea(.keyboard)
         }
         .sheet(isPresented: $showingReminderPicker) {
             ReminderPicker() {
