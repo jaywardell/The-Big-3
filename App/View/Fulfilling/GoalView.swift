@@ -218,13 +218,15 @@ struct GoalView: View {
             ZStack {
                 VStack(alignment: .leading) {
 
-                    Button(action: { withAnimation(.Big3Spring) {postpone()}}) {
+                    Button(action: deferButtonPressed) {
                         Text("not today")
                             .font(.caption)
                             .minimumScaleFactor(0.01)
                             .lineLimit(1)
                             .frame(maxWidth: .infinity)
+                            .opacity(showingPostponeButton ? 1 : 0)
                    }
+
                     .buttonStyle(.borderless)
                 }
                 .opacity(todo.state == .ready ? 1 : 0)
@@ -237,7 +239,7 @@ struct GoalView: View {
                 #endif
                 .padding(.horizontal)
                 .background(Capsule().stroke( Color.accentColor))
-            }
+           }
             .padding(.trailing, size.height * 5/34)
             .offset(x: deferredButtonOffset(for: size) + postponeButtonTranslation, y: 0)
             }
@@ -265,6 +267,19 @@ struct GoalView: View {
         #endif
     }
 
+    private func deferButtonPressed() {
+        if showingPostponeButton {
+            withAnimation(.Big3Spring) {
+                postpone()
+            }
+        }
+        else {
+            withAnimation(.Big3Spring) {
+                showingPostponeButton = true
+            }
+        }
+    }
+    
     private func smallBody(size: CGSize) -> some View {
         HStack {
             Spacer()
