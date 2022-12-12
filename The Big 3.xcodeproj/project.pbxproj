@@ -308,7 +308,7 @@
 				7CA682C42946491600BD6D12 /* The_Big_3_WidgetsExtension.entitlements */,
 				7CA682C3294648F700BD6D12 /* The Big 3 (iOS).entitlements */,
 				7CB8C5BD27F091DE00D60FA0 /* todo.md */,
-				7CB871DE27B33A88009D5539 /* Shared */,
+				7CB871DE27B33A88009D5539 /* App */,
 				7CDE2730290F50EA00186BFD /* The_Big_3Tests_iOS */,
 				7CA6829B294633DD00BD6D12 /* The_Big_3_Widgets */,
 				7CA68296294633DD00BD6D12 /* Frameworks */,
@@ -316,7 +316,7 @@
 			);
 			sourceTree = "<group>";
 		};
-		7CB871DE27B33A88009D5539 /* Shared */ = {
+		7CB871DE27B33A88009D5539 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				7CB871DF27B33A88009D5539 /* The_Big_3App.swift */,
@@ -327,7 +327,7 @@
 				7C66162D27BD4F13000AC97A /* SwiftUI Additions */,
 				7CB871E127B33A89009D5539 /* Assets.xcassets */,
 			);
-			path = Shared;
+			path = App;
 			sourceTree = "<group>";
 		};
 		7CB871E727B33A89009D5539 /* Products */ = {
