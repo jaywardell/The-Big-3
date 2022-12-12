@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct The_Big_3_Watch_Watch_AppApp: App {
+    
+    let model = WatchModel()
+    
     var body: some Scene {
         WindowGroup {
-            NoPlanView()
+            TheBig3WatchView(planner: model.planner)
                 .accentColor(ViewConstants.tint)
         }
     }
