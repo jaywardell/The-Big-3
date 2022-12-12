@@ -51,6 +51,7 @@
 		7CA682C9294654A500BD6D12 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682C72946546C00BD6D12 /* ViewConstants.swift */; };
 		7CA682CB29465DD000BD6D12 /* PlanPromptWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CA29465DD000BD6D12 /* PlanPromptWidgetView.swift */; };
 		7CA682CE29466CA400BD6D12 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CC29466C5700BD6D12 /* Header.swift */; };
+		7CA682D729477CA500BD6D12 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F20290FFA4900DED944 /* CompletionLog.swift */; };
 		7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
@@ -541,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA682B42946372A00BD6D12 /* TheBig3TimelineProvider.swift in Sources */,
+				7CA682D729477CA500BD6D12 /* GoalView.swift in Sources */,
 				7CA682AD2946358300BD6D12 /* Planner.swift in Sources */,
 				7CA682B62946380600BD6D12 /* TheBig3WidgetView.swift in Sources */,
 				7CA682BA2946429500BD6D12 /* ModelConstants.swift in Sources */,
