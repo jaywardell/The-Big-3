@@ -164,7 +164,13 @@ struct GoalView: View {
         .imageScale(.large)
     }
     
-    private var checkmarkScaleFactor: CGFloat { template == .regular ? 13/34 : 21/34 }
+    private var checkmarkScaleFactor: CGFloat {
+        #if os(iOS)
+        template == .regular ? 13/34 : 21/34
+        #else
+        21/34
+        #endif
+    }
     
     private var checkboxOffsetScalar: CGFloat {
         21/55
