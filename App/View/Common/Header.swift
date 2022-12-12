@@ -16,7 +16,7 @@ struct Header: View {
     
     private var titleFont: Font {
         #if os(watchOS)
-        .system(.title, design: .default, weight: .light)
+        .system(.title2, design: .default, weight: .light)
         #else
         .system(.largeTitle, design: .default, weight: .light)
         #endif
@@ -41,10 +41,6 @@ struct Header: View {
             }
             .padding(.bottom)
             
-#if os(watchOS)
-            Divider()
-                .padding(.bottom)
-#endif
         }
 #if os(iOS)
         .onReceive(Publishers.showingKeyboard) {
