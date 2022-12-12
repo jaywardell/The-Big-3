@@ -10,9 +10,7 @@ import WatchConnectivity
 import Combine
 
 final class WatchSynchronizer: NSObject {
-    
-//    @Published var sentPlan: Plan?
-    
+        
     var receivedPlan = PassthroughSubject<Plan, Never>()
     
     private var session: WCSession { WCSession.default }
@@ -37,15 +35,7 @@ final class WatchSynchronizer: NSObject {
                 receivedPlan.send(plan)
             }
         }
-            
-        
     }
-    
-//    var lastPlan: Plan? {
-//        try! startConnection {}
-//        guard let encoded = session.receivedApplicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data else { return nil }
-//        return try? JSONDecoder().decode(Plan.self, from: encoded)
-//    }
 }
 
 
