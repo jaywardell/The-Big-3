@@ -28,7 +28,7 @@ struct PlanArchiver {
 extension UserDefaults {
     private static var Plan_Key: String { #function }
 
-    var latestPlan: Plan? {
+    fileprivate var latestPlan: Plan? {
         get {
             codable(forKey: Self.Plan_Key)
         }
