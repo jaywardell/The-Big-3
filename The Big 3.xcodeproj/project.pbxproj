@@ -92,6 +92,13 @@
 			remoteGlobalIDString = 7CA68294294633DD00BD6D12;
 			remoteInfo = The_Big_3_WidgetsExtension;
 		};
+		7CA683362947A5F600BD6D12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CB871DA27B33A88009D5539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CA683132947913C00BD6D12;
+			remoteInfo = "The_Big_3_watch Watch App";
+		};
 		7CDE2733290F50EA00186BFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7CB871DA27B33A88009D5539 /* Project object */;
@@ -535,6 +542,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7CA683372947A5F600BD6D12 /* PBXTargetDependency */,
 				7CA682A5294633DF00BD6D12 /* PBXTargetDependency */,
 			);
 			name = "The Big 3 (iOS)";
@@ -745,6 +753,11 @@
 			isa = PBXTargetDependency;
 			target = 7CA68294294633DD00BD6D12 /* The_Big_3_WidgetsExtension */;
 			targetProxy = 7CA682A4294633DF00BD6D12 /* PBXContainerItemProxy */;
+		};
+		7CA683372947A5F600BD6D12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CA683132947913C00BD6D12 /* The_Big_3_watch Watch App */;
+			targetProxy = 7CA683362947A5F600BD6D12 /* PBXContainerItemProxy */;
 		};
 		7CDE2734290F50EA00186BFD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
