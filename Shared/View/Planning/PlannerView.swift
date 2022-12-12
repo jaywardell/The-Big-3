@@ -103,7 +103,7 @@ extension PlannerView: View {
             .padding()
         }
         else if index == selectedIndex {
-            VStack {
+            VStack(alignment: .leading) {
                 TextField("enter a goal…", text: $newPlannedTitle)
                     .focused($isFocused)
                     .font(.largeTitle)
@@ -114,6 +114,11 @@ extension PlannerView: View {
                     }
                 
                 Spacer()
+                
+                Button(action: showRemindersPicker) {
+                    Text("Use a Reminder…")
+                        .font(.footnote)
+                }
             }
             .padding()
         }
@@ -195,16 +200,6 @@ extension PlannerView: View {
             ReminderPicker() {
                 guard let index = selectedIndex else { return }
                 viewModel.importReminder($0, index)
-            }
-        }
-        .toolbar {
-            // NOTE: this seems to cause an autolayout problem.
-            // It seems like any SwiftUI views I put here will cause the issue
-            // but this seems to appear appropriately...
-            ToolbarItemGroup(placement: .keyboard) {
-                Button(action: showRemindersPicker) {
-                    Text("Add a Reminder…")
-                }
             }
         }
     }
