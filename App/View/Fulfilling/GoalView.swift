@@ -39,7 +39,13 @@ struct GoalView: View {
 
     @Environment(\.colorScheme) var colorScheme
     
-    private var dragThreshold: CGFloat { 200 }
+    private var dragThreshold: CGFloat {
+        #if os(watchOS)
+        50
+        #else
+        200
+        #endif
+    }
     
     var dragControls: some Gesture {
         DragGesture()
@@ -50,6 +56,7 @@ struct GoalView: View {
                 else {
                     checkboxTranslation = 0
                 }
+                print("checkboxTranslation: \(checkboxTranslation)")
                 
                 if value.translation.width < 0 {
                     postponeButtonTranslation = max(-dragThreshold, value.translation.width)
