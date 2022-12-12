@@ -164,10 +164,22 @@ extension Plan: Codable {
 
 // MARK: - Plan: CustomStringConvertible
 
+extension Plan.Goal.State: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .completed: return "completed"
+        case .deferred: return "(deferred)"
+        case .pending: return ""
+        }
+    }
+}
+
 extension Plan: CustomStringConvertible {
     var description: String {
         goals.keys.compactMap {
-            return goals[$0]?.title
+            return goals[$0].map {
+                "\($0.title): \($0.state)"
+            }
         }
         .joined(separator: "\n")
     }
