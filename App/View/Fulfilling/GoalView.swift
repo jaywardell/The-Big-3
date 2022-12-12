@@ -103,7 +103,7 @@ struct GoalView: View {
             #if os(iOS)
             return Color(uiColor: .secondaryLabel)
             #else
-            return .yellow
+            return Color(cgColor: .init(gray: 0.8, alpha: 1))
             #endif
         }
     }
@@ -120,7 +120,7 @@ struct GoalView: View {
         #if os(iOS)
         template == .regular ? backgroundColor : Color(uiColor: .label)
         #else
-        template == .regular ? backgroundColor : .red
+        template == .regular ? backgroundColor : .primary
         #endif
     }
     
@@ -141,7 +141,7 @@ struct GoalView: View {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
                                         .foregroundColor(checkmarkColor())
-                                        .opacity(template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
+                                        .opacity(template == .regular ? (showingCheckbox ? 5/34 : 3/34) : 1)
                                 }
                                 Image(systemName: "circle")
                                     .resizable()
