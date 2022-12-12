@@ -185,7 +185,7 @@ struct GoalView: View {
 
                     Button(action: { withAnimation(.Big3Spring) {postpone()}}) {
                         Text("not today")
-                            .font(.system(size: 1000))
+                            .font(.body)
                             .minimumScaleFactor(0.01)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                    }
