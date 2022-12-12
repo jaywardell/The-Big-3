@@ -12,8 +12,7 @@ struct TheBig3WatchView: View {
     @ObservedObject var planner: Planner
 
     var body: some View {
-        if planner.plan.isFull {
-//            WidgetPlanView(planner: entry.planner)
+        if planner.state == .planning {
             Text("There are some goals to see")
         }
         else {
