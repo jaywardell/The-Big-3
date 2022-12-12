@@ -29,8 +29,8 @@ final class ExternalGoalServiceUpdater {
     
     private func goalWasCompleted(_ notification: Notification) {
         
-        guard bridge.allowsAccess(),
-              let id = notification.userInfo?[Plan.GoalIDKey] as? String,
+        guard let id = notification.userInfo?[Plan.GoalIDKey] as? String,
+              bridge.allowsAccess(),
               let reminder = bridge.getReminder(for: id) else { return }
         
         bridge.complete(reminder)
