@@ -29,6 +29,8 @@ final class Planner: ObservableObject {
 
 extension Plan {
     
+    static let emptyExample: Plan = Plan(allowed: 3)
+    
     static let example: Plan = {
         let out = Plan(allowed: 3)
         
