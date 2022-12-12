@@ -16,9 +16,9 @@ struct Header: View {
             HStack(alignment: .bottom) {
                 Text(title)
                     .font(.system(.largeTitle, design: .default, weight: .light))
-                // set this so that the header will compress
-                // instead of running up off the
-                // screen when the keyboard appears
+                    // set this so that the header will compress
+                    // instead of running up off the
+                    // screen when the keyboard appears
                     .minimumScaleFactor(0.1)
                     .foregroundColor(.accentColor)
                     .padding(.leading)
