@@ -32,6 +32,8 @@ final class WatchSender: NSObject {
         let payload = [ModelConstants.WatchConnectivityPlanKey: encoded]
         try? startConnection {
             try? session.updateApplicationContext(payload)
+            print("Sent.........")
+            print(plan)
         }
     }
 }
