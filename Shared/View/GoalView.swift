@@ -100,7 +100,7 @@ struct GoalView: View {
         case .finished:
             return .white
         case .notToday:
-            return .primary
+            return Color(uiColor: .secondaryLabel)
         }
     }
 
@@ -119,6 +119,7 @@ struct GoalView: View {
                 case .notToday:
                     Image(systemName: "circle.slash")
                         .resizable()
+                        .foregroundColor(textColor(for: .notToday))
                         .opacity(textOpacty(for: .notToday))
 
                 case .ready:
