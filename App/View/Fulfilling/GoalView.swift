@@ -170,6 +170,14 @@ struct GoalView: View {
         21/55
     }
     
+    private var textFontScalar: CGFloat {
+        #if os(watchOS)
+        21/34
+        #else
+        13/34
+        #endif
+    }
+    
     private func bigBody(size: CGSize) -> some View {
         HStack {
             checkbox(size: size)
@@ -180,12 +188,14 @@ struct GoalView: View {
                 .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
             
             Text(todo.title)
-                .font(.system(size: size.height * 13/34, weight: .light))
+                .font(.system(size: size.height * textFontScalar, weight: .light))
                 .foregroundColor(textColor(for: todo.state))
                 .minimumScaleFactor(5/34)
                 .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
                 .opacity(textOpacty(for: todo.state) )
+            #if os(iOS)
                 .padding(.vertical, size.height * 3/34)
+            #endif
                 .padding(.trailing, size.height * 3/34)
                 .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
 
