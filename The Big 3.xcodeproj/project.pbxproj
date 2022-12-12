@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */; };
+		7C0528452947D55100C1C052 /* AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */; };
+		7C0528462947D5D200C1C052 /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
 		7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */; };
 		7C0FA59D2944D61000E8C88E /* XCTest+AsynAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */; };
 		7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A12944F44300E8C88E /* TestingFlags.swift */; };
@@ -706,6 +708,8 @@
 				7CA683582947D33D00BD6D12 /* Header.swift in Sources */,
 				7CA683172947913C00BD6D12 /* The_Big_3_watchApp.swift in Sources */,
 				7CA6832E2947924900BD6D12 /* ModelConstants.swift in Sources */,
+				7C0528452947D55100C1C052 /* AccomplishmentsView.swift in Sources */,
+				7C0528462947D5D200C1C052 /* CountedRows.swift in Sources */,
 				7CA683272947921500BD6D12 /* WatchModel.swift in Sources */,
 				7CA683282947921500BD6D12 /* NoPlanView.swift in Sources */,
 				7CA683452947AC2100BD6D12 /* Planner+GoalView.swift in Sources */,

@@ -44,7 +44,9 @@ struct AccomplishmentsView {
     }
     @ObservedObject var viewModel: ViewModel
 
+#if os(iOS)
     @Environment(\.showHistory) var showHistory
+#endif
     
     let colors = [
         Color.accentColor,
@@ -70,6 +72,7 @@ extension AccomplishmentsView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             
+#if os(iOS)
             HStack {
                 Button(action: showHistory) {
                     Image(systemName: "list.bullet")
@@ -84,6 +87,7 @@ extension AccomplishmentsView: View {
             }
             .padding()
             .padding(.bottom)
+#endif
         }
     }
 }
