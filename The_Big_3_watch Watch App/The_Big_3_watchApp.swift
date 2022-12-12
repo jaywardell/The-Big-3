@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct The_Big_3_watch_Watch_AppApp: App {
     
-    let model = WatchModel()
+    @StateObject var model = WatchModel()
     
     var body: some Scene {
         WindowGroup {

@@ -64,6 +64,8 @@
 		7CA6832D2947924200BD6D12 /* PlanArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163127BDC340000AC97A /* PlanArchiver.swift */; };
 		7CA6832E2947924900BD6D12 /* ModelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B92946429500BD6D12 /* ModelConstants.swift */; };
 		7CA6832F2947924E00BD6D12 /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */; };
+		7CA6833129479A6900BD6D12 /* WatchSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA6833029479A6900BD6D12 /* WatchSender.swift */; };
+		7CA6833329479E0A00BD6D12 /* WatchSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA6833229479E0A00BD6D12 /* WatchSynchronizer.swift */; };
 		7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F20290FFA4900DED944 /* CompletionLog.swift */; };
 		7CA77F23290FFA5D00DED944 /* CompletionLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */; };
 		7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB871DF27B33A88009D5539 /* The_Big_3App.swift */; };
@@ -163,6 +165,8 @@
 		7CA683232947921500BD6D12 /* TheBig3WatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheBig3WatchView.swift; sourceTree = "<group>"; };
 		7CA683242947921500BD6D12 /* WatchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchModel.swift; sourceTree = "<group>"; };
 		7CA683252947921500BD6D12 /* NoPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoPlanView.swift; sourceTree = "<group>"; };
+		7CA6833029479A6900BD6D12 /* WatchSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSender.swift; sourceTree = "<group>"; };
+		7CA6833229479E0A00BD6D12 /* WatchSynchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSynchronizer.swift; sourceTree = "<group>"; };
 		7CA77F20290FFA4900DED944 /* CompletionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLog.swift; sourceTree = "<group>"; };
 		7CA77F22290FFA5D00DED944 /* CompletionLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionLogTests.swift; sourceTree = "<group>"; };
 		7CB871DF27B33A88009D5539 /* The_Big_3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3App.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 				7CB8722427B33BF9009D5539 /* Planner.swift */,
 				7CB8722927B33C36009D5539 /* Plan.swift */,
 				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
+				7CA6833029479A6900BD6D12 /* WatchSender.swift */,
 			);
 			path = Planning;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				7CA683242947921500BD6D12 /* WatchModel.swift */,
+				7CA6833229479E0A00BD6D12 /* WatchSynchronizer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -669,6 +675,7 @@
 				7CA683192947913C00BD6D12 /* ContentView.swift in Sources */,
 				7CA6832B2947924200BD6D12 /* Plan.swift in Sources */,
 				7CA6832D2947924200BD6D12 /* PlanArchiver.swift in Sources */,
+				7CA6833329479E0A00BD6D12 /* WatchSynchronizer.swift in Sources */,
 				7CA683172947913C00BD6D12 /* The_Big_3_watchApp.swift in Sources */,
 				7CA6832E2947924900BD6D12 /* ModelConstants.swift in Sources */,
 				7CA683272947921500BD6D12 /* WatchModel.swift in Sources */,
@@ -703,6 +710,7 @@
 				7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */,
 				7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */,
 				7CA682BC2946430E00BD6D12 /* ModelConstants.swift in Sources */,
+				7CA6833129479A6900BD6D12 /* WatchSender.swift in Sources */,
 				7C0FA5A6294507E700E8C88E /* EventKitReminderLister.swift in Sources */,
 				7CB8722527B33BF9009D5539 /* Planner.swift in Sources */,
 				7C0FA5B02945601100E8C88E /* EventKitGoalService.swift in Sources */,

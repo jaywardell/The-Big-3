@@ -15,6 +15,7 @@ final class AppModel {
     
     let planner: Planner
     let archiver: PlanArchiver
+    let watchSender: WatchSender
     var logger: CompletionLog
     
     let eventKitReminderUpdater = ExternalGoalServiceUpdater(bridge: EventKitGoalService())
@@ -31,6 +32,8 @@ final class AppModel {
         
         let archiver = JSONCompletionLogArchive()
         self.logger = CompletionLog(archive: archiver)
+        
+        self.watchSender = WatchSender()
         
         plannerChanged = planner.objectWillChange.sink { [unowned self] _ in
             planWasUpdated()
@@ -55,6 +58,9 @@ final class AppModel {
     private func planWasUpdated() {
         let plan = planner.plan
         archiver.archive(plan)
+        
+        watchSender.send(plan)
+        
         planChanged = plan.publisher.sink { [unowned self] in
             planWasUpdated()
             
