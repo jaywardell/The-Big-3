@@ -44,7 +44,7 @@ final class CompletionLog {
         
         var isSet: Bool
         
-        func set() { self.isSet = true }
+        func set() { isSet = true }
     }
 
     private var hasLoadedArchive = Flag(false)
@@ -96,7 +96,7 @@ final class CompletionLog {
         
         try await archive.record(goal.title, at: date)
         
-        self.logChanged.send(self.days)
+        logChanged.send(days)
     }
     
     func loadArchive() async {
@@ -104,11 +104,11 @@ final class CompletionLog {
         
         do {
             let archived = try await archive.load()
-            self.goalsLogged = archived
+            goalsLogged = archived
             let dates = archived.keys.sorted()
             
             let allDays = Set(archived.keys.map { Calendar.current.startOfDay(for: $0) })
-            self.days = allDays.sorted()
+            days = allDays.sorted()
             
             for date in dates {
                 let day = Calendar.current.startOfDay(for: date)
@@ -118,7 +118,7 @@ final class CompletionLog {
             }
             await hasLoadedArchive.set()
 
-            self.logChanged.send(self.days)
+            logChanged.send(days)
         }
         catch {
             print("Error loading log of completed goals: \(error)")
