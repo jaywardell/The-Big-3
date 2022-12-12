@@ -10,18 +10,13 @@ import Combine
 
 final class WatchModel: ObservableObject {
     
-//    let planChanged: AnyCancellable!
     private var subscriptions = Set<AnyCancellable>()
     let watchSynchronizer = WatchSynchronizer()
 
     @Published var planner: Planner
-//    {
-//        let loadedPlan = PlanArchiver().loadPlan(allowed: 3)
-//        return Planner(plan: loadedPlan)
-//    }
 
     init() {
-        self.planner = Planner(plan: Plan())
+        self.planner = Planner(plan: Plan(allowed: 3))
         watchSynchronizer.objectWillChange.sink(receiveValue: takePlanFromSynchronizer)
             .store(in: &subscriptions)
     }
@@ -29,6 +24,7 @@ final class WatchModel: ObservableObject {
     
     private func takePlanFromSynchronizer() {
         guard let newPlan = watchSynchronizer.sentPlan else { return }
+        print(newPlan)
         self.planner = Planner(plan: newPlan)
     }
 }
