@@ -63,8 +63,34 @@ final class Planner: ObservableObject {
             }
         }
     }
+    
+    // MARK: - Codable
+    
+    enum CodingKeys: String, CodingKey {
+        case plan
+        case state
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        plan = try values.decode(Plan.self, forKey: .plan)
+        state = try values.decode(State.self, forKey: .state)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(plan, forKey: .plan)
+        try container.encode(state, forKey: .state)
+    }
+
 }
 
+extension Planner.State: Codable {}
+extension Planner: Codable {
+    
+    
+}
 
 #if DEBUG
 // MARK: -
