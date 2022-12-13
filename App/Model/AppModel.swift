@@ -73,7 +73,6 @@ final class AppModel {
         remindersWatcher.watchForChangesInRemindersWith(ids: plan.currentGoals.compactMap(\.?.externalIdentifier))
         
         planChanged = plan.publisher.sink { [unowned self] in
-            planWasUpdated()
             
             WidgetCenter.shared.reloadAllTimelines()
         }
