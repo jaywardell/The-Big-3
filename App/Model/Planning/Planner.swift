@@ -20,6 +20,33 @@ final class Planner: ObservableObject {
         self.plan = plan
         self.state = plan.isFull ? .doing : .planning
     }
+    
+    func completeGoalWith(externalIdentifier id: String) {
+        switch state {
+        case .planning:
+            removeAnyGoalWith(externalIdentifier: id)
+        case .doing:
+            markAsCompletedAnyGoalWith(externalIdentifier: id)
+        }
+    }
+    
+    private func markAsCompletedAnyGoalWith(externalIdentifier id: String) {
+        for index in 0..<plan.allowed {
+            if let goal = try? plan.goal(at: index),
+               goal.externalIdentifier == id {
+                try? plan.completeGoal(at: index)
+            }
+        }
+    }
+    
+    private func removeAnyGoalWith(externalIdentifier id: String) {
+        for index in 0..<plan.allowed {
+            if let goal = try? plan.goal(at: index),
+               goal.externalIdentifier == id {
+                try? plan.removeGoal(at: index)
+            }
+        }
+    }
 }
 
 

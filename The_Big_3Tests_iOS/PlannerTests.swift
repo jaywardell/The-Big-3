@@ -24,4 +24,36 @@ class PlannerTests: XCTestCase {
         
         XCTAssertEqual(sut.plan.allowed, 3)
     }
+    
+    func test_completeGoalWithID_does_nothing_if_goal_not_in_plan() {
+        let sut = Planner(plan: .example)
+        
+        sut.completeGoalWith(externalIdentifier: UUID().uuidString)
+        
+        XCTAssertEqual(sut.plan.currentGoals, Plan.example.currentGoals)
+    }
+    
+    func test_completeGoalWithID_removes_goal_if_still_planning() throws {
+        let sut = Planner(plan: Plan(allowed: 3))
+        let identifier = UUID().uuidString
+        try sut.plan.set("example", identifier: identifier, at: 1)
+        
+        sut.completeGoalWith(externalIdentifier: identifier)
+        
+        XCTAssert(sut.plan.isEmpty)
+    }
+    
+    func test_completeGoalWithID_set_goal_tocompleted_if_done_planning() throws {
+        
+        let identifier = UUID().uuidString
+        let plan = Plan(allowed: 1)
+        try plan.set("example", identifier: identifier, at: 0)
+        let sut = Planner(plan: plan)
+                
+        sut.completeGoalWith(externalIdentifier: identifier)
+        
+        XCTAssert(!sut.plan.isEmpty)
+        XCTAssertEqual(try? sut.plan.goal(at: 0)?.state, .completed)
+    }
+
 }
