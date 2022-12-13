@@ -14,7 +14,7 @@ final class Planner: ObservableObject {
     
     @Published var state: State = .planning
     
-    var plan: Plan
+    @Published var plan: Plan
     
     init(plan: Plan = Plan(allowed: 3)) {
         self.plan = plan

@@ -24,7 +24,8 @@ final class AppModel {
     private var plannerChanged: AnyCancellable?
     private var planChanged: AnyCancellable?
     private var userCompletedGoal: AnyCancellable?
-    
+    private var watchChangedPlan: AnyCancellable?
+
     init() {
         self.archiver = PlanArchiver(shared: true)
         let loadedPlan = self.archiver.loadPlan(allowed: ModelConstants.allowedGoalsPerPlan)
@@ -52,6 +53,10 @@ final class AppModel {
             }
         }
         
+        watchChangedPlan = watchSender.watchUpdatedPlan
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: updatePlanner(with:))
+        
         planWasUpdated()
     }
     
@@ -67,5 +72,9 @@ final class AppModel {
             WidgetCenter.shared.reloadAllTimelines()
         }
         WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    private func updatePlanner(with plan: Plan) {
+        planner.plan = plan
     }
 }

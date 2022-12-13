@@ -7,10 +7,13 @@
 
 import Foundation
 import WatchConnectivity
+import Combine
 
 final class WatchSender: NSObject {
     
     private var session: WCSession { WCSession.default }
+    
+    let watchUpdatedPlan = PassthroughSubject<Plan, Never>()
     
     private func startConnection() -> Bool {
         guard WCSession.isSupported() else { return false }
@@ -77,6 +80,8 @@ extension WatchSender: WCSessionDelegate {
         else { return }
         
         print(plan)
+        
+        watchUpdatedPlan.send(plan)
         
         replyHandler(["got it":true])
     }
