@@ -30,6 +30,22 @@ final class Planner: ObservableObject {
         }
     }
     
+    func deleteGoalWith(externalIdentifier id: String) {
+        switch state {
+        case .planning:
+            removeAnyGoalWith(externalIdentifier: id)
+        case .doing:
+            // if we're past the planning stage,
+            // then just deleting the goal
+            // could be confusing to the user
+            // so let the goal stay
+            //
+            // it won't matter when it's
+            // completed in the app
+            break
+        }
+    }
+    
     private func markAsCompletedAnyGoalWith(externalIdentifier id: String) {
         for index in 0..<plan.allowed {
             if let goal = try? plan.goal(at: index),
