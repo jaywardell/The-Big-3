@@ -11,7 +11,7 @@ struct ReminderPicker: View {
         
     let userChose: (EventKitReminder)->()
 
-    @ObservedObject private var lister = EventKitReminderLister()
+    @StateObject private var lister = EventKitReminderLister()
 
     @State private var selectedReminderID: String = ""
     @Environment(\.dismiss) var dismiss
