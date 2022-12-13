@@ -87,9 +87,18 @@ final class Planner: ObservableObject {
 }
 
 extension Planner.State: Codable {}
-extension Planner: Codable {
-    
-    
+extension Planner: Codable {}
+
+extension Planner.State: CustomStringConvertible {
+    switch self {
+    case .planning: return "Planning"
+    case .doing: return "Doing"
+    }
+}
+extension Planner: CustomStringConvertible {
+    var description: String {
+        return state.description + "\n" + plan.description
+    }
 }
 
 #if DEBUG
