@@ -192,58 +192,72 @@ struct GoalView: View {
     }
     
     private func bigBody(size: CGSize) -> some View {
-        HStack {
-            checkbox(size: size)
-                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
-                .padding(.top, size.height * 8/34)
-                .padding(.leading, size.height * 3/34)
-                .padding(.trailing, size.height * 3/34)
-                .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
-            
-            Text(todo.title)
-                .font(.system(size: size.height * textFontScalar, weight: .light))
-                .foregroundColor(textColor(for: todo.state))
-                .minimumScaleFactor(5/34)
-                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
-                .opacity(textOpacty(for: todo.state) )
-            #if os(iOS)
-                .padding(.vertical, size.height * 3/34)
-            #endif
-                .padding(.trailing, size.height * 3/34)
-                .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
+        ZStack {
+            HStack {
+                checkbox(size: size)
+                    .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                    .padding(.top, size.height * 8/34)
+                    .padding(.leading, size.height * 3/34)
+                    .padding(.trailing, size.height * 3/34)
+                    .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
+                
+                Text(todo.title)
+                    .font(.system(size: size.height * textFontScalar, weight: .light))
+                    .foregroundColor(textColor(for: todo.state))
+                    .minimumScaleFactor(5/34)
+                    .opacity(showingPostponeButton ? 21/34 : 1)
+                    .blur(radius: showingPostponeButton ? 1 : 0)
+                    .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                    .opacity(textOpacty(for: todo.state) )
+#if os(iOS)
+                    .padding(.vertical, size.height * 3/34)
+#endif
+//                    .padding(.trailing, size.height * 3/34)
+                    .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
+                
+                Spacer()
+                
 
-            Spacer()
-            
-            if todo.state == .ready {
-            ZStack {
-                VStack(alignment: .leading) {
-
-                    Button(action: deferButtonPressed) {
-                        Text("not today")
-                            .font(.caption)
-                            .minimumScaleFactor(0.01)
-                            .lineLimit(1)
-                            .frame(maxWidth: .infinity)
-                            .opacity(showingPostponeButton ? 1 : 0)
-                   }
-
-                    .buttonStyle(.borderless)
-                }
-                .opacity(todo.state == .ready ? 1 : 0)
-                #if os(iOS)
-                .frame(width: size.height * 13/34,
-                       height: size.height * 8/34)
-                #else
-                .frame(width: size.width * 13/34,
-                       height: size.height * 13/34)
-                #endif
-                .padding(.horizontal)
-                .background(Capsule().stroke( Color.accentColor))
-           }
-            .padding(.trailing, size.height * 5/34)
-            .offset(x: deferredButtonOffset(for: size) + postponeButtonTranslation, y: 0)
             }
-        }
+
+            if todo.state == .ready {
+                HStack {
+                    Spacer()
+                    VStack(alignment: .leading) {
+                        
+                        Button(action: deferButtonPressed) {
+                            Text("not today")
+                                .font(.caption)
+                                .minimumScaleFactor(0.01)
+                                .lineLimit(1)
+                                .frame(maxWidth: .infinity)
+                                .opacity(showingPostponeButton ? 1 : 0)
+                        }
+                        
+                        .buttonStyle(.borderless)
+                    }
+                    .opacity(todo.state == .ready ? 1 : 0)
+                    .shadow(radius: 1)
+#if os(iOS)
+                    .frame(width: size.height * 13/34,
+                           height: size.height * 8/34)
+#else
+                    .frame(width: size.width * 13/34,
+                           height: size.height * 13/34)
+#endif
+                    .padding(.horizontal)
+                    .background(
+                        Capsule()
+                            .stroke(Color.accentColor, lineWidth: 2)
+                            .background(
+                                Capsule()
+                                    .fill(Color.white)
+                            )
+                    )
+                }
+                .padding(.trailing, size.height * 5/34)
+                .offset(x: deferredButtonOffset(for: size) + postponeButtonTranslation, y: 0)
+            }        }
         .background(background(size: size))
         .contentShape(Rectangle())
         .onTapGesture {
