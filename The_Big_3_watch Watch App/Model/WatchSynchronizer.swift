@@ -49,11 +49,6 @@ final class WatchSynchronizer: NSObject {
             }, errorHandler: { error in
                 print(error)
             })
-            
-//            session.sendMessage(payload, replyHandler: { reply in
-//                print("Received Reply.........\(Date())")
-//                print(reply)
-//            })
             print("Sent.........")
             print(plan)
         }
