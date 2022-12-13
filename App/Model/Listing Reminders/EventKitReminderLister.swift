@@ -23,9 +23,9 @@ struct EventKitCalendar: Hashable {
 final class EventKitReminderLister: ObservableObject {
     
     @Published var givenAccess = false
-    @Published var reminders = [EventKitReminder]()
+    @Published private var reminders = [EventKitReminder]()
     @Published var calendars = [EventKitCalendar]()
-    @Published var calendarForReminders = [EventKitCalendar: [EventKitReminder]]()
+    @Published private var calendarForReminders = [EventKitCalendar: [EventKitReminder]]()
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -88,5 +88,11 @@ final class EventKitReminderLister: ObservableObject {
     
     func reminders(for calendar: EventKitCalendar) -> [EventKitReminder] {
         calendarForReminders[calendar, default: []]
+    }
+    
+    func reminderWith(id: String) -> EventKitReminder? {
+        reminders.first {
+            $0.id == id
+        }
     }
 }

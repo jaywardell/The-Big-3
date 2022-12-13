@@ -15,12 +15,6 @@ struct ReminderPicker: View {
 
     @State private var selectedReminderID: String = ""
     @Environment(\.dismiss) var dismiss
-
-    private var selectedReminder: EventKitReminder? {
-        return lister.reminders.first {
-            $0.id == selectedReminderID
-        }
-    }
     
     private func row(for reminder: EventKitReminder) -> some View {
         HStack {
@@ -81,7 +75,7 @@ struct ReminderPicker: View {
 
     private var doneButton: some View {
         Button("Choose") {
-            guard let reminder = selectedReminder else { return }
+            guard let reminder = lister.reminderWith(id: selectedReminderID) else { return }
             userChose(reminder)
             dismiss()
         }
