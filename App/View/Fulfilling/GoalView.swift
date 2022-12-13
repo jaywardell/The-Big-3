@@ -256,7 +256,7 @@ struct GoalView: View {
                     )
                 }
                 .padding(.trailing, size.height * 5/34)
-                .offset(x: deferredButtonOffset(for: size) + postponeButtonTranslation, y: 0)
+                .offset(x: deferredButtonOffset(for: size) + postponeButtonTranslation + (showingCheckbox ? size.width : 0), y: 0)
             }        }
         .background(background(size: size))
         .contentShape(Rectangle())
