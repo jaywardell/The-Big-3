@@ -10,13 +10,17 @@ import Combine
 
 final class WatchModel: ObservableObject {
     
-    private var subscriptions = Set<AnyCancellable>()
-    let watchSynchronizer = WatchSynchronizer()
 
     @Published var planner: Planner
 
+    // used to communicate with the phone app
+    let watchSynchronizer = WatchSynchronizer()
+
+    // used to store the most recent plan between launches
     let archiver = PlanArchiver(shared: false)
     
+    private var subscriptions = Set<AnyCancellable>()
+
     init() {
         let plan = archiver.loadPlan(allowed: 3)
         self.planner = Planner(plan: plan)
