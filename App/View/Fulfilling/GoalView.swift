@@ -191,6 +191,14 @@ struct GoalView: View {
         #endif
     }
     
+    private var deferButtonBackgroundColor: Color {
+#if os(watchOS)
+        .black
+#else
+        Color(uiColor: .systemBackground)
+#endif
+    }
+    
     private func bigBody(size: CGSize) -> some View {
         ZStack {
             HStack {
@@ -250,7 +258,7 @@ struct GoalView: View {
                             .stroke(Color.accentColor, lineWidth: 2)
                             .background(
                                 Capsule()
-                                    .fill(Color.white)
+                                    .fill(deferButtonBackgroundColor)
                                     .shadow(radius: showingPostponeButton ? 2 : 0)
                             )
                     )
