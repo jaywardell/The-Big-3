@@ -11,7 +11,7 @@ import XCTest
 class PlanArchiverTest: XCTestCase {
 
     func test_loadPlan_returns_empty_plan_if_given_empty_data() {
-        let sut = PlanArchiver()
+        let sut = PlanArchiver(shared: false)
         let expectedAllowed = 1
         
         let loaded = sut.loadPlan(allowed: expectedAllowed)
@@ -22,7 +22,7 @@ class PlanArchiverTest: XCTestCase {
     
     
     func test_loadPlan_returns_any_plan_that_was_passed_in() {
-        let sut = PlanArchiver()
+        let sut = PlanArchiver(shared: false)
         let plan = Plan()
         
         sut.archive(plan)
