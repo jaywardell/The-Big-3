@@ -20,6 +20,8 @@ final class AppModel {
     
     let eventKitReminderUpdater = ExternalGoalServiceUpdater(bridge: EventKitGoalService())
     
+    private var remindersWatcher: EventKitReminderWatcher!
+    
     // NOTE: not using a Set because we want to subscribe to one Plan's publisher at a time
     private var plannerChanged: AnyCancellable?
     private var planChanged: AnyCancellable?
@@ -36,11 +38,13 @@ final class AppModel {
         
         self.watchSender = WatchSender()
         
-        plannerChanged = planner.objectWillChange.sink { [unowned self] _ in
+        self.remindersWatcher = EventKitReminderWatcher(reminderWasCompleted: remindersAppCompletedReminderWith(identifier:), reminderWasDeleted: remindersAppDeletedReminderWith(identifier:))
+
+        self.plannerChanged = planner.objectWillChange.sink { [unowned self] _ in
             planWasUpdated()
         }
         
-        userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted).sink { notification in
+        self.userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted).sink { notification in
             guard let goalString = notification.userInfo?[Plan.GoalKey] as? String else { return }
             let goal = Plan.Goal(title: goalString, state: .completed)
             Task { [unowned self] in
@@ -53,7 +57,7 @@ final class AppModel {
             }
         }
         
-        watchChangedPlan = watchSender.watchUpdatedPlan
+        self.watchChangedPlan = watchSender.watchUpdatedPlan
             .receive(on: RunLoop.main)
             .sink(receiveValue: updatePlanner(with:))
         
@@ -66,6 +70,8 @@ final class AppModel {
         
         watchSender.send(plan)
         
+        remindersWatcher.watchForChangesInRemindersWith(ids: plan.currentGoals.compactMap(\.?.externalIdentifier))
+        
         planChanged = plan.publisher.sink { [unowned self] in
             planWasUpdated()
             
@@ -76,5 +82,13 @@ final class AppModel {
     
     private func updatePlanner(with plan: Plan) {
         planner.plan = plan
+    }
+    
+    private func remindersAppCompletedReminderWith(identifier id: String) {
+        planner.completeGoalWith(externalIdentifier: id)
+    }
+    
+    private func remindersAppDeletedReminderWith(identifier id: String) {
+        print(#function)
     }
 }
