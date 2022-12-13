@@ -90,9 +90,11 @@ extension Planner.State: Codable {}
 extension Planner: Codable {}
 
 extension Planner.State: CustomStringConvertible {
-    switch self {
-    case .planning: return "Planning"
-    case .doing: return "Doing"
+    var description: String {
+        switch self {
+        case .planning: return "Planning"
+        case .doing: return "Doing"
+        }
     }
 }
 extension Planner: CustomStringConvertible {
