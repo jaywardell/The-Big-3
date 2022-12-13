@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */; };
+		7C034B712948DC3C0069B46D /* EventKitRemindersTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034B702948DC3C0069B46D /* EventKitRemindersTracker.swift */; };
 		7C0528452947D55100C1C052 /* AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */; };
 		7C0528462947D5D200C1C052 /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
 		7C0528472947D62D00C1C052 /* Planner.AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */; };
@@ -143,6 +144,7 @@
 
 /* Begin PBXFileReference section */
 		7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.AccomplishmentsView.swift; sourceTree = "<group>"; };
+		7C034B702948DC3C0069B46D /* EventKitRemindersTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitRemindersTracker.swift; sourceTree = "<group>"; };
 		7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerView.swift"; sourceTree = "<group>"; };
 		7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerViewTests.swift"; sourceTree = "<group>"; };
 		7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+AsynAwait.swift"; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */,
+				7C034B702948DC3C0069B46D /* EventKitRemindersTracker.swift */,
 			);
 			path = "Listing Reminders";
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */,
 				7CD547B627E6DC760009F9DD /* LogView.swift in Sources */,
 				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
+				7C034B712948DC3C0069B46D /* EventKitRemindersTracker.swift in Sources */,
 				7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */,
 				7CA682CE29466CA400BD6D12 /* Header.swift in Sources */,
 				7CA682C2294645EB00BD6D12 /* Planner+GoalView.swift in Sources */,
