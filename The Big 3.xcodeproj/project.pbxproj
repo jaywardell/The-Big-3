@@ -300,7 +300,7 @@
 		7CA682D02947720600BD6D12 /* Listing Reminders */ = {
 			isa = PBXGroup;
 			children = (
-				7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */,
+				7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */,
 			);
 			path = "Listing Reminders";
 			sourceTree = "<group>";
@@ -308,8 +308,8 @@
 		7CA682D12947722900BD6D12 /* Updating Reminders */ = {
 			isa = PBXGroup;
 			children = (
+				7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */,
 				7C0FA5AF2945601100E8C88E /* EventKitGoalService.swift */,
-				7C0FA5A5294507E700E8C88E /* EventKitReminderLister.swift */,
 			);
 			path = "Updating Reminders";
 			sourceTree = "<group>";
