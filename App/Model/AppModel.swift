@@ -26,7 +26,7 @@ final class AppModel {
     private var userCompletedGoal: AnyCancellable?
     
     init() {
-        self.archiver = PlanArchiver()
+        self.archiver = PlanArchiver(shared: true)
         let loadedPlan = self.archiver.loadPlan(allowed: ModelConstants.allowedGoalsPerPlan)
         self.planner = Planner(plan: loadedPlan)
         

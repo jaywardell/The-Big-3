@@ -9,8 +9,14 @@ import Foundation
 
 struct PlanArchiver {
     
+    let shared: Bool
+    
+    init(shared: Bool) {
+        self.shared = shared
+    }
+    
     private var defaults: UserDefaults {
-        UserDefaults(suiteName: ModelConstants.appGroup)!
+        shared ? UserDefaults(suiteName: ModelConstants.appGroup)! : UserDefaults.standard
     }
     
     func loadPlan(allowed: Int) -> Plan {

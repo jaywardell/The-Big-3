@@ -10,7 +10,7 @@ import Foundation
 final class WidgetModel {
         
     var planner: Planner {
-        let loadedPlan = PlanArchiver().loadPlan(allowed: 3)
+        let loadedPlan = PlanArchiver(shared: true).loadPlan(allowed: 3)
         return Planner(plan: loadedPlan)
     }
 }

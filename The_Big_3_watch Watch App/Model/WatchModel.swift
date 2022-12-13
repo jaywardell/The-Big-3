@@ -15,7 +15,7 @@ final class WatchModel: ObservableObject {
 
     @Published var planner: Planner
 
-    let archiver = PlanArchiver()
+    let archiver = PlanArchiver(shared: false)
     
     init() {
         let plan = archiver.loadPlan(allowed: 3)
