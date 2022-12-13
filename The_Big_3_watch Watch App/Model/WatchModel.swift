@@ -19,15 +19,14 @@ final class WatchModel: ObservableObject {
     // used to store the most recent plan between launches
     let archiver = PlanArchiver(shared: false)
     
-    private var subscriptions = Set<AnyCancellable>()
-
+    private var phoneSentPlan: AnyCancellable!
+    
     init() {
         let plan = archiver.loadPlan(allowed: 3)
         self.planner = Planner(plan: plan)
-        watchSynchronizer.receivedPlan
+        phoneSentPlan = watchSynchronizer.receivedPlan
             .receive(on: RunLoop.main)
             .sink(receiveValue: takePlanFromSynchronizer)
-            .store(in: &subscriptions)
     }
     
     
