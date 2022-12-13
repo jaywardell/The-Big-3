@@ -89,6 +89,6 @@ final class AppModel {
     }
     
     private func remindersAppDeletedReminderWith(identifier id: String) {
-        print(#function)
+        planner.deleteGoalWith(externalIdentifier: id)
     }
 }
