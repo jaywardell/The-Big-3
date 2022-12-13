@@ -20,13 +20,18 @@ final class WatchModel: ObservableObject {
     let archiver = PlanArchiver(shared: false)
     
     private var phoneSentPlan: AnyCancellable!
-    
+    private var plannerChanged: AnyCancellable?
+    private var planChanged: AnyCancellable?
+
     init() {
         let plan = archiver.loadPlan(allowed: 3)
         self.planner = Planner(plan: plan)
+        
         phoneSentPlan = watchSynchronizer.receivedPlan
             .receive(on: RunLoop.main)
             .sink(receiveValue: takePlanFromSynchronizer)
+        plannerChanged = planner.objectWillChange.sink(receiveValue: planWasUpdated)
+        planChanged = plan.publisher.sink(receiveValue: planWasUpdated)
     }
     
     
@@ -38,4 +43,16 @@ final class WatchModel: ObservableObject {
         
         archiver.archive(plan)
     }
+    
+    private func planWasUpdated() {
+        let plan = planner.plan
+        archiver.archive(plan)
+        
+        watchSynchronizer.send(plan)
+        
+        planChanged = plan.publisher.sink { [unowned self] in
+            planWasUpdated()
+        }
+    }
+
 }

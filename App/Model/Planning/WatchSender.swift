@@ -62,4 +62,22 @@ extension WatchSender: WCSessionDelegate {
         print(#function)
     }
     #endif
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print(message)
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        print(#function)
+        print("Received......\(Date())")
+        print(message)
+        
+        guard let data = message[ModelConstants.WatchConnectivityPlanKey] as? Data,
+        let plan = try? JSONDecoder().decode(Plan.self, from: data)
+        else { return }
+        
+        print(plan)
+        
+        replyHandler(["got it":true])
+    }
 }

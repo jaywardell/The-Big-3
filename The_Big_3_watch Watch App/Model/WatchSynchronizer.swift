@@ -15,16 +15,6 @@ final class WatchSynchronizer: NSObject {
     
     private var session: WCSession { WCSession.default }
 
-    private func startConnection() -> Bool {
-        guard WCSession.isSupported() else { return false }
-        if session.delegate !== self { // make sure that this hasn't already been called
-        
-            session.delegate = self
-            session.activate()
-        }
-        return true
-    }
-
     override init() {
         super.init()
         if startConnection() {
@@ -38,6 +28,37 @@ final class WatchSynchronizer: NSObject {
             }
         }
     }
+    
+    private func startConnection() -> Bool {
+        guard WCSession.isSupported() else { return false }
+        if session.delegate !== self { // make sure that this hasn't already been called
+        
+            session.delegate = self
+            session.activate()
+        }
+        return true
+    }
+
+    func send(_ plan: Plan) {
+        let encoder = JSONEncoder()
+        guard let encoded = try? encoder.encode(plan) else { return }
+        let payload = [ModelConstants.WatchConnectivityPlanKey: encoded]
+        if startConnection() {
+            session.sendMessage(payload, replyHandler: { reply in
+                print(reply)
+            }, errorHandler: { error in
+                print(error)
+            })
+            
+//            session.sendMessage(payload, replyHandler: { reply in
+//                print("Received Reply.........\(Date())")
+//                print(reply)
+//            })
+            print("Sent.........")
+            print(plan)
+        }
+    }
+
 }
 
 
