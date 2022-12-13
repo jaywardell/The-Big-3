@@ -12,16 +12,14 @@ final class WatchSender: NSObject {
     
     private var session: WCSession { WCSession.default }
     
-    private func startConnection(_ callback: () throws ->()) throws {
-        guard WCSession.isSupported() else { return }
+    private func startConnection() -> Bool {
+        guard WCSession.isSupported() else { return false }
         if session.delegate !== self { // make sure that this hasn't already been called
         
             session.delegate = self
             session.activate()
         }
-        guard canTalkToWatch else { return }
-        
-        try callback()
+        return canTalkToWatch
     }
     
     var canTalkToWatch: Bool { session.isPaired && session.isWatchAppInstalled }
@@ -30,7 +28,7 @@ final class WatchSender: NSObject {
         let encoder = JSONEncoder()
         guard let encoded = try? encoder.encode(plan) else { return }
         let payload = [ModelConstants.WatchConnectivityPlanKey: encoded]
-        try? startConnection {
+        if startConnection() {
             try? session.updateApplicationContext(payload)
             print("Sent.........")
             print(plan)
