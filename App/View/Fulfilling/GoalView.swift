@@ -227,7 +227,7 @@ struct GoalView: View {
                         
                         Button(action: deferButtonPressed) {
                             Text("not today")
-                                .font(.caption)
+                                .font(.body)
                                 .minimumScaleFactor(0.01)
                                 .lineLimit(1)
                                 .frame(maxWidth: .infinity)
@@ -237,7 +237,6 @@ struct GoalView: View {
                         .buttonStyle(.borderless)
                     }
                     .opacity(todo.state == .ready ? 1 : 0)
-                    .shadow(radius: 1)
 #if os(iOS)
                     .frame(width: size.height * 13/34,
                            height: size.height * 8/34)
@@ -252,6 +251,7 @@ struct GoalView: View {
                             .background(
                                 Capsule()
                                     .fill(Color.white)
+                                    .shadow(radius: showingPostponeButton ? 2 : 0)
                             )
                     )
                 }
