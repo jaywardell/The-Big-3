@@ -68,7 +68,9 @@ final class AppModel {
         let plan = planner.plan
         archiver.archive(plan)
         
-        watchSender.send(plan)
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
+            self.watchSender.send(self.planner)
+        }
         
         remindersWatcher.watchForChangesInRemindersWith(ids: plan.currentGoals.compactMap(\.?.externalIdentifier))
         

@@ -27,14 +27,14 @@ final class WatchSender: NSObject {
     
     var canTalkToWatch: Bool { session.isPaired && session.isWatchAppInstalled }
 
-    func send(_ plan: Plan) {
+    func send(_ planner: Planner) {
         let encoder = JSONEncoder()
-        guard let encoded = try? encoder.encode(plan) else { return }
+        guard let encoded = try? encoder.encode(planner) else { return }
         let payload = [ModelConstants.WatchConnectivityPlanKey: encoded]
         if startConnection() {
             try? session.updateApplicationContext(payload)
             print("Sent.........")
-            print(plan)
+            print(planner)
         }
     }
 }

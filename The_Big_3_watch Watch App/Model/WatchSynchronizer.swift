@@ -11,7 +11,7 @@ import Combine
 
 final class WatchSynchronizer: NSObject {
         
-    var receivedPlan = PassthroughSubject<Plan, Never>()
+    var receivedPlan = PassthroughSubject<Planner, Never>()
     
     private var session: WCSession { WCSession.default }
 
@@ -21,9 +21,10 @@ final class WatchSynchronizer: NSObject {
             
             // try to load any plan that was sent
             // since the last time we were loaded
+            // honestly, I don't think this ever happens...
             if let encoded = session.receivedApplicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data {
-                if let plan = try? JSONDecoder().decode(Plan.self, from: encoded) {
-                    receivedPlan.send(plan)
+                if let planner = try? JSONDecoder().decode(Planner.self, from: encoded) {
+                    receivedPlan.send(planner)
                 }
             }
         }
@@ -68,11 +69,11 @@ extension WatchSynchronizer: WCSessionDelegate {
         print(#function)
 
         guard let encoded = applicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data,
-              let plan = try? JSONDecoder().decode(Plan.self, from: encoded) else { return }
+              let planner = try? JSONDecoder().decode(Planner.self, from: encoded) else { return }
         
         print("Received.................\t\(Date())")
-        print(plan)
+        print(planner)
         
-        receivedPlan.send(plan)
+        receivedPlan.send(planner)
     }
 }
