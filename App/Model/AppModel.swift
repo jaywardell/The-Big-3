@@ -82,6 +82,8 @@ final class AppModel {
     
     private func updatePlanner(with plan: Plan) {
         planner.plan = plan
+        
+        planWasUpdated()
     }
     
     private func remindersAppCompletedReminderWith(identifier id: String) {
