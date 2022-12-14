@@ -1,6 +1,6 @@
 #  todo
 
-- [ ] when a goal is completed in the watch app, it's added to the history on the phone app
+- [x] when a goal is completed in the watch app, it's added to the history on the phone app
 - [x] watch app updates info on host app
 - [x] watch app reports info from host app
 - [x] widget
