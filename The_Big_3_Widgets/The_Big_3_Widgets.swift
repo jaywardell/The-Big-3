@@ -17,7 +17,9 @@ struct The_Big_3_Widgets: Widget {
     let model = WidgetModel()
     
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: TheBig3TimelineProvider(model: model)) { entry in
+        IntentConfiguration(kind: kind,
+                            intent: ConfigurationIntent.self,
+                            provider: TheBig3TimelineProvider(model: model)) { entry in
             TheBig3WidgetView(entry: entry)
                 .accentColor(ViewConstants.tint)
         }
