@@ -40,7 +40,7 @@ final class WatchSynchronizer: NSObject {
         return true
     }
 
-    func send(_ plan: Plan) {
+    func send(plan: Plan) {
         let encoder = JSONEncoder()
         guard let encoded = try? encoder.encode(plan) else { return }
         let payload = [ModelConstants.WatchConnectivityPlanKey: encoded]
@@ -52,6 +52,23 @@ final class WatchSynchronizer: NSObject {
             })
             print("Sent.........")
             print(plan)
+        }
+    }
+
+    func send(completedGoal goal: Plan.Goal) {
+        assert(goal.state == .completed)
+        
+        let encoder = JSONEncoder()
+        guard let encoded = try? encoder.encode(goal) else { return }
+        let payload = [ModelConstants.WatchConnectivityCompletedGoalKey: encoded]
+        if startConnection() {
+            session.sendMessage(payload, replyHandler: { reply in
+                print(reply)
+            }, errorHandler: { error in
+                print(error)
+            })
+            print("Sent.........")
+            print(goal)
         }
     }
 

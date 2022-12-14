@@ -18,4 +18,5 @@ enum ModelConstants {
     static var appGroup: String { "group.com.oldjewel.TheBig3" }
     
     static var WatchConnectivityPlanKey: String { #function }
+    static var WatchConnectivityCompletedGoalKey: String { #function }
 }

@@ -53,7 +53,7 @@ extension WatchSender: WCSessionDelegate {
         print(#function)
     }
     
-    #if os(iOS)
+#if os(iOS)
     func sessionDidBecomeInactive(_ session: WCSession) {
         print(#function)
     }
@@ -65,7 +65,7 @@ extension WatchSender: WCSessionDelegate {
     func sessionWatchStateDidChange(_ session: WCSession) {
         print(#function)
     }
-    #endif
+#endif
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print(message)
@@ -75,22 +75,37 @@ extension WatchSender: WCSessionDelegate {
         print(#function)
         print("Received......\(Date())")
         print(message)
-  
+        
         let positiveReply = ["got it":true]
         
         if receiveUpdatedPlan(from: message) {
+            replyHandler(positiveReply)
+        }
+        else if receiveCompletedGoal(from: message) {
             replyHandler(positiveReply)
         }
     }
     
     private func receiveUpdatedPlan(from dictionary: [String: Any]) -> Bool {
         guard let data = dictionary[ModelConstants.WatchConnectivityPlanKey] as? Data,
-        let plan = try? JSONDecoder().decode(Plan.self, from: data)
+              let plan = try? JSONDecoder().decode(Plan.self, from: data)
         else { return false }
         
         print(plan)
         
         watchUpdatedPlan.send(plan)
+        return true
+    }
+    
+    private func receiveCompletedGoal(from dictionary: [String: Any]) -> Bool {
+        guard let data = dictionary[ModelConstants.WatchConnectivityCompletedGoalKey] as? Data,
+              let plan = try? JSONDecoder().decode(Plan.Goal.self, from: data),
+              plan.state == .completed
+        else { return false }
+        
+        print(plan)
+        
+        watchCompletedGoal.send(plan)
         return true
     }
 }

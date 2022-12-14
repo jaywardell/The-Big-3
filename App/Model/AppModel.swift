@@ -27,6 +27,7 @@ final class AppModel {
     private var planChanged: AnyCancellable?
     private var userCompletedGoal: AnyCancellable?
     private var watchChangedPlan: AnyCancellable?
+    private var watchCompletedGoal: AnyCancellable?
 
     init() {
         self.archiver = PlanArchiver(shared: true)
@@ -53,6 +54,10 @@ final class AppModel {
             .receive(on: RunLoop.main)
             .sink(receiveValue: updatePlanner(with:))
         
+        self.watchCompletedGoal = watchSender.watchCompletedGoal
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: log(goalCompleted:))
+
         planWasUpdated()
     }
     

@@ -22,6 +22,7 @@ final class WatchModel: ObservableObject {
     private var phoneSentPlan: AnyCancellable!
     private var plannerChanged: AnyCancellable?
     private var planChanged: AnyCancellable?
+    private var userCompletedGoal: AnyCancellable?
 
     init() {
         let plan = archiver.loadPlan(allowed: 3)
@@ -32,6 +33,12 @@ final class WatchModel: ObservableObject {
             .sink(receiveValue: takePlannerFromSynchronizer)
         plannerChanged = planner.objectWillChange.sink(receiveValue: plannerWasUpdated)
         planChanged = plan.publisher.sink(receiveValue: planWasUpdated)
+        
+        self.userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted)
+            .compactMap { $0.userInfo?[Plan.GoalKey] as? String }
+            .map { Plan.Goal(title: $0, state: .completed) }
+            .sink(receiveValue: watchSynchronizer.send(completedGoal:))
+
     }
     
     
@@ -50,7 +57,7 @@ final class WatchModel: ObservableObject {
         let plan = planner.plan
         archiver.archive(plan)
         
-        watchSynchronizer.send(plan)
+        watchSynchronizer.send(plan: plan)
         
         planChanged = plan.publisher.sink(receiveValue: planWasUpdated)
     }
