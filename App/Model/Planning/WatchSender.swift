@@ -14,7 +14,8 @@ final class WatchSender: NSObject {
     private var session: WCSession { WCSession.default }
     
     let watchUpdatedPlan = PassthroughSubject<Plan, Never>()
-    
+    let watchCompletedGoal = PassthroughSubject<Plan.Goal, Never>()
+
     private func startConnection() -> Bool {
         guard WCSession.isSupported() else { return false }
         if session.delegate !== self { // make sure that this hasn't already been called
@@ -74,15 +75,22 @@ extension WatchSender: WCSessionDelegate {
         print(#function)
         print("Received......\(Date())")
         print(message)
+  
+        let positiveReply = ["got it":true]
         
-        guard let data = message[ModelConstants.WatchConnectivityPlanKey] as? Data,
+        if receiveUpdatedPlan(from: message) {
+            replyHandler(positiveReply)
+        }
+    }
+    
+    private func receiveUpdatedPlan(from dictionary: [String: Any]) -> Bool {
+        guard let data = dictionary[ModelConstants.WatchConnectivityPlanKey] as? Data,
         let plan = try? JSONDecoder().decode(Plan.self, from: data)
-        else { return }
+        else { return false }
         
         print(plan)
         
         watchUpdatedPlan.send(plan)
-        
-        replyHandler(["got it":true])
+        return true
     }
 }
