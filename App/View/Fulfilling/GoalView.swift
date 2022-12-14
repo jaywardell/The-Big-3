@@ -313,17 +313,6 @@ struct GoalView: View {
         }
         .background(background(size: size))
         .contentShape(Rectangle())
-        .onTapGesture {
-            if todo.state == .ready {
-                withAnimation(.Big3Spring) {
-                    if !showingPostponeButton {
-                        showingCheckbox.toggle()
-                    }
-                    showingPostponeButton = false
-                }
-            }
-        }
-        .gesture(dragControls)
     }
 
     private func mediumBody(size: CGSize) -> some View {
@@ -343,17 +332,6 @@ struct GoalView: View {
         }
         .background(background(size: size))
         .contentShape(Rectangle())
-        .onTapGesture {
-            if todo.state == .ready {
-                withAnimation(.Big3Spring) {
-                    if !showingPostponeButton {
-                        showingCheckbox.toggle()
-                    }
-                    showingPostponeButton = false
-                }
-            }
-        }
-        .gesture(dragControls)
     }
 
     var body: some View {
