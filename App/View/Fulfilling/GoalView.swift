@@ -130,7 +130,7 @@ struct GoalView: View {
             Group {
                 switch todo.state {
                 case .notToday:
-                    Image(systemName: "circle.slash")
+                    Image(systemName: ViewConstants.deferredImageName)
                         .resizable()
                         .foregroundColor(textColor(for: .notToday))
                         .opacity(textOpacty(for: .notToday))
@@ -139,12 +139,12 @@ struct GoalView: View {
                     Button(action: finishButtonPressed) {
                             ZStack {
                                 if template.isiOSApp {
-                                    Image(systemName: "checkmark.circle")
+                                    Image(systemName: ViewConstants.finishedImageName)
                                         .resizable()
                                         .foregroundColor(.label)
                                         .opacity(checkmarkOpacity)
                                 }
-                                Image(systemName: "circle")
+                                Image(systemName: ViewConstants.unfinishedImageName)
                                     .resizable()
                                     .foregroundColor(backgroundColor)
                                     .opacity(checkboxOpacity)
@@ -152,7 +152,7 @@ struct GoalView: View {
                     }
                     .buttonStyle(.borderless)
                 case .finished:
-                    Image(systemName: "checkmark.circle")
+                    Image(systemName: ViewConstants.finishedImageName)
                         .resizable()
                         .foregroundColor(.white)
                }

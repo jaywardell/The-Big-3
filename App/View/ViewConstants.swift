@@ -9,4 +9,9 @@ import SwiftUI
 
 enum ViewConstants {
     static var tint: Color { Color(hue: 5/8, saturation:21/34, brightness: 26/34) }
+    
+    static var unfinishedImageName: String { "circle" }
+    static var finishedImageName: String { "checkmark.circle" }
+    static var deferredImageName: String { "circle.slash" }
+
 }
