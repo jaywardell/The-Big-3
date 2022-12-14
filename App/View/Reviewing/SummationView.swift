@@ -45,22 +45,6 @@ struct SummationView: View {
         return out
     }
     
-    private func nameForImage(for todo: GoalView.ToDo) -> String {
-        switch todo.state {
-        case .finished: return ViewConstants.finishedImageName
-        case .ready: return ViewConstants.unfinishedImageName
-        case .notToday: return ViewConstants.deferredImageName
-        }
-    }
-
-    private func color(for todo: GoalView.ToDo) -> Color {
-        switch todo.state {
-        case .finished: return .accentColor
-        case .ready: return .label
-        case .notToday: return .secondary
-        }
-    }
-
     var body: some View {
         VStack(alignment: .center) {
             Header(alignment: .trailing) { BrandedHeader(layout: .mainTitle) }
@@ -71,15 +55,7 @@ struct SummationView: View {
             Header(title: titleText, alignment: .center)
                 .padding(.bottom)
                         
-            
-            HStack {
-                ForEach(0..<viewModel.total, id: \.self) { index in
-                    let todo = viewModel.todoAt(index)
-                    Image(systemName: nameForImage(for: todo))
-                        .font(.largeTitle)
-                        .foregroundColor(color(for: todo))
-                }
-            }
+            GraphicSummary(viewModel: .init(total: viewModel.total, todoAt: viewModel.todoAt))
             .padding(.bottom)
 
             Text(completionString)
