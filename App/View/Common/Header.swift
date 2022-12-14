@@ -8,34 +8,46 @@
 import SwiftUI
 import Combine
 
-struct Header: View {
+struct TextHeaderTitle: View {
     
     let title: String
     
-    init(title: String) {
-        self.title = title
+    private var titleFont: Font {
+#if os(watchOS)
+        .system(.title2, design: .default, weight: .light)
+#else
+        .system(.largeTitle, design: .default, weight: .light)
+#endif
     }
+    
+    var body: some View {
+        Text(title)
+            .font(titleFont)
+        // set this so that the header will compress
+        // instead of running up off the
+        // screen when the keyboard appears
+            .minimumScaleFactor(0.1)
+            .foregroundColor(.accentColor)
+    }
+}
+
+
+struct Header<Content: View>: View {
+    
+    init(_ content: @escaping ()->Content) {
+        self.content = content
+    }
+    
+    let content: ()->Content
+    
     
     @State private var showingKeyboard = false
     
-    private var titleFont: Font {
-        #if os(watchOS)
-        .system(.title2, design: .default, weight: .light)
-        #else
-        .system(.largeTitle, design: .default, weight: .light)
-        #endif
-    }
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .bottom) {
-                Text(title)
-                    .font(titleFont)
-                    // set this so that the header will compress
-                    // instead of running up off the
-                    // screen when the keyboard appears
-                    .minimumScaleFactor(0.1)
-                    .foregroundColor(.accentColor)
+                content()
                     .padding(.leading)
                     .padding(.top)
                     .opacity(showingKeyboard ? 0 : 1)
@@ -53,11 +65,30 @@ struct Header: View {
     }
 }
 
+extension Header where Content == TextHeaderTitle {
+    init(title: String) {
+        self.content = {
+           TextHeaderTitle(title: title)
+        }
+    }
+
+}
+
 struct Header_Previews: PreviewProvider {
     static var previews: some View {
-        Header(title: "Plan the next Big 3")
-            .accentColor(.mint)
-            .previewLayout(.sizeThatFits)
+        Group {
+            Header(title: "Plan the next Big 3")
+            
+            Header {
+                VStack {
+                    Text("Plan the next")
+                    Text("Big 3")
+                }
+            }
+        }
+        .accentColor(.mint)
+        .previewLayout(.sizeThatFits)
+
     }
 }
 
