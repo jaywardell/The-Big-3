@@ -17,7 +17,6 @@ struct TheBig3WatchView: View {
         }
         else {
             WatchPlanView(viewModel: planner.watchPlanViewModel())
-//            AccomplishmentsView(viewModel: planner.accomplishmentsViewModel())
         }
     }
 }
