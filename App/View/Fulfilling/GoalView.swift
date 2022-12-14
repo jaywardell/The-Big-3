@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalView: View {
     
-    struct ToDo {
+    struct ToDo: Hashable {
         let title: String
         
         enum State: CaseIterable { case ready, finished, notToday }
