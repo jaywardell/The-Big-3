@@ -23,10 +23,8 @@ struct SummationView: View {
         switch viewModel.completed {
         case viewModel.total:
             return "Congratulations!"
-        case 0:
-            return "Oh Well"
         default:
-            return "Alright"
+            return ""
         }
     }
     
@@ -54,40 +52,52 @@ struct SummationView: View {
         case .notToday: return ViewConstants.deferredImageName
         }
     }
-    
+
+    private func color(for todo: GoalView.ToDo) -> Color {
+        switch todo.state {
+        case .finished: return .accentColor
+        case .ready: return .label
+        case .notToday: return .secondary
+        }
+    }
+
     var body: some View {
         VStack(alignment: .center) {
-            Header(title: titleText)
+            Header(alignment: .trailing) { BrandedHeader(layout: .mainTitle) }
+                .padding(.bottom)
+            
+            Spacer()
+            
+            Header(title: titleText, alignment: .center)
+                .padding(.bottom)
                         
-            Spacer()
-
-            
-            Text(completionString)
-                .font(.title2)
-                .foregroundColor(.secondary)
-            
-            Spacer()
             
             HStack {
                 ForEach(0..<viewModel.total, id: \.self) { index in
                     let todo = viewModel.todoAt(index)
                     Image(systemName: nameForImage(for: todo))
                         .font(.largeTitle)
+                        .foregroundColor(color(for: todo))
                 }
             }
-            
-            Spacer()
-            Spacer()
+            .padding(.bottom)
+
+            Text(completionString)
+                .font(.title2)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+
             Spacer()
 
             HStack {
                 Spacer()
                 Button(action: viewModel.done) {
-                    BrandedHeader(layout: .planningTitle)
+                    Text("Plan the next Big 3")
+                        .font(.system(.title, design: .default, weight: .light))
                 }
-                .buttonStyle(.bordered)
+                .font(.largeTitle)
+                .padding()
             }
-            .padding()
         }
         .padding()
     }
@@ -95,6 +105,6 @@ struct SummationView: View {
 
 struct SummationView_Previews: PreviewProvider {
     static var previews: some View {
-        SummationView(viewModel: .init(total: 3, completed: 0, todoAt: { _ in .init(title: "do something", state: .notToday) }, done: {}))
+        SummationView(viewModel: .init(total: 3, completed: 3, todoAt: { _ in .init(title: "do something", state: .finished) }, done: {}))
     }
 }
