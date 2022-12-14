@@ -13,25 +13,14 @@ struct NoPlanView: View {
         VStack(alignment: .leading) {
             
             
-            HStack {
-                VStack {
-                    Text("Plan the Next")
-                        .font(.system(.caption2, design: .default, weight: .ultraLight))
-                    Text("Big")
-                        .font(.system(.largeTitle, design: .default, weight: .ultraLight)) +
-                    Text("3")
-                        .font(.system(.largeTitle, design: .monospaced, weight: .black))
-                        .bold()
-                        .foregroundColor(.accentColor)
-                }
-            }
+            BrandedHeader(layout: .square)
             
             Spacer()
             
             Text("You have not yet planned your Big 3.")
                 .font(.footnote)
             Spacer()
-            Text("Sadly, you can only do this on your phone for now.")
+            Text("To do this, open The Big 3 on your phone.")
                 .font(.footnote)
         }
     }
@@ -40,5 +29,6 @@ struct NoPlanView: View {
 struct NoPlanView_Previews: PreviewProvider {
     static var previews: some View {
         NoPlanView()
+            .accentColor(.indigo)
     }
 }
