@@ -87,6 +87,8 @@ final class AppModel {
     }
         
     private func log(goalCompleted goal: Plan.Goal) {
+        assert(goal.state == .completed)
+        
         Task { [unowned self] in
             do {
                 try await self.logger.log(goal)
