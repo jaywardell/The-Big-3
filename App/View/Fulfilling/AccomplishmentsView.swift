@@ -67,7 +67,7 @@ extension AccomplishmentsView: View {
             Header(title: "The Big 3")
             
             CountedRows(rows: viewModel.count) { index in
-                GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) }, template: .regular)
+                GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) }, template: .iOSApp)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

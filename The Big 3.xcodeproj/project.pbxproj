@@ -11,8 +11,8 @@
 		7C034B712948DC3C0069B46D /* EventKitRemindersTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034B702948DC3C0069B46D /* EventKitRemindersTracker.swift */; };
 		7C034B742948E7BC0069B46D /* EventKitReminderWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034B732948E7BC0069B46D /* EventKitReminderWatcher.swift */; };
 		7C034B752949EF5F0069B46D /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CC29466C5700BD6D12 /* Header.swift */; };
-		7C034B762949EF6B0069B46D /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7C034B772949EF920069B46D /* Animation+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66162E27BD4F24000AC97A /* Animation+Constants.swift */; };
+		7C034B7A294A00F40069B46D /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */; };
 		7C0FA59D2944D61000E8C88E /* XCTest+AsynAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */; };
 		7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A12944F44300E8C88E /* TestingFlags.swift */; };
@@ -710,6 +710,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA6832C2947924200BD6D12 /* Planner.swift in Sources */,
+				7C034B7A294A00F40069B46D /* GoalView.swift in Sources */,
 				7C034B772949EF920069B46D /* Animation+Constants.swift in Sources */,
 				7CA683262947921500BD6D12 /* TheBig3WatchView.swift in Sources */,
 				7CA683192947913C00BD6D12 /* ContentView.swift in Sources */,
@@ -717,7 +718,6 @@
 				7CA6832D2947924200BD6D12 /* PlanArchiver.swift in Sources */,
 				7CA683472947B14000BD6D12 /* ViewConstants.swift in Sources */,
 				7CA6833329479E0A00BD6D12 /* WatchSynchronizer.swift in Sources */,
-				7C034B762949EF6B0069B46D /* GoalView.swift in Sources */,
 				7CA683172947913C00BD6D12 /* The_Big_3_watchApp.swift in Sources */,
 				7CA6832E2947924900BD6D12 /* ModelConstants.swift in Sources */,
 				7CA683272947921500BD6D12 /* WatchModel.swift in Sources */,

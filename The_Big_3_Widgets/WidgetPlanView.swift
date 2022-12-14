@@ -16,11 +16,11 @@ struct WidgetPlanView: View {
 
     private func template(for family: WidgetFamily) -> GoalView.Template {
         switch family {
-        case .systemSmall: return .small
+        case .systemSmall: return .minimalWidget
         case .systemMedium,
                 .systemLarge,
-                .systemExtraLarge: return .medium
-        default: return .small
+                .systemExtraLarge: return .veboseWidget
+        default: return .minimalWidget
         }
     }
     

@@ -22,12 +22,10 @@ struct GoalView: View {
     let finish: ()->()
     
     enum Template {
-        // used for widget and other small views where there's no interaction expected
-        case small
-        case medium
-        
-        // used in the app as the main interface
-        case regular
+        case iOSApp
+
+        case minimalWidget
+        case veboseWidget
     }
     
     let template: Template
@@ -124,9 +122,9 @@ struct GoalView: View {
 
     private func checkmarkColor() -> Color {
         #if os(iOS)
-        template == .regular ? backgroundColor : Color(uiColor: .label)
+        template == .iOSApp ? backgroundColor : Color(uiColor: .label)
         #else
-        template == .regular ? backgroundColor : .primary
+        template == .iOSApp ? backgroundColor : .primary
         #endif
     }
     
@@ -143,16 +141,16 @@ struct GoalView: View {
                 case .ready:
                     Button(action: { withAnimation(.Big3Spring) {finish()}}) {
                             ZStack {
-                                if template == .regular {
+                                if template == .iOSApp {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
                                         .foregroundColor(checkmarkColor())
-                                        .opacity(template == .regular ? (showingCheckbox ? 5/34 : 3/34) : 1)
+                                        .opacity(template == .iOSApp ? (showingCheckbox ? 5/34 : 3/34) : 1)
                                 }
                                 Image(systemName: "circle")
                                     .resizable()
                                     .foregroundColor(backgroundColor)
-                                    .opacity(template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
+                                    .opacity(template == .iOSApp ? (showingCheckbox ? 8/34 : 3/34) : 1)
                             }
                     }
                     .buttonStyle(.borderless)
@@ -172,7 +170,7 @@ struct GoalView: View {
     
     private var checkmarkScaleFactor: CGFloat {
         #if os(iOS)
-        template == .regular ? 13/34 : 21/34
+        template == .iOSApp ? 13/34 : 21/34
         #else
         21/34
         #endif
@@ -337,11 +335,11 @@ struct GoalView: View {
     var body: some View {
         GeometryReader { geometry in
             switch template {
-            case .regular:
+            case .iOSApp:
                 bigBody(size: geometry.size)
-            case .medium:
+            case .veboseWidget:
                 mediumBody(size: geometry.size)
-            case .small:
+            case .minimalWidget:
                 smallBody(size: geometry.size)
             }
         }
@@ -355,39 +353,39 @@ struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .regular)
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .iOSApp)
 
             GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .regular)
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .iOSApp)
 
             GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .regular)
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .iOSApp)
         }
         .previewLayout(.fixed(width: 300, height: 300))
         .previewDisplayName("Regular")
 
         VStack {
             GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .medium)
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .veboseWidget)
 
             GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .medium)
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .veboseWidget)
 
             GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .medium)
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .veboseWidget)
         }
         .previewLayout(.fixed(width: 300, height: 100))
         .previewDisplayName("medium")
 
         VStack {
             GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .small)
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .minimalWidget)
 
             GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .small)
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .minimalWidget)
 
             GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .small)
+                     backgroundColor: .purple, postpone: {}, finish: {}, template: .minimalWidget)
         }
         .previewLayout(.fixed(width: 100, height: 100))
         .previewDisplayName("Small")
