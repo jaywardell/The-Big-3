@@ -80,13 +80,5 @@ extension WatchSynchronizer: WCSessionDelegate {
         print(#function)
 
         _ = receiveUpdatedPlanner(from: applicationContext)
-        
-//        guard let encoded = applicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data,
-//              let planner = try? JSONDecoder().decode(Planner.self, from: encoded) else { return }
-//
-//        print("Received.................\t\(Date())")
-//        print(planner)
-//
-//        receivedPlan.send(planner)
     }
 }
