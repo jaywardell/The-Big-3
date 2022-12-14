@@ -34,8 +34,7 @@ final class AppModel {
         let loadedPlan = self.archiver.loadPlan(allowed: ModelConstants.allowedGoalsPerPlan)
         self.planner = Planner(plan: loadedPlan)
         
-        let archiver = JSONCompletionLogArchive()
-        self.logger = CompletionLog(archive: archiver)
+        self.logger = CompletionLog(archive: JSONCompletionLogArchive())
         
         self.watchSynchronizer = WatchSynchronizer()
         
