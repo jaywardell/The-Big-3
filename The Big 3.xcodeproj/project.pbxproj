@@ -95,6 +95,7 @@
 		7CD01E95294A809400C4ADC5 /* GraphicSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E92294A7DDE00C4ADC5 /* GraphicSummary.swift */; };
 		7CD01E97294A80CB00C4ADC5 /* Planner+GraphicSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E96294A80CB00C4ADC5 /* Planner+GraphicSummary.swift */; };
 		7CD01E99294A812500C4ADC5 /* Planner+GraphicSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E96294A80CB00C4ADC5 /* Planner+GraphicSummary.swift */; };
+		7CD01E9D294A8B8400C4ADC5 /* BrandedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E88294A5D8E00C4ADC5 /* BrandedHeader.swift */; };
 		7CD547B627E6DC760009F9DD /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD547B527E6DC760009F9DD /* LogView.swift */; };
 		7CDE2738290F512E00186BFD /* Planner+PlannerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */; };
 		7CDE2739290F512E00186BFD /* PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724A27B33D0E009D5539 /* PlannerTests.swift */; };
@@ -755,6 +756,7 @@
 				7CA682AD2946358300BD6D12 /* Planner.swift in Sources */,
 				7CA682B62946380600BD6D12 /* WidgetView.swift in Sources */,
 				7CA682BA2946429500BD6D12 /* ModelConstants.swift in Sources */,
+				7CD01E9D294A8B8400C4ADC5 /* BrandedHeader.swift in Sources */,
 				7CA682AC2946352A00BD6D12 /* WidgetModel.swift in Sources */,
 				7CA682BE2946456900BD6D12 /* Animation+Constants.swift in Sources */,
 				7C034B7D294A03D40069B46D /* Color+Constants.swift in Sources */,

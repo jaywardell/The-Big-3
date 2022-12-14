@@ -15,14 +15,7 @@ struct PlanPromptWidgetView: View {
     
     var body: some View {
         if widgetFamily == .accessoryRectangular {
-            VStack {
-                Text("Plan the next")
-                    .font(.system(.caption, design: .default, weight: .ultraLight))
-                Text("Big")
-                    .font(.system(.title3, design: .default, weight: .ultraLight)) +
-                Text("3")
-                    .font(.system(.largeTitle, design: .monospaced, weight: .black))
-            }
+            BrandedHeader(layout: .minisquare)
         }
         else {
             VStack {
@@ -32,16 +25,7 @@ struct PlanPromptWidgetView: View {
                 }
                 
                 HStack {
-                    VStack {
-                        Text("Plan the Next")
-                            .font(.system(.caption2, design: .default, weight: .ultraLight))
-                        Text("Big")
-                            .font(.system(.largeTitle, design: .default, weight: .ultraLight)) +
-                        Text("3")
-                            .font(.system(.largeTitle, design: .monospaced, weight: .black))
-                            .bold()
-                            .foregroundColor(.accentColor)
-                    }
+                    BrandedHeader(layout: .square)
                     .padding()
                     .padding()
                     

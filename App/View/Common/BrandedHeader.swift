@@ -9,14 +9,27 @@ import SwiftUI
 
 struct BrandedHeader: View {
     
-    enum Layout { case square, planningTitle, mainTitle, watchTitle }
+    enum Layout { case square, minisquare, planningTitle, mainTitle, watchTitle }
     let layout: Layout
     
     let planString = "Plan the Next"
     let theString = "the"
     let bigString = "Big"
     let threeString = "3"
-    
+
+    var minisquare: some View {
+        VStack {
+            Text(planString)
+                .font(.system(.caption, design: .default, weight: .ultraLight))
+            Text(bigString)
+                .font(.system(.title3, design: .default, weight: .ultraLight)) +
+            Text(threeString)
+                .font(.system(.largeTitle, design: .monospaced, weight: .black))
+                .bold()
+                .foregroundColor(.accentColor)
+        }
+    }
+
     var square: some View {
         VStack {
             Text(planString)
@@ -79,6 +92,7 @@ struct BrandedHeader: View {
         case .planningTitle: planningTitle
         case .mainTitle: mainTitle
         case .watchTitle: watchTitle
+        case .minisquare: minisquare
         }
     }
 }
@@ -90,6 +104,12 @@ struct BrandedHeader_Previews: PreviewProvider {
             .padding()
             .previewLayout(.sizeThatFits)
             .previewDisplayName("square")
+
+        BrandedHeader(layout: .minisquare)
+            .accentColor(.pink)
+            .padding()
+            .previewLayout(.sizeThatFits)
+            .previewDisplayName("mini square")
 
         BrandedHeader(layout: .planningTitle)
             .accentColor(.pink)
