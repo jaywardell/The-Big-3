@@ -29,7 +29,7 @@ struct WatchPlanView: View {
     }
     @ObservedObject var viewModel: ViewModel
         
-    @State private var presentedToDo = [GoalView.ToDo]()
+    @State private var presentedToDo = [Int]()
 
     var body: some View {
         VStack(spacing: 0) {
@@ -38,26 +38,33 @@ struct WatchPlanView: View {
                 CountedRows(rows: viewModel.count) { index in
                     row(at: index)
                 }
-                .navigationDestination(for: GoalView.ToDo.self) { i in
-                    Text("Detail \(i.title)")
+                .navigationDestination(for: Int.self) { index in
+                    detailView(for: index)
                 }
             }
         }
     }
     
     private func row(at index: Int) -> some View {
-        let todo = viewModel.todoAt(index)
-        return GoalView(todo: todo,
+        GoalView(todo: viewModel.todoAt(index),
                  backgroundColor: .accentColor,
                  template: .watch(showDetail: {
-            presentedToDo = [todo]
+            presentedToDo = [index]
         }))
+    }
+    
+    private func detailView(for index: Int) -> some View {
+        WatchToDoEditorView(
+            todo: viewModel.todoAt(index).title,
+            finish: {  viewModel.finish(index) },
+            postpone: {  viewModel.postpone(index) })
     }
 }
 
 struct WatchPlanView_Previews: PreviewProvider {
     static var previews: some View {
         WatchPlanView(viewModel: Planner(plan: .example).watchPlanViewModel())
+            .accentColor(.mint)
             .previewLayout(.fixed(width: 200, height: 200))
     }
 }
