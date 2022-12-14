@@ -91,11 +91,11 @@ extension WatchSender: WCSessionDelegate {
     
     private func receiveCompletedGoal(from dictionary: [String: Any]) -> Bool {
         guard let data = dictionary[ModelConstants.WatchConnectivityCompletedGoalKey] as? Data,
-              let plan = try? JSONDecoder().decode(Plan.Goal.self, from: data),
-              plan.state == .completed
+              let goal = try? JSONDecoder().decode(Plan.Goal.self, from: data),
+              goal.state == .completed
         else { return false }
                 
-        watchCompletedGoal.send(plan)
+        watchCompletedGoal.send(goal)
         return true
     }
 }
