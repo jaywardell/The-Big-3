@@ -12,6 +12,10 @@ struct Header: View {
     
     let title: String
     
+    init(title: String) {
+        self.title = title
+    }
+    
     @State private var showingKeyboard = false
     
     private var titleFont: Font {
