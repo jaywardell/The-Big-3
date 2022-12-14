@@ -69,8 +69,7 @@ struct SummationView: View {
             HStack {
                 Spacer()
                 Button(action: viewModel.done) {
-                    Text("Plan the next Big 3")
-                        .font(.system(.title, design: .default, weight: .light))
+                    BrandedHeader(layout: .inline)
                 }
                 .font(.largeTitle)
                 .padding()
