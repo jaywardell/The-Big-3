@@ -309,11 +309,8 @@
 			children = (
 				7CA6829C294633DD00BD6D12 /* The_Big_3_Widgets.swift */,
 				7CA682B32946372A00BD6D12 /* TheBig3TimelineProvider.swift */,
-				7CA682C529464E6C00BD6D12 /* Plan+WidgetExamples.swift */,
-				7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */,
-				7CA682CA29465DD000BD6D12 /* PlanPromptWidgetView.swift */,
-				7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */,
-				7CA682AB2946352A00BD6D12 /* WidgetModel.swift */,
+				7CD01E9B294A8A7100C4ADC5 /* Model */,
+				7CD01E9C294A8A8500C4ADC5 /* View */,
 				7CA6829E294633DD00BD6D12 /* The_Big_3_Widgets.intentdefinition */,
 				7CA6829F294633DF00BD6D12 /* Assets.xcassets */,
 				7CA682A1294633DF00BD6D12 /* Info.plist */,
@@ -528,6 +525,25 @@
 				7CD01E92294A7DDE00C4ADC5 /* GraphicSummary.swift */,
 			);
 			path = Reviewing;
+			sourceTree = "<group>";
+		};
+		7CD01E9B294A8A7100C4ADC5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7CA682AB2946352A00BD6D12 /* WidgetModel.swift */,
+				7CA682C529464E6C00BD6D12 /* Plan+WidgetExamples.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7CD01E9C294A8A8500C4ADC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */,
+				7CA682CA29465DD000BD6D12 /* PlanPromptWidgetView.swift */,
+				7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7CDE2730290F50EA00186BFD /* The_Big_3Tests_iOS */ = {
