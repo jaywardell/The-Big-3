@@ -256,7 +256,6 @@ struct GoalView: View {
 #if os(iOS)
                     .padding(.vertical, size.height * 3/34)
 #endif
-//                    .padding(.trailing, size.height * 3/34)
                     .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
                 
                 Spacer()
