@@ -56,6 +56,7 @@ struct SummationView: View {
                 .padding(.bottom)
                         
             GraphicSummary(viewModel: .init(total: viewModel.total, todoAt: viewModel.todoAt))
+                .font(.largeTitle)
             .padding(.bottom)
 
             Text(completionString)

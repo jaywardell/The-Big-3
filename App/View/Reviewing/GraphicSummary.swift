@@ -37,7 +37,6 @@ struct GraphicSummary: View {
             ForEach(0..<viewModel.total, id: \.self) { index in
                 let todo = viewModel.todoAt(index)
                 Image(systemName: nameForImage(for: todo))
-                    .font(.largeTitle)
                     .foregroundColor(color(for: todo))
             }
         }

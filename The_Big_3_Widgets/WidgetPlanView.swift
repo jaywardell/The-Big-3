@@ -25,10 +25,18 @@ struct WidgetPlanView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            ForEach(0..<ModelConstants.allowedGoalsPerPlan, id: \.self) { index in
-                let todo = planner.todo(at: index)
-                GoalView(todo: todo, backgroundColor: .accentColor, template: template(for: widgetFamily))
+        if widgetFamily == .accessoryRectangular {
+            VStack {
+                GraphicSummary(viewModel: planner.graphicSummaryViewModel())
+                    .font(.headline)
+            }
+        }
+        else {
+            VStack(spacing: 0) {
+                ForEach(0..<ModelConstants.allowedGoalsPerPlan, id: \.self) { index in
+                    let todo = planner.todo(at: index)
+                    GoalView(todo: todo, backgroundColor: .accentColor, template: template(for: widgetFamily))
+                }
             }
         }
     }
@@ -42,6 +50,14 @@ struct WidgetPlanView_Previews: PreviewProvider {
 
         WidgetPlanView(planner: Planner(plan: .example2))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewDisplayName("some completed")
+
+        WidgetPlanView(planner: Planner(plan: .example))
+            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+            .previewDisplayName("none completed")
+
+        WidgetPlanView(planner: Planner(plan: .example2))
+            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
             .previewDisplayName("some completed")
     }
 }

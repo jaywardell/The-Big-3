@@ -14,35 +14,47 @@ struct PlanPromptWidgetView: View {
 
     
     var body: some View {
-        VStack {
-            
-            if widgetFamily == .systemLarge {
-                Spacer()
+        if widgetFamily == .accessoryRectangular {
+            VStack {
+                Text("Plan the next")
+                    .font(.system(.caption, design: .default, weight: .ultraLight))
+                Text("Big")
+                    .font(.system(.title3, design: .default, weight: .ultraLight)) +
+                Text("3")
+                    .font(.system(.largeTitle, design: .monospaced, weight: .black))
             }
-            
-            HStack {
-                VStack {
-                    Text("Plan the Next")
-                        .font(.system(.caption2, design: .default, weight: .ultraLight))
-                    Text("Big")
-                        .font(.system(.largeTitle, design: .default, weight: .ultraLight)) +
-                    Text("3")
-                        .font(.system(.largeTitle, design: .monospaced, weight: .black))
-                        .bold()
-                        .foregroundColor(.accentColor)
-                }
-                .padding()
-                .padding()
+        }
+        else {
+            VStack {
                 
-                if [.systemMedium, .systemExtraLarge].contains(widgetFamily) {
+                if widgetFamily == .systemLarge {
                     Spacer()
                 }
-            }
-            
-            if [.systemMedium,
-                .systemLarge, .systemExtraLarge].contains(widgetFamily) {
-                Spacer()
-                Spacer()
+                
+                HStack {
+                    VStack {
+                        Text("Plan the Next")
+                            .font(.system(.caption2, design: .default, weight: .ultraLight))
+                        Text("Big")
+                            .font(.system(.largeTitle, design: .default, weight: .ultraLight)) +
+                        Text("3")
+                            .font(.system(.largeTitle, design: .monospaced, weight: .black))
+                            .bold()
+                            .foregroundColor(.accentColor)
+                    }
+                    .padding()
+                    .padding()
+                    
+                    if [.systemMedium, .systemExtraLarge].contains(widgetFamily) {
+                        Spacer()
+                    }
+                }
+                
+                if [.systemMedium,
+                    .systemLarge, .systemExtraLarge].contains(widgetFamily) {
+                    Spacer()
+                    Spacer()
+                }
             }
         }
     }
@@ -52,5 +64,8 @@ struct PlanPromptWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         PlanPromptWidgetView()
             .previewContext(WidgetPreviewContext(family: .systemSmall))
+
+        PlanPromptWidgetView()
+            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
     }
 }
