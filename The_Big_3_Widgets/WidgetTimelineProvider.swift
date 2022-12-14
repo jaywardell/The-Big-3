@@ -8,7 +8,7 @@
 import Foundation
 import WidgetKit
 
-final class TheBig3TimelineProvider: IntentTimelineProvider {
+final class WidgetTimelineProvider: IntentTimelineProvider {
     
     let model: WidgetModel
     

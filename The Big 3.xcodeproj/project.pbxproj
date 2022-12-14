@@ -48,7 +48,7 @@
 		7CA682AE2946358A00BD6D12 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8722927B33C36009D5539 /* Plan.swift */; };
 		7CA682AF2946359500BD6D12 /* PlanArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163127BDC340000AC97A /* PlanArchiver.swift */; };
 		7CA682B0294635BF00BD6D12 /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */; };
-		7CA682B42946372A00BD6D12 /* TheBig3TimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B32946372A00BD6D12 /* TheBig3TimelineProvider.swift */; };
+		7CA682B42946372A00BD6D12 /* WidgetTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B32946372A00BD6D12 /* WidgetTimelineProvider.swift */; };
 		7CA682B62946380600BD6D12 /* TheBig3WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */; };
 		7CA682B8294641E300BD6D12 /* WidgetPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */; };
 		7CA682BA2946429500BD6D12 /* ModelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B92946429500BD6D12 /* ModelConstants.swift */; };
@@ -189,7 +189,7 @@
 		7CA6829F294633DF00BD6D12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CA682A1294633DF00BD6D12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA682AB2946352A00BD6D12 /* WidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
-		7CA682B32946372A00BD6D12 /* TheBig3TimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBig3TimelineProvider.swift; sourceTree = "<group>"; };
+		7CA682B32946372A00BD6D12 /* WidgetTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTimelineProvider.swift; sourceTree = "<group>"; };
 		7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBig3WidgetView.swift; sourceTree = "<group>"; };
 		7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPlanView.swift; sourceTree = "<group>"; };
 		7CA682B92946429500BD6D12 /* ModelConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConstants.swift; sourceTree = "<group>"; };
@@ -308,7 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				7CA6829C294633DD00BD6D12 /* The_Big_3_Widgets.swift */,
-				7CA682B32946372A00BD6D12 /* TheBig3TimelineProvider.swift */,
+				7CA682B32946372A00BD6D12 /* WidgetTimelineProvider.swift */,
 				7CD01E9B294A8A7100C4ADC5 /* Model */,
 				7CD01E9C294A8A8500C4ADC5 /* View */,
 				7CA6829E294633DD00BD6D12 /* The_Big_3_Widgets.intentdefinition */,
@@ -750,7 +750,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CA682B42946372A00BD6D12 /* TheBig3TimelineProvider.swift in Sources */,
+				7CA682B42946372A00BD6D12 /* WidgetTimelineProvider.swift in Sources */,
 				7CA682D729477CA500BD6D12 /* GoalView.swift in Sources */,
 				7CA682AD2946358300BD6D12 /* Planner.swift in Sources */,
 				7CA682B62946380600BD6D12 /* TheBig3WidgetView.swift in Sources */,
