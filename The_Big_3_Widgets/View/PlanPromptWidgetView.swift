@@ -17,6 +17,9 @@ struct PlanPromptWidgetView: View {
         if widgetFamily == .accessoryRectangular {
             BrandedHeader(layout: .minisquare)
         }
+        else if widgetFamily == .accessoryInline {
+            BrandedHeader(layout: .inline)
+        }
         else {
             VStack {
                 

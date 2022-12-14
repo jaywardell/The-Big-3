@@ -31,6 +31,10 @@ struct WidgetPlanView: View {
                     .font(.headline)
             }
         }
+        else if widgetFamily == .accessoryInline {
+            let completed: Int = planner.plan.currentGoals.reduce(0) { $0 + ($1?.state == .completed ? 1 : 0) }
+            Text("\(completed) out of \(planner.plan.allowed)")
+        }
         else {
             VStack(spacing: 0) {
                 ForEach(0..<ModelConstants.allowedGoalsPerPlan, id: \.self) { index in
@@ -58,6 +62,14 @@ struct WidgetPlanView_Previews: PreviewProvider {
 
         WidgetPlanView(planner: Planner(plan: .example2))
             .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+            .previewDisplayName("some completed")
+
+        WidgetPlanView(planner: Planner(plan: .example))
+            .previewContext(WidgetPreviewContext(family: .accessoryInline))
+            .previewDisplayName("none completed")
+
+        WidgetPlanView(planner: Planner(plan: .example2))
+            .previewContext(WidgetPreviewContext(family: .accessoryInline))
             .previewDisplayName("some completed")
     }
 }

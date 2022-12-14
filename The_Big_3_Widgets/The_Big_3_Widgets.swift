@@ -23,7 +23,7 @@ struct The_Big_3_Widgets: Widget {
             WidgetView(entry: entry)
                 .accentColor(ViewConstants.tint)
         }
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge, .accessoryRectangular])
+                            .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge, .accessoryRectangular, .accessoryInline])
         .configurationDisplayName("The Big 3")
         .description("Track your progress on your Big 3")
     }
