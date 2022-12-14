@@ -42,9 +42,6 @@ final class WatchModel: ObservableObject {
     
     
     private func takePlannerFromSynchronizer(_ planner: Planner) {
-        print(#function)
-        print("Updated............\t\(Date())")
-        print(planner)
         self.planner = planner
         plannerChanged = planner.objectWillChange.sink(receiveValue: plannerWasUpdated)
         planChanged = planner.plan.publisher.sink(receiveValue: planWasUpdated)

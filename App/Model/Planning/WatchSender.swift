@@ -34,8 +34,6 @@ final class WatchSender: NSObject {
         let payload = [ModelConstants.WatchConnectivityPlanKey: encoded]
         if startConnection() {
             try? session.updateApplicationContext(payload)
-            print("Sent.........")
-            print(planner)
         }
     }
 }
@@ -44,7 +42,7 @@ final class WatchSender: NSObject {
 
 extension WatchSender: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print(#function)
+        
         print(activationState == .activated ? "activated" : "not activated")
         print(error ?? "no error")
     }
@@ -72,10 +70,6 @@ extension WatchSender: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        print(#function)
-        print("Received......\(Date())")
-        print(message)
-        
         let positiveReply = ["got it":true]
         
         if receiveUpdatedPlan(from: message) {
@@ -90,9 +84,7 @@ extension WatchSender: WCSessionDelegate {
         guard let data = dictionary[ModelConstants.WatchConnectivityPlanKey] as? Data,
               let plan = try? JSONDecoder().decode(Plan.self, from: data)
         else { return false }
-        
-        print(plan)
-        
+                
         watchUpdatedPlan.send(plan)
         return true
     }
@@ -102,9 +94,7 @@ extension WatchSender: WCSessionDelegate {
               let plan = try? JSONDecoder().decode(Plan.Goal.self, from: data),
               plan.state == .completed
         else { return false }
-        
-        print(plan)
-        
+                
         watchCompletedGoal.send(plan)
         return true
     }

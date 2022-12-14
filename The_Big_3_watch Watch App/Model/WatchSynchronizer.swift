@@ -50,8 +50,6 @@ final class WatchSynchronizer: NSObject {
             }, errorHandler: { error in
                 print(error)
             })
-            print("Sent.........")
-            print(plan)
         }
     }
 
@@ -67,18 +65,13 @@ final class WatchSynchronizer: NSObject {
             }, errorHandler: { error in
                 print(error)
             })
-            print("Sent.........")
-            print(goal)
         }
     }
 
     private func receiveUpdatedPlanner(from dictionary: [String : Any]) -> Bool {
         guard let encoded = dictionary[ModelConstants.WatchConnectivityPlanKey] as? Data,
               let planner = try? JSONDecoder().decode(Planner.self, from: encoded) else { return false }
-        
-        print("Received.................\t\(Date())")
-        print(planner)
-        
+                
         receivedPlan.send(planner)
         return true
     }
