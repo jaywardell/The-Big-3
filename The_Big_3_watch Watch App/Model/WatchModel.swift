@@ -14,7 +14,7 @@ final class WatchModel: ObservableObject {
     @Published var planner: Planner
 
     // used to communicate with the phone app
-    let watchSynchronizer = WatchSynchronizer()
+    let phoneSynchronizer = PhoneSynchonizer()
 
     // used to store the most recent plan between launches
     let archiver = PlanArchiver(shared: false)
@@ -28,7 +28,7 @@ final class WatchModel: ObservableObject {
         let plan = archiver.loadPlan(allowed: 3)
         self.planner = Planner(plan: plan)
         
-        self.phoneSentPlan = watchSynchronizer.receivedPlan
+        self.phoneSentPlan = phoneSynchronizer.receivedPlan
             .receive(on: RunLoop.main)
             .sink(receiveValue: takePlannerFromSynchronizer)
         self.plannerChanged = planner.objectWillChange.sink(receiveValue: plannerWasUpdated)
@@ -37,7 +37,7 @@ final class WatchModel: ObservableObject {
         self.userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted)
             .compactMap { $0.userInfo?[Plan.GoalKey] as? String }
             .map { Plan.Goal(title: $0, state: .completed) }
-            .sink(receiveValue: watchSynchronizer.send(completedGoal:))
+            .sink(receiveValue: phoneSynchronizer.send(completedGoal:))
     }
     
     
@@ -53,7 +53,7 @@ final class WatchModel: ObservableObject {
         let plan = planner.plan
         archiver.archive(plan)
         
-        watchSynchronizer.send(plan: plan)
+        phoneSynchronizer.send(plan: plan)
         
         planChanged = plan.publisher.sink(receiveValue: planWasUpdated)
     }

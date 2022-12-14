@@ -9,7 +9,8 @@ import Foundation
 import WatchConnectivity
 import Combine
 
-final class WatchSynchronizer: NSObject {
+/// Use this class to send and receive messages with the host app on the phone
+final class PhoneSynchonizer: NSObject {
         
     var receivedPlan = PassthroughSubject<Planner, Never>()
     
@@ -79,7 +80,7 @@ final class WatchSynchronizer: NSObject {
 }
 
 
-extension WatchSynchronizer: WCSessionDelegate {
+extension PhoneSynchonizer: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         print(#function)
         print(activationState == .activated ? "activated" : "not activated")
