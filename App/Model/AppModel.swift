@@ -45,7 +45,9 @@ final class AppModel {
         }
         
         self.userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted)
-            .sink(receiveValue: receivedGoalCompleted(_:))
+            .compactMap { $0.userInfo?[Plan.GoalKey] as? String }
+            .map { Plan.Goal(title: $0, state: .completed) }
+            .sink(receiveValue: log(goalCompleted:))
         
         self.watchChangedPlan = watchSender.watchUpdatedPlan
             .receive(on: RunLoop.main)
@@ -83,13 +85,7 @@ final class AppModel {
     private func remindersAppDeletedReminderWith(identifier id: String) {
         planner.deleteGoalWith(externalIdentifier: id)
     }
-    
-    private func receivedGoalCompleted(_ notification: Notification) {
-        guard let goalString = notification.userInfo?[Plan.GoalKey] as? String else { return }
-        let goal = Plan.Goal(title: goalString, state: .completed)
-        log(goalCompleted: goal)
-    }
-    
+        
     private func log(goalCompleted goal: Plan.Goal) {
         Task { [unowned self] in
             do {
