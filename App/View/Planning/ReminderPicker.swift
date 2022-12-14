@@ -61,6 +61,21 @@ If you want to do this, you'll need to turn on support for Reminders in the Sett
                             Spacer()
                         }}
                 }
+                else if lister.calendars.isEmpty {
+                    VStack {
+                        Text(
+"""
+It looks like there are no reminders in you Reminders app.
+
+You can still add goals directly in 'The Big 3'
+
+or you can open the Reminders app and add some goals there, then come back here and select them to be tracked in 'The Big 3'
+"""
+                        )
+                        Spacer()
+                    }
+                        .padding()
+                }
                 else {
                     List {
                         ForEach(lister.calendars, id: \.self) { calendar in
@@ -85,7 +100,6 @@ If you want to do this, you'll need to turn on support for Reminders in the Sett
                 .padding()
             }
             .navigationTitle("Pick a Reminder")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
