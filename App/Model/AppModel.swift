@@ -15,7 +15,7 @@ final class AppModel {
     
     let planner: Planner
     let archiver: PlanArchiver
-    let watchSender: WatchSender
+    let watchSynchronizer: WatchSynchronizer
     var logger: CompletionLog
     
     let eventKitReminderUpdater = ExternalGoalServiceUpdater(bridge: EventKitGoalService())
@@ -37,7 +37,7 @@ final class AppModel {
         let archiver = JSONCompletionLogArchive()
         self.logger = CompletionLog(archive: archiver)
         
-        self.watchSender = WatchSender()
+        self.watchSynchronizer = WatchSynchronizer()
         
         self.remindersWatcher = EventKitReminderWatcher(reminderWasCompleted: remindersAppCompletedReminderWith(identifier:), reminderWasDeleted: remindersAppDeletedReminderWith(identifier:))
 
@@ -50,11 +50,11 @@ final class AppModel {
             .map { Plan.Goal(title: $0, state: .completed) }
             .sink(receiveValue: log(goalCompleted:))
         
-        self.watchChangedPlan = watchSender.watchUpdatedPlan
+        self.watchChangedPlan = watchSynchronizer.watchUpdatedPlan
             .receive(on: RunLoop.main)
             .sink(receiveValue: updatePlanner(with:))
         
-        self.watchCompletedGoal = watchSender.watchCompletedGoal
+        self.watchCompletedGoal = watchSynchronizer.watchCompletedGoal
             .receive(on: RunLoop.main)
             .sink(receiveValue: log(goalCompleted:))
 
@@ -66,7 +66,7 @@ final class AppModel {
         archiver.archive(plan)
         
         DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
-            self.watchSender.send(self.planner)
+            self.watchSynchronizer.send(self.planner)
         }
         
         remindersWatcher.watchForChangesInRemindersWith(ids: plan.currentGoals.compactMap(\.?.externalIdentifier))

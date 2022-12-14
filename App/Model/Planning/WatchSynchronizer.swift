@@ -9,7 +9,8 @@ import Foundation
 import WatchConnectivity
 import Combine
 
-final class WatchSender: NSObject {
+/// Use this class to send and receive messages to the companion app on the watch, if any
+final class WatchSynchronizer: NSObject {
     
     private var session: WCSession { WCSession.default }
     
@@ -40,7 +41,7 @@ final class WatchSender: NSObject {
 
 // MARK: -
 
-extension WatchSender: WCSessionDelegate {
+extension WatchSynchronizer: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
         print(activationState == .activated ? "activated" : "not activated")
