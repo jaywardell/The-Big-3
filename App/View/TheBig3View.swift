@@ -20,6 +20,8 @@ struct TheBig3View: View {
             PlannerView(viewModel: planner.plannerViewModel())
         case .doing:
             AccomplishmentsView(viewModel: planner.accomplishmentsViewModel())
+        case .finished:
+            SummationView(viewModel: planner.summationViewModel())
         }
     }
 }

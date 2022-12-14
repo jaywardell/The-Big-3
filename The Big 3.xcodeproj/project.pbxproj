@@ -90,6 +90,7 @@
 		7CD01E89294A5D8E00C4ADC5 /* BrandedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E88294A5D8E00C4ADC5 /* BrandedHeader.swift */; };
 		7CD01E8A294A5D8E00C4ADC5 /* BrandedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E88294A5D8E00C4ADC5 /* BrandedHeader.swift */; };
 		7CD01E8D294A6C9600C4ADC5 /* SummationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E8C294A6C9600C4ADC5 /* SummationView.swift */; };
+		7CD01E90294A72F300C4ADC5 /* Planner+SummationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E8F294A72F300C4ADC5 /* Planner+SummationView.swift */; };
 		7CD547B627E6DC760009F9DD /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD547B527E6DC760009F9DD /* LogView.swift */; };
 		7CDE2738290F512E00186BFD /* Planner+PlannerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */; };
 		7CDE2739290F512E00186BFD /* PlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB8724A27B33D0E009D5539 /* PlannerTests.swift */; };
@@ -220,6 +221,7 @@
 		7CB8C5BD27F091DE00D60FA0 /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		7CD01E88294A5D8E00C4ADC5 /* BrandedHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandedHeader.swift; sourceTree = "<group>"; };
 		7CD01E8C294A6C9600C4ADC5 /* SummationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummationView.swift; sourceTree = "<group>"; };
+		7CD01E8F294A72F300C4ADC5 /* Planner+SummationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+SummationView.swift"; sourceTree = "<group>"; };
 		7CD547B527E6DC760009F9DD /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
 		7CDE272F290F50EA00186BFD /* The_Big_3Tests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = The_Big_3Tests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDE273C290F526300186BFD /* XCTestCase+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Combine.swift"; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 			children = (
 				7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */,
 				7C0032CF27B4D257007E37D0 /* Planner+AccomplishmentsView.swift */,
+				7CD01E8F294A72F300C4ADC5 /* Planner+SummationView.swift */,
 				7C034B80294A12360069B46D /* Planner+WatchPlanView.swift */,
 				7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */,
 				7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */,
@@ -781,6 +784,7 @@
 				7C034B7C294A03D40069B46D /* Color+Constants.swift in Sources */,
 				7CA22B702944A9AD007B404D /* JSONCompletionLogArchive.swift in Sources */,
 				7C66163727BDC8CD000AC97A /* UserDefaults+Codable.swift in Sources */,
+				7CD01E90294A72F300C4ADC5 /* Planner+SummationView.swift in Sources */,
 				7CE7FF572943E4F500B177E2 /* CompletionLog+LogView.swift in Sources */,
 				7C66162F27BD4F24000AC97A /* Animation+Constants.swift in Sources */,
 				7CB8722A27B33C36009D5539 /* Plan.swift in Sources */,

@@ -10,7 +10,7 @@ import Combine
 
 final class Planner: ObservableObject {
         
-    enum State { case planning, doing }
+    enum State { case planning, doing, finished }
     
     @Published var state: State = .planning
     
@@ -27,6 +27,9 @@ final class Planner: ObservableObject {
             removeAnyGoalWith(externalIdentifier: id)
         case .doing:
             markAsCompletedAnyGoalWith(externalIdentifier: id)
+        case .finished:
+            // no modifications can happen in the finished stage
+            break
         }
     }
     
@@ -42,6 +45,9 @@ final class Planner: ObservableObject {
             //
             // it won't matter when it's
             // completed in the app
+            break
+        case .finished:
+            // no modifications can happen in the finished stage
             break
         }
     }
@@ -94,6 +100,7 @@ extension Planner.State: CustomStringConvertible {
         switch self {
         case .planning: return "Planning"
         case .doing: return "Doing"
+        case .finished: return "Finished"
         }
     }
 }
