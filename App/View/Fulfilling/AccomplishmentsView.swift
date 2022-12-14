@@ -69,13 +69,8 @@ extension AccomplishmentsView: View {
     var body: some View {
         
         VStack(spacing: 0) {
-//            Header(title: "The Big 3")
-            Header {
-                HStack {
-                    Spacer()
+            Header(alignment: .center) {
                     BrandedHeader(layout: .mainTitle)
-                    Spacer()
-                }
             }
             Divider()
             

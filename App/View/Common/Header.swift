@@ -34,11 +34,13 @@ struct TextHeaderTitle: View {
 
 struct Header<Content: View>: View {
     
-    init(_ content: @escaping ()->Content) {
+    init(alignment: HorizontalAlignment = .leading, _ content: @escaping ()->Content) {
+        self.alignment = alignment
         self.content = content
     }
     
     let content: ()->Content
+    let alignment: HorizontalAlignment
     
     
     @State private var showingKeyboard = false
@@ -47,12 +49,22 @@ struct Header<Content: View>: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .bottom) {
+                
+                if [.trailing, .center].contains(alignment) {
+                    Spacer()
+                }
+                
                 content()
-                    .padding(.leading)
+                    .padding(.horizontal)
                     .padding(.top)
                     .opacity(showingKeyboard ? 0 : 1)
+                
+                if [.leading, .center].contains(alignment) {
+                    Spacer()
+                }
+
 //#if os(iOS)
-                Spacer()
+//                Spacer()
 //#endif
             }
             .padding(.bottom)
@@ -66,10 +78,11 @@ struct Header<Content: View>: View {
 }
 
 extension Header where Content == TextHeaderTitle {
-    init(title: String) {
+    init(title: String, alignment: HorizontalAlignment = .leading) {
         self.content = {
            TextHeaderTitle(title: title)
         }
+        self.alignment = alignment
     }
 
 }
@@ -79,7 +92,7 @@ struct Header_Previews: PreviewProvider {
         Group {
             Header(title: "Plan the next Big 3")
             
-            Header {
+            Header(alignment: .center) {
                 VStack {
                     Text("Plan the next")
                     Text("Big 3")

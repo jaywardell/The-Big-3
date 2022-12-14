@@ -251,7 +251,7 @@ struct GoalView: View {
                     .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
                 
                 Text(todo.title)
-                    .font(.system(size: size.height * textFontScalar, weight: .light))
+                    .font(.system(size: size.height * textFontScalar, weight: .ultraLight))
                     .foregroundColor(textColor(for: todo.state))
                     .minimumScaleFactor(5/34)
                     .opacity(showingPostponeButton ? 21/34 : 1)

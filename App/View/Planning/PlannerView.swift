@@ -172,7 +172,7 @@ extension PlannerView: View {
         VStack(spacing: 0) {
             
 //            Header(title: "Plan the next\nBig 3")
-            Header { BrandedHeader(layout: .planningTitle) }
+            Header(alignment: .leading) { BrandedHeader(layout: .planningTitle) }
             Divider()
             
             CountedRows(rows: viewModel.allowed) { index in
