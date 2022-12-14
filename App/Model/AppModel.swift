@@ -41,9 +41,7 @@ final class AppModel {
         
         self.remindersWatcher = EventKitReminderWatcher(reminderWasCompleted: remindersAppCompletedReminderWith(identifier:), reminderWasDeleted: remindersAppDeletedReminderWith(identifier:))
 
-        self.plannerChanged = planner.objectWillChange.sink { [unowned self] _ in
-            planWasUpdated()
-        }
+        self.plannerChanged = planner.objectWillChange.sink(receiveValue: planWasUpdated)
         
         self.userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted)
             .compactMap { $0.userInfo?[Plan.GoalKey] as? String }
@@ -65,15 +63,18 @@ final class AppModel {
         let plan = planner.plan
         archiver.archive(plan)
         
+        // this is received BEFORE the planner is updated,
+        // so we need a delay to make sure that
+        // we send the right info
         DispatchQueue.main.asyncAfter(deadline: .now()+0.1) {
             self.watchSynchronizer.send(self.planner)
         }
         
         remindersWatcher.watchForChangesInRemindersWith(ids: plan.currentGoals.compactMap(\.?.externalIdentifier))
         
-        planChanged = plan.publisher.sink { [unowned self] in
-            planWasUpdated()
-        }
+        // in case the plan somehow was changed
+        planChanged = plan.publisher.sink(receiveValue: planWasUpdated)
+
         WidgetCenter.shared.reloadAllTimelines()
     }
     
