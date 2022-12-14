@@ -63,7 +63,6 @@
 		7CA682CE29466CA400BD6D12 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CC29466C5700BD6D12 /* Header.swift */; };
 		7CA682D729477CA500BD6D12 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4707BB27B614D70080B419 /* GoalView.swift */; };
 		7CA683172947913C00BD6D12 /* The_Big_3_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA683162947913C00BD6D12 /* The_Big_3_watchApp.swift */; };
-		7CA683192947913C00BD6D12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA683182947913C00BD6D12 /* ContentView.swift */; };
 		7CA6831B2947913E00BD6D12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA6831A2947913E00BD6D12 /* Assets.xcassets */; };
 		7CA6831E2947913E00BD6D12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA6831D2947913E00BD6D12 /* Preview Assets.xcassets */; };
 		7CA683262947921500BD6D12 /* TheBig3WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA683232947921500BD6D12 /* TheBig3WatchView.swift */; };
@@ -195,7 +194,6 @@
 		7CA682CC29466C5700BD6D12 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		7CA683142947913C00BD6D12 /* The_Big_3_watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The_Big_3_watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA683162947913C00BD6D12 /* The_Big_3_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Big_3_watchApp.swift; sourceTree = "<group>"; };
-		7CA683182947913C00BD6D12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7CA6831A2947913E00BD6D12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CA6831D2947913E00BD6D12 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7CA683222947915700BD6D12 /* The_Big_3_watch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "The_Big_3_watch Watch App.entitlements"; sourceTree = "<group>"; };
@@ -390,7 +388,6 @@
 				7CA683162947913C00BD6D12 /* The_Big_3_watchApp.swift */,
 				7CA6832A2947921E00BD6D12 /* View */,
 				7CA683292947921900BD6D12 /* Model */,
-				7CA683182947913C00BD6D12 /* ContentView.swift */,
 				7CA6831A2947913E00BD6D12 /* Assets.xcassets */,
 				7CA6831C2947913E00BD6D12 /* Preview Content */,
 			);
@@ -740,7 +737,6 @@
 				7C034B7A294A00F40069B46D /* GoalView.swift in Sources */,
 				7C034B772949EF920069B46D /* Animation+Constants.swift in Sources */,
 				7CA683262947921500BD6D12 /* TheBig3WatchView.swift in Sources */,
-				7CA683192947913C00BD6D12 /* ContentView.swift in Sources */,
 				7CA6832B2947924200BD6D12 /* Plan.swift in Sources */,
 				7CA6832D2947924200BD6D12 /* PlanArchiver.swift in Sources */,
 				7C034B7E294A03D40069B46D /* Color+Constants.swift in Sources */,
