@@ -10,14 +10,6 @@ import SwiftUI
 import Intents
 
 
-//struct The_Big_3_WidgetsEntryView : View {
-//    var entry: TheBig3TimelineProvider.Entry
-//
-//    var body: some View {
-//        Text(entry.date, style: .time)
-//    }
-//}
-
 @main
 struct The_Big_3_Widgets: Widget {
     let kind: String = "The_Big_3_Widgets"
