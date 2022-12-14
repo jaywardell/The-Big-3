@@ -56,8 +56,18 @@ struct WatchPlanView: View {
     private func detailView(for index: Int) -> some View {
         WatchToDoEditorView(
             todo: viewModel.todoAt(index).title,
-            finish: {  viewModel.finish(index) },
-            postpone: {  viewModel.postpone(index) })
+            finish: { finishButtonTapped(forToDoAt: index) },
+            postpone: {  postponeButtonWasTapped(forToDoAt: index) })
+    }
+    
+    private func finishButtonTapped(forToDoAt index: Int) {
+        viewModel.finish(index)
+        presentedToDo = []
+    }
+    
+    private func postponeButtonWasTapped(forToDoAt index: Int) {
+        viewModel.postpone(index)
+        presentedToDo = []
     }
 }
 
