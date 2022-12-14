@@ -46,10 +46,14 @@ struct WatchPlanView: View {
     }
     
     private func row(at index: Int) -> some View {
-        GoalView(todo: viewModel.todoAt(index),
+        let todo = viewModel.todoAt(index)
+        
+        return GoalView(todo: todo,
                  backgroundColor: .accentColor,
                  template: .watch(showDetail: {
-            presentedToDo = [index]
+            if todo.state == .ready {
+                presentedToDo = [index]
+            }
         }))
     }
     
