@@ -10,6 +10,9 @@ import Foundation
 enum ModelConstants {
     static var allowedGoalsPerPlan: Int { 3 }
     
+    static var WatchConnectivityPlanKey: String { #function }
+    static var WatchConnectivityCompletedGoalKey: String { #function }
+    
     // NOTE: the file referenced here isn't included in this repo.
     // You will need to set up a new app group associated with your provisioning profile
     // in App Store Connect.
@@ -17,7 +20,7 @@ enum ModelConstants {
     //
     // and then paste the group id into a file called "group_id.txt"
     // which you then set to be copied into your bundle's resources.
-    // (the App/Model/Resources directory is probably the best place)
+    // (the App/Model/Resources directory is set up for this)
     // you will also have to change the group id
     // in the app target's "Signing & Capabilities" tab
     // and also in the widget target's "Signing & Capabilities"
@@ -27,6 +30,4 @@ enum ModelConstants {
         return try! String(contentsOf: fileURL).trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    static var WatchConnectivityPlanKey: String { #function }
-    static var WatchConnectivityCompletedGoalKey: String { #function }
 }
