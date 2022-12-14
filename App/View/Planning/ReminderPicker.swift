@@ -11,16 +11,10 @@ struct ReminderPicker: View {
         
     let userChose: (EventKitReminder)->()
 
-    @ObservedObject private var lister = EventKitReminderLister()
+    @StateObject private var lister = EventKitReminderLister()
 
     @State private var selectedReminderID: String = ""
     @Environment(\.dismiss) var dismiss
-
-    private var selectedReminder: EventKitReminder? {
-        return lister.reminders.first {
-            $0.id == selectedReminderID
-        }
-    }
     
     private func row(for reminder: EventKitReminder) -> some View {
         HStack {
@@ -42,7 +36,30 @@ struct ReminderPicker: View {
         NavigationStack {
             VStack {
                 if !lister.givenAccess {
-                    Text("To import reminders, you must give persmission to do so.")
+                    VStack {
+                        ScrollView {
+                            Text(
+"""
+The Big 3 can use your existing reminders from your Reminders app as goals.
+
+You can use reminders in The Big 3 and when you mark them as completed, they'll show up as completed in your Reminders app as well.
+
+This is a great way to use The Big 3 to focus on just the things you want to do right now, while you plan your tasks out in Reminders.
+
+If you want to do this, you'll need to turn on support for Reminders in the Settings app.
+
+• Open Settings
+
+• Navigate to the settings pane for 'The Big 3'
+
+• Turn on the toggle for Reminders.
+
+• Come back here and choose a reminder that you want to track in 'The Big 3'
+"""
+                            )
+                            .padding()
+                            Spacer()
+                        }}
                 }
                 else {
                     List {
@@ -51,10 +68,10 @@ struct ReminderPicker: View {
                                 ForEach(lister.reminders(for: calendar), id: \.self) { reminder in
 
                                     row(for: reminder)
-                                        .foregroundColor(Color(uiColor: .label))
+                                        .foregroundColor(.label)
                                 }
                             }
-                            .foregroundColor(calendar.color.map(Color.init(cgColor:)) ?? Color(uiColor: .label))
+                            .foregroundColor(calendar.color.map(Color.init(cgColor:)) ?? .label)
                         }
                     }
                     .listStyle(.plain)
@@ -81,7 +98,7 @@ struct ReminderPicker: View {
 
     private var doneButton: some View {
         Button("Choose") {
-            guard let reminder = selectedReminder else { return }
+            guard let reminder = lister.reminderWith(id: selectedReminderID) else { return }
             userChose(reminder)
             dismiss()
         }

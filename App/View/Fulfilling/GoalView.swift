@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalView: View {
     
-    struct ToDo {
+    struct ToDo: Hashable {
         let title: String
         
         enum State: CaseIterable { case ready, finished, notToday }
@@ -18,16 +18,19 @@ struct GoalView: View {
     
     let todo: ToDo
     let backgroundColor: Color
-    let postpone: ()->()
-    let finish: ()->()
     
     enum Template {
-        // used for widget and other small views where there's no interaction expected
-        case small
-        case medium
+        case iOSApp(postpone: ()->(), finish: ()->())
+
+        case minimalWidget
+        case veboseWidget
         
-        // used in the app as the main interface
-        case regular
+        case watch(showDetail: ()->())
+        
+        var isiOSApp: Bool {
+            if case .iOSApp = self { return true }
+            return false
+        }
     }
     
     let template: Template
@@ -39,7 +42,13 @@ struct GoalView: View {
 
     @Environment(\.colorScheme) var colorScheme
     
-    private var dragThreshold: CGFloat { 200 }
+    private var dragThreshold: CGFloat {
+        #if os(watchOS)
+        50
+        #else
+        200
+        #endif
+    }
     
     var dragControls: some Gesture {
         DragGesture()
@@ -100,7 +109,11 @@ struct GoalView: View {
         case .finished:
             return .white
         case .notToday:
-            return Color(uiColor: .secondaryLabel)
+            #if os(iOS)
+            return .secondaryLabel
+            #else
+            return Color(cgColor: .init(gray: 0.8, alpha: 1))
+            #endif
         }
     }
 
@@ -111,7 +124,7 @@ struct GoalView: View {
         RadialGradient(colors: colorScheme == .dark ? colors : colors.reversed(), center: .center, startRadius: size.width * 1/55, endRadius: size.width)
             .opacity(todo.state == .finished ? 1 : 0)
     }
-
+    
     private func checkbox(size: CGSize) -> some View {
         VStack {
             Group {
@@ -123,18 +136,18 @@ struct GoalView: View {
                         .opacity(textOpacty(for: .notToday))
 
                 case .ready:
-                    Button(action: { withAnimation(.Big3Spring) {finish()}}) {
+                    Button(action: finishButtonPressed) {
                             ZStack {
-                                if template == .regular {
+                                if template.isiOSApp {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
-                                        .foregroundColor(template == .regular ? backgroundColor : Color(uiColor: .label))
-                                        .opacity(template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
+                                        .foregroundColor(.label)
+                                        .opacity(checkmarkOpacity)
                                 }
                                 Image(systemName: "circle")
                                     .resizable()
                                     .foregroundColor(backgroundColor)
-                                    .opacity(template == .regular ? (showingCheckbox ? 8/34 : 3/34) : 1)
+                                    .opacity(checkboxOpacity)
                             }
                     }
                     .buttonStyle(.borderless)
@@ -144,7 +157,7 @@ struct GoalView: View {
                         .foregroundColor(.white)
                }
             }
-            .frame(width: size.height * checkmarkScaleFactor, height: size.height * checkmarkScaleFactor)
+            .frame(width: size.height * checkboxScaleFactor, height: size.height * checkboxScaleFactor)
             
             Spacer()
         }
@@ -152,55 +165,112 @@ struct GoalView: View {
         .imageScale(.large)
     }
     
-    private var checkmarkScaleFactor: CGFloat { template == .regular ? 13/34 : 21/34 }
+    private var checkboxScaleFactor: CGFloat {
+        switch template {
+        case .iOSApp:
+            return 13/34
+        default:
+            return 21/34
+        }
+    }
     
+    private var checkboxOpacity: CGFloat {
+        switch template {
+        case .iOSApp:
+            return (showingCheckbox ? 8/34 : 3/34)
+        default:
+            return 1
+        }
+    }
+
+    private var checkmarkOpacity: CGFloat {
+        switch template {
+        case .iOSApp:
+            return (showingCheckbox ? 5/34 : 3/34)
+        default:
+            return 1
+        }
+    }
+
     private var checkboxOffsetScalar: CGFloat {
         21/55
     }
     
-    private func bigBody(size: CGSize) -> some View {
+    private var textFontScalar: CGFloat {
+        #if os(watchOS)
+        21/34
+        #else
+        13/34
+        #endif
+    }
+        
+    private func deferButton(inContainerWithSize size: CGSize) -> some View {
         HStack {
-            checkbox(size: size)
-                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
-                .padding(.top, size.height * 8/34)
-                .padding(.leading, size.height * 3/34)
-                .padding(.trailing, size.height * 3/34)
-                .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
-            
-            Text(todo.title)
-                .font(.system(size: size.height * 13/34, weight: .light, design: .serif))
-                .foregroundColor(textColor(for: todo.state))
-                .minimumScaleFactor(5/34)
-                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
-                .opacity(textOpacty(for: todo.state) )
-                .padding(.vertical, size.height * 3/34)
-                .padding(.trailing, size.height * 3/34)
-                .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
-
             Spacer()
-            
-            if todo.state == .ready {
-            ZStack {
-                VStack(alignment: .leading) {
-
-                    Button(action: { withAnimation(.Big3Spring) {postpone()}}) {
-                        Text("not today")
-                            .font(.body)
-                            .minimumScaleFactor(0.01)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                   }
-                    .buttonStyle(.borderless)
+            VStack(alignment: .leading) {
+                
+                Button(action: deferButtonPressed) {
+                    Text("not today")
+                        .font(.body)
+                        .minimumScaleFactor(0.01)
+                        .lineLimit(1)
+                        .frame(maxWidth: .infinity)
+                        .opacity(showingPostponeButton ? 1 : 0)
                 }
-                .opacity(todo.state == .ready ? 1 : 0)
-                .frame(width: size.height * 8/34,
-                       height: size.height * 8/34)
-                .padding(.horizontal)
-                .background(Capsule().stroke( Color.accentColor))
+                
+                .buttonStyle(.borderless)
             }
-            .padding(.trailing, size.height * 5/34)
-            .offset(x: size.width * (showingPostponeButton ? 0 : 8/34) + postponeButtonTranslation, y: 0)
-            }
+            .opacity(todo.state == .ready ? 1 : 0)
+#if os(iOS)
+            .frame(width: size.height * 13/34,
+                   height: size.height * 8/34)
+#else
+            .frame(width: size.width * 13/34,
+                   height: size.height * 13/34)
+#endif
+            .padding(.horizontal)
+            .background(
+                Capsule()
+                    .stroke(Color.accentColor, lineWidth: 2)
+                    .background(
+                        Capsule()
+                            .fill(Color.systemBackground)
+                            .shadow(radius: showingPostponeButton ? 2 : 0)
+                    )
+            )
         }
+    }
+    private func bigBody(size: CGSize) -> some View {
+        ZStack {
+            HStack {
+                checkbox(size: size)
+                    .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                    .padding(.top, size.height * 8/34)
+                    .padding(.leading, size.height * 3/34)
+                    .padding(.trailing, size.height * 3/34)
+                    .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
+                
+                Text(todo.title)
+                    .font(.system(size: size.height * textFontScalar, weight: .light))
+                    .foregroundColor(textColor(for: todo.state))
+                    .minimumScaleFactor(5/34)
+                    .opacity(showingPostponeButton ? 21/34 : 1)
+                    .blur(radius: showingPostponeButton ? 1 : 0)
+                    .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                    .opacity(textOpacty(for: todo.state) )
+#if os(iOS)
+                    .padding(.vertical, size.height * 3/34)
+#endif
+                    .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
+                
+                Spacer()
+            }
+
+            if todo.state == .ready {
+                deferButton(inContainerWithSize: size)
+                .padding(.trailing, size.height * 5/34)
+                .offset(x: deferredButtonOffset(for: size) + postponeButtonTranslation + (showingCheckbox ? size.width : 0), y: 0)
+            }        }
         .background(background(size: size))
         .contentShape(Rectangle())
         .onTapGesture {
@@ -216,6 +286,44 @@ struct GoalView: View {
         .gesture(dragControls)
     }
 
+    private func deferredButtonOffset(for size: CGSize) -> CGFloat {
+        #if os(iOS)
+        size.width * (showingPostponeButton ? 0 : 8/34)
+        #else
+        size.width * (showingPostponeButton ? 0 : 13/34)
+        #endif
+    }
+
+    private func finishButtonPressed() {
+        switch template {
+            
+        case .iOSApp(_, let finish):
+            withAnimation(.Big3Spring) {
+                finish()
+            }
+            
+        case .watch:
+            watchRowWasTapped()
+            
+        default:
+            break
+        }
+    }
+    
+    private func deferButtonPressed() {
+        if showingPostponeButton {
+            guard case let .iOSApp(postpone, _) = template else { return }
+            withAnimation(.Big3Spring) {
+                postpone()
+            }
+        }
+        else {
+            withAnimation(.Big3Spring) {
+                showingPostponeButton = true
+            }
+        }
+    }
+    
     private func smallBody(size: CGSize) -> some View {
         HStack {
             Spacer()
@@ -226,17 +334,6 @@ struct GoalView: View {
         }
         .background(background(size: size))
         .contentShape(Rectangle())
-        .onTapGesture {
-            if todo.state == .ready {
-                withAnimation(.Big3Spring) {
-                    if !showingPostponeButton {
-                        showingCheckbox.toggle()
-                    }
-                    showingPostponeButton = false
-                }
-            }
-        }
-        .gesture(dragControls)
     }
 
     private func mediumBody(size: CGSize) -> some View {
@@ -247,7 +344,7 @@ struct GoalView: View {
                 .padding(.leading, size.height * 8/34)
             
             Text(todo.title)
-                .font(.system(size: size.height * 13/34, weight: .light, design: .serif))
+                .font(.system(size: size.height * 13/34, weight: .light))
                 .foregroundColor(textColor(for: todo.state))
                 .minimumScaleFactor(5/34)
                 .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
@@ -256,28 +353,47 @@ struct GoalView: View {
         }
         .background(background(size: size))
         .contentShape(Rectangle())
-        .onTapGesture {
-            if todo.state == .ready {
-                withAnimation(.Big3Spring) {
-                    if !showingPostponeButton {
-                        showingCheckbox.toggle()
-                    }
-                    showingPostponeButton = false
-                }
-            }
-        }
-        .gesture(dragControls)
     }
 
+    private func watchBody(size: CGSize) -> some View {
+        HStack {
+            checkbox(size: size)
+                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                .padding(.top, size.height * 8/34)
+                .padding(.leading, size.height * 8/34)
+            
+            Text(todo.title)
+                .font(.system(size: size.height * 13/34, weight: .light))
+                .foregroundColor(textColor(for: todo.state))
+                .minimumScaleFactor(5/34)
+                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+
+            Spacer()
+        }
+        .background(background(size: size))
+        .contentShape(Rectangle())
+        .onTapGesture(perform: watchRowWasTapped)
+    }
+
+    private func watchRowWasTapped() {
+        guard case let .watch(wasTapped) = template else { return }
+        
+        wasTapped()
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             switch template {
-            case .regular:
+            case .iOSApp:
                 bigBody(size: geometry.size)
-            case .medium:
+                
+            case .veboseWidget:
                 mediumBody(size: geometry.size)
-            case .small:
+            case .minimalWidget:
                 smallBody(size: geometry.size)
+                
+            case .watch:
+                watchBody(size: geometry.size)
             }
         }
     }
@@ -290,39 +406,39 @@ struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .regular)
+                     backgroundColor: .purple, template: .iOSApp(postpone: {}, finish: {}))
 
             GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .regular)
+                     backgroundColor: .purple, template: .iOSApp(postpone: {}, finish: {}))
 
             GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .regular)
+                     backgroundColor: .purple, template: .iOSApp(postpone: {}, finish: {}))
         }
         .previewLayout(.fixed(width: 300, height: 300))
         .previewDisplayName("Regular")
 
         VStack {
             GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .medium)
+                     backgroundColor: .purple, template: .veboseWidget)
 
             GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .medium)
+                     backgroundColor: .purple, template: .veboseWidget)
 
             GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .medium)
+                     backgroundColor: .purple, template: .veboseWidget)
         }
         .previewLayout(.fixed(width: 300, height: 100))
         .previewDisplayName("medium")
 
         VStack {
             GoalView(todo: GoalView.ToDo(title: "wash my hands", state: .finished),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .small)
+                     backgroundColor: .purple, template: .minimalWidget)
 
             GoalView(todo: GoalView.ToDo(title: "brush my teeth", state: .ready),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .small)
+                     backgroundColor: .purple, template: .minimalWidget)
 
             GoalView(todo: GoalView.ToDo(title: "comb hair", state: .notToday),
-                     backgroundColor: .purple, postpone: {}, finish: {}, template: .small)
+                     backgroundColor: .purple, template: .minimalWidget)
         }
         .previewLayout(.fixed(width: 100, height: 100))
         .previewDisplayName("Small")

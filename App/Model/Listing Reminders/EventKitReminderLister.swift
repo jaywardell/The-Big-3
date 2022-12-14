@@ -7,6 +7,7 @@
 
 import Foundation
 import EventKit
+import Combine
 
 struct EventKitReminder: Hashable {
     let id: String
@@ -21,14 +22,23 @@ struct EventKitCalendar: Hashable {
 
 final class EventKitReminderLister: ObservableObject {
     
-    let store = EKEventStore()
-    
     @Published var givenAccess = false
-    @Published var reminders = [EventKitReminder]()
+    @Published private var reminders = [EventKitReminder]()
     @Published var calendars = [EventKitCalendar]()
-    @Published var calendarForReminders = [EventKitCalendar: [EventKitReminder]]()
+    @Published private var calendarForReminders = [EventKitCalendar: [EventKitReminder]]()
+    
+    private var subscriptions = Set<AnyCancellable>()
+    
+    private var tracker: EventKitRemindersTracker
     
     init() {
+                
+        let store = EKEventStore()
+        
+        self.tracker = EventKitRemindersTracker(store: store, predicate: store.predicateForIncompleteReminders(withDueDateStarting: nil, ending: nil, calendars: nil))
+        self.tracker.retrieved.sink(receiveValue: retrieved(reminders:))
+            .store(in: &subscriptions)
+
         // NOTE: this will cause a crash if there's no NSRemindersUsageDescription set in Info.plist
         store.requestAccess(to: .reminder) { receivedAccess, error in
             if let error = error {
@@ -37,22 +47,11 @@ final class EventKitReminderLister: ObservableObject {
             
             DispatchQueue.main.async {
                 self.givenAccess = receivedAccess
-                self.getIncompleteReminders()
+                self.tracker.retrieveReminders()
             }
         }
     }
-    
-    private func getIncompleteReminders() {
-        let predicate: NSPredicate? = store.predicateForIncompleteReminders(withDueDateStarting: nil, ending: nil, calendars: nil)
-        if let aPredicate = predicate {
-            store.fetchReminders(matching: aPredicate) { [weak self] reminders in
-                guard let reminders = reminders else { return }
-
-                self?.retrieved(reminders: reminders)
-            }
-        }
-    }
-    
+        
     private func retrieved(reminders retrieved: [EKReminder]) {
         let noCalendar = EventKitCalendar(id: "", name: "", color: nil)
         
@@ -89,5 +88,11 @@ final class EventKitReminderLister: ObservableObject {
     
     func reminders(for calendar: EventKitCalendar) -> [EventKitReminder] {
         calendarForReminders[calendar, default: []]
+    }
+    
+    func reminderWith(id: String) -> EventKitReminder? {
+        reminders.first {
+            $0.id == id
+        }
     }
 }

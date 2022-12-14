@@ -16,4 +16,7 @@ enum ModelConstants {
     // in App Store Connect.
     // see https://developer.apple.com/documentation/xcode/configuring-app-groups
     static var appGroup: String { "group.com.oldjewel.TheBig3" }
+    
+    static var WatchConnectivityPlanKey: String { #function }
+    static var WatchConnectivityCompletedGoalKey: String { #function }
 }

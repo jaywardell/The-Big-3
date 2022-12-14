@@ -9,8 +9,14 @@ import Foundation
 
 struct PlanArchiver {
     
+    let shared: Bool
+    
+    init(shared: Bool) {
+        self.shared = shared
+    }
+    
     private var defaults: UserDefaults {
-        UserDefaults(suiteName: ModelConstants.appGroup)!
+        shared ? UserDefaults(suiteName: ModelConstants.appGroup)! : UserDefaults.standard
     }
     
     func loadPlan(allowed: Int) -> Plan {
@@ -30,11 +36,13 @@ extension UserDefaults {
 
     fileprivate var latestPlan: Plan? {
         get {
-            codable(forKey: Self.Plan_Key)
+            synchronize()
+            return codable(forKey: Self.Plan_Key)
         }
 
         set {
             setCodable(newValue, forKey: Self.Plan_Key)
+            synchronize()
         }
     }
 }

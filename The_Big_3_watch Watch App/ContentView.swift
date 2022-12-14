@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  The_Big_3_Watch Watch App
+//  The_Big_3_watch Watch App
 //
 //  Created by Joseph Wardell on 12/12/22.
 //
@@ -13,7 +13,7 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, watch!")
+            Text("Hello, world!")
         }
         .padding()
     }

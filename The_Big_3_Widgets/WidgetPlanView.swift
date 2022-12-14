@@ -16,11 +16,11 @@ struct WidgetPlanView: View {
 
     private func template(for family: WidgetFamily) -> GoalView.Template {
         switch family {
-        case .systemSmall: return .small
+        case .systemSmall: return .minimalWidget
         case .systemMedium,
                 .systemLarge,
-                .systemExtraLarge: return .medium
-        default: return .small
+                .systemExtraLarge: return .veboseWidget
+        default: return .minimalWidget
         }
     }
     
@@ -28,7 +28,7 @@ struct WidgetPlanView: View {
         VStack(spacing: 0) {
             ForEach(0..<ModelConstants.allowedGoalsPerPlan, id: \.self) { index in
                 let todo = planner.todo(at: index)
-                GoalView(todo: todo, backgroundColor: .accentColor, postpone: {}, finish: {}, template: template(for: widgetFamily))
+                GoalView(todo: todo, backgroundColor: .accentColor, template: template(for: widgetFamily))
             }
         }
     }

@@ -18,7 +18,9 @@ struct CountedRows<Content: View>: View {
                 rowAt(index)
                 
                 if index < rows-1 {
+                    #if os(iOS)
                     Divider()
+                    #endif
                 }
             }
         }

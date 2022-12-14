@@ -14,11 +14,19 @@ struct Header: View {
     
     @State private var showingKeyboard = false
     
+    private var titleFont: Font {
+        #if os(watchOS)
+        .system(.title2, design: .default, weight: .light)
+        #else
+        .system(.largeTitle, design: .default, weight: .light)
+        #endif
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .bottom) {
                 Text(title)
-                    .font(.system(.largeTitle, design: .default, weight: .light))
+                    .font(titleFont)
                     // set this so that the header will compress
                     // instead of running up off the
                     // screen when the keyboard appears
@@ -27,12 +35,17 @@ struct Header: View {
                     .padding(.leading)
                     .padding(.top)
                     .opacity(showingKeyboard ? 0 : 1)
+#if os(iOS)
                 Spacer()
+#endif
             }
             .padding(.bottom)
+            
         }
+#if os(iOS)
         .onReceive(Publishers.showingKeyboard) {
             showingKeyboard = $0 }
+#endif
     }
 }
 
@@ -44,6 +57,7 @@ struct Header_Previews: PreviewProvider {
     }
 }
 
+#if os(iOS)
 fileprivate extension Publishers {
     // many thanks to "Yet another Swift Blog" for this approach
     // https://www.vadimbulavin.com/how-to-move-swiftui-view-when-keyboard-covers-text-field/
@@ -66,3 +80,4 @@ fileprivate extension Notification {
         return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
     }
 }
+#endif
