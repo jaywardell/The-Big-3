@@ -56,7 +56,6 @@ struct GoalView: View {
                 else {
                     checkboxTranslation = 0
                 }
-                print("checkboxTranslation: \(checkboxTranslation)")
                 
                 if value.translation.width < 0 {
                     postponeButtonTranslation = max(-dragThreshold, value.translation.width)
