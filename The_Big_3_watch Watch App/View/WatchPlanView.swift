@@ -16,7 +16,9 @@ struct WatchPlanView: View {
             Header(title: "The Big 3")
             ForEach(0..<ModelConstants.allowedGoalsPerPlan, id: \.self) { index in
                 let todo = planner.todo(at: index)
-                GoalView(todo: todo, backgroundColor: .accentColor, template: .veboseWidget)
+                GoalView(todo: todo, backgroundColor: .accentColor, template: .watch(showDetail: {
+                    print("\(todo.title) was tapped")
+                }))
             }
         }
     }

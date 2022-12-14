@@ -25,6 +25,8 @@ struct GoalView: View {
         case minimalWidget
         case veboseWidget
         
+        case watch(showDetail: ()->())
+        
         var isiOSApp: Bool {
             if case .iOSApp = self { return true }
             return false
@@ -262,8 +264,6 @@ struct GoalView: View {
                     .offset(x: size.height * ((showingCheckbox || todo.state != .ready) ? 0 : -checkboxOffsetScalar) + checkboxTranslation, y: 0)
                 
                 Spacer()
-                
-
             }
 
             if todo.state == .ready {
@@ -295,9 +295,18 @@ struct GoalView: View {
     }
 
     private func finishButtonPressed() {
-        guard case let .iOSApp(_, finish) = template else { return }
-        withAnimation(.Big3Spring) {
-            finish()
+        switch template {
+            
+        case .iOSApp(_, let finish):
+            withAnimation(.Big3Spring) {
+                finish()
+            }
+            
+        case .watch:
+            watchRowWasTapped()
+            
+        default:
+            break
         }
     }
     
@@ -346,15 +355,45 @@ struct GoalView: View {
         .contentShape(Rectangle())
     }
 
+    private func watchBody(size: CGSize) -> some View {
+        HStack {
+            checkbox(size: size)
+                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+                .padding(.top, size.height * 8/34)
+                .padding(.leading, size.height * 8/34)
+            
+            Text(todo.title)
+                .font(.system(size: size.height * 13/34, weight: .light))
+                .foregroundColor(textColor(for: todo.state))
+                .minimumScaleFactor(5/34)
+                .shadow(radius: todo.state == .finished ? size.height * 3/34 : 0)
+
+            Spacer()
+        }
+        .background(background(size: size))
+        .contentShape(Rectangle())
+        .onTapGesture(perform: watchRowWasTapped)
+    }
+
+    private func watchRowWasTapped() {
+        guard case let .watch(wasTapped) = template else { return }
+        
+        wasTapped()
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             switch template {
             case .iOSApp:
                 bigBody(size: geometry.size)
+                
             case .veboseWidget:
                 mediumBody(size: geometry.size)
             case .minimalWidget:
                 smallBody(size: geometry.size)
+                
+            case .watch:
+                watchBody(size: geometry.size)
             }
         }
     }
