@@ -28,17 +28,16 @@ final class WatchModel: ObservableObject {
         let plan = archiver.loadPlan(allowed: 3)
         self.planner = Planner(plan: plan)
         
-        phoneSentPlan = watchSynchronizer.receivedPlan
+        self.phoneSentPlan = watchSynchronizer.receivedPlan
             .receive(on: RunLoop.main)
             .sink(receiveValue: takePlannerFromSynchronizer)
-        plannerChanged = planner.objectWillChange.sink(receiveValue: plannerWasUpdated)
-        planChanged = plan.publisher.sink(receiveValue: planWasUpdated)
+        self.plannerChanged = planner.objectWillChange.sink(receiveValue: plannerWasUpdated)
+        self.planChanged = plan.publisher.sink(receiveValue: planWasUpdated)
         
         self.userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted)
             .compactMap { $0.userInfo?[Plan.GoalKey] as? String }
             .map { Plan.Goal(title: $0, state: .completed) }
             .sink(receiveValue: watchSynchronizer.send(completedGoal:))
-
     }
     
     
