@@ -44,18 +44,8 @@ final class AppModel {
             planWasUpdated()
         }
         
-        self.userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted).sink { notification in
-            guard let goalString = notification.userInfo?[Plan.GoalKey] as? String else { return }
-            let goal = Plan.Goal(title: goalString, state: .completed)
-            Task { [unowned self] in
-                do {
-                    try await self.logger.log(goal)
-                }
-                catch {
-                    print("Error logging completion of goal \"\(goal)\": \(error)")
-                }
-            }
-        }
+        self.userCompletedGoal = NotificationCenter.default.publisher(for: Plan.GoalWasCompleted)
+            .sink(receiveValue: receivedGoalCompleted(_:))
         
         self.watchChangedPlan = watchSender.watchUpdatedPlan
             .receive(on: RunLoop.main)
@@ -92,5 +82,22 @@ final class AppModel {
     
     private func remindersAppDeletedReminderWith(identifier id: String) {
         planner.deleteGoalWith(externalIdentifier: id)
+    }
+    
+    private func receivedGoalCompleted(_ notification: Notification) {
+        guard let goalString = notification.userInfo?[Plan.GoalKey] as? String else { return }
+        let goal = Plan.Goal(title: goalString, state: .completed)
+        log(goalCompleted: goal)
+    }
+    
+    private func log(goalCompleted goal: Plan.Goal) {
+        Task { [unowned self] in
+            do {
+                try await self.logger.log(goal)
+            }
+            catch {
+                print("Error logging completion of goal \"\(goal)\": \(error)")
+            }
+        }
     }
 }
