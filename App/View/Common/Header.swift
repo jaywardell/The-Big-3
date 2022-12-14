@@ -51,9 +51,9 @@ struct Header<Content: View>: View {
                     .padding(.leading)
                     .padding(.top)
                     .opacity(showingKeyboard ? 0 : 1)
-#if os(iOS)
+//#if os(iOS)
                 Spacer()
-#endif
+//#endif
             }
             .padding(.bottom)
             

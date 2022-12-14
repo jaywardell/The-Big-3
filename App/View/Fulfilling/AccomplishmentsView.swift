@@ -69,7 +69,15 @@ extension AccomplishmentsView: View {
     var body: some View {
         
         VStack(spacing: 0) {
-            Header(title: "The Big 3")
+//            Header(title: "The Big 3")
+            Header {
+                HStack {
+                    Spacer()
+                    BrandedHeader(layout: .mainTitle)
+                    Spacer()
+                }
+            }
+            Divider()
             
             CountedRows(rows: viewModel.count) { index in
                 return GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], template: template(for: index))

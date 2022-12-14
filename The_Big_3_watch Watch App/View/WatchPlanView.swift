@@ -34,7 +34,9 @@ struct WatchPlanView: View {
     var body: some View {
         VStack(spacing: 0) {
             NavigationStack(path: $presentedToDo) {
-                Header(title: "The Big 3")
+//                Header(title: "The Big 3")
+                Header {  BrandedHeader(layout: .watchTitle) }
+                
                 CountedRows(rows: viewModel.count) { index in
                     row(at: index)
                 }
