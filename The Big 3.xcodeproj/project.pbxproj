@@ -49,7 +49,7 @@
 		7CA682AF2946359500BD6D12 /* PlanArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163127BDC340000AC97A /* PlanArchiver.swift */; };
 		7CA682B0294635BF00BD6D12 /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */; };
 		7CA682B42946372A00BD6D12 /* WidgetTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B32946372A00BD6D12 /* WidgetTimelineProvider.swift */; };
-		7CA682B62946380600BD6D12 /* TheBig3WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */; };
+		7CA682B62946380600BD6D12 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B52946380600BD6D12 /* WidgetView.swift */; };
 		7CA682B8294641E300BD6D12 /* WidgetPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */; };
 		7CA682BA2946429500BD6D12 /* ModelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B92946429500BD6D12 /* ModelConstants.swift */; };
 		7CA682BC2946430E00BD6D12 /* ModelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682B92946429500BD6D12 /* ModelConstants.swift */; };
@@ -190,7 +190,7 @@
 		7CA682A1294633DF00BD6D12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA682AB2946352A00BD6D12 /* WidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
 		7CA682B32946372A00BD6D12 /* WidgetTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTimelineProvider.swift; sourceTree = "<group>"; };
-		7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBig3WidgetView.swift; sourceTree = "<group>"; };
+		7CA682B52946380600BD6D12 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPlanView.swift; sourceTree = "<group>"; };
 		7CA682B92946429500BD6D12 /* ModelConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelConstants.swift; sourceTree = "<group>"; };
 		7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+GoalView.swift"; sourceTree = "<group>"; };
@@ -539,7 +539,7 @@
 		7CD01E9C294A8A8500C4ADC5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7CA682B52946380600BD6D12 /* TheBig3WidgetView.swift */,
+				7CA682B52946380600BD6D12 /* WidgetView.swift */,
 				7CA682CA29465DD000BD6D12 /* PlanPromptWidgetView.swift */,
 				7CA682B7294641E300BD6D12 /* WidgetPlanView.swift */,
 			);
@@ -753,7 +753,7 @@
 				7CA682B42946372A00BD6D12 /* WidgetTimelineProvider.swift in Sources */,
 				7CA682D729477CA500BD6D12 /* GoalView.swift in Sources */,
 				7CA682AD2946358300BD6D12 /* Planner.swift in Sources */,
-				7CA682B62946380600BD6D12 /* TheBig3WidgetView.swift in Sources */,
+				7CA682B62946380600BD6D12 /* WidgetView.swift in Sources */,
 				7CA682BA2946429500BD6D12 /* ModelConstants.swift in Sources */,
 				7CA682AC2946352A00BD6D12 /* WidgetModel.swift in Sources */,
 				7CA682BE2946456900BD6D12 /* Animation+Constants.swift in Sources */,

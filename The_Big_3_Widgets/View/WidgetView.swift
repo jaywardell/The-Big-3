@@ -1,5 +1,5 @@
 //
-//  TheBig3WidgetView.swift
+//  WidgetView.swift
 //  The_Big_3_WidgetsExtension
 //
 //  Created by Joseph Wardell on 12/11/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-struct TheBig3WidgetView: View {
+struct WidgetView: View {
     let entry: Entry
 
     var body: some View {
@@ -23,12 +23,12 @@ struct TheBig3WidgetView: View {
 
 struct TheBig3WidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        TheBig3WidgetView(entry: Entry(planner: Planner(plan: .example2),
+        WidgetView(entry: Entry(planner: Planner(plan: .example2),
                           date: Date(),
                           configuration: ConfigurationIntent()))
         .previewContext(WidgetPreviewContext(family: .systemSmall))
 
-        TheBig3WidgetView(entry: Entry(planner: Planner(plan: Plan(allowed: 3)),
+        WidgetView(entry: Entry(planner: Planner(plan: Plan(allowed: 3)),
                           date: Date(),
                           configuration: ConfigurationIntent()))
         .previewContext(WidgetPreviewContext(family: .systemSmall))

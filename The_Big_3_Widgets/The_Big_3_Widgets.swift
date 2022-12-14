@@ -20,7 +20,7 @@ struct The_Big_3_Widgets: Widget {
         IntentConfiguration(kind: kind,
                             intent: ConfigurationIntent.self,
                             provider: WidgetTimelineProvider(model: model)) { entry in
-            TheBig3WidgetView(entry: entry)
+            WidgetView(entry: entry)
                 .accentColor(ViewConstants.tint)
         }
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge, .accessoryRectangular])
