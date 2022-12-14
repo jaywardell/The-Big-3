@@ -55,6 +55,17 @@ final class WatchSynchronizer: NSObject {
         }
     }
 
+    private func receiveUpdatedPlanner(from dictionary: [String : Any]) -> Bool {
+        guard let encoded = dictionary[ModelConstants.WatchConnectivityPlanKey] as? Data,
+              let planner = try? JSONDecoder().decode(Planner.self, from: encoded) else { return false }
+        
+        print("Received.................\t\(Date())")
+        print(planner)
+        
+        receivedPlan.send(planner)
+        return true
+    }
+    
 }
 
 
@@ -68,12 +79,14 @@ extension WatchSynchronizer: WCSessionDelegate {
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         print(#function)
 
-        guard let encoded = applicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data,
-              let planner = try? JSONDecoder().decode(Planner.self, from: encoded) else { return }
+        _ = receiveUpdatedPlanner(from: applicationContext)
         
-        print("Received.................\t\(Date())")
-        print(planner)
-        
-        receivedPlan.send(planner)
+//        guard let encoded = applicationContext[ModelConstants.WatchConnectivityPlanKey] as? Data,
+//              let planner = try? JSONDecoder().decode(Planner.self, from: encoded) else { return }
+//
+//        print("Received.................\t\(Date())")
+//        print(planner)
+//
+//        receivedPlan.send(planner)
     }
 }
