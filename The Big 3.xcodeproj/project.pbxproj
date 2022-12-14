@@ -16,6 +16,8 @@
 		7C034B7C294A03D40069B46D /* Color+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034B7B294A03D40069B46D /* Color+Constants.swift */; };
 		7C034B7D294A03D40069B46D /* Color+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034B7B294A03D40069B46D /* Color+Constants.swift */; };
 		7C034B7E294A03D40069B46D /* Color+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034B7B294A03D40069B46D /* Color+Constants.swift */; };
+		7C034B7F294A10AF0069B46D /* CountedRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */; };
+		7C034B83294A12360069B46D /* Planner+WatchPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034B80294A12360069B46D /* Planner+WatchPlanView.swift */; };
 		7C0A092427B3854000F2C688 /* Planner+PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */; };
 		7C0FA59D2944D61000E8C88E /* XCTest+AsynAwait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */; };
 		7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0FA5A12944F44300E8C88E /* TestingFlags.swift */; };
@@ -148,6 +150,7 @@
 		7C034B702948DC3C0069B46D /* EventKitRemindersTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitRemindersTracker.swift; sourceTree = "<group>"; };
 		7C034B732948E7BC0069B46D /* EventKitReminderWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitReminderWatcher.swift; sourceTree = "<group>"; };
 		7C034B7B294A03D40069B46D /* Color+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Constants.swift"; sourceTree = "<group>"; };
+		7C034B80294A12360069B46D /* Planner+WatchPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+WatchPlanView.swift"; sourceTree = "<group>"; };
 		7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerView.swift"; sourceTree = "<group>"; };
 		7C0A092627B3857300F2C688 /* Planner+PlannerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+PlannerViewTests.swift"; sourceTree = "<group>"; };
 		7C0FA59C2944D61000E8C88E /* XCTest+AsynAwait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+AsynAwait.swift"; sourceTree = "<group>"; };
@@ -461,6 +464,7 @@
 			children = (
 				7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */,
 				7C0032CF27B4D257007E37D0 /* Planner+AccomplishmentsView.swift */,
+				7C034B80294A12360069B46D /* Planner+WatchPlanView.swift */,
 				7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */,
 				7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */,
 			);
@@ -725,8 +729,10 @@
 				7C034B7E294A03D40069B46D /* Color+Constants.swift in Sources */,
 				7CA683472947B14000BD6D12 /* ViewConstants.swift in Sources */,
 				7CA6833329479E0A00BD6D12 /* WatchSynchronizer.swift in Sources */,
+				7C034B83294A12360069B46D /* Planner+WatchPlanView.swift in Sources */,
 				7CA683172947913C00BD6D12 /* The_Big_3_watchApp.swift in Sources */,
 				7CA6832E2947924900BD6D12 /* ModelConstants.swift in Sources */,
+				7C034B7F294A10AF0069B46D /* CountedRows.swift in Sources */,
 				7CA683272947921500BD6D12 /* WatchModel.swift in Sources */,
 				7C034B752949EF5F0069B46D /* Header.swift in Sources */,
 				7CA683282947921500BD6D12 /* NoPlanView.swift in Sources */,
