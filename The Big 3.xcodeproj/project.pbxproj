@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */; };
+		7C0032D027B4D257007E37D0 /* Planner+AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0032CF27B4D257007E37D0 /* Planner+AccomplishmentsView.swift */; };
 		7C034B712948DC3C0069B46D /* EventKitRemindersTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034B702948DC3C0069B46D /* EventKitRemindersTracker.swift */; };
 		7C034B742948E7BC0069B46D /* EventKitReminderWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C034B732948E7BC0069B46D /* EventKitReminderWatcher.swift */; };
 		7C034B752949EF5F0069B46D /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CC29466C5700BD6D12 /* Header.swift */; };
@@ -144,7 +144,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.AccomplishmentsView.swift; sourceTree = "<group>"; };
+		7C0032CF27B4D257007E37D0 /* Planner+AccomplishmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+AccomplishmentsView.swift"; sourceTree = "<group>"; };
 		7C034B702948DC3C0069B46D /* EventKitRemindersTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitRemindersTracker.swift; sourceTree = "<group>"; };
 		7C034B732948E7BC0069B46D /* EventKitReminderWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitReminderWatcher.swift; sourceTree = "<group>"; };
 		7C034B7B294A03D40069B46D /* Color+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Constants.swift"; sourceTree = "<group>"; };
@@ -460,7 +460,7 @@
 			isa = PBXGroup;
 			children = (
 				7C0A092327B3854000F2C688 /* Planner+PlannerView.swift */,
-				7C0032CF27B4D257007E37D0 /* Planner.AccomplishmentsView.swift */,
+				7C0032CF27B4D257007E37D0 /* Planner+AccomplishmentsView.swift */,
 				7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */,
 				7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */,
 			);
@@ -762,7 +762,7 @@
 				7C4EC7A727BE714400DF0F8D /* AppModel.swift in Sources */,
 				7CB8720727B33A89009D5539 /* The_Big_3App.swift in Sources */,
 				7CA77F21290FFA4900DED944 /* CompletionLog.swift in Sources */,
-				7C0032D027B4D257007E37D0 /* Planner.AccomplishmentsView.swift in Sources */,
+				7C0032D027B4D257007E37D0 /* Planner+AccomplishmentsView.swift in Sources */,
 				7CA682BC2946430E00BD6D12 /* ModelConstants.swift in Sources */,
 				7CA6833129479A6900BD6D12 /* WatchSender.swift in Sources */,
 				7C0FA5A6294507E700E8C88E /* EventKitReminderLister.swift in Sources */,
