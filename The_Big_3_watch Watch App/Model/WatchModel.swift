@@ -30,7 +30,7 @@ final class WatchModel: ObservableObject {
         phoneSentPlan = watchSynchronizer.receivedPlan
             .receive(on: RunLoop.main)
             .sink(receiveValue: takePlannerFromSynchronizer)
-        plannerChanged = planner.objectWillChange.sink(receiveValue: planWasUpdated)
+        plannerChanged = planner.objectWillChange.sink(receiveValue: plannerWasUpdated)
         planChanged = plan.publisher.sink(receiveValue: planWasUpdated)
     }
     
@@ -40,19 +40,22 @@ final class WatchModel: ObservableObject {
         print("Updated............\t\(Date())")
         print(planner)
         self.planner = planner
-        
+        plannerChanged = planner.objectWillChange.sink(receiveValue: plannerWasUpdated)
+        planChanged = planner.plan.publisher.sink(receiveValue: planWasUpdated)
+
         archiver.archive(planner.plan)
     }
     
-    private func planWasUpdated() {
+    private func plannerWasUpdated() {
         let plan = planner.plan
         archiver.archive(plan)
         
         watchSynchronizer.send(plan)
         
-        planChanged = plan.publisher.sink { [unowned self] in
-            planWasUpdated()
-        }
+        planChanged = plan.publisher.sink(receiveValue: planWasUpdated)
     }
 
+    private func planWasUpdated() {
+        planner.objectWillChange.send()
+    }
 }
