@@ -483,8 +483,8 @@
 				7CA682CF294771C900BD6D12 /* Logging Completions */,
 				7CA682D02947720600BD6D12 /* Listing Reminders */,
 				7CA682D12947722900BD6D12 /* Updating Reminders */,
-				7C0FA5A12944F44300E8C88E /* TestingFlags.swift */,
 				7C034B722948E7A00069B46D /* Listening for updated Reminders */,
+				7C0FA5A12944F44300E8C88E /* TestingFlags.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
