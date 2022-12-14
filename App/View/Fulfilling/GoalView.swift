@@ -199,6 +199,42 @@ struct GoalView: View {
 #endif
     }
     
+    private func deferButton(inContainerWithSize size: CGSize) -> some View {
+        HStack {
+            Spacer()
+            VStack(alignment: .leading) {
+                
+                Button(action: deferButtonPressed) {
+                    Text("not today")
+                        .font(.body)
+                        .minimumScaleFactor(0.01)
+                        .lineLimit(1)
+                        .frame(maxWidth: .infinity)
+                        .opacity(showingPostponeButton ? 1 : 0)
+                }
+                
+                .buttonStyle(.borderless)
+            }
+            .opacity(todo.state == .ready ? 1 : 0)
+#if os(iOS)
+            .frame(width: size.height * 13/34,
+                   height: size.height * 8/34)
+#else
+            .frame(width: size.width * 13/34,
+                   height: size.height * 13/34)
+#endif
+            .padding(.horizontal)
+            .background(
+                Capsule()
+                    .stroke(Color.accentColor, lineWidth: 2)
+                    .background(
+                        Capsule()
+                            .fill(deferButtonBackgroundColor)
+                            .shadow(radius: showingPostponeButton ? 2 : 0)
+                    )
+            )
+        }
+    }
     private func bigBody(size: CGSize) -> some View {
         ZStack {
             HStack {
@@ -229,40 +265,7 @@ struct GoalView: View {
             }
 
             if todo.state == .ready {
-                HStack {
-                    Spacer()
-                    VStack(alignment: .leading) {
-                        
-                        Button(action: deferButtonPressed) {
-                            Text("not today")
-                                .font(.body)
-                                .minimumScaleFactor(0.01)
-                                .lineLimit(1)
-                                .frame(maxWidth: .infinity)
-                                .opacity(showingPostponeButton ? 1 : 0)
-                        }
-                        
-                        .buttonStyle(.borderless)
-                    }
-                    .opacity(todo.state == .ready ? 1 : 0)
-#if os(iOS)
-                    .frame(width: size.height * 13/34,
-                           height: size.height * 8/34)
-#else
-                    .frame(width: size.width * 13/34,
-                           height: size.height * 13/34)
-#endif
-                    .padding(.horizontal)
-                    .background(
-                        Capsule()
-                            .stroke(Color.accentColor, lineWidth: 2)
-                            .background(
-                                Capsule()
-                                    .fill(deferButtonBackgroundColor)
-                                    .shadow(radius: showingPostponeButton ? 2 : 0)
-                            )
-                    )
-                }
+                deferButton(inContainerWithSize: size)
                 .padding(.trailing, size.height * 5/34)
                 .offset(x: deferredButtonOffset(for: size) + postponeButtonTranslation + (showingCheckbox ? size.width : 0), y: 0)
             }        }
