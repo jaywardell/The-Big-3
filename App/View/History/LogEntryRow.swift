@@ -23,7 +23,7 @@ struct LogEntryRow: View {
             Spacer()
             Text(viewModel.time, style: .time)
                 .font(.callout)
-                .foregroundColor(Color(uiColor: .secondaryLabel))
+                .foregroundColor(.secondaryLabel)
         }
     }
 }

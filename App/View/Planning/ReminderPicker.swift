@@ -68,10 +68,10 @@ If you want to do this, you'll need to turn on support for Reminders in the Sett
                                 ForEach(lister.reminders(for: calendar), id: \.self) { reminder in
 
                                     row(for: reminder)
-                                        .foregroundColor(Color(uiColor: .label))
+                                        .foregroundColor(.label)
                                 }
                             }
-                            .foregroundColor(calendar.color.map(Color.init(cgColor:)) ?? Color(uiColor: .label))
+                            .foregroundColor(calendar.color.map(Color.init(cgColor:)) ?? .label)
                         }
                     }
                     .listStyle(.plain)

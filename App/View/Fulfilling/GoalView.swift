@@ -105,7 +105,7 @@ struct GoalView: View {
             return .white
         case .notToday:
             #if os(iOS)
-            return Color(uiColor: .secondaryLabel)
+            return .secondaryLabel
             #else
             return Color(cgColor: .init(gray: 0.8, alpha: 1))
             #endif
@@ -118,14 +118,6 @@ struct GoalView: View {
         let colors = [ backgroundColor, backgroundColor.opacity(colorScheme == .dark ? 13/34 : 21/34)  ]
         RadialGradient(colors: colorScheme == .dark ? colors : colors.reversed(), center: .center, startRadius: size.width * 1/55, endRadius: size.width)
             .opacity(todo.state == .finished ? 1 : 0)
-    }
-
-    private func checkmarkColor() -> Color {
-        #if os(iOS)
-        template == .iOSApp ? backgroundColor : Color(uiColor: .label)
-        #else
-        template == .iOSApp ? backgroundColor : .primary
-        #endif
     }
     
     private func checkbox(size: CGSize) -> some View {
@@ -144,7 +136,7 @@ struct GoalView: View {
                                 if template == .iOSApp {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
-                                        .foregroundColor(checkmarkColor())
+                                        .foregroundColor(.label)
                                         .opacity(template == .iOSApp ? (showingCheckbox ? 5/34 : 3/34) : 1)
                                 }
                                 Image(systemName: "circle")
@@ -187,15 +179,7 @@ struct GoalView: View {
         13/34
         #endif
     }
-    
-    private var deferButtonBackgroundColor: Color {
-#if os(watchOS)
-        .black
-#else
-        Color(uiColor: .systemBackground)
-#endif
-    }
-    
+        
     private func deferButton(inContainerWithSize size: CGSize) -> some View {
         HStack {
             Spacer()
@@ -226,7 +210,7 @@ struct GoalView: View {
                     .stroke(Color.accentColor, lineWidth: 2)
                     .background(
                         Capsule()
-                            .fill(deferButtonBackgroundColor)
+                            .fill(Color.systemBackground)
                             .shadow(radius: showingPostponeButton ? 2 : 0)
                     )
             )
