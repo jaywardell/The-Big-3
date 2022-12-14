@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BrandedHeader: View {
     
-    enum Layout { case square, minisquare, planningTitle, mainTitle, watchTitle, inline }
+    enum Layout { case square, minisquare, planningTitle, mainTitle, watchTitle, inline, inlinemain }
     let layout: Layout
     
     let planString = "Plan the Next"
@@ -26,6 +26,20 @@ struct BrandedHeader: View {
                 .font(.system(.title2, design: .default, weight: .ultraLight)) +
             Text(threeString)
                 .font(.system(.title, design: .monospaced, weight: .black))
+                .bold()
+                .foregroundColor(.accentColor)
+        }
+    }
+
+    var inlinemain: some View {
+        VStack {
+            Text(theString)
+                .font(.system(.body, design: .default, weight: .ultraLight)) +
+            Text(" ") +
+            Text(bigString)
+                .font(.system(.body, design: .default, weight: .ultraLight)) +
+            Text(threeString)
+                .font(.system(.headline, design: .monospaced, weight: .black))
                 .bold()
                 .foregroundColor(.accentColor)
         }
@@ -108,6 +122,7 @@ struct BrandedHeader: View {
         case .watchTitle: watchTitle
         case .minisquare: minisquare
         case .inline: inline
+        case .inlinemain: inlinemain
         }
     }
 }
@@ -126,6 +141,12 @@ struct BrandedHeader_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .previewDisplayName("inline")
 
+
+        BrandedHeader(layout: .inlinemain)
+            .accentColor(.pink)
+            .padding()
+            .previewLayout(.sizeThatFits)
+            .previewDisplayName("inline main")
 
         BrandedHeader(layout: .minisquare)
             .accentColor(.pink)

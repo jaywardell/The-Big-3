@@ -27,6 +27,8 @@ struct WidgetPlanView: View {
     var body: some View {
         if widgetFamily == .accessoryRectangular {
             VStack {
+                BrandedHeader(layout: .inlinemain)
+                    .padding(.bottom, 2)
                 GraphicSummary(viewModel: planner.graphicSummaryViewModel())
                     .font(.headline)
             }
