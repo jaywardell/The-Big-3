@@ -60,6 +60,11 @@ struct AccomplishmentsView {
 
 extension AccomplishmentsView: View {
     
+    private func template(for index: Int) -> GoalView.Template {
+        GoalView.Template.iOSApp(
+            postpone: { viewModel.postpone(index) },
+            finish: { viewModel.finish(index) })
+    }
     
     var body: some View {
         
@@ -67,7 +72,7 @@ extension AccomplishmentsView: View {
             Header(title: "The Big 3")
             
             CountedRows(rows: viewModel.count) { index in
-                GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], postpone: { viewModel.postpone(index) }, finish: { viewModel.finish(index) }, template: .iOSApp)
+                return GoalView(todo: viewModel.todoAt(index), backgroundColor: colors[index], template: template(for: index))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
