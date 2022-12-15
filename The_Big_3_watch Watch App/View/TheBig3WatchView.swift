@@ -12,12 +12,17 @@ struct TheBig3WatchView: View {
     @ObservedObject var planner: Planner
 
     var body: some View {
-        if planner.state == .planning {
-            NoPlanView()
+        switch planner.state {
+        case .planning: NoPlanView()
+        case .doing: WatchPlanView(viewModel: planner.watchPlanViewModel())
+        case .finished: WatchSummationView(planner: planner)
         }
-        else {
-            WatchPlanView(viewModel: planner.watchPlanViewModel())
-        }
+//        if planner.state == .planning {
+//            NoPlanView()
+//        }
+//        else {
+//            WatchPlanView(viewModel: planner.watchPlanViewModel())
+//        }
     }
 }
 

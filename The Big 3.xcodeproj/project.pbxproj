@@ -41,6 +41,9 @@
 		7CA259E0294B6C64008B26B8 /* WidgetSummationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA259DF294B6C64008B26B8 /* WidgetSummationView.swift */; };
 		7CA259E1294B6D23008B26B8 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA682CC29466C5700BD6D12 /* Header.swift */; };
 		7CA259E3294B6D61008B26B8 /* Planner+WidgetSummationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA259E2294B6D61008B26B8 /* Planner+WidgetSummationView.swift */; };
+		7CA259E7294B79EA008B26B8 /* WatchSummationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA259E6294B79EA008B26B8 /* WatchSummationView.swift */; };
+		7CA259E8294B7A55008B26B8 /* GraphicSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E92294A7DDE00C4ADC5 /* GraphicSummary.swift */; };
+		7CA259E9294B7A70008B26B8 /* Planner+GraphicSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD01E96294A80CB00C4ADC5 /* Planner+GraphicSummary.swift */; };
 		7CA68298294633DD00BD6D12 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA68297294633DD00BD6D12 /* WidgetKit.framework */; };
 		7CA6829A294633DD00BD6D12 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA68299294633DD00BD6D12 /* SwiftUI.framework */; };
 		7CA6829D294633DD00BD6D12 /* The_Big_3_Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA6829C294633DD00BD6D12 /* The_Big_3_Widgets.swift */; };
@@ -190,6 +193,7 @@
 		7CA259AF294B3F14008B26B8 /* Dictionary+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Codable.swift"; sourceTree = "<group>"; };
 		7CA259DF294B6C64008B26B8 /* WidgetSummationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSummationView.swift; sourceTree = "<group>"; };
 		7CA259E2294B6D61008B26B8 /* Planner+WidgetSummationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+WidgetSummationView.swift"; sourceTree = "<group>"; };
+		7CA259E6294B79EA008B26B8 /* WatchSummationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WatchSummationView.swift; path = "The_Big_3_Watch Watch App/View/WatchSummationView.swift"; sourceTree = SOURCE_ROOT; };
 		7CA68295294633DD00BD6D12 /* The_Big_3_WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = The_Big_3_WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA68297294633DD00BD6D12 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7CA68299294633DD00BD6D12 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -443,6 +447,7 @@
 			children = (
 				7CA683232947921500BD6D12 /* TheBig3WatchView.swift */,
 				7CA683252947921500BD6D12 /* NoPlanView.swift */,
+				7CA259E6294B79EA008B26B8 /* WatchSummationView.swift */,
 				7CA683422947ABBD00BD6D12 /* WatchPlanView.swift */,
 				7C034B84294A1D4F0069B46D /* WatchToDoEditorView.swift */,
 			);
@@ -801,8 +806,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA259E9294B7A70008B26B8 /* Planner+GraphicSummary.swift in Sources */,
 				7CA6832C2947924200BD6D12 /* Planner.swift in Sources */,
 				7C034B7A294A00F40069B46D /* GoalView.swift in Sources */,
+				7CA259E7294B79EA008B26B8 /* WatchSummationView.swift in Sources */,
 				7C034B772949EF920069B46D /* Animation+Constants.swift in Sources */,
 				7CA683262947921500BD6D12 /* TheBig3WatchView.swift in Sources */,
 				7CA6832B2947924200BD6D12 /* Plan.swift in Sources */,
@@ -811,6 +818,7 @@
 				7C034B7E294A03D40069B46D /* Color+Constants.swift in Sources */,
 				7CA259B1294B3F14008B26B8 /* Dictionary+Codable.swift in Sources */,
 				7CA683472947B14000BD6D12 /* ViewConstants.swift in Sources */,
+				7CA259E8294B7A55008B26B8 /* GraphicSummary.swift in Sources */,
 				7CA6833329479E0A00BD6D12 /* PhoneSynchonizer.swift in Sources */,
 				7C034B83294A12360069B46D /* Planner+WatchPlanView.swift in Sources */,
 				7CA683172947913C00BD6D12 /* The_Big_3_watchApp.swift in Sources */,
