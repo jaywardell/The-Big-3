@@ -121,8 +121,18 @@ struct GoalView: View {
         
         let todo = todo
         let colors = [ backgroundColor, backgroundColor.opacity(colorScheme == .dark ? 13/34 : 21/34)  ]
-        RadialGradient(colors: colorScheme == .dark ? colors : colors.reversed(), center: .center, startRadius: size.width * 1/55, endRadius: size.width)
+        let gradient = RadialGradient(colors: colorScheme == .dark ? colors : colors.reversed(), center: .center, startRadius: size.width * 1/55, endRadius: size.width)
+        
+#if os(watchOS)
+        RoundedRectangle(cornerRadius: size.height * 17/34)
+            .fill(gradient)
+            .padding(1)
+            .padding(.top, size.height * 2/34)
             .opacity(todo.state == .finished ? 1 : 0)
+#else
+        gradient
+            .opacity(todo.state == .finished ? 1 : 0)
+#endif
     }
     
     private func checkbox(size: CGSize) -> some View {
