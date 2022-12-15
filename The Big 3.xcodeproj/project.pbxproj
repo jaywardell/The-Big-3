@@ -296,6 +296,14 @@
 			path = "SwiftUI Additions";
 			sourceTree = "<group>";
 		};
+		7CA259AE294B3B82008B26B8 /* Synchronizing with Watch */ = {
+			isa = PBXGroup;
+			children = (
+				7CA6833029479A6900BD6D12 /* WatchSynchronizer.swift */,
+			);
+			path = "Synchronizing with Watch";
+			sourceTree = "<group>";
+		};
 		7CA68296294633DD00BD6D12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,7 +360,6 @@
 				7CB8722427B33BF9009D5539 /* Planner.swift */,
 				7CB8722927B33C36009D5539 /* Plan.swift */,
 				7C66163127BDC340000AC97A /* PlanArchiver.swift */,
-				7CA6833029479A6900BD6D12 /* WatchSynchronizer.swift */,
 			);
 			path = Planning;
 			sourceTree = "<group>";
@@ -495,6 +502,7 @@
 				7CA682B92946429500BD6D12 /* ModelConstants.swift */,
 				7CA682D22947726E00BD6D12 /* Planning */,
 				7CA682CF294771C900BD6D12 /* Logging Completions */,
+				7CA259AE294B3B82008B26B8 /* Synchronizing with Watch */,
 				7CA682D02947720600BD6D12 /* Listing Reminders */,
 				7CA682D12947722900BD6D12 /* Updating Reminders */,
 				7C034B722948E7A00069B46D /* Listening for updated Reminders */,
