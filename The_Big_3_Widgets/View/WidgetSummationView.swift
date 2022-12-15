@@ -96,7 +96,6 @@ struct WidgetSummationView: View {
                 }
                 
             }
-            .padding()
         }
     }
 }
