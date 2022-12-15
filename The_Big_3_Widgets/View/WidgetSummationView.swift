@@ -112,6 +112,7 @@ struct WidgetSummationView_Previews: PreviewProvider {
         ForEach(families, id: \.self) { family in
             WidgetSummationView(viewModel: .init(total: 3, completed: 3, todoAt: { _ in .init(title: "do something", state: .finished) }))
                 .previewContext(WidgetPreviewContext(family: family))
+                .previewDisplayName("\(family)")
         }
     }
 }
