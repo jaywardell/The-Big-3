@@ -204,6 +204,10 @@ struct GoalView: View {
         #endif
     }
         
+    private func deferButtonWidth(in size: CGSize) -> CGFloat {
+        size.height * 13/34
+    }
+    
     private func deferButton(inContainerWithSize size: CGSize) -> some View {
         HStack {
             Spacer()
@@ -222,10 +226,10 @@ struct GoalView: View {
             }
             .opacity(todo.state == .ready ? 1 : 0)
 #if os(iOS)
-            .frame(width: size.height * 13/34,
+            .frame(width: deferButtonWidth(in: size),
                    height: size.height * 8/34)
 #else
-            .frame(width: size.width * 13/34,
+            .frame(width: deferButtonWidth(in: size),
                    height: size.height * 13/34)
 #endif
             .padding(.horizontal)
@@ -288,7 +292,7 @@ struct GoalView: View {
 
     private func deferredButtonOffset(for size: CGSize) -> CGFloat {
         #if os(iOS)
-        size.width * (showingPostponeButton ? 0 : 8/34)
+        showingPostponeButton ? 0 : deferButtonWidth(in: size) * 26/21
         #else
         size.width * (showingPostponeButton ? 0 : 13/34)
         #endif
