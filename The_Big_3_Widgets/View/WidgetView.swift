@@ -9,27 +9,23 @@ import SwiftUI
 import WidgetKit
 
 struct WidgetView: View {
-    let entry: Entry
+    let planner: Planner
 
     var body: some View {
-        switch entry.planner.state {
+        switch planner.state {
         case .planning: PlanPromptWidgetView()
-        case .doing: WidgetPlanView(planner: entry.planner)
-        case .finished: WidgetSummationView(viewModel: entry.planner.summationViewModel())
+        case .doing: WidgetPlanView(planner: planner)
+        case .finished: WidgetSummationView(viewModel: planner.summationViewModel())
         }
     }
 }
 
 struct TheBig3WidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetView(entry: Entry(planner: Planner(plan: .example2),
-                          date: Date(),
-                          configuration: ConfigurationIntent()))
+        WidgetView(planner: Planner(plan: .example2))
         .previewContext(WidgetPreviewContext(family: .systemSmall))
 
-        WidgetView(entry: Entry(planner: Planner(plan: Plan(allowed: 3)),
-                          date: Date(),
-                          configuration: ConfigurationIntent()))
+        WidgetView(planner: Planner(plan: Plan(allowed: 3)))
         .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
