@@ -42,9 +42,7 @@ final class PhoneSynchonizer: NSObject {
     }
 
     func send(plan: Plan) {
-        let encoder = JSONEncoder()
-        guard let encoded = try? encoder.encode(plan) else { return }
-        let payload = [ModelConstants.WatchConnectivityPlanKey: encoded]
+        guard let payload = try? Dictionary(ModelConstants.WatchConnectivityPlanKey, plan) else { return }
         if startConnection() {
             session.sendMessage(payload, replyHandler: { reply in
                 print(reply)
@@ -57,9 +55,7 @@ final class PhoneSynchonizer: NSObject {
     func send(completedGoal goal: Plan.Goal) {
         assert(goal.state == .completed)
         
-        let encoder = JSONEncoder()
-        guard let encoded = try? encoder.encode(goal) else { return }
-        let payload = [ModelConstants.WatchConnectivityCompletedGoalKey: encoded]
+        guard let payload = try? Dictionary(ModelConstants.WatchConnectivityCompletedGoalKey, goal) else { return }
         if startConnection() {
             session.sendMessage(payload, replyHandler: { reply in
                 print(reply)
@@ -76,7 +72,20 @@ final class PhoneSynchonizer: NSObject {
         
         return true
     }
+}
+
+extension Dictionary where Key == String, Value == Encodable {
     
+    init(_ key: String, _ value: Value) throws {
+        self.init()
+        try encode(value, for: key)
+    }
+    
+    mutating func encode(_ value: Value, for key: String) throws {
+        let encoder = JSONEncoder()
+        let encoded = try encoder.encode(value)
+        updateValue(encoded, forKey: key)
+    }
 }
 
 
