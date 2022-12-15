@@ -49,8 +49,10 @@ struct LogView: View {
                         Section(header: Text(string(for:day))) {
                             ForEach(viewModel.goalsForDay(day), id: \.self) {
                                 LogEntryRow(viewModel: $0)
+//                                    .foregroundColor(.label)
                             }
                         }
+                        .foregroundColor(.accentColor)
                     }
                 }
                 .listStyle(.plain)

@@ -20,6 +20,7 @@ struct LogEntryRow: View {
         HStack(alignment: .top) {
             Text(viewModel.goal)
                 .font(.body)
+                .foregroundColor(.label)
             Spacer()
             Text(viewModel.time, style: .time)
                 .font(.callout)
