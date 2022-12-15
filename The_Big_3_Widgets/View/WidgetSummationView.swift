@@ -85,13 +85,12 @@ struct WidgetSummationView: View {
                 
                 GraphicSummary(viewModel: .init(total: viewModel.total, todoAt: viewModel.todoAt), layout: summaryLayout)
                     .font(.largeTitle)
-                    .padding(.bottom)
                 
                 if [.systemLarge, .systemMedium, .systemExtraLarge].contains(widgetFamily) {
                     Text(completionString)
                         .font(.title2)
                         .foregroundColor(.secondary)
-                        .padding(.bottom)
+                        .padding(.top)
                     Spacer()
                 }
                 
@@ -111,7 +110,7 @@ struct WidgetSummationView_Previews: PreviewProvider {
         ]
         
         ForEach(families, id: \.self) { family in
-            WidgetSummationView(viewModel: .init(total: 3, completed: 2, todoAt: { _ in .init(title: "do something", state: .finished) }))
+            WidgetSummationView(viewModel: .init(total: 3, completed: 3, todoAt: { _ in .init(title: "do something", state: .finished) }))
                 .previewContext(WidgetPreviewContext(family: family))
         }
     }
