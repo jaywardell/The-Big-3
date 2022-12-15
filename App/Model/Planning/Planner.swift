@@ -18,7 +18,7 @@ final class Planner: ObservableObject {
     
     init(plan: Plan = Plan(allowed: 3)) {
         self.plan = plan
-        self.state = plan.isFull ? .doing : .planning
+        self.state = plan.isFull ? (plan.isComplete ? .finished : .doing) : .planning
     }
     
     func completeGoalWith(externalIdentifier id: String) {

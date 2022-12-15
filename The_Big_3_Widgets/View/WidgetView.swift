@@ -12,11 +12,10 @@ struct WidgetView: View {
     let entry: Entry
 
     var body: some View {
-        if entry.planner.plan.isFull {
-            WidgetPlanView(planner: entry.planner)
-        }
-        else {
-            PlanPromptWidgetView()
+        switch entry.planner.state {
+        case .planning: PlanPromptWidgetView()
+        case .doing: WidgetPlanView(planner: entry.planner)
+        case .finished: WidgetSummationView(viewModel: entry.planner.summationViewModel())
         }
     }
 }

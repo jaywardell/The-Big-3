@@ -15,13 +15,15 @@ struct GraphicSummary: View {
         let todoAt: (Int)->GoalView.ToDo
     }
     let viewModel: ViewModel
+    let allowsColor: Bool
 
     enum Layout { case normal, small, circular }
     let layout: Layout
     
-    init(viewModel: ViewModel, layout: Layout = .normal) {
+    init(viewModel: ViewModel, layout: Layout = .normal, allowsColor: Bool = true) {
         self.viewModel = viewModel
         self.layout = layout
+        self.allowsColor = allowsColor
     }
     
     private func nameForImage(for todo: GoalView.ToDo) -> String {
@@ -33,15 +35,12 @@ struct GraphicSummary: View {
     }
 
     private func color(for todo: GoalView.ToDo) -> Color {
-        if layout == .small {
-            return .label
-        }
-        else {
-            switch todo.state {
-            case .finished: return .accentColor
-            case .ready: return .label
-            case .notToday: return .secondary
-            }
+        guard allowsColor else  { return .label }
+
+        switch todo.state {
+        case .finished: return .accentColor
+        case .ready: return .label
+        case .notToday: return .secondary
         }
     }
 
@@ -76,6 +75,7 @@ struct GraphicSummary: View {
                     let todo = viewModel.todoAt(index)
                     Image(systemName: nameForImage(for: todo))
                         .resizable()
+                        .foregroundColor(color(for: todo))
                         .frame(width: circleSize, height: circleSize)
                         .position(x: geometry.size.width/2, y: geometry.size.height/2)
                         .offset(offset(for: index, in: geometry.size))
