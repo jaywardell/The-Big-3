@@ -76,6 +76,9 @@ extension WatchSynchronizer: WCSessionDelegate {
         else if receiveCompletedGoal(from: message) {
             replyHandler(ModelConstants.WatchConnectivitySuccessfulReply)
         }
+        else {
+            replyHandler(ModelConstants.WatchConnectivityUnsuccessfulReply)
+        }
     }
     
     private func receiveUpdatedPlan(from dictionary: [String: Any]) -> Bool {

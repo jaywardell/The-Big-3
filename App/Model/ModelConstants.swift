@@ -14,7 +14,8 @@ enum ModelConstants {
     static var WatchConnectivityCompletedGoalKey: String { #function }
     
     static var WatchConnectivitySuccessfulReply: Dictionary<String, Bool> { [#function: true] }
-    
+    static var WatchConnectivityUnsuccessfulReply: Dictionary<String, Bool> { [#function: false] }
+
     // NOTE: the file referenced here isn't included in this repo.
     // You will need to set up a new app group associated with your provisioning profile
     // in App Store Connect.
