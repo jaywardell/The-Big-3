@@ -213,7 +213,7 @@ extension PlannerView: View {
     }
         
     private func startButtonPressed() {
-        withAnimation {
+        withAnimation(.Big3HeaderSpring) {
             viewModel.start()
         }
     }

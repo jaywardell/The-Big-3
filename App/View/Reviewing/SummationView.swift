@@ -85,7 +85,7 @@ struct SummationView: View {
     }
     
     private func doneButtonPressed() {
-        withAnimation {
+        withAnimation(.Big3HeaderSpring) {
             viewModel.done()
         }
     }

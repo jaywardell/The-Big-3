@@ -104,7 +104,7 @@ extension AccomplishmentsView: View {
     }
     
     private func doneButtonPressed() {
-        withAnimation {
+        withAnimation(.Big3HeaderSpring) {
             viewModel.done()
         }
     }
