@@ -463,7 +463,7 @@
 				7CB8724C27B33DEC009D5539 /* View */,
 				7CB8722727B33C11009D5539 /* ViewModel */,
 				7CB8722827B33C2E009D5539 /* Model */,
-				7CE7FF512943747E00B177E2 /* UIKit Additions */,
+				7CE7FF512943747E00B177E2 /* Foundation Additions */,
 				7C66162D27BD4F13000AC97A /* SwiftUI Additions */,
 				7CB871E127B33A89009D5539 /* Assets.xcassets */,
 			);
@@ -587,12 +587,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		7CE7FF512943747E00B177E2 /* UIKit Additions */ = {
+		7CE7FF512943747E00B177E2 /* Foundation Additions */ = {
 			isa = PBXGroup;
 			children = (
 				7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */,
 			);
-			path = "UIKit Additions";
+			path = "Foundation Additions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
