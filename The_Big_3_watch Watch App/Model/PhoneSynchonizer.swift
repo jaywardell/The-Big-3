@@ -42,28 +42,26 @@ final class PhoneSynchonizer: NSObject {
     }
 
     func send(plan: Plan) {
-        guard let payload = try? Dictionary(ModelConstants.WatchConnectivityPlanKey, plan) else { return }
+        send(plan, for: ModelConstants.WatchConnectivityPlanKey)
+    }
+
+    func send(completedGoal goal: Plan.Goal) {
+        assert(goal.state == .completed)
+
+        send(goal, for: ModelConstants.WatchConnectivityCompletedGoalKey)
+    }
+    
+    private func send<Value: Encodable>(_ value: Value, for key: String) {
+        guard let payload = try? Dictionary(key, value) else { return }
         if startConnection() {
             session.sendMessage(payload, replyHandler: { reply in
-                print(reply)
+                assert(reply as? [String:Bool] == ModelConstants.WatchConnectivitySuccessfulReply)
             }, errorHandler: { error in
                 print(error)
             })
         }
     }
 
-    func send(completedGoal goal: Plan.Goal) {
-        assert(goal.state == .completed)
-        
-        guard let payload = try? Dictionary(ModelConstants.WatchConnectivityCompletedGoalKey, goal) else { return }
-        if startConnection() {
-            session.sendMessage(payload, replyHandler: { reply in
-                print(reply)
-            }, errorHandler: { error in
-                print(error)
-            })
-        }
-    }
 
     private func receiveUpdatedPlanner(from dictionary: [String : Any]) -> Bool {
         guard let planner: Planner = dictionary.decode(ModelConstants.WatchConnectivityPlanKey) else { return false }

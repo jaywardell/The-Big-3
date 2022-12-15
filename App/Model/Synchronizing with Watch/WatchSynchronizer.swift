@@ -69,13 +69,12 @@ extension WatchSynchronizer: WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        let positiveReply = ["got it":true]
         
         if receiveUpdatedPlan(from: message) {
-            replyHandler(positiveReply)
+            replyHandler(ModelConstants.WatchConnectivitySuccessfulReply)
         }
         else if receiveCompletedGoal(from: message) {
-            replyHandler(positiveReply)
+            replyHandler(ModelConstants.WatchConnectivitySuccessfulReply)
         }
     }
     
