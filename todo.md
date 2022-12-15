@@ -4,7 +4,7 @@
 - [ ] consider a mac port as a menu bar addition
 - [ ] test against mac (probably not)
 - [ ] test against iPad
-- [ ] try a circular widget
+- [x] try a circular widget
 - [x] when a goal is completed in the watch app, it's added to the history on the phone app
 - [x] watch app updates info on host app
 - [x] watch app reports info from host app
