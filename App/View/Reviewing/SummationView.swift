@@ -74,7 +74,7 @@ struct SummationView: View {
 
             HStack {
                 Spacer()
-                Button(action: viewModel.done) {
+                Button(action: doneButtonPressed) {
                     BrandedHeader(layout: .inline)
                 }
                 .font(.largeTitle)
@@ -82,6 +82,12 @@ struct SummationView: View {
             }
         }
         .padding()
+    }
+    
+    private func doneButtonPressed() {
+        withAnimation {
+            viewModel.done()
+        }
     }
 }
 
