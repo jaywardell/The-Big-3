@@ -9,13 +9,24 @@ import SwiftUI
 
 struct BrandedHeader: View {
     
-    enum Layout { case square, minisquare, planningTitle, mainTitle, watchTitle, inline, inlinemain }
+    enum Layout { case square, minisquare, planningTitle, mainTitle, watchTitle, inline, inlinemain, miniTitleOnly }
     let layout: Layout
     
     let planString = "Plan the Next"
     let theString = "the"
     let bigString = "Big"
     let threeString = "3"
+
+    var miniTitleOnly: some View {
+        VStack {
+            Text(bigString)
+                .font(.system(.title2, design: .default, weight: .ultraLight)) +
+            Text(threeString)
+                .font(.system(.title, design: .monospaced, weight: .black))
+                .bold()
+                .foregroundColor(.accentColor)
+        }
+    }
 
     var inline: some View {
         VStack {
@@ -123,6 +134,7 @@ struct BrandedHeader: View {
         case .minisquare: minisquare
         case .inline: inline
         case .inlinemain: inlinemain
+        case .miniTitleOnly: miniTitleOnly
         }
     }
 }

@@ -16,7 +16,7 @@ struct GraphicSummary: View {
     }
     let viewModel: ViewModel
 
-    enum Layout { case normal, small }
+    enum Layout { case normal, small, circular }
     let layout: Layout
     
     init(viewModel: ViewModel, layout: Layout = .normal) {
@@ -45,7 +45,7 @@ struct GraphicSummary: View {
         }
     }
 
-    var body: some View {
+    var linear: some View {
         HStack {
             ForEach(0..<viewModel.total, id: \.self) { index in
                 let todo = viewModel.todoAt(index)
@@ -54,10 +54,60 @@ struct GraphicSummary: View {
             }
         }
     }
+
+    private func offset(for index: Int, in size: CGSize) -> CGSize {
+        let radius = min(size.width, size.height)/2
+        let shift = radius * 34/21 / .pi
+        let angle: CGFloat = 2 * .pi * Double(index)/Double(viewModel.total) - .pi/2
+        return CGSize(width: cos(angle) * shift,
+                      height: sin(angle) * shift)
+    }
+
+    private func circleSize(in size: CGSize) -> CGFloat {
+        let diameter = min(size.width, size.height)
+        return diameter/CGFloat(viewModel.total)
+    }
+    
+    var circular: some View {
+        GeometryReader { geometry in
+            let circleSize = circleSize(in: geometry.size)
+            ZStack {
+                ForEach(0..<viewModel.total, id: \.self) { index in
+                    let todo = viewModel.todoAt(index)
+                    Image(systemName: nameForImage(for: todo))
+                        .resizable()
+                        .frame(width: circleSize, height: circleSize)
+                        .position(x: geometry.size.width/2, y: geometry.size.height/2)
+                        .offset(offset(for: index, in: geometry.size))
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+    }
+
+    var body: some View {
+        switch layout {
+        case .circular: circular
+        default: linear
+        }
+    }
+
 }
 
 struct GraphicSummary_Previews: PreviewProvider {
     static var previews: some View {
+        GraphicSummary(viewModel: .init(total: 3, todoAt: { _ in
+                .init(title: "", state: .finished)
+        }), layout: .circular)
+        .previewLayout(.fixed(width: 100, height: 140))
+        .previewDisplayName("all finished circular")
+
+        GraphicSummary(viewModel: .init(total: 3, todoAt: { _ in
+                .init(title: "", state: .notToday)
+        }), layout: .circular)
+        .previewLayout(.fixed(width: 100, height: 100))
+        .previewDisplayName("none finished circular")
+
         GraphicSummary(viewModel: .init(total: 3, todoAt: { _ in
                 .init(title: "", state: .finished)
         }))

@@ -38,6 +38,9 @@ struct WidgetPlanView: View {
             let completed: Int = planner.plan.currentGoals.reduce(0) { $0 + ($1?.state == .completed ? 1 : 0) }
             Text("\(completed) out of \(planner.plan.allowed)")
         }
+        else if widgetFamily == .accessoryCircular {
+            GraphicSummary(viewModel: planner.graphicSummaryViewModel(), layout: .circular)
+        }
         else {
             VStack(spacing: 0) {
                 ForEach(0..<ModelConstants.allowedGoalsPerPlan, id: \.self) { index in
