@@ -70,10 +70,10 @@ final class PhoneSynchonizer: NSObject {
     }
 
     private func receiveUpdatedPlanner(from dictionary: [String : Any]) -> Bool {
-        guard let encoded = dictionary[ModelConstants.WatchConnectivityPlanKey] as? Data,
-              let planner = try? JSONDecoder().decode(Planner.self, from: encoded) else { return false }
-                
+        guard let planner: Planner = dictionary.decode(ModelConstants.WatchConnectivityPlanKey) else { return false }
+        
         receivedPlan.send(planner)
+        
         return true
     }
     
