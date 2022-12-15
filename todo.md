@@ -1,6 +1,6 @@
 #  todo
 
-- [ ] try watch widgets (may be synch issues...)
+- [x] done row on watch should have a rounded rectangle background instead of the full rectangle
 - [ ] consider a mac port as a menu bar addition
 - [ ] test against mac (probably not)
 - [x] test against iPad
@@ -13,3 +13,6 @@
 - [x] big 3 background
 - [x] importing from reminders
 
+## had problems:
+- [ ] try watch widgets (may be synch issues...)
+see notes in branch `adding_watch_widgets`
