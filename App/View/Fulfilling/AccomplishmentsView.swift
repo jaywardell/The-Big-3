@@ -54,6 +54,8 @@ struct AccomplishmentsView {
         Color.accentColor.opacity(29/34),
     ]
 
+    @EnvironmentObject private var animation: AnimationNamespace
+
 }
 
 // MARK: - AccomplishmentsView: View
@@ -71,6 +73,8 @@ extension AccomplishmentsView: View {
         VStack(spacing: 0) {
             Header(alignment: .center) {
                     BrandedHeader(layout: .mainTitle)
+                    .matchedGeometryEffect(id: AnimationNamespace.HeaderID, in: animation.id)
+
             }
             Divider()
             
@@ -86,7 +90,7 @@ extension AccomplishmentsView: View {
                     Image(systemName: "list.bullet")
                 }
                 Spacer()
-                Button(action: viewModel.done) {
+                Button(action: doneButtonPressed) {
                     Text("Done")
                 }
                 .font(.system(.title, design: .default, weight: .light))
@@ -96,6 +100,12 @@ extension AccomplishmentsView: View {
             .padding()
             .padding(.bottom)
 #endif
+        }
+    }
+    
+    private func doneButtonPressed() {
+        withAnimation {
+            viewModel.done()
         }
     }
 }

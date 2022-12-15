@@ -19,6 +19,8 @@ struct SummationView: View {
     }
     let viewModel: ViewModel
     
+    @EnvironmentObject private var animation: AnimationNamespace
+
     private var titleText: String {
         switch viewModel.completed {
         case viewModel.total:
@@ -47,13 +49,17 @@ struct SummationView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            Header(alignment: .trailing) { BrandedHeader(layout: .mainTitle) }
+            Header(alignment: .trailing) {
+                BrandedHeader(layout: .mainTitle)
+                    .matchedGeometryEffect(id: AnimationNamespace.HeaderID, in: animation.id)
+            }
                 .padding(.bottom)
             
             Spacer()
             
             Header(title: titleText, alignment: .center)
                 .padding(.bottom)
+            
                         
             GraphicSummary(viewModel: .init(total: viewModel.total, todoAt: viewModel.todoAt))
                 .font(.largeTitle)

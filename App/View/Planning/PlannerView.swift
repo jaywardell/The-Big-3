@@ -59,6 +59,8 @@ struct PlannerView {
     
     @Environment(\.showHistory) var showHistory
     
+    @EnvironmentObject private var animation: AnimationNamespace
+    
     @FocusState private var isFocused: Bool
 
     let colors = [
@@ -172,7 +174,10 @@ extension PlannerView: View {
         VStack(spacing: 0) {
             
 //            Header(title: "Plan the next\nBig 3")
-            Header(alignment: .leading) { BrandedHeader(layout: .planningTitle) }
+            Header(alignment: .leading) {
+                BrandedHeader(layout: .planningTitle)
+                    .matchedGeometryEffect(id: AnimationNamespace.HeaderID, in: animation.id)
+            }
             Divider()
             
             CountedRows(rows: viewModel.allowed) { index in
@@ -188,7 +193,7 @@ extension PlannerView: View {
                     Image(systemName: "list.bullet")
                 }
                 Spacer()
-                Button(action: viewModel.start) {
+                Button(action: startButtonPressed) {
                     Text("Start")
                         .font(.system(.title, design: .default, weight: .light))
                 }
@@ -207,6 +212,12 @@ extension PlannerView: View {
         }
     }
         
+    private func startButtonPressed() {
+        withAnimation {
+            viewModel.start()
+        }
+    }
+    
     private func showRemindersPicker() {
         showingReminderPicker = true
     }
