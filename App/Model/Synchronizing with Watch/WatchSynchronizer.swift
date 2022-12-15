@@ -82,21 +82,28 @@ extension WatchSynchronizer: WCSessionDelegate {
     }
     
     private func receiveUpdatedPlan(from dictionary: [String: Any]) -> Bool {
-        guard let data = dictionary[ModelConstants.WatchConnectivityPlanKey] as? Data,
-              let plan = try? JSONDecoder().decode(Plan.self, from: data)
-        else { return false }
+        guard let plan: Plan = dictionary.decode(ModelConstants.WatchConnectivityPlanKey) else { return false }
                 
         watchUpdatedPlan.send(plan)
         return true
     }
     
     private func receiveCompletedGoal(from dictionary: [String: Any]) -> Bool {
-        guard let data = dictionary[ModelConstants.WatchConnectivityCompletedGoalKey] as? Data,
-              let goal = try? JSONDecoder().decode(Plan.Goal.self, from: data),
+        guard let goal: Plan.Goal = dictionary.decode(ModelConstants.WatchConnectivityCompletedGoalKey),
               goal.state == .completed
         else { return false }
-                
+        
         watchCompletedGoal.send(goal)
         return true
+    }
+}
+
+extension Dictionary where Value == Any, Key == String {
+    
+    func decode<T>(_ key: String) -> T? where T: Codable {
+        guard let data = self[key] as? Data,
+              let goal = try? JSONDecoder().decode(T.self, from: data)
+        else { return nil }
+        return goal
     }
 }
