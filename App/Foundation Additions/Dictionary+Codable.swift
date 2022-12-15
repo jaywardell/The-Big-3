@@ -7,6 +7,20 @@
 
 import Foundation
 
+extension Dictionary where Key == String, Value == Encodable {
+    
+    init(_ key: String, _ value: Value) throws {
+        self.init()
+        try encode(value, for: key)
+    }
+    
+    mutating func encode(_ value: Value, for key: String) throws {
+        let encoder = JSONEncoder()
+        let encoded = try encoder.encode(value)
+        updateValue(encoded, forKey: key)
+    }
+}
+
 extension Dictionary where Value == Any, Key == String {
     
     func decode<T>(_ key: String) -> T? where T: Codable {

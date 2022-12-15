@@ -74,20 +74,6 @@ final class PhoneSynchonizer: NSObject {
     }
 }
 
-extension Dictionary where Key == String, Value == Encodable {
-    
-    init(_ key: String, _ value: Value) throws {
-        self.init()
-        try encode(value, for: key)
-    }
-    
-    mutating func encode(_ value: Value, for key: String) throws {
-        let encoder = JSONEncoder()
-        let encoded = try encoder.encode(value)
-        updateValue(encoded, forKey: key)
-    }
-}
-
 
 extension PhoneSynchonizer: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {

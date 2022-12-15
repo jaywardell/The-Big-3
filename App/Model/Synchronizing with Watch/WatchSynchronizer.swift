@@ -30,9 +30,7 @@ final class WatchSynchronizer: NSObject {
     var canTalkToWatch: Bool { session.isPaired && session.isWatchAppInstalled }
 
     func send(_ planner: Planner) {
-        let encoder = JSONEncoder()
-        guard let encoded = try? encoder.encode(planner) else { return }
-        let payload = [ModelConstants.WatchConnectivityPlanKey: encoded]
+        guard let payload = try? Dictionary(ModelConstants.WatchConnectivityPlanKey, planner) else { return }
         if startConnection() {
             try? session.updateApplicationContext(payload)
         }
