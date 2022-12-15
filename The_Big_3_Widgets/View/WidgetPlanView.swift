@@ -29,8 +29,9 @@ struct WidgetPlanView: View {
             VStack {
                 BrandedHeader(layout: .inlinemain)
                     .padding(.bottom, 2)
-                GraphicSummary(viewModel: planner.graphicSummaryViewModel())
+                GraphicSummary(viewModel: planner.graphicSummaryViewModel(), layout: .small)
                     .font(.headline)
+                    .bold()
             }
         }
         else if widgetFamily == .accessoryInline {

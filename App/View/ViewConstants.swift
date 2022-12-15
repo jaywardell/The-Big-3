@@ -14,4 +14,6 @@ enum ViewConstants {
     static var finishedImageName: String { "checkmark.circle" }
     static var deferredImageName: String { "circle.slash" }
 
+    static var smallFinishedImageName: String { "checkmark" }
+
 }
