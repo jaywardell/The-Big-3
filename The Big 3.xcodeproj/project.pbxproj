@@ -114,6 +114,7 @@
 		7CE7FBF4294A4D7100F2496B /* group_id.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7CE7FBF2294A4CDD00F2496B /* group_id.txt */; };
 		7CE7FF552943D9AC00B177E2 /* LogEntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE7FF542943D9AC00B177E2 /* LogEntryRow.swift */; };
 		7CE7FF572943E4F500B177E2 /* CompletionLog+LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */; };
+		7CEBDF44294CFA68000038C8 /* screenrecording_poster_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CEBDF43294CFA68000038C8 /* screenrecording_poster_frame.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,6 +250,7 @@
 		7CE7FF542943D9AC00B177E2 /* LogEntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryRow.swift; sourceTree = "<group>"; };
 		7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletionLog+LogView.swift"; sourceTree = "<group>"; };
 		7CEBDF22294CCF6F000038C8 /* screen recording script.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "screen recording script.txt"; sourceTree = "<group>"; };
+		7CEBDF43294CFA68000038C8 /* screenrecording_poster_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenrecording_poster_frame.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,8 +621,17 @@
 			isa = PBXGroup;
 			children = (
 				7CEBDF22294CCF6F000038C8 /* screen recording script.txt */,
+				7CEBDF41294CF8A2000038C8 /* screenshots */,
 			);
 			path = promotional;
+			sourceTree = "<group>";
+		};
+		7CEBDF41294CF8A2000038C8 /* screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				7CEBDF43294CFA68000038C8 /* screenrecording_poster_frame.png */,
+			);
+			path = screenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -770,6 +781,7 @@
 			files = (
 				7CB8720B27B33A89009D5539 /* Assets.xcassets in Resources */,
 				7CE7FBF3294A4CDD00F2496B /* group_id.txt in Resources */,
+				7CEBDF44294CFA68000038C8 /* screenrecording_poster_frame.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
