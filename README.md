@@ -11,8 +11,9 @@ The Big 3 includes a watch app so that you can track and complete your Big 3 on 
 
 You can import reminders from your Reminders app. When you mark them as completed in The Big 3, they’re also marked as completed in the Reminders app.
 
-hello
+<a href="https://www.jaywardell.me/wp-content/uploads/2022/12/screenrecording.mov"><img src="https://github.com/jaywardell/The-Big-3/raw/main/promotional/screenshots/screenrecording_poster_frame.png" alt="link to screen recording"></a>
 
+https://github.com/jaywardell/The-Big-3/raw/main/promotional/screenshots/screenrecording_poster_frame.png
 https://www.jaywardell.me/wp-content/uploads/2022/12/screenrecording.mov
 
 ## Architecture
