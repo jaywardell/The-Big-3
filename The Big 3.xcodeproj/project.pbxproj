@@ -250,6 +250,7 @@
 		7CE7FF542943D9AC00B177E2 /* LogEntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntryRow.swift; sourceTree = "<group>"; };
 		7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletionLog+LogView.swift"; sourceTree = "<group>"; };
 		7CEBDF22294CCF6F000038C8 /* screen recording script.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "screen recording script.txt"; sourceTree = "<group>"; };
+		7CEBDF40294CF103000038C8 /* screen recording.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "screen recording.mov"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -620,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				7CEBDF22294CCF6F000038C8 /* screen recording script.txt */,
+				7CEBDF40294CF103000038C8 /* screen recording.mov */,
 			);
 			path = promotional;
 			sourceTree = "<group>";

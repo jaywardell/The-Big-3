@@ -30,7 +30,7 @@ struct TestingFlags {
     }
     
     var restrictCalendarsFromReminders: Bool {
-#if NEGATETORESTRICT // negate this to get the behavior
+#if !NEGATETORESTRICT // negate this to get the behavior
 #warning("Restrict Calendars from Reminders is turned on. DO NOT COMMIT!!!!")
         return true
 #else
