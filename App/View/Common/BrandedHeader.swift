@@ -67,6 +67,7 @@ struct BrandedHeader: View {
                 .bold()
                 .foregroundColor(.accentColor)
         }
+        .minimumScaleFactor(0.5)
     }
 
     var square: some View {
