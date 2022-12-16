@@ -62,10 +62,6 @@ struct Header<Content: View>: View {
                 if [.leading, .center].contains(alignment) {
                     Spacer()
                 }
-
-//#if os(iOS)
-//                Spacer()
-//#endif
             }
             .padding(.bottom)
             
