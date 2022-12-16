@@ -74,6 +74,11 @@ final class EventKitReminderLister: ObservableObject {
                 calendars.append(calendar)
             }
             
+            if TestingFlags.default.restrictCalendarsFromReminders {
+                calendars = calendars.filter { $0.name.contains("Chores") }
+            }
+
+            
             var remindersForCalendar = calendarForReminders[calendar, default: []]
             remindersForCalendar.append(reminder)
             calendarForReminders[calendar] = remindersForCalendar
