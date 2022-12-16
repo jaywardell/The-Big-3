@@ -57,6 +57,8 @@ struct PlannerView {
     
     @State private var tappedDeleteButtonIndex: Int?
     
+    @State private var showingKeyboard = false
+    
     @Environment(\.showHistory) var showHistory
     
     @EnvironmentObject private var animation: AnimationNamespace
@@ -173,11 +175,11 @@ extension PlannerView: View {
         
         VStack(spacing: 0) {
             
-//            Header(title: "Plan the next\nBig 3")
             Header(alignment: .leading) {
                 BrandedHeader(layout: .planningTitle)
                     .matchedGeometryEffect(id: AnimationNamespace.HeaderID, in: animation.id)
             }
+            .opacity(showingKeyboard ? 0 : 1)
             Divider()
             
             CountedRows(rows: viewModel.allowed) { index in
@@ -188,22 +190,28 @@ extension PlannerView: View {
                     )
             }
             
-            HStack {
-                Button(action: showHistory) {
-                    Image(systemName: "list.bullet")
+            if !showingKeyboard {
+                HStack {
+                    Button(action: showHistory) {
+                        Image(systemName: "list.bullet")
+                    }
+                    Spacer()
+                    Button(action: startButtonPressed) {
+                        Text("Start")
+                            .font(.system(.title, design: .default, weight: .light))
+                    }
+                    .font(.largeTitle)
+                    .padding()
+                    .opacity(viewModel.isFull() ? 1 : 0)
                 }
-                Spacer()
-                Button(action: startButtonPressed) {
-                    Text("Start")
-                        .font(.system(.title, design: .default, weight: .light))
-                }
-                .font(.largeTitle)
                 .padding()
-                .opacity(viewModel.isFull() ? 1 : 0)
             }
-            .padding()
-            .ignoresSafeArea(.keyboard)
         }
+#if os(iOS)
+        .onReceive(Publishers.showingKeyboard) {
+            showingKeyboard = $0 }
+#endif
+
         .sheet(isPresented: $showingReminderPicker) {
             ReminderPicker() {
                 guard let index = selectedIndex else { return }
@@ -247,7 +255,7 @@ extension PlannerView: View {
     
 }
 
-// MARK: -
+// MARK: - PlannerView.ViewModel Example Data
 
 #if DEBUG
 
@@ -281,6 +289,8 @@ fileprivate extension PlannerView.ViewModel {
         start: {})
 }
 
+// MARK: - Preview
+
 struct PlannerView_Previews: PreviewProvider {
     static var previews: some View {
         PlannerView(viewModel: .Example)
@@ -288,4 +298,31 @@ struct PlannerView_Previews: PreviewProvider {
     }
 }
 
+#endif
+
+// MARK: - Publishers: Keyboard Watching
+
+#if os(iOS)
+fileprivate extension Publishers {
+    // many thanks to "Yet another Swift Blog" for this approach
+    // https://www.vadimbulavin.com/how-to-move-swiftui-view-when-keyboard-covers-text-field/
+    static var showingKeyboard: AnyPublisher<Bool, Never> {
+
+        let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
+            .map { $0.keyboardHeight > 0 }
+        
+        let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
+            .map { _ in false }
+        
+
+        return MergeMany(willShow, willHide)
+            .eraseToAnyPublisher()
+    }
+}
+
+fileprivate extension Notification {
+    var keyboardHeight: CGFloat {
+        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
+    }
+}
 #endif

@@ -42,10 +42,6 @@ struct Header<Content: View>: View {
     let content: ()->Content
     let alignment: HorizontalAlignment
     
-    
-    @State private var showingKeyboard = false
-    
-    
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .bottom) {
@@ -57,7 +53,6 @@ struct Header<Content: View>: View {
                 content()
                     .padding(.horizontal)
                     .padding(.top)
-                    .opacity(showingKeyboard ? 0 : 1)
                 
                 if [.leading, .center].contains(alignment) {
                     Spacer()
@@ -66,10 +61,6 @@ struct Header<Content: View>: View {
             .padding(.bottom)
             
         }
-#if os(iOS)
-        .onReceive(Publishers.showingKeyboard) {
-            showingKeyboard = $0 }
-#endif
     }
 }
 
@@ -100,28 +91,3 @@ struct Header_Previews: PreviewProvider {
 
     }
 }
-
-#if os(iOS)
-fileprivate extension Publishers {
-    // many thanks to "Yet another Swift Blog" for this approach
-    // https://www.vadimbulavin.com/how-to-move-swiftui-view-when-keyboard-covers-text-field/
-    static var showingKeyboard: AnyPublisher<Bool, Never> {
-
-        let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
-            .map { $0.keyboardHeight > 0 }
-        
-        let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
-            .map { _ in false }
-        
-
-        return MergeMany(willShow, willHide)
-            .eraseToAnyPublisher()
-    }
-}
-
-fileprivate extension Notification {
-    var keyboardHeight: CGFloat {
-        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
-    }
-}
-#endif
