@@ -2,14 +2,23 @@ start on lock screen screen
 
 tap widget
 
+(blank screen shot)
+
 enter
 * email boss about meeting next week
+(entering screenshot)
 * pick up kids
 * mow lawn (r)
+(reminders screenshot)
 
+(all unfinished screenshot)
 complete all except mow lawn
+(not today screenshot)
 
 continue back to plan screen
+(review screenshot)
+(home screen widget screenshot)
+(lock screen widget screenshot)
 
 enter
 * clean out fridge (r)
