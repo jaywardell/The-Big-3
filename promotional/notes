@@ -3,8 +3,8 @@ start on lock screen screen
 tap widget
 
 enter
-* email boss about next week's meeting
-* pick up kids from play date
+* email boss about meeting next week
+* pick up kids
 * mow lawn (r)
 
 complete all except mow lawn
@@ -40,9 +40,4 @@ leave History
 tap Plan
 
 home screen
-
-open Reminders to show Mow lawn is gone
-
-home screen
-
 
