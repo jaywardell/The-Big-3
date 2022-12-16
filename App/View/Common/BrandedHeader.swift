@@ -30,7 +30,7 @@ struct BrandedHeader: View {
 
     var inline: some View {
         VStack {
-            Text(planString)
+            Text(theString)
                 .font(.system(.body, design: .default, weight: .ultraLight)) +
             Text(" ") +
             Text(bigString)
