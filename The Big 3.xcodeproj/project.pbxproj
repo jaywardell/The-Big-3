@@ -114,7 +114,6 @@
 		7CE7FBF4294A4D7100F2496B /* group_id.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7CE7FBF2294A4CDD00F2496B /* group_id.txt */; };
 		7CE7FF552943D9AC00B177E2 /* LogEntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE7FF542943D9AC00B177E2 /* LogEntryRow.swift */; };
 		7CE7FF572943E4F500B177E2 /* CompletionLog+LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */; };
-		7CEBDF23294CCF6F000038C8 /* screen recording script.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7CEBDF22294CCF6F000038C8 /* screen recording script.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -771,7 +770,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CEBDF23294CCF6F000038C8 /* screen recording script.txt in Resources */,
 				7CB8720B27B33A89009D5539 /* Assets.xcassets in Resources */,
 				7CE7FBF3294A4CDD00F2496B /* group_id.txt in Resources */,
 			);
