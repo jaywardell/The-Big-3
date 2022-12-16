@@ -251,6 +251,7 @@
 		7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletionLog+LogView.swift"; sourceTree = "<group>"; };
 		7CEBDF22294CCF6F000038C8 /* screen recording script.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "screen recording script.txt"; sourceTree = "<group>"; };
 		7CEBDF43294CFA68000038C8 /* screenrecording_poster_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenrecording_poster_frame.png; sourceTree = "<group>"; };
+		7CEBDF45294D3929000038C8 /* app store blurb.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "app store blurb.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -621,6 +622,7 @@
 			isa = PBXGroup;
 			children = (
 				7CEBDF22294CCF6F000038C8 /* screen recording script.txt */,
+				7CEBDF45294D3929000038C8 /* app store blurb.txt */,
 				7CEBDF41294CF8A2000038C8 /* screenshots */,
 			);
 			path = promotional;
