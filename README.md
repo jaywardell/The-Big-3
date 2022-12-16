@@ -13,8 +13,7 @@ You can import reminders from your Reminders app. When you mark them as complete
 
 <a href="https://www.jaywardell.me/wp-content/uploads/2022/12/screenrecording.mov"><img src="https://github.com/jaywardell/The-Big-3/raw/main/promotional/screenshots/screenrecording_poster_frame.png" width=414 height=875 alt="link to screen recording"></a>
 
-https://github.com/jaywardell/The-Big-3/raw/main/promotional/screenshots/screenrecording_poster_frame.png
-https://www.jaywardell.me/wp-content/uploads/2022/12/screenrecording.mov
+[See it in action](https://www.jaywardell.me/wp-content/uploads/2022/12/screenrecording.mov)
 
 ## Architecture
 
