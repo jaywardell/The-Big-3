@@ -15,3 +15,5 @@ The Big 3 includes a watch app so that you can track and complete your Big 3 on 
 It also includes a range of widgets for both the home screen and lock screen.
 
 And it lets you import and track reminders from your Reminders app.
+
+The Big 3 does share your data between your devices, but does not collect or share any of your info ever.
