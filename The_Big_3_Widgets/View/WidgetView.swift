@@ -20,6 +20,7 @@ struct WidgetView: View {
     }
 }
 
+#if DEBUG
 struct TheBig3WidgetView_Previews: PreviewProvider {
     static var previews: some View {
         WidgetView(planner: Planner(plan: .example2))
@@ -29,3 +30,4 @@ struct TheBig3WidgetView_Previews: PreviewProvider {
         .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
+#endif

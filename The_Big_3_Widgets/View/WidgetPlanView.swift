@@ -52,6 +52,7 @@ struct WidgetPlanView: View {
     }
 }
 
+#if DEBUG
 struct WidgetPlanView_Previews: PreviewProvider {
     static var previews: some View {
         WidgetPlanView(planner: Planner(plan: .example))
@@ -79,3 +80,4 @@ struct WidgetPlanView_Previews: PreviewProvider {
             .previewDisplayName("some completed")
     }
 }
+#endif

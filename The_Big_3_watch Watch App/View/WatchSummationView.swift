@@ -21,9 +21,11 @@ struct WatchSummationView: View {
     }
 }
 
+#if DEBUG
 struct WatchSummationView_Previews: PreviewProvider {
     static var previews: some View {
         WatchSummationView(planner: Planner(plan: .example2))
             .accentColor(.orange)
     }
 }
+#endif

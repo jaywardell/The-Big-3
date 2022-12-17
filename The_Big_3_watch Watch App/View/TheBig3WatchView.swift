@@ -26,6 +26,7 @@ struct TheBig3WatchView: View {
     }
 }
 
+#if DEBUG
 struct TheBig3WatchView_Previews: PreviewProvider {
     static var previews: some View {
         TheBig3WatchView(planner: Planner(plan: .example2))
@@ -35,3 +36,4 @@ struct TheBig3WatchView_Previews: PreviewProvider {
             .previewDisplayName("Empty Plan")
     }
 }
+#endif

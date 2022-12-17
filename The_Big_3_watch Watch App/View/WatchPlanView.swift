@@ -76,6 +76,7 @@ struct WatchPlanView: View {
     }
 }
 
+#if DEBUG
 struct WatchPlanView_Previews: PreviewProvider {
     static var previews: some View {
         WatchPlanView(viewModel: Planner(plan: .example).watchPlanViewModel())
@@ -83,3 +84,4 @@ struct WatchPlanView_Previews: PreviewProvider {
             .previewLayout(.fixed(width: 200, height: 200))
     }
 }
+#endif
