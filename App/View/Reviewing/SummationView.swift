@@ -73,7 +73,7 @@ struct SummationView: View {
             Spacer()
 
                 Button("Plan the next Big3", action: doneButtonPressed)
-                .font(.largeTitle)
+                .font(.system(.title, design: .default, weight: .light))
                 .padding()
         }
         .padding()
