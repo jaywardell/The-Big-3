@@ -3,7 +3,7 @@
 ## to make UI more acceptable to App Store:
 - [x] add done button to History
 - [ ] check boxes are shown by default
-- [ ] no ghost check in checkboxes
+- [x] no ghost check in checkboxes
 - [ ] no BrandedHeader for button in Review View
 
 - [ ] consider a mac port as a menu bar addition

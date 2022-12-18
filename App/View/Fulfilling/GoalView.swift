@@ -148,12 +148,6 @@ struct GoalView: View {
                 case .ready:
                     Button(action: finishButtonPressed) {
                             ZStack {
-                                if template.isiOSApp {
-                                    Image(systemName: ViewConstants.finishedImageName)
-                                        .resizable()
-                                        .foregroundColor(.label)
-                                        .opacity(checkmarkOpacity)
-                                }
                                 Image(systemName: ViewConstants.unfinishedImageName)
                                     .resizable()
                                     .foregroundColor(backgroundColor)
