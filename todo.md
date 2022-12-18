@@ -4,7 +4,7 @@
 - [x] add done button to History
 - [x] check boxes are shown by default
 - [x] no ghost check in checkboxes
-- [ ] no BrandedHeader for button in Review View
+- [x] no BrandedHeader for button in Review View
 
 - [ ] consider a mac port as a menu bar addition
 - [ ] test against mac (probably not)

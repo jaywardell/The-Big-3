@@ -72,14 +72,9 @@ struct SummationView: View {
 
             Spacer()
 
-            HStack {
-                Spacer()
-                Button(action: doneButtonPressed) {
-                    BrandedHeader(layout: .inline)
-                }
+                Button("Plan the next Big3", action: doneButtonPressed)
                 .font(.largeTitle)
                 .padding()
-            }
         }
         .padding()
     }
