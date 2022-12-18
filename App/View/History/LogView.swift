@@ -31,6 +31,8 @@ struct LogView: View {
     
     @ObservedObject var viewModel: ViewModel
 
+    @Environment(\.dismiss) var dismiss
+    
     private func string(for day: Date) -> String {
         DateFormatter.localizedString(from: day, dateStyle: .full, timeStyle: .none)
     }
@@ -66,6 +68,12 @@ struct LogView: View {
                 }
             }
             .navigationTitle("History")
+            .toolbar() {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") { dismiss() }
+                }
+            }
+
         }
     }
 }
