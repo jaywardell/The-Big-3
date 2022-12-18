@@ -161,6 +161,7 @@ struct GoalView: View {
                         .foregroundColor(.white)
                }
             }
+            .font(.system(size: size.height * checkboxScaleFactor, weight: .ultraLight))
             .frame(width: size.height * checkboxScaleFactor, height: size.height * checkboxScaleFactor)
             
             Spacer()
