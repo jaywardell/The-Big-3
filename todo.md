@@ -1,5 +1,11 @@
 #  todo
 
+## to make UI more acceptable to App Store:
+- [ ] add done button to History
+- [ ] check boxes are shown by default
+- [ ] no ghost check in checkboxes
+- [ ] no BrandedHeader for button in Review View
+
 - [ ] consider a mac port as a menu bar addition
 - [ ] test against mac (probably not)
 - [x] done row on watch should have a rounded rectangle background instead of the full rectangle
