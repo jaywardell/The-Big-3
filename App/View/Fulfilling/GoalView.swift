@@ -35,7 +35,7 @@ struct GoalView: View {
     
     let template: Template
     
-    @State private var showingCheckbox = false
+    @State private var showingCheckbox = true
     @State private var checkboxTranslation: CGFloat = 0
     @State private var showingPostponeButton = false
     @State private var postponeButtonTranslation: CGFloat = 0
