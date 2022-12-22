@@ -239,6 +239,7 @@
 		7CB8C5BD27F091DE00D60FA0 /* todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = todo.md; sourceTree = "<group>"; };
 		7CC63A1C294BBED200241968 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7CCD5A26295401EC004D13D7 /* app_store.svg */ = {isa = PBXFileReference; lastKnownFileType = text; path = app_store.svg; sourceTree = "<group>"; };
+		7CCD5A2729540355004D13D7 /* license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		7CD01E88294A5D8E00C4ADC5 /* BrandedHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandedHeader.swift; sourceTree = "<group>"; };
 		7CD01E8C294A6C9600C4ADC5 /* SummationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummationView.swift; sourceTree = "<group>"; };
 		7CD01E8F294A72F300C4ADC5 /* Planner+SummationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner+SummationView.swift"; sourceTree = "<group>"; };
@@ -467,6 +468,7 @@
 				7CA682C3294648F700BD6D12 /* The Big 3 (iOS).entitlements */,
 				7CB8C5BD27F091DE00D60FA0 /* todo.md */,
 				7CC63A1C294BBED200241968 /* README.md */,
+				7CCD5A2729540355004D13D7 /* license.txt */,
 				7CEBDF21294CCF55000038C8 /* promotional */,
 				7CB871DE27B33A88009D5539 /* App */,
 				7CDE2730290F50EA00186BFD /* The_Big_3Tests_iOS */,

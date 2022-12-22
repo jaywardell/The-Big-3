@@ -7,7 +7,6 @@
 - [x] no BrandedHeader for button in Review View
 
 - [ ] consider a mac port as a menu bar addition
-- [ ] test against mac (probably not)
 - [x] done row on watch should have a rounded rectangle background instead of the full rectangle
 - [x] test against iPad
 - [x] try a circular widget
