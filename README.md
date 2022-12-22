@@ -1,5 +1,10 @@
-![The Big 3](https://github.com/jaywardell/The-Big-3/blob/adding_watch_widgets/App/Assets.xcassets/AppIcon.appiconset/icon.png?raw=true "icon")
+![The Big 3](https://github.com/jaywardell/The-Big-3/blob/main/App/Assets.xcassets/AppIcon.appiconset/icon.png?raw=true "icon")
 # The Big 3
+
+
+<a href="https://apps.apple.com/us/app/the-big-3/id1660141141" ><img src="https://raw.githubusercontent.com/jaywardell/The-Big-3/main/promotional/badges/app_store.svg" /></a>
+
+available on the [App Store](https://apps.apple.com/us/app/the-big-3/id1660141141)
 
 The Big 3 is a task list app for iOS that helps you focus on what’s most important.
 
