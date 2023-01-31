@@ -4,6 +4,7 @@
     - I hadn't noticed it before (doesn't mean it hadn't happened)
     - how did it happen?
     - if it does happen, how can we avoid it?
+- [ ] mac target with iCloud synching 
 
 ## to make UI more acceptable to App Store:
 - [x] add done button to History
