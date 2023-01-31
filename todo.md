@@ -1,5 +1,10 @@
 #  todo
 
+- [ ] duplicate entries in history view? at least on my XR on 1/31/23 for all days.
+    - I hadn't noticed it before (doesn't mean it hadn't happened)
+    - how did it happen?
+    - if it does happen, how can we avoid it?
+
 ## to make UI more acceptable to App Store:
 - [x] add done button to History
 - [x] check boxes are shown by default
