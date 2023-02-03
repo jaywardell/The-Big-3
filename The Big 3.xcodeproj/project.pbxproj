@@ -181,6 +181,7 @@
 		7C0FA5AB2945510D00E8C88E /* ExternalGoalServiceUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalGoalServiceUpdater.swift; sourceTree = "<group>"; };
 		7C0FA5AD2945519000E8C88E /* ExternalGoalServiceUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalGoalServiceUpdaterTests.swift; sourceTree = "<group>"; };
 		7C0FA5AF2945601100E8C88E /* EventKitGoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventKitGoalService.swift; sourceTree = "<group>"; };
+		7C1E55B9298D541A00C64559 /* VERSIONS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = VERSIONS.md; sourceTree = "<group>"; };
 		7C4707BB27B614D70080B419 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		7C4EC7A627BE714400DF0F8D /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		7C4EC7A927BE7C7300DF0F8D /* CountedRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountedRows.swift; sourceTree = "<group>"; };
@@ -468,6 +469,7 @@
 				7CA682C3294648F700BD6D12 /* The Big 3 (iOS).entitlements */,
 				7CB8C5BD27F091DE00D60FA0 /* todo.md */,
 				7CC63A1C294BBED200241968 /* README.md */,
+				7C1E55B9298D541A00C64559 /* VERSIONS.md */,
 				7CCD5A2729540355004D13D7 /* license.txt */,
 				7CEBDF21294CCF55000038C8 /* promotional */,
 				7CB871DE27B33A88009D5539 /* App */,
@@ -1219,7 +1221,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3";
 				PRODUCT_NAME = "The Big 3";
 				SDKROOT = iphoneos;
@@ -1255,7 +1257,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oldjewel.The-Big-3";
 				PRODUCT_NAME = "The Big 3";
 				SDKROOT = iphoneos;
