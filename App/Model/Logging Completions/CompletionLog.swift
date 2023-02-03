@@ -101,7 +101,8 @@ final class CompletionLog {
     
     func loadArchive() async {
         guard await !hasLoadedArchive.isSet else { return }
-        
+        await hasLoadedArchive.set()
+
         do {
             let archived = try await archive.load()
             goalsLogged = archived
@@ -116,7 +117,6 @@ final class CompletionLog {
                 dates.append(date)
                 datesForDay[day] = dates
             }
-            await hasLoadedArchive.set()
 
             logChanged.send(days)
         }
