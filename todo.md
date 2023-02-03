@@ -1,6 +1,7 @@
 #  todo
 
 - [ ] mac target with iCloud synching 
+- [ ] history widget?
 
 
 ## for 1.0.1
