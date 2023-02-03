@@ -1,10 +1,16 @@
 #  todo
 
-- [ ] duplicate entries in history view? at least on my XR on 1/31/23 for all days.
-    - I hadn't noticed it before (doesn't mean it hadn't happened)
-    - how did it happen?
-    - if it does happen, how can we avoid it?
 - [ ] mac target with iCloud synching 
+
+
+## for 1.0.1
+- [x] duplicate entries in history view? at least on my XR on 1/31/23 for all days.
+    It was a problem with CompletionLog.loadArchive(). 
+    Its load flag was being set AFTER the archive had loaded,
+    so if more than one thread tried to call loadArchive() at the same time, 
+    the archive would load twice
+    and the  entries for a given day would be duplicated.
+    I fixed it by moving the setting of the flag to right after the checking of the flag
 
 ## to make UI more acceptable to App Store:
 - [x] add done button to History
