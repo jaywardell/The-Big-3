@@ -1,5 +1,6 @@
 #  todo
 
+- [ ] collpasible categories in Reminders picker
 - [ ] add logo back above text fields when editing a task
 - [ ] mac target with iCloud synching 
 - [ ] history widget?
