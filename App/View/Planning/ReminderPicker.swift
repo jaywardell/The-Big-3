@@ -94,6 +94,7 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
                     Spacer()
                     doneButton
                 }
+                .padding(.horizontal)
                 .padding()
             }
             .navigationTitle("Pick a Reminder")
