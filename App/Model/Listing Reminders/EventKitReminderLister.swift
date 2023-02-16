@@ -17,7 +17,7 @@ struct EventKitReminder: Hashable {
 struct EventKitCalendar: Hashable {
     let id: String
     let name: String
-    let color: CGColor?
+    let cgColor: CGColor?
 }
 
 final class EventKitReminderLister: ObservableObject {
@@ -53,7 +53,7 @@ final class EventKitReminderLister: ObservableObject {
     }
         
     private func retrieved(reminders retrieved: [EKReminder]) {
-        let noCalendar = EventKitCalendar(id: "", name: "", color: nil)
+        let noCalendar = EventKitCalendar(id: "", name: "", cgColor: nil)
         
         var reminders = [EventKitReminder]()
         var calendars = [EventKitCalendar]()
@@ -65,7 +65,7 @@ final class EventKitReminderLister: ObservableObject {
             
             let calendar: EventKitCalendar
             if let c = r.calendar {
-                calendar = EventKitCalendar(id: c.calendarIdentifier, name: c.title, color: c.cgColor)
+                calendar = EventKitCalendar(id: c.calendarIdentifier, name: c.title, cgColor: c.cgColor)
             }
             else {
                 calendar = noCalendar

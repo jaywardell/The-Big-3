@@ -213,7 +213,7 @@ extension PlannerView: View {
 #endif
 
         .sheet(isPresented: $showingReminderPicker) {
-            ReminderPicker() {
+            ReminderPicker(viewModel: EventKitReminderLister()) {
                 guard let index = selectedIndex else { return }
                 viewModel.importReminder($0, index)
             }

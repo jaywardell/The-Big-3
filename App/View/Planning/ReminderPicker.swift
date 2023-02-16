@@ -8,34 +8,41 @@
 import SwiftUI
 
 protocol ReminderPickerCalendar {
+    var id: String { get }
     var name: String { get }
     var color: Color { get }
 }
 
 protocol ReminderPickerReminder {
+    var id: String { get }
     var title: String { get }
 }
 
 protocol ReminderPickerViewModel: ObservableObject {
+    associatedtype Calendar: ReminderPickerCalendar
+    associatedtype Reminder: ReminderPickerReminder
+    
     var givenAccess: Bool { get }
-    var calendars: [ReminderPickerCalendar] { get }
+    var calendars: [Calendar] { get }
 
-    func reminders(for calendar: ReminderPickerCalendar) -> [ReminderPickerReminder]
-    func reminderWith(id: String) -> ReminderPickerReminder?
+    func reminders(for calendar: Calendar) -> [Reminder]
+    func reminderWith(id: String) -> Reminder?
 }
 
 // MARK: -
 
-struct ReminderPicker: View {
+struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
         
-    let userChose: (EventKitReminder)->()
+    @ObservedObject var viewModel: ViewModel
 
-    @StateObject private var viewModel = EventKitReminderLister()
+    let userChose: (ViewModel.Reminder)->()
 
+//    @StateObject private var viewModel = EventKitReminderLister()
+    
     @State private var selectedReminderID: String = ""
     @Environment(\.dismiss) var dismiss
     
-    private func row(for reminder: EventKitReminder) -> some View {
+    private func row(for reminder: ViewModel.Reminder) -> some View {
         HStack {
             Image(systemName: "checkmark")
                 .opacity(reminder.id == selectedReminderID ? 1 : 0)
@@ -105,7 +112,9 @@ or you can open the Reminders app and add some goals there, then come back here 
                                         .foregroundColor(.label)
                                 }
                             }
-                            .foregroundColor(calendar.color.map(Color.init(cgColor:)) ?? .label)
+                            .foregroundColor(calendar.color)
+
+//                            .foregroundColor(calendar.color.map(Color.init(cgColor:)) ?? .label)
                         }
                     }
                     .listStyle(.plain)
@@ -139,14 +148,40 @@ or you can open the Reminders app and add some goals there, then come back here 
         .disabled(selectedReminderID.isEmpty)
     }
 
-    private func choose(_ reminder: EventKitReminder) {
+    private func choose(_ reminder: ViewModel.Reminder) {
         dismiss()
         userChose(reminder)
     }
 }
 
+// MARK: -
+
+#if DEBUG
+
+fileprivate struct DummyReminder: ReminderPickerReminder {
+    let title: String
+    var id: String { UUID().uuidString }
+}
+
+fileprivate struct DummyCalendar: ReminderPickerCalendar {
+    let name: String
+    let color: Color
+    var id: String { UUID().uuidString }
+}
+
+fileprivate final class NoAccessReminderPickerViewModel: ReminderPickerViewModel {
+    
+    var givenAccess: Bool { false }
+    var calendars: [DummyCalendar] { [] }
+    func reminders(for calendar: DummyCalendar) -> [DummyReminder] { [] }
+    func reminderWith(id: String) -> DummyReminder? { nil }
+}
+
+
 struct ReminderPicker_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderPicker() { _ in }
+        ReminderPicker(viewModel: NoAccessReminderPickerViewModel()) { _ in }
     }
 }
+
+#endif

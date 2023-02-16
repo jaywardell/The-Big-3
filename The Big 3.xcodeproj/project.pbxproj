@@ -34,6 +34,7 @@
 		7C66163227BDC340000AC97A /* PlanArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163127BDC340000AC97A /* PlanArchiver.swift */; };
 		7C66163727BDC8CD000AC97A /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */; };
 		7C89F52527B4CDCD0033B8ED /* AccomplishmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */; };
+		7C9930F4299E68B000544696 /* EventKitReminderLister+ReminderPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9930F3299E68B000544696 /* EventKitReminderLister+ReminderPickerViewModel.swift */; };
 		7CA22B702944A9AD007B404D /* JSONCompletionLogArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */; };
 		7CA22B722944AA27007B404D /* JSONCompletionLogArchiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA22B712944AA27007B404D /* JSONCompletionLogArchiveTests.swift */; };
 		7CA259B0294B3F14008B26B8 /* Dictionary+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA259AF294B3F14008B26B8 /* Dictionary+Codable.swift */; };
@@ -190,6 +191,7 @@
 		7C66163427BDC350000AC97A /* PlanArchiverTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanArchiverTest.swift; sourceTree = "<group>"; };
 		7C66163627BDC8CD000AC97A /* UserDefaults+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Codable.swift"; sourceTree = "<group>"; };
 		7C89F52427B4CDCD0033B8ED /* AccomplishmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentsView.swift; sourceTree = "<group>"; };
+		7C9930F3299E68B000544696 /* EventKitReminderLister+ReminderPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventKitReminderLister+ReminderPickerViewModel.swift"; sourceTree = "<group>"; };
 		7CA22B6F2944A9AD007B404D /* JSONCompletionLogArchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCompletionLogArchive.swift; sourceTree = "<group>"; };
 		7CA22B712944AA27007B404D /* JSONCompletionLogArchiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCompletionLogArchiveTests.swift; sourceTree = "<group>"; };
 		7CA259AF294B3F14008B26B8 /* Dictionary+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Codable.swift"; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				7C034B80294A12360069B46D /* Planner+WatchPlanView.swift */,
 				7CA682C0294645D600BD6D12 /* Planner+GoalView.swift */,
 				7CE7FF562943E4F500B177E2 /* CompletionLog+LogView.swift */,
+				7C9930F3299E68B000544696 /* EventKitReminderLister+ReminderPickerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				7C034B742948E7BC0069B46D /* EventKitReminderWatcher.swift in Sources */,
 				7C4EC7AA27BE7C7300DF0F8D /* CountedRows.swift in Sources */,
 				7CD547B627E6DC760009F9DD /* LogView.swift in Sources */,
+				7C9930F4299E68B000544696 /* EventKitReminderLister+ReminderPickerViewModel.swift in Sources */,
 				7CB8724E27B33DFD009D5539 /* PlannerView.swift in Sources */,
 				7C034B712948DC3C0069B46D /* EventKitRemindersTracker.swift in Sources */,
 				7C0FA5A22944F44300E8C88E /* TestingFlags.swift in Sources */,
