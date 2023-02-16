@@ -62,40 +62,14 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
                 if !viewModel.givenAccess {
                     VStack {
                         ScrollView {
-                            Text(
-"""
-The Big 3 can use your existing reminders from your Reminders app as goals.
-
-You can use reminders in The Big 3 and when you mark them as completed, they'll show up as completed in your Reminders app as well.
-
-This is a great way to use The Big 3 to focus on just the things you want to do right now, while you plan your tasks out in Reminders.
-
-If you want to do this, you'll need to turn on support for Reminders in the Settings app.
-
-• Open Settings
-
-• Navigate to the settings pane for 'The Big 3'
-
-• Turn on the toggle for Reminders.
-
-• Come back here and choose a reminder that you want to track in 'The Big 3'
-"""
-                            )
+                            Text(accessDeniedPrompt)
                             .padding()
                             Spacer()
                         }}
                 }
                 else if viewModel.calendars.isEmpty {
                     VStack {
-                        Text(
-"""
-It looks like there are no reminders in your Reminders app.
-
-You can still add goals directly in 'The Big 3'
-
-or you can open the Reminders app and add some goals there, then come back here and select them to be tracked in 'The Big 3'
-"""
-                        )
+                        Text(emptyRemindersPrompt)
                         Spacer()
                     }
                         .padding()
@@ -149,6 +123,42 @@ or you can open the Reminders app and add some goals there, then come back here 
         userChose(reminder)
     }
 }
+
+// MARK: - ReminderPicker: Constants
+
+extension ReminderPicker {
+    
+    var accessDeniedPrompt: String {
+"""
+The Big 3 can use your existing reminders from your Reminders app as goals.
+
+You can use reminders in The Big 3 and when you mark them as completed, they'll show up as completed in your Reminders app as well.
+
+This is a great way to use The Big 3 to focus on just the things you want to do right now, while you plan your tasks out in Reminders.
+
+If you want to do this, you'll need to turn on support for Reminders in the Settings app.
+
+• Open Settings
+
+• Navigate to the settings pane for 'The Big 3'
+
+• Turn on the toggle for Reminders.
+
+• Come back here and choose a reminder that you want to track in 'The Big 3'
+"""
+    }
+    
+    var emptyRemindersPrompt: String {
+"""
+It looks like there are no reminders in your Reminders app.
+
+You can still add goals directly in 'The Big 3'
+
+or you can open the Reminders app and add some goals there, then come back here and select them to be tracked in 'The Big 3'
+"""
+    }
+}
+
 
 // MARK: -
 
