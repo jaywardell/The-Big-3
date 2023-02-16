@@ -179,7 +179,6 @@ extension PlannerView: View {
                 BrandedHeader(layout: .planningTitle)
                     .matchedGeometryEffect(id: AnimationNamespace.HeaderID, in: animation.id)
             }
-            .opacity(showingKeyboard ? 0 : 1)
             Divider()
             
             CountedRows(rows: viewModel.allowed) { index in
