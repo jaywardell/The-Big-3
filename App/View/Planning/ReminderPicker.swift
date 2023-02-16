@@ -175,10 +175,40 @@ fileprivate final class NoAccessReminderPickerViewModel: ReminderPickerViewModel
     func reminderWith(id: String) -> DummyReminder? { nil }
 }
 
+fileprivate final class EmptyReminderPickerViewModel: ReminderPickerViewModel {
+    var givenAccess: Bool { true }
+    var calendars: [DummyCalendar] { [] }
+    func reminders(for calendar: DummyCalendar) -> [DummyReminder] { [] }
+    func reminderWith(id: String) -> DummyReminder? { nil }
+}
+
+fileprivate final class ExampleReminderPickerViewModel: ReminderPickerViewModel {
+    
+    let calendars = [
+        DummyCalendar(name: "Work", color: .purple),
+        DummyCalendar(name: "Home", color: .green)
+    ]
+    
+    var givenAccess: Bool { true }
+    func reminders(for calendar: DummyCalendar) -> [DummyReminder] { [
+        DummyReminder(title: "clean house"),
+        DummyReminder(title: "fix stove"),
+        DummyReminder(title: "call home")
+    ] }
+    func reminderWith(id: String) -> DummyReminder? { nil }
+}
 
 struct ReminderPicker_Previews: PreviewProvider {
     static var previews: some View {
+        
+        ReminderPicker(viewModel: ExampleReminderPickerViewModel()) { _ in }
+            .previewDisplayName("Example Reminders")
+        
         ReminderPicker(viewModel: NoAccessReminderPickerViewModel()) { _ in }
+            .previewDisplayName("No Access")
+        
+        ReminderPicker(viewModel: EmptyReminderPickerViewModel()) { _ in }
+            .previewDisplayName("Empty Reminders")
     }
 }
 
