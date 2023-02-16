@@ -31,7 +31,9 @@ final class EventKitReminderLister: ObservableObject {
     
     private var tracker: EventKitRemindersTracker
     
-    init() {
+    static let shared = EventKitReminderLister()
+    
+    private init() {
                 
         let store = EKEventStore()
         
