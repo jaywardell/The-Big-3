@@ -78,9 +78,9 @@ or you can open the Reminders app and add some goals there, then come back here 
                 }
                 else {
                     List {
-                        ForEach(lister.calendars, id: \.self) { calendar in
+                        ForEach(lister.calendars, id: \.id) { calendar in
                             Section(calendar.name) {
-                                ForEach(lister.reminders(for: calendar), id: \.self) { reminder in
+                                ForEach(lister.reminders(for: calendar), id: \.id) { reminder in
 
                                     row(for: reminder)
                                         .foregroundColor(.label)
