@@ -111,8 +111,6 @@ or you can open the Reminders app and add some goals there, then come back here 
                                 }
                             }
                             .foregroundColor(calendar.color)
-
-//                            .foregroundColor(calendar.color.map(Color.init(cgColor:)) ?? .label)
                         }
                     }
                     .listStyle(.plain)
