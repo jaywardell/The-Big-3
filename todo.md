@@ -1,10 +1,12 @@
 #  todo
 
 - [ ] collpasible categories in Reminders picker
-- [ ] Reminder picker should HIGHLIGHT the reminder, not put a check mark beside it, which is confusing
 - [ ] add logo back above text fields when editing a task
 - [ ] mac target with iCloud synching 
 - [ ] history widget?
+
+## for 1.0.2
+- [x] Reminder picker highlights the selected reminder rather than put a check mark beside it
 
 
 ## for 1.0.1
