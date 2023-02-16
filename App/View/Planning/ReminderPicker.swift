@@ -7,11 +7,30 @@
 
 import SwiftUI
 
+protocol ReminderPickerCalendar {
+    var name: String { get }
+    var color: Color { get }
+}
+
+protocol ReminderPickerReminder {
+    var title: String { get }
+}
+
+protocol ReminderPickerViewModel: ObservableObject {
+    var givenAccess: Bool { get }
+    var calendars: [ReminderPickerCalendar] { get }
+
+    func reminders(for calendar: ReminderPickerCalendar) -> [ReminderPickerReminder]
+    func reminderWith(id: String) -> ReminderPickerReminder?
+}
+
+// MARK: -
+
 struct ReminderPicker: View {
         
     let userChose: (EventKitReminder)->()
 
-    @StateObject private var lister = EventKitReminderLister()
+    @StateObject private var viewModel = EventKitReminderLister()
 
     @State private var selectedReminderID: String = ""
     @Environment(\.dismiss) var dismiss
@@ -35,7 +54,7 @@ struct ReminderPicker: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if !lister.givenAccess {
+                if !viewModel.givenAccess {
                     VStack {
                         ScrollView {
                             Text(
@@ -61,7 +80,7 @@ If you want to do this, you'll need to turn on support for Reminders in the Sett
                             Spacer()
                         }}
                 }
-                else if lister.calendars.isEmpty {
+                else if viewModel.calendars.isEmpty {
                     VStack {
                         Text(
 """
@@ -78,9 +97,9 @@ or you can open the Reminders app and add some goals there, then come back here 
                 }
                 else {
                     List {
-                        ForEach(lister.calendars, id: \.id) { calendar in
+                        ForEach(viewModel.calendars, id: \.id) { calendar in
                             Section(calendar.name) {
-                                ForEach(lister.reminders(for: calendar), id: \.id) { reminder in
+                                ForEach(viewModel.reminders(for: calendar), id: \.id) { reminder in
 
                                     row(for: reminder)
                                         .foregroundColor(.label)
@@ -112,7 +131,7 @@ or you can open the Reminders app and add some goals there, then come back here 
 
     private var doneButton: some View {
         Button("Choose") {
-            guard let reminder = lister.reminderWith(id: selectedReminderID) else { return }
+            guard let reminder = viewModel.reminderWith(id: selectedReminderID) else { return }
             userChose(reminder)
             dismiss()
         }
