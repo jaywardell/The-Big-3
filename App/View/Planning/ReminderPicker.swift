@@ -133,6 +133,12 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
                 .padding(.horizontal)
                 .padding()
             }
+            
+            // if the user doesn't have many calendars,
+            // then they should all appear expanded
+            // when the ReminderPicker first appears
+            .onAppear(perform: expandCalendars)
+            
             .navigationTitle("Pick a Reminder")
         }
     }
@@ -158,11 +164,24 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
         dismiss()
         userChose(reminder)
     }
+    
+    private func expandCalendars() {
+        if viewModel.calendars.count <= smallCalendarCount {
+            DispatchQueue.main.async {
+                expandedCalendarIDs = Set(viewModel.calendars.map(\.id))
+            }
+        }
+    }
 }
 
 // MARK: - ReminderPicker: Constants
 
 extension ReminderPicker {
+
+    /// the maximum number of calendars
+    /// which will cause the calendars to appear expanded
+    /// when the picker first appears
+    var smallCalendarCount: Int { 2 }
     
     var accessDeniedPrompt: String {
 """
