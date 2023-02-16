@@ -36,8 +36,6 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
     @ObservedObject var viewModel: ViewModel
 
     let userChose: (ViewModel.Reminder)->()
-
-//    @StateObject private var viewModel = EventKitReminderLister()
     
     @State private var selectedReminderID: String = ""
     @Environment(\.dismiss) var dismiss
