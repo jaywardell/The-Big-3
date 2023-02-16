@@ -1,12 +1,12 @@
 #  todo
 
-- [ ] collpasible categories in Reminders picker
 - [ ] add logo back above text fields when editing a task
 - [ ] mac target with iCloud synching 
 - [ ] history widget?
 
 ## for 1.0.2
 - [x] Reminder picker highlights the selected reminder rather than put a check mark beside it
+- [x] collpasible categories in Reminders picker
 
 
 ## for 1.0.1
