@@ -114,6 +114,7 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
                                         row(for: reminder)
                                             .foregroundColor(selectedReminderID == reminder.id ? .systemBackground : .label)
                                             .listRowBackground(selectedReminderID == reminder.id ? Color.accentColor : .clear)
+                                            .listRowSeparator(.hidden)
                                     }
                                 }
                             } header: {
