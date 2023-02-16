@@ -18,3 +18,9 @@ extension EventKitReminderLister: ReminderPickerViewModel {
     typealias Calendar = EventKitCalendar
     typealias Reminder = EventKitReminder
 }
+
+extension ReminderPicker where ViewModel == EventKitReminderLister {
+    init(_ userChose: @escaping (ViewModel.Reminder)->()) {
+        self.init(viewModel: EventKitReminderLister.shared, userChose: userChose)
+    }
+}
