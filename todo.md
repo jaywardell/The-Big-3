@@ -1,10 +1,10 @@
 #  todo
 
-- [ ] add logo back above text fields when editing a task
-- [ ] mac target with iCloud synching 
+- [ ] mac target with iCloud syncing 
 - [ ] history widget?
 
 ## for 1.0.2
+- [x] add logo back above text fields when editing a task
 - [x] Reminder picker highlights the selected reminder rather than put a check mark beside it
 - [x] collpasible categories in Reminders picker
 
