@@ -38,6 +38,8 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
     let userChose: (ViewModel.Reminder)->()
     
     @State private var selectedReminderID: String = ""
+    @State private var expandedCalendarIDs = Set<String>()
+    
     @Environment(\.dismiss) var dismiss
     
     private func row(for reminder: ViewModel.Reminder) -> some View {
@@ -52,6 +54,36 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
         .onTapGesture {
             selectedReminderID = reminder.id
         }
+        .padding(.leading)
+    }
+    
+    private func disclosure(for calendar: ViewModel.Calendar) -> some View {
+        Image(systemName: "chevron.down")
+            .rotationEffect(.degrees(expandedCalendarIDs.contains(calendar.id) ? 0 : 90))
+    }
+    
+    private func header(for calendar: ViewModel.Calendar) -> some View {
+            HStack {
+                Text(calendar.name)
+                Spacer()
+                disclosure(for: calendar)
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                withAnimation {
+                    if expandedCalendarIDs.contains(calendar.id) {
+                        expandedCalendarIDs.remove(calendar.id)
+                        
+                        if viewModel.reminders(for: calendar).map(\.id
+                        ).contains(selectedReminderID) {
+                            selectedReminderID = ""
+                        }
+                    }
+                    else {
+                        expandedCalendarIDs.insert(calendar.id)
+                    }
+                }
+            }
     }
     
     var body: some View {
@@ -75,14 +107,18 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
                 else {
                     List {
                         ForEach(viewModel.calendars, id: \.id) { calendar in
-                            Section(calendar.name) {
-                                ForEach(viewModel.reminders(for: calendar), id: \.id) { reminder in
-
-                                    row(for: reminder)
-                                        .foregroundColor(selectedReminderID == reminder.id ? .systemBackground : .label)
-                                        .listRowBackground(selectedReminderID == reminder.id ? Color.accentColor : .clear)
+                            Section {
+                                if expandedCalendarIDs.contains(calendar.id) {
+                                    ForEach(viewModel.reminders(for: calendar), id: \.id) { reminder in
+                                        
+                                        row(for: reminder)
+                                            .foregroundColor(selectedReminderID == reminder.id ? .systemBackground : .label)
+                                            .listRowBackground(selectedReminderID == reminder.id ? Color.accentColor : .clear)
+                                    }
                                 }
-                            }
+                            } header: {
+                                header(for: calendar)
+                        }
                             .foregroundColor(calendar.color)
                         }
                     }
