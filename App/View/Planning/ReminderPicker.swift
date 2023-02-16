@@ -42,8 +42,6 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
     
     private func row(for reminder: ViewModel.Reminder) -> some View {
         HStack {
-            Image(systemName: "checkmark")
-                .opacity(reminder.id == selectedReminderID ? 1 : 0)
             Text(reminder.title)
             Spacer()
         }
@@ -81,7 +79,8 @@ struct ReminderPicker<ViewModel: ReminderPickerViewModel>: View {
                                 ForEach(viewModel.reminders(for: calendar), id: \.id) { reminder in
 
                                     row(for: reminder)
-                                        .foregroundColor(.label)
+                                        .foregroundColor(selectedReminderID == reminder.id ? .systemBackground : .label)
+                                        .listRowBackground(selectedReminderID == reminder.id ? Color.accentColor : .clear)
                                 }
                             }
                             .foregroundColor(calendar.color)
