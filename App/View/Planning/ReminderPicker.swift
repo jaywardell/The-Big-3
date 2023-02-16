@@ -91,7 +91,7 @@ If you want to do this, you'll need to turn on support for Reminders in the Sett
                     VStack {
                         Text(
 """
-It looks like there are no reminders in you Reminders app.
+It looks like there are no reminders in your Reminders app.
 
 You can still add goals directly in 'The Big 3'
 
